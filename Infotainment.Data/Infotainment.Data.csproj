@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E702D422-F5D6-4BCE-AEA2-5240D7661D22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infotainment.Data</RootNamespace>
+    <AssemblyName>Infotainment.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Data.Services.Design" />
+    <Reference Include="System.Data.SqlXml" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ReadOnly\Constants.cs" />
+    <Compile Include="Common\ReadOnly\ProcedureName.cs" />
+    <Compile Include="Controls\Account\UserBL.cs" />
+    <Compile Include="Controls\Account\UserEmailDB.cs" />
+    <Compile Include="Controls\Account\UsersDB.cs" />
+    <Compile Include="Entities\ImageDeails\IImageDetail.cs" />
+    <Compile Include="Entities\ImageDeails\ImageDetail.cs" />
+    <Compile Include="Entities\TopNews\ITopNews.cs" />
+    <Compile Include="DBHelper\DBHelper.cs" />
+    <Compile Include="DBHelper\DbHelperAbstract.cs" />
+    <Compile Include="DBHelper\DBProviderSingleton.cs" />
+    <Compile Include="DBHelper\Enum.cs" />
+    <Compile Include="DBHelper\IDBHelper.cs" />
+    <Compile Include="Entities\TopNews\INewsHeading.cs" />
+    <Compile Include="Entities\TopNews\INews.cs" />
+    <Compile Include="Entities\TopNews\News.cs" />
+    <Compile Include="Entities\Account\IUserAddress.cs" />
+    <Compile Include="Entities\Account\IUserEmail.cs" />
+    <Compile Include="Entities\Account\IUsers.cs" />
+    <Compile Include="Entities\Account\UserAddress.cs" />
+    <Compile Include="Entities\Account\UserEmail.cs" />
+    <Compile Include="Entities\Account\Users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\TopNews\TopNews.cs" />
+    <Compile Include="Controls\TopNews\TopNewsBL.cs" />
+    <Compile Include="Controls\TopNews\TopNewsDB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\System.Web.Mvc.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

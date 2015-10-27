@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")    
+
+    @Scripts.Render("~/bundles/Angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/txtEditor")
+    
+    @Scripts.Render("~/bundles/AngularModule")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/Services")
+
+    @Scripts.Render("~/bundles/AngularModule")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/Services") 
+
+    @Scripts.Render("~/bundles/AdminController")
+   
+</head>
+<body>
+    <div ng-app="infotainment" ng-controller="mainCtrl" style="width:100%;">
+        <header id="admin-header" class="admin-header">
+            @{Html.RenderPartial("_PartialLogOut");}
+            @{Html.RenderPartial("_PartialAdminMenu");}
+        </header>
+        <section id="body" style="width:100%;">@RenderBody()</section>
+
+    </div>
+
+    <script>
+        $(function () {
+            var stickyMenu = $('#admin-header').offset().top;
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > stickyMenu) {
+                    $('#admin-header').css({ position: 'fixed', top: '0px' });
+                } else {
+                    $('#admin-header').css({ position: 'static', top: '0px' });
+                }
+
+
+            });
+        });
+    </script>
+</body>
+</html>

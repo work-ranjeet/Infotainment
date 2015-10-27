@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")    
+
+    @Scripts.Render("~/bundles/Angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    @Scripts.Render("~/bundles/AngularModule")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/Services")
+
+    @Scripts.Render("~/bundles/ClientControllers")
+    @*@Scripts.Render("~/bundles/MainNewsCtrl")
+        @Scripts.Render("~/bundles/StateNewsCtrl")*@
+
+</head>
+<body>
+    <div class="page-container" ng-app="infotainment" ng-controller="mainCtrl">
+        <header class="header">
+            <section id="stickyHeader" class="social-media-banner">
+                <div class="pull-left"><span style="padding: 2px; color: white; padding-top: 5px;">बुधवार, 19 अगस्त, 2015 | 02:29 | IST</span></div>
+                <div class="pull-right">
+                    <ul class="social-media">
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100008360352835&fref=ts" title="Facebook" target="_blank">
+                                <div class="fbook-icon-small round-corner"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter-icon" title="Twitter" target="_blank">
+                                <div class="twitter-icon-small round-corner"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="gplus-icon" title="Google Plus" target="_blank">
+                                <div class="gplus-icon-small round-corner"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section id="headerBanner" class="header-banner">
+                <div class="pull-left">
+                    @*<div class="logo"></div>*@
+                </div>
+                <div class="pull-right">
+                    <div id="top-row" class="top"></div>
+                    <div id="bottom-row" class="bottom"><span></span></div>
+                </div>
+            </section>
+        </header>
+        <section id="stickyMenu" class="main-menu">
+            <div class="menu-container">
+                @*<div style="height:8px;"></div>*@
+                <ul id="menu" class="main-menu-ul">
+                    <li>
+                        <div class="menu-heading">
+                            <span class="menu-text">होम&nbsp;&nbsp;</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-heading">
+                            <span class="menu-text pull-left">गेलरी</span>
+                            <span class="pull-right down-arrow"></span>
+                        </div>
+                        <div class="gallery-menu">
+                            <div class="column-first">
+                                <ul>
+                                    <li><span>तस्वीर</span></li>
+                                    <li><span>वीडियोज</span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-heading">
+                            <span class="menu-text pull-left">खबरें&nbsp;</span>
+                            <span class="pull-right down-arrow"></span>
+                        </div>
+                        <div class="news-menu">
+                            <div class="column-first">
+                                <div class="sub-menu-heading">समाचार&nbsp;</div>
+                                <ul>
+                                    <li><span>राजनीति समाचार</span></li>
+                                    <li><span>व्यापार समाचार</span>	</li>
+                                    <li><span>अंतरराष्ट्रीय समाचार</span></li>
+                                </ul>
+                            </div>
+                            <div class="column-first">
+                                <div class="sub-menu-heading">क्षेत्रीय समाचार</div>
+                                <ul>
+                                    <li><span>छत्तीसगढ़</span></li>
+                                    <li><span>बिहार</span></li>
+                                    <li><span>उत्तर प्रदेश</span></li>
+                                    <li><span>मध्य प्रदेश</span></li>
+                                    <li><span>राजस्थान</span></li>
+                                    <li><span>हिमाचल प्रदेश</span></li>
+                                    <li><span>पंजाब</span></li>
+                                </ul>
+                            </div>
+                            <div class="column-first">
+                                <div class="sub-menu-heading">खेल समाचार</div>
+                                <ul>
+                                    <li><span>खेल कहानियां</span></li>
+                                    <li><span>क्रिकेट</span></li>
+                                    <li><span>फ़ुटबॉल</span></li>
+                                    <li><span>हॉकी</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-heading">
+                            <span class="menu-text pull-left">मनोरंजन</span>
+                            <span class="pull-right down-arrow"></span>
+                        </div>
+                        <div class="manoranjan-menu">
+                            <div class="column-first">
+                                <ul>
+                                    <li><span>सिनेमा</span></li>
+                                    <li><span>मजाक</span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-heading">
+                            <span class="menu-text">ज्योतिष</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="news-heading">
+                            <span class="menu-text">हमारे बारे में</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="body" class="bodySection">@RenderBody()</section>
+        <footer class="footer round-corner">
+            <div class="full-row">
+                <div class="footer-left-column">
+                    <p>This is a website where you can find all type of news as well as entertainment things. Thats why Its name Info + Entertainment  = Infotainment.</p>
+                </div>
+            </div>
+            <div class="full-row pull-center copyright shadow">
+                <span>Copyright © 2020 <a href="http://www.anandinfotainment.com/"><strong>Infotainment Company/</strong></a> - Designed by <a href="#" target="_parent">Ranjeet Kumar</a></span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        $(function () {
+            //var stickyHeader = $('#stickyHeader').offset().top + 30;
+            var stickyMenu = $('#stickyMenu').offset().top;
+
+            $(window).scroll(function () {
+                //if ($(window).scrollTop() > stickyHeader) {
+                //    $('#stickyHeader').css({ position: 'fixed', top: '0px' });
+                //} else {k
+                //    $('#stickyHeader').css({ position: 'static', top: '0px' });
+                //}
+                if ($(window).scrollTop() > stickyMenu) {
+                    $('#stickyMenu').css({ position: 'fixed', width: '1000px', top: '-1px' });
+                } else {
+                    $('#stickyMenu').css({ position: 'static', width: '100%', top: '1px' });
+                }
+
+
+            });
+        });
+    </script>
+    @* @RenderSection("scripts", required: false)*@
+</body>
+</html>

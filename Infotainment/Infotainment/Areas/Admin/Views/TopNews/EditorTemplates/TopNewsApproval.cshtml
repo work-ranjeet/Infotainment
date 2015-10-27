@@ -1,0 +1,10 @@
+﻿@model Infotainment.Areas.Admin.Models.TopNewsApproval
+
+<tr>
+    <td style="display:none;">@Html.HiddenFor(m => m.TopNewsID)</td>
+    <td>@Html.CheckBoxFor(m => m.Selected, new { @class = "chkSelect" })</td>
+
+    <td>@(Model.IsApproved == 1 ? "Approved" : "Not Approved")</td>
+    <td>@Model.Heading</td>
+    <td>@Model.DttmCreated</td>
+</tr>

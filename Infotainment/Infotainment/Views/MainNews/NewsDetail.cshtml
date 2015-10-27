@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body page-row">
+    <div class="news-detail-container" ng-controller="mainnewsCtrl">
+        <div class="column left-column"></div>
+        <div class="column center-column">
+            <span class="heading">{{NewsDetail.Heading}}</span>
+            <hr class="style-three" />
+            <a href="#" target="_blank"><span class="editor">{{NewsDetail.EditorName}} &nbsp;|&nbsp;{{NewsDetail.Date}}</span></a>
+            <hr class="style-three" />
+            <div class="pull-left news-Image">
+                <img src="~/{{NewsDetail.ImageUrl}}" />
+            </div>
+            <div class="pull-right news-content">
+
+                <p><span class="desc">{{NewsDetail.ShortDesc}}</span></p>
+                <p><span class="desc">{{NewsDetail.Desc}}</span></p>
+            </div>
+            @* <div>More</div>*@
+        </div>
+        <div class="column right-column">
+        </div>
+    </div>
+</div>
+

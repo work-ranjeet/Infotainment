@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "StateNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-body page-row">
+    <div class="news-detail-container" ng-controller="stateNewsCtrl">
+        <div class="column left-column"></div>
+        <div class="column center-column">
+            <span class="heading">{{StateNewsDetail.Heading}}</span>
+            <hr class="style-three" />
+            <a href="#"><span class="editor">{{StateNewsDetail.EditorName}} &nbsp;|&nbsp;{{StateNewsDetail.Date}}</span></a>
+            <hr class="style-three" />
+            <div class="pull-left news-Image">
+                <img src="~/{{StateNewsDetail.ImageUrl}}" />
+            </div>
+            <div class="pull-right news-content">
+
+                <p><span class="desc">{{StateNewsDetail.ShortDesc}}</span></p>
+                <p><span class="desc">{{StateNewsDetail.Desc}}</span></p>
+            </div>
+            @* <div>More</div>*@
+        </div>
+        <div class="column right-column">
+        </div>
+    </div>
+</div>
+

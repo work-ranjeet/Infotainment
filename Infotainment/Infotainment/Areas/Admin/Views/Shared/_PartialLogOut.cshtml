@@ -1,0 +1,25 @@
+﻿@using Infotainment.Data
+@using Infotainment.Data.Entities
+<div style="height:50px;">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @if (Request.IsAuthenticated)
+    {
+        var userDetail = (IUsers)Session[Constants.UserSessionKey];
+        if (userDetail != null)
+        {
+            <div class="admin-header-user">
+                <div class="pull-left">
+                    @*<bdi>Welcome &nbsp; @Html.ActionLink(userDetail.FName, "UserDetails", "Account")</bdi>*@
+                    <bdi>Welcome &nbsp;@userDetail.FName</bdi>
+                </div>
+                <div class="pull-right">
+                    <bdi class="loginButton logOut">
+                        <a href="/Admin/Account/Logout" style="line-height:25px; font-size:20px; vertical-align: -webkit-baseline-middle; color:red">Log Out</a>
+                    </bdi>
+                </div>
+                <div class="pull-clear"></div>
+            </div>
+        }
+    }
+</div>

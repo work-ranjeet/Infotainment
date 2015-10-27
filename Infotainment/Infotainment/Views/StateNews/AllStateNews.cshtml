@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "AllStateNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="page-row">
+        <div class="column first-second-column" ng-controller="allStateNewsCtrl">
+            
+                <div ng-repeat="state in stateList" class="state-container round-corner {{($index + 1) % 2 == 0 ?' space-left2' : ''}}">
+                    <div class="news-title border-bottom">
+                        @{
+                            var url = Url.Action("StateNewsList", "StateNews", new { StateId = "{{state.StateID}}" });
+                            url = HttpUtility.UrlDecode(url);
+                        }
+                        <a data-ng-href="@url" target="_blank"><span>{{state.StateName}}</span></a>
+                    </div>
+                    <div class="image-container">
+                        <div class="pull-left image">
+                            <img src="~/{{state.FirstNewsImageUrl}}" />
+                        </div>
+                        <div class="pull-right sub-heading">
+                            @{
+                                url = Url.Action("StateNews", "StateNews", new { NewsId = "{{state.FirstNewsId}}" });
+                                url = HttpUtility.UrlDecode(url);
+                            }
+                            <a data-ng-href="@url" target="_blank"><span class="heading">{{state.FirstNewsShortDesc}}</span></a>
+                        </div>
+                    </div>
+                    <div class="news-list">
+                        <ul>
+                            <li ng-repeat="news in state.SimpleNewsList">
+                                @{
+                                    url = Url.Action("StateNews", "StateNews", new { NewsId = "{{news.NewsId}}" });
+                                    url = HttpUtility.UrlDecode(url);
+                                }
+                                <a data-ng-href="@url"  target="_blank"><span class="heading">{{news.Header}}</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br ng-show="{{($index + 1) %2 == 0}}" />
+                <div class="space-top2" ng-show="{{($index + 1) % 2 == 0}}"></div>
+            
+        </div>
+        <div class="column third-column-container space-left2"></div>
+    </div>
+</div>
