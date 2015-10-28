@@ -26,6 +26,10 @@ namespace Infotainment.Data.Controls
 {
     public class TopNewsDB : DBInstanceAbstract
     {
+        public static TopNewsDB Instance
+        {
+            get { return new TopNewsDB(); }
+        }
 
         #region Auto Generated Code - Insert
 
@@ -53,7 +57,30 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Update
+        public void GiveApproval(ref DBHelper dbHelper, ITopNews objTopNews)
+        {
+            try
+            {
+                dbHelper.ExecuteNonQuery("Update TopNews set IsApproved= " + objTopNews.IsApproved + " where TopNewsID = '" + objTopNews.TopNewsID + "'" );
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+        }
 
+        public void MakeActive(ref DBHelper dbHelper, ITopNews objTopNews)
+        {
+            try
+            {
+                dbHelper.ExecuteNonQuery("Update TopNews set IsActive= " + objTopNews.IsActive + " where TopNewsID = '" + objTopNews.TopNewsID + "'");
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+        }
+        
         public void Update(ref DBHelper dbHelper, TopNews objTopNews)
         {
             try

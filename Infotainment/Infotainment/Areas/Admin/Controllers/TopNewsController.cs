@@ -45,14 +45,42 @@ namespace Infotainment.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult NeedApproval(TopNewsApprovalList selectedNewsList)
         {
+            var activeList = new TopNewsApprovalList();
+            activeList.ApprovalList = new List<TopNewsApproval>();
             int selectedItemCount = selectedNewsList.ApprovalList.Where(t => t.Selected).Count();
 
             if (selectedItemCount > 0)
-                selectedNewsList.Message = selectedItemCount.ToString() + " news selected for approval!";
-            else
-                selectedNewsList.Message = "Please select atleast one news to approve!";
+            {
+                var list = new List<ITopNews>();
+                selectedNewsList.ApprovalList.ToList().ForEach(item => list.Add(new TopNews()
+                {
+                    TopNewsID = item.TopNewsID,
+                    IsApproved = item.Selected ? 1 : 0
+                }));
 
-            return View(selectedNewsList);
+                TopNewsBL.Instance.GiveApprovalFor(list);
+
+                TopNewsBL.Instance.SelectTopeNewsForApproval().ToList().ForEach(v =>
+                {
+                    activeList.ApprovalList.Add(
+                        new TopNewsApproval
+                        {
+                            Selected = false,
+                            TopNewsID = v.TopNewsID,
+                            IsApproved = v.IsApproved,
+                            Heading = v.Heading,
+                            DttmCreated = v.DttmCreated
+                        });
+                });
+
+                activeList.Message = selectedItemCount.ToString() + " news has been approves successfuly.";
+            }
+            else
+            {
+                activeList.Message = "Please select atleast one news to approve!";
+            }
+
+            return View(activeList);
         }
 
         public async Task<ActionResult> MakeActive()
@@ -86,16 +114,45 @@ namespace Infotainment.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult MakeActive(TopNewsActivationlList selectedNewsList)
         {
+            var activeList = new TopNewsActivationlList();
+            activeList.ActivationlList = new List<TopNewsActivation>();
             int selectedItemCount = selectedNewsList.ActivationlList.Where(t => t.Selected).Count();
 
             if (selectedItemCount > 0)
-                selectedNewsList.Message = selectedItemCount.ToString() + " news selected for approval!";
-            else
-                selectedNewsList.Message = "Please select atleast one news to approve!";
+            {
+                var list = new List<ITopNews>();
+                selectedNewsList.ActivationlList.ToList().ForEach(item => list.Add(new TopNews()
+                {
+                    TopNewsID = item.TopNewsID,
+                    IsActive = item.Selected ? 1 : 0
+                }));
 
-            return View(selectedNewsList);
+                TopNewsBL.Instance.MakeActiveFor(list);
+
+                TopNewsBL.Instance.SelectTopeNewsForActivate().ToList().ForEach(v =>
+                {
+                    activeList.ActivationlList.Add(
+                        new TopNewsActivation
+                        {
+                            Selected = false,
+                            TopNewsID = v.TopNewsID,
+                            IsActive = v.IsActive,
+                            Heading = v.Heading,
+                            DttmCreated = v.DttmCreated
+                        });
+                });
+
+                activeList.Message = selectedItemCount.ToString() + " news has been activeted.";
+            }
+            else
+            {
+                activeList.Message = "Please select atleast one news to approve!";
+            }
+
+            return View(activeList);
         }
 
+        [HttpGet]
         public async Task<ActionResult> NewsList()
         {
             return await Task.Run(() =>

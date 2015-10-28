@@ -10,6 +10,7 @@ namespace Infotainment.Controllers.HomePage
     public class HomeApiController : ApiController
     {
         [HttpGet]
+        [ActionName("ToptenNewsList")]
         public IEnumerable<string>GetToptenNewsList()
         {
             return new string[] { "1","2","3","4","5","6"};

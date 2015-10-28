@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\Models\TopTenNews\NewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsActivationList.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsApprovalList.cs" />
+    <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
@@ -607,7 +608,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55262</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

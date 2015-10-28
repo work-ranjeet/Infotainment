@@ -10,7 +10,7 @@ namespace Infotainment.Areas.Admin.Models
     {
         public string Message { get; set; }
 
-        public List<TopNewsApproval> ApprovalList { get; set; }
+        public IList<TopNewsApproval> ApprovalList { get; set; }
     }
 
     public class TopNewsApproval

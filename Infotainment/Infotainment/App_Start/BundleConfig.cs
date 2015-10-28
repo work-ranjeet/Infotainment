@@ -23,7 +23,8 @@ namespace Infotainment
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Vendor/Bootstrap/bootstrap.js",
                       "~/Scripts/Vendor/Bootstrap/respond.js",
-                      "~/Scripts/Vendor/Bootstrap/date-picker.JS"));
+                      "~/Scripts/Vendor/Bootstrap/date-picker.JS",
+                      "~/Scripts/Vendor/Bootstrap/bootstrap-datepicker.JS"));
            
 
             // Adding angular js module code

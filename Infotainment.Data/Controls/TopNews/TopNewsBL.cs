@@ -27,10 +27,14 @@ using System.Web;
 
 namespace Infotainment.Data.Controls
 {
-    public class TopNewsBL //: ITopNews
+    public class TopNewsBL 
     {
-        #region Auto Generated Code - Insert
+        public static TopNewsBL Instance
+        {
+            get { return new TopNewsBL(); }
+        }
 
+        #region Auto Generated Code - Insert
         public void Insert(ITopNews objTopNews, IImageDetail objImageDetail)
         {
             try
@@ -56,58 +60,73 @@ namespace Infotainment.Data.Controls
         }
         #endregion
 
-        //#region Auto Generated Code - Update
+        #region /// Update News
+        public void GiveApproval(ITopNews topNews)
+        {
+            var objdbhelper = new DBHelper();
+            try
+            {
+                TopNewsDB.Instance.GiveApproval(ref objdbhelper, topNews);
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+        }
 
-        //public void Update(ITopNews objTopNews)
-        //{
-        //    try
-        //    {
-        //        DBHelper objdbhelper = new DBHelper();
+        public void MakeActive(ITopNews topNews)
+        {
+            var objdbhelper = new DBHelper();
+            try
+            {
+                TopNewsDB.Instance.MakeActive(ref objdbhelper, topNews);
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+        }
 
-        //        TopNewsDB objTopNewsDB = new TopNewsDB();
+        public void GiveApprovalFor(IList<ITopNews> topNewsList)
+        {
+            var dbhelper = new DBHelper();
+            dbhelper.BeginTransaction();
 
-        //        try
-        //        {
-        //            objTopNewsDB.Update(ref objdbhelper, objTopNews);
-        //        }
-        //        catch (Exception objExp)
-        //        {
-        //            throw objExp;
-        //        }
-        //    }
-        //    catch (Exception objExp)
-        //    {
-        //        throw objExp;
-        //    }
-        //    finally
-        //    {
-        //    }
-        //}
-        //#endregion
+            try
+            {
+                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item));              
 
-        //#region Auto Generated Code - Delete
+                dbhelper.CommitTransaction();
+            }
+            catch (Exception objExp)
+            {
+                dbhelper.RollbackTransaction();
+                throw objExp;
+            }
+        }
 
-        //public void Delete(System.Int64 TopNewsID)
-        //{
-        //    DBHelper objdbhelper = new DBHelper();
+        public void MakeActiveFor(IList<ITopNews> topNewsList)
+        {
+            var dbhelper = new DBHelper();
+            dbhelper.BeginTransaction();
 
-        //    TopNewsDB objTopNewsDB = new TopNewsDB();
+            try
+            {
+                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.MakeActive(ref dbhelper, item));
 
-        //    try
-        //    {
-        //        objTopNewsDB.Delete(ref objdbhelper, TopNewsID);
+                dbhelper.CommitTransaction();
+            }
+            catch (Exception objExp)
+            {
+                dbhelper.RollbackTransaction();
+                throw objExp;
+            }
+        }
 
-        //    }
-        //    catch (Exception objExp)
-        //    {
-        //        throw objExp;
-        //    }
+        #endregion
 
-        //}
-        //#endregion
 
         #region Auto Generated Code - Select
-
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, int IsActive, int IsApproved, string Heading)
         {
             //DateTime dateFrom, DateTime dateTo, int IsActive = 0, int IsApproved = 0, string Heading = null
@@ -136,7 +155,7 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
-            return list.ToList().FindAll(v => v.IsApproved == 0).OrderBy(v => v.DttmModified);
+            return list.ToList().FindAll(v => v.IsApproved == 0).OrderByDescending(v => v.DttmModified);
         }
 
         public IEnumerable<ITopNews> SelectTopeNewsForActivate()
@@ -151,7 +170,7 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
-            return list.ToList().FindAll(v => v.IsActive == 0).OrderBy(v => v.DttmModified);
+            return list.ToList().FindAll(v => v.IsActive == 0).OrderByDescending(v => v.DttmModified);
         }
         #endregion
 
