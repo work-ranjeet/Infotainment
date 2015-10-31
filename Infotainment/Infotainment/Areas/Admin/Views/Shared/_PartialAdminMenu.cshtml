@@ -1,6 +1,6 @@
 ﻿<div class="admin-header-menu header-menu" style="width:1000px; margin:auto;">
-    <ul id="menu" class="main-menu-ul">
-        <li>
+    <ul id="menu"  class="main-menu-ul">
+        <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 @{
                     var url = HttpUtility.UrlDecode(Url.Action("Index", "Home"));
@@ -9,7 +9,7 @@
             </div>
 
         </li>
-        <li>
+        <li  style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 <span class="menu-text pull-left">News Update</span>
                 <span class="pull-right down-arrow"></span>
@@ -42,7 +42,39 @@
 
             </div>
         </li>
-        <li>
+        <li  style="float:left; padding:0 5px 0 5px;">
+            <div class="menu-heading">
+                <span class="menu-text pull-left">Search News</span>
+                <span class="pull-right down-arrow"></span>
+            </div>
+            <div class="news-menu" style="z-index:10;">
+                <div class="column-first">
+                    <ul>
+                        <li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("MainNewsSearch", "Search"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Search Main News</span></a>
+                        </li>
+                        @*<li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Need Approval</span></a>
+                        </li>
+                        <li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Make Active</span></a>
+                        </li>*@
+
+                    </ul>
+                </div>
+
+            </div>
+        </li>
+        <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 <span class="menu-text pull-left">खबरें&nbsp;</span>
                 <span class="pull-right down-arrow"></span>
@@ -79,7 +111,7 @@
                 </div>
             </div>
         </li>
-        <li>
+        <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 <span class="menu-text pull-left">मनोरंजन</span>
                 <span class="pull-right down-arrow"></span>
@@ -92,16 +124,6 @@
                     </ul>
                 </div>
 
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text">ज्योतिष</span>
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text">हमारे बारे में</span>
             </div>
         </li>
     </ul>

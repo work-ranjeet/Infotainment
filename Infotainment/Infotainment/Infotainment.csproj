@@ -133,9 +133,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\CreateTopTenNews.cs" />
-    <Compile Include="Areas\Admin\Models\TopTenNews\NewsListFilter.cs" />
+    <Compile Include="Areas\Admin\Models\Search\TopNewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsActivationList.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsApprovalList.cs" />
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
@@ -157,7 +158,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Scripts\Controller\IndexCtrl.js" />
+    <Content Include="Areas\Admin\Scripts\Controller\searchCtrl.js" />
     <Content Include="Areas\Admin\Scripts\Controller\loginCtrl.js" />
     <Content Include="Content\css\Admin.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
@@ -218,6 +219,9 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialAdminMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialLogOut.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\MainNewsSearch1.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\MainNewsSearch.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common\appDirectives.js" />
     <Content Include="Scripts\Common\appFactory.js" />
@@ -237,6 +241,9 @@
     <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js" />
     <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js" />
     <Content Include="Scripts\Components\StateNews\StateNewsListCtrl.js" />
+    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.css" />
+    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.structure.css" />
+    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.theme.css" />
     <Content Include="Scripts\Vendor\JQuery\jquery-1.10.2.js" />
     <Content Include="Scripts\Vendor\JQuery\jquery-1.10.2.min.js" />
     <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js" />

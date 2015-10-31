@@ -170,7 +170,7 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
-            return list.ToList().FindAll(v => v.IsActive == 0).OrderByDescending(v => v.DttmModified);
+            return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
         }
         #endregion
 

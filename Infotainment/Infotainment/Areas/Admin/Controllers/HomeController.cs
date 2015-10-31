@@ -17,22 +17,7 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, 0, 0, string.Empty);
-                return View(result);
-            });
-        }
-
-
-        [HttpPost]
-        public async Task<ActionResult> Index(NewsListFilter criteria)
-        {
-            return await Task.Run(() =>
-            {
-                var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectAll(criteria.DateFrom, criteria.DateTo, criteria.IsActive, criteria.IsActive, criteria.Header);
-
-                return View(result);
+                return View();
             });
         }
     }

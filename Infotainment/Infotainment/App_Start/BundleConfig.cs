@@ -11,6 +11,7 @@ namespace Infotainment
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/Vendor/JQuery/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/Vendor/JQuery/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/Vendor/JQuery/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/Vendor/JQuery/jquery-ui-{version}.js"));
 
             // Adding angularjs vendor js to support angularjs           
             bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
@@ -22,9 +23,7 @@ namespace Infotainment
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Vendor/Bootstrap/bootstrap.js",
-                      "~/Scripts/Vendor/Bootstrap/respond.js",
-                      "~/Scripts/Vendor/Bootstrap/date-picker.JS",
-                      "~/Scripts/Vendor/Bootstrap/bootstrap-datepicker.JS"));
+                      "~/Scripts/Vendor/Bootstrap/respond.js"));
            
 
             // Adding angular js module code
@@ -56,7 +55,8 @@ namespace Infotainment
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.css",
-                      "~/Content/css/*.css"));
+                      "~/Content/css/*.css",
+                      "~/Scripts/Vendor/JQuery/css/*.css"));
 
             //bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
             //            "~/Content/themes/base/jquery.ui.core.css",
