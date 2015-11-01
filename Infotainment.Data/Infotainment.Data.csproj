@@ -87,30 +87,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBScript\DropScript\StoreProcedureDrop.sql" />
-    <Content Include="DBScript\DropScript\TabelSchemaDrop.sql" />
-    <Content Include="DBScript\PreScript\PreScript.sql" />
-    <Content Include="DBScript\Procedure\InsertImageDetail.sql" />
-    <Content Include="DBScript\Procedure\InsertLatestNews.sql" />
-    <Content Include="DBScript\Procedure\SearchNews.sql" />
+    <Content Include="DBScript\Drop\Schema Drop.sql" />
+    <Content Include="DBScript\PreScript\Pre-Script.sql" />
     <Content Include="DBScript\Procedure\SelectAllTopNews.sql" />
-    <Content Include="DBScript\Procedure\SelectUser.sql" />
-    <Content Include="DBScript\Procedure\SelectUserEmail.sql" />
-    <Content Include="DBScript\Procedure\UpdateImageDetail.sql" />
-    <Content Include="DBScript\Procedure\UpdateLatestNews.sql" />
-    <Content Include="DBScript\Schema\Contents.sql" />
-    <Content Include="DBScript\Schema\ErrorLog.sql" />
-    <Content Include="DBScript\Schema\Groups.sql" />
-    <Content Include="DBScript\Schema\ImageDetail.sql" />
-    <Content Include="DBScript\Schema\ImageType.sql" />
-    <Content Include="DBScript\Schema\Language.sql" />
-    <Content Include="DBScript\Schema\PwdManagement.sql" />
-    <Content Include="DBScript\Schema\TopNews.sql" />
-    <Content Include="DBScript\Schema\UserAddress.sql" />
-    <Content Include="DBScript\Schema\UserEmail.sql" />
-    <Content Include="DBScript\Schema\UserGroups.sql" />
-    <Content Include="DBScript\Schema\UserLoginDetails.sql" />
-    <Content Include="DBScript\Schema\Users.sql" />
+    <Content Include="DBScript\Procedure\Sp_InsertImageDetail.sql" />
+    <Content Include="DBScript\Procedure\Sp_InsertLatestNews.sql" />
+    <Content Include="DBScript\Procedure\SP_SearchNews.sql" />
+    <Content Include="DBScript\Procedure\Sp_SelectUser.sql" />
+    <Content Include="DBScript\Procedure\Sp_SelectUserEmail.sql" />
+    <Content Include="DBScript\Procedure\Sp_UpdateImageDetail.sql" />
+    <Content Include="DBScript\Procedure\Sp_UpdateLatestNews.sql" />
+    <Content Include="DBScript\Schema\Infotainment-Schema.sql" />
+    <Content Include="DBScript\Schema\Sp_UsrMangementSchema.sql" />
     <Content Include="Lib\System.Web.Mvc.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
