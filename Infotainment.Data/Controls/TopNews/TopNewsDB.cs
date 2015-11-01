@@ -61,7 +61,7 @@ namespace Infotainment.Data.Controls
         {
             try
             {
-                dbHelper.ExecuteNonQuery("Update TopNews set IsApproved= " + objTopNews.IsApproved + " where TopNewsID = '" + objTopNews.TopNewsID + "'" );
+                dbHelper.ExecuteNonQuery("Update TopNews set IsApproved= " + objTopNews.IsApproved + " where TopNewsID = '" + objTopNews.TopNewsID + "'");
             }
             catch (Exception objExp)
             {
@@ -80,7 +80,7 @@ namespace Infotainment.Data.Controls
                 throw objExp;
             }
         }
-        
+
         public void Update(ref DBHelper dbHelper, TopNews objTopNews)
         {
             try
@@ -88,7 +88,7 @@ namespace Infotainment.Data.Controls
                 string strQuery = String.Empty;
                 strQuery += "Update TopNews set TopNewsID= " + objTopNews.TopNewsID + ", DisplayOrder= " + objTopNews.DisplayOrder + ", Heading= '";
                 strQuery += objTopNews.Heading + "', ShortDescription= '" + objTopNews.ShortDescription + "', NewsDescription= '" + objTopNews.NewsDescription + "', ";
-                strQuery += "ImageID = " + objTopNews.ImageID + ", LanguageID= " + objTopNews.LanguageID + ", IsActive= " + objTopNews.IsActive + ", ";
+                strQuery += "LanguageID= " + objTopNews.LanguageID + ", IsActive= " + objTopNews.IsActive + ", ";
                 strQuery += "DttmModified= '" + objTopNews.DttmModified + "',  where TopNewsID = " + objTopNews.TopNewsID;
 
                 dbHelper.ExecuteNonQuery(strQuery);
@@ -118,6 +118,74 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
+        public ITopNews Select()
+        {
+            ITopNews objTopNews = null;
+            IDataReader objDataReader = null;
+            var dbHelper = DBHelper.Instance;
+            try
+            {
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
+
+                if (objDataReader != null)
+                {
+                    while (objDataReader.Read())
+                    {
+                        objTopNews = new TopNews();
+
+                        if (!objDataReader.IsDBNull(0))
+                            objTopNews.TopNewsID = objDataReader.GetString(0);
+
+                        if (!objDataReader.IsDBNull(1))
+                            objTopNews.EditorID = objDataReader.GetString(1);
+
+                        if (!objDataReader.IsDBNull(2))
+                            objTopNews.DisplayOrder = objDataReader.GetInt32(2);
+
+                        if (!objDataReader.IsDBNull(3))
+                            objTopNews.Heading = objDataReader.GetString(3);
+
+                        if (!objDataReader.IsDBNull(4))
+                            objTopNews.ShortDescription = objDataReader.GetString(4);
+
+                        if (!objDataReader.IsDBNull(5))
+                            objTopNews.NewsDescription = objDataReader.GetString(5);
+
+                        if (!objDataReader.IsDBNull(6))
+                            objTopNews.LanguageID = objDataReader.GetInt32(6);
+                        
+                        if (!objDataReader.IsDBNull(7))
+                            objTopNews.IsApproved = objDataReader.GetInt32(7);
+
+                        if (!objDataReader.IsDBNull(8))
+                            objTopNews.IsActive = objDataReader.GetInt32(8);
+
+                        if (!objDataReader.IsDBNull(9))
+                            objTopNews.DttmCreated = objDataReader.GetDateTime(9);
+
+                        if (!objDataReader.IsDBNull(10))
+                            objTopNews.DttmModified = objDataReader.GetDateTime(10);
+
+                    }
+                }
+
+                if (!objDataReader.IsClosed)
+                    objDataReader.Close();
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+            finally
+            {
+                dbHelper.ClearAllParameters();
+                dbHelper.CloseConnection();
+                dbHelper.Dispose();
+            }
+
+            return objTopNews;
+        }
+
         public List<ITopNews> SelectAllTopNews()
         {
             IDataReader objDataReader = null;
@@ -127,7 +195,7 @@ namespace Infotainment.Data.Controls
             DBHelper dbHelper = new DBHelper();
             try
             {
-               objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {
@@ -160,19 +228,16 @@ namespace Infotainment.Data.Controls
                                 objTopNews.LanguageID = objDataReader.GetInt32(6);
 
                             if (!objDataReader.IsDBNull(7))
-                                objTopNews.ImageID = objDataReader.GetString(7);
+                                objTopNews.IsApproved = objDataReader.GetInt32(7);
 
                             if (!objDataReader.IsDBNull(8))
-                                objTopNews.IsApproved = objDataReader.GetInt32(8);
+                                objTopNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objTopNews.IsActive = objDataReader.GetInt32(9);
+                                objTopNews.DttmCreated = objDataReader.GetDateTime(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objTopNews.DttmCreated = objDataReader.GetDateTime(10);
-
-                            if (!objDataReader.IsDBNull(11))
-                                objTopNews.DttmModified = objDataReader.GetDateTime(11);
+                                objTopNews.DttmModified = objDataReader.GetDateTime(10);
 
                             objTopNewsList.Add(objTopNews);
                         }
@@ -198,7 +263,7 @@ namespace Infotainment.Data.Controls
             return objTopNewsList;
         }
 
-        public List<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
+        public List<ITopNews> Search(DateTime dateFrom, DateTime dateTo, string Heading)
         {
             IDataReader objDataReader = null;
             List<ITopNews> objTopNewsList = null;
@@ -206,7 +271,7 @@ namespace Infotainment.Data.Controls
 
             var dbHelper = DBHelper.Instance;
             try
-            {               
+            {
                 dbHelper.AddInParameter("@DateFrom", dateFrom, DbType.DateTime);
                 dbHelper.AddInParameter("@DateTo", dateTo, DbType.DateTime);
                 dbHelper.AddInParameter("@Heading", "%" + Heading + "%", DbType.String);
@@ -243,19 +308,16 @@ namespace Infotainment.Data.Controls
                                 objTopNews.LanguageID = objDataReader.GetInt32(6);
 
                             if (!objDataReader.IsDBNull(7))
-                                objTopNews.ImageID = objDataReader.GetString(7);
+                                objTopNews.IsApproved = objDataReader.GetInt32(7);
 
                             if (!objDataReader.IsDBNull(8))
-                                objTopNews.IsApproved = objDataReader.GetInt32(8);
+                                objTopNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objTopNews.IsActive = objDataReader.GetInt32(9);
+                                objTopNews.DttmCreated = objDataReader.GetDateTime(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objTopNews.DttmCreated = objDataReader.GetDateTime(10);
-
-                            if (!objDataReader.IsDBNull(11))
-                                objTopNews.DttmModified = objDataReader.GetDateTime(11);
+                                objTopNews.DttmModified = objDataReader.GetDateTime(10);
 
                             objTopNewsList.Add(objTopNews);
                         }
@@ -279,6 +341,75 @@ namespace Infotainment.Data.Controls
             }
 
             return objTopNewsList;
+        }
+        #endregion
+
+        #region SetectImage Details
+        public IEnumerable<IImageDetail> SelectImageList(string NewsID)
+        {
+            IDataReader objDataReader = null;
+            List<IImageDetail> objImageDetailList = null;
+            IImageDetail objImageDetail = null;
+
+            var dbHelper = DBHelper.Instance;
+            try
+            {
+                dbHelper.AddInParameter("@NewsID", NewsID, DbType.String);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectTopNewsForUpdate, CommandType.StoredProcedure);
+
+                if (objDataReader != null)
+                {
+                    objImageDetailList = new List<IImageDetail>();
+                    do
+                    {
+                        while (objDataReader.Read())
+                        {
+                            objImageDetail = new ImageDetail();
+
+                            if (!objDataReader.IsDBNull(0))
+                                objImageDetail.ImageID = objDataReader.GetString(0);
+
+                            if (!objDataReader.IsDBNull(1))
+                                objImageDetail.ImageUrl = objDataReader.GetString(1);
+
+                            if (!objDataReader.IsDBNull(2))
+                                objImageDetail.ImageType = objDataReader.GetInt32(2);
+
+                            if (!objDataReader.IsDBNull(3))
+                                objImageDetail.IsFirst = objDataReader.GetInt32(3);
+
+                            if (!objDataReader.IsDBNull(4))
+                                objImageDetail.IsActive = objDataReader.GetInt32(4);
+
+                            if (!objDataReader.IsDBNull(5))
+                                objImageDetail.DttmCreated = objDataReader.GetDateTime(5);
+
+                            if (!objDataReader.IsDBNull(6))
+                                objImageDetail.DttmModified = objDataReader.GetDateTime(6);
+
+
+                            objImageDetailList.Add(objImageDetail);
+                        }
+
+                    }
+                    while (objDataReader.NextResult());
+                }
+
+                if (!objDataReader.IsClosed)
+                    objDataReader.Close();
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+            finally
+            {
+                dbHelper.ClearAllParameters();
+                dbHelper.CloseConnection();
+                dbHelper.Dispose();
+            }
+
+            return objImageDetailList;
         }
         #endregion
 

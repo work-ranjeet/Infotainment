@@ -168,7 +168,8 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                return View();
+                ViewBag.Message = "Inser new news.";
+                return View(new CreateTopTenNews());
             });
         }
 
@@ -192,6 +193,7 @@ namespace Infotainment.Areas.Admin.Controllers
                     if (news.Image == null)
                     {
                         ModelState.AddModelError("File", "Please Upload Your file");
+                        ViewBag.Message = "Please Upload Your file";
                     }
                     else if (news.Image.ContentLength > 0)
                     {
@@ -199,11 +201,13 @@ namespace Infotainment.Areas.Admin.Controllers
                         string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
                         if (!AllowedFileExtensions.Contains(news.Image.FileName.Substring(news.Image.FileName.LastIndexOf('.'))))
                         {
-                            ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
+                           ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
+                            ViewBag.Message = "Please file of type: " + string.Join(", ", AllowedFileExtensions);
                         }
                         else if (news.Image.ContentLength > MaxContentLength)
                         {
                             ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
+                            ViewBag.Message = "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB";
                         }
                         else
                         {
@@ -214,16 +218,38 @@ namespace Infotainment.Areas.Admin.Controllers
                                 objImageDetail.ImageUrl = dirPath + "/" + fileName;
                                 var path = Path.Combine(serverPath, fileName);
                                 news.Image.SaveAs(path);
-                                ModelState.Clear();
-                                ViewBag.Message = "File uploaded successfully. File path :   ~/Upload/" + fileName;
                             }
                         }
                     }
 
                     topNewsBL.Insert(objTopNews, objImageDetail);
+
+                    news = new CreateTopTenNews();
+                    ViewBag.Message = "File saved successfully.";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    //ModelState.AddModelError("INSERT", "Oops ! There is some error.");
+                    ViewBag.Message = "Oops ! There is some error.";
                 }
 
                 return View(news);
+            });
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> UpdateNews(string NewsID)
+        {
+            return await Task.Run(() =>
+            {
+                ViewBag.Message = "Update new news.";
+
+                var newForUpdate = new UpdateNews();
+
+                //TopNewsBL.Instance.SelectAll
+
+                return View(newForUpdate);
             });
         }
 

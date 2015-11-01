@@ -26,7 +26,7 @@ namespace Infotainment.Data.Controls
         private System.String _ImageID;
         private System.String _ImageUrl;
         private System.Int32 _ImageType;
-        private System.Int32 _IsNewsImage;
+        private System.Int32 _IsFirst;
         private System.Int32 _IsActive;
         private System.DateTime _DttmCreated;
         private System.DateTime _DttmModified;
@@ -36,7 +36,7 @@ namespace Infotainment.Data.Controls
             this._ImageID = null;
             this._ImageUrl = null;
             this._ImageType = System.Int32.MinValue;
-            this._IsNewsImage = System.Int32.MinValue;
+            this._IsFirst = System.Int32.MinValue;
             this._IsActive = System.Int32.MinValue;
             this._DttmCreated = System.DateTime.MinValue;
             this._DttmModified = System.DateTime.MinValue;
@@ -103,23 +103,23 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public System.Int32 IsNewsImage
+        public System.Int32 IsFirst
         {
             get
             {
-                return this._IsNewsImage;
+                return this._IsFirst;
             }
             set
             {
-                this._IsNewsImage = value;
+                this._IsFirst = value;
             }
         }
 
-        public bool IsNewsImageIsNull
+        public bool IsFirstImageIsNull
         {
             get
             {
-                return (this._IsNewsImage == System.Int32.MinValue);
+                return (this._IsFirst == System.Int32.MinValue);
             }
         }
 

@@ -126,13 +126,19 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
+        public ITopNews Select(string NewsID)
+        {
+            return null;
+        }
+
+
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
         {            
             IEnumerable<ITopNews> list = null;
             try
             {
                 var objTopNewsDB = new TopNewsDB();
-                list = objTopNewsDB.SelectAll(dateFrom, dateTo, Heading);
+                list = objTopNewsDB.Search(dateFrom, dateTo, Heading);
             }
             catch (Exception objExp)
             {

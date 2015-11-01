@@ -30,7 +30,7 @@ CREATE TABLE ImageDetail (
 	ImageID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
 	ImageUrl NVARCHAR(500),
 	ImageType INT,
-	IsNewsImage INT DEFAULT 0,
+	IsFirst INT DEFAULT 0,
 	IsActive INT DEFAULT 1,
 	DttmCreated DATETIME DEFAULT(getdate()),
 	DttmModified DATETIME DEFAULT(getdate())
@@ -46,9 +46,19 @@ CREATE TABLE TopNews (
 	ShortDescription NVARCHAR(1000),
 	NewsDescription TEXT,
 	LanguageID INT,
-	ImageID NVARCHAR(50),
 	IsApproved INT DEFAULT 0,
 	IsActive INT DEFAULT 0,
 	DttmCreated DATETIME DEFAULT(getdate()),
 	DttmModified DATETIME DEFAULT(getdate())
 	);
+	
+	GO
+	
+
+CREATE TABLE TopNewsImage (
+	TopNewsID NVARCHAR(50),
+	ImageID NVARCHAR(50),
+	IsActive INT DEFAULT 1
+	)
+GO
+

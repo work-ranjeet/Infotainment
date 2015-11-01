@@ -28,7 +28,6 @@ namespace Infotainment.Data.Controls
         private System.String _ShortDescription;
         private System.String _NewsDescription;
         private System.Int32 _LanguageID;
-        private System.String _ImageID;
         private System.Int32 _IsApproved;
         private System.Int32 _IsActive;
         private System.DateTime _DttmCreated;
@@ -43,7 +42,6 @@ namespace Infotainment.Data.Controls
             this._ShortDescription = null;
             this._NewsDescription = null;
             this._LanguageID = System.Int32.MinValue;
-            this._ImageID = null;
             this._IsApproved = System.Int32.MinValue;
             this._IsActive = System.Int32.MinValue;
             this._DttmCreated = System.DateTime.MinValue;
@@ -187,26 +185,6 @@ namespace Infotainment.Data.Controls
             get
             {
                 return (this._LanguageID == System.Int32.MinValue);
-            }
-        }
-
-        public System.String ImageID
-        {
-            get
-            {
-                return this._ImageID;
-            }
-            set
-            {
-                this._ImageID = value;
-            }
-        }
-
-        public bool ImageIDIsNull
-        {
-            get
-            {
-                return ((this._ImageID == null) || !(this._ImageID != null && this._ImageID.Length > 0));
             }
         }
 

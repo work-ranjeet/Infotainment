@@ -21,7 +21,7 @@
             set;
         }
 
-        System.Int32 IsNewsImage
+        System.Int32 IsFirst
         {
             get;
             set;

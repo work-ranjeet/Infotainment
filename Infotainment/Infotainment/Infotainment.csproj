@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Models\Search\TopNewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsActivationList.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsApprovalList.cs" />
+    <Compile Include="Areas\Admin\Models\TopTenNews\UpdateNews.cs" />
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />

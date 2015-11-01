@@ -44,12 +44,6 @@
             set;
         }
 
-        System.String ImageID
-        {
-            get;
-            set;
-        }
-
         System.Int32 IsApproved
         {
             get;
