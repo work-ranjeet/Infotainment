@@ -158,7 +158,7 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, 0, 0, string.Empty);
+                var result = topNewsBL.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
                 return View(result);
             });
         }
@@ -227,43 +227,43 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
-        [HttpPost]
-        public ActionResult UploadImage(HttpPostedFileBase file)
-        {
+        //[HttpPost]
+        //public ActionResult UploadImage(HttpPostedFileBase file)
+        //{
 
-            //return await Task.Run(() =>
-            //{
-            if (ModelState.IsValid)
-            {
-                if (file == null)
-                {
-                    ModelState.AddModelError("File", "Please Upload Your file");
-                }
-                else if (file.ContentLength > 0)
-                {
-                    int MaxContentLength = 1024 * 1024 * 10; //Size = 10 MB
-                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
-                    if (!AllowedFileExtensions.Contains(file.FileName.Substring(file.FileName.LastIndexOf('.'))))
-                    {
-                        ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
-                    }
-                    else if (file.ContentLength > MaxContentLength)
-                    {
-                        ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
-                    }
-                    else
-                    {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/Images/Top-ten"), fileName);
-                        file.SaveAs(path);
-                        ModelState.Clear();
-                        ViewBag.Message = "File uploaded successfully. File path :   ~/Upload/" + fileName;
-                    }
-                }
-            }
+        //    //return await Task.Run(() =>
+        //    //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (file == null)
+        //        {
+        //            ModelState.AddModelError("File", "Please Upload Your file");
+        //        }
+        //        else if (file.ContentLength > 0)
+        //        {
+        //            int MaxContentLength = 1024 * 1024 * 10; //Size = 10 MB
+        //            string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
+        //            if (!AllowedFileExtensions.Contains(file.FileName.Substring(file.FileName.LastIndexOf('.'))))
+        //            {
+        //                ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
+        //            }
+        //            else if (file.ContentLength > MaxContentLength)
+        //            {
+        //                ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
+        //            }
+        //            else
+        //            {
+        //                var fileName = Path.GetFileName(file.FileName);
+        //                var path = Path.Combine(Server.MapPath("~/Images/Top-ten"), fileName);
+        //                file.SaveAs(path);
+        //                ModelState.Clear();
+        //                ViewBag.Message = "File uploaded successfully. File path :   ~/Upload/" + fileName;
+        //            }
+        //        }
+        //    }
 
-            return View();
-            //});
-        }
+        //    return View();
+        //    //});
+        //}
     }
 }

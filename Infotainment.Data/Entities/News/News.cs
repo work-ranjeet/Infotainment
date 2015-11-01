@@ -19,11 +19,6 @@ namespace Infotainment.Models.Entities
         public string NewsDescription { get; set; }
     }
 
-    class t
-    {
-
-    }
-
     //public class TopTenNewsList
     //{
     //    public IEnumerable<TopTenNews> TopTenNewsList { get; set; }

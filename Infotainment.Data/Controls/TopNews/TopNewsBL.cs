@@ -27,7 +27,7 @@ using System.Web;
 
 namespace Infotainment.Data.Controls
 {
-    public class TopNewsBL 
+    public class TopNewsBL : IDisposable
     {
         public static TopNewsBL Instance
         {
@@ -125,15 +125,14 @@ namespace Infotainment.Data.Controls
 
         #endregion
 
-
         #region Auto Generated Code - Select
-        public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, int IsActive, int IsApproved, string Heading)
+        public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
         {            
             IEnumerable<ITopNews> list = null;
             try
             {
                 var objTopNewsDB = new TopNewsDB();
-                list = objTopNewsDB.SelectAll(dateFrom, dateTo, IsActive, IsApproved, Heading);
+                list = objTopNewsDB.SelectAll(dateFrom, dateTo, Heading);
             }
             catch (Exception objExp)
             {
@@ -170,6 +169,34 @@ namespace Infotainment.Data.Controls
                 throw objExp;
             }
             return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
+        }
+        #endregion
+
+        #region Memory
+        private bool disposed = false;
+        ~TopNewsBL()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
         }
         #endregion
 

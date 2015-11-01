@@ -11,7 +11,7 @@ namespace PCL.DBHelper
     /// Public DBHelper Class that inherits IDBHelper interface.
     /// </summary>
     /// <remarks></remarks>
-    public class DBHelper : IDBHelper
+    public class DBHelper : IDBHelper, IDisposable
     {
         #region /// Object declaration
 
@@ -89,7 +89,6 @@ namespace PCL.DBHelper
             Initialiger(ConnectionStringName);
         }
         #endregion
-
 
         #region ///IUtilities Members       
 
@@ -664,7 +663,7 @@ namespace PCL.DBHelper
         /// <summary>
         /// It Closes the connection with the database .
         /// </summary>
-        private void CloseConnection()
+        public void CloseConnection()
         {
             try
             {
@@ -685,7 +684,35 @@ namespace PCL.DBHelper
         }
 
         #endregion
-       
+
+        #endregion
+
+        #region Memory
+        private bool disposed = false;
+        ~DBHelper()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
         #endregion
     }
 }

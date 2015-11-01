@@ -66,9 +66,9 @@
     <Compile Include="DBHelper\DBProviderSingleton.cs" />
     <Compile Include="DBHelper\Enum.cs" />
     <Compile Include="DBHelper\IDBHelper.cs" />
-    <Compile Include="Entities\TopNews\INewsHeading.cs" />
-    <Compile Include="Entities\TopNews\INews.cs" />
-    <Compile Include="Entities\TopNews\News.cs" />
+    <Compile Include="Entities\News\INewsHeading.cs" />
+    <Compile Include="Entities\News\INews.cs" />
+    <Compile Include="Entities\News\News.cs" />
     <Compile Include="Entities\Account\IUserAddress.cs" />
     <Compile Include="Entities\Account\IUserEmail.cs" />
     <Compile Include="Entities\Account\IUsers.cs" />

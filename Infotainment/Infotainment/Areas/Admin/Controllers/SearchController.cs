@@ -16,7 +16,7 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var result = TopNewsBL.Instance.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, 0, 0, string.Empty);
+                var result = TopNewsBL.Instance.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
                 var viewModel = new TopNewsListFilter
                 {
                     DateFrom = DateTime.Now.AddDays(-1),
@@ -39,7 +39,17 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var result = TopNewsBL.Instance.SelectAll(criteria.DateFrom, criteria.DateTo, (criteria.IsActive ? 1 : 0), (criteria.IsActive ? 1 : 0), criteria.Header);
+                var result = TopNewsBL.Instance.SelectAll(criteria.DateFrom, criteria.DateTo, criteria.Header);
+
+                if (criteria.IsActive)
+                {
+                    result = result.ToList().FindAll(news => news.IsActive == 1);
+                }
+
+                if (criteria.IsApproved)
+                {
+                    result = result.ToList().FindAll(news => news.IsApproved == 1);
+                }
 
                 criteria.TopNewsList = new ConcurrentBag<ITopNews>();
                 result.ToList().AsParallel().ForAll(news => criteria.TopNewsList.Add(news));

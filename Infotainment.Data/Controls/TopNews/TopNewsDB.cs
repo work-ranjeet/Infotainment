@@ -24,7 +24,7 @@ using Infotainment.Data.Common;
 
 namespace Infotainment.Data.Controls
 {
-    public class TopNewsDB : DBInstanceAbstract
+    public class TopNewsDB : DBInstanceAbstract, IDisposable
     {
         public static TopNewsDB Instance
         {
@@ -124,9 +124,10 @@ namespace Infotainment.Data.Controls
             List<ITopNews> objTopNewsList = null;
             ITopNews objTopNews = null;
 
+            DBHelper dbHelper = new DBHelper();
             try
             {
-               objDataReader = DBHelper.Instance.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
+               objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {
@@ -187,19 +188,25 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
+            finally
+            {
+                dbHelper.ClearAllParameters();
+                dbHelper.CloseConnection();
+                dbHelper.Dispose();
+            }
 
             return objTopNewsList;
         }
 
-        public List<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, int IsActive, int IsApproved, string Heading)
+        public List<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
         {
             IDataReader objDataReader = null;
             List<ITopNews> objTopNewsList = null;
             ITopNews objTopNews = null;
 
+            var dbHelper = DBHelper.Instance;
             try
-            {
-                var dbHelper = DBHelper.Instance;
+            {               
                 dbHelper.AddInParameter("@DateFrom", dateFrom, DbType.DateTime);
                 dbHelper.AddInParameter("@DateTo", dateTo, DbType.DateTime);
                 dbHelper.AddInParameter("@Heading", "%" + Heading + "%", DbType.String);
@@ -264,8 +271,42 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
+            finally
+            {
+                dbHelper.ClearAllParameters();
+                dbHelper.CloseConnection();
+                dbHelper.Dispose();
+            }
 
             return objTopNewsList;
+        }
+        #endregion
+
+        #region Memory
+        private bool disposed = false;
+        ~TopNewsDB()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
         }
         #endregion
 
