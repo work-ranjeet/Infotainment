@@ -11,7 +11,7 @@ namespace Infotainment.Data.Common
         public static readonly string SelectUser = "SelectUser";
         public static readonly string SelectUserEmail = "SelectUserEmail";
         public static readonly string InsertLatestNews = "InsertLatestNews";
-        public static readonly string SelectTopNews = "SelectTopNews";
+        public static readonly string SearchNews = "SearchNews";
         public static readonly string SelectAllTopNews = "SelectAllTopNews";
     }
 }

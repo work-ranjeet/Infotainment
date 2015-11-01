@@ -202,10 +202,8 @@ namespace Infotainment.Data.Controls
                 var dbHelper = DBHelper.Instance;
                 dbHelper.AddInParameter("@DateFrom", dateFrom, DbType.DateTime);
                 dbHelper.AddInParameter("@DateTo", dateTo, DbType.DateTime);
-                dbHelper.AddInParameter("@IsActive", IsActive, DbType.Int32);
-                dbHelper.AddInParameter("@IsApproved", IsApproved, DbType.Int32);
                 dbHelper.AddInParameter("@Heading", "%" + Heading + "%", DbType.String);
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectTopNews, CommandType.StoredProcedure);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SearchNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {

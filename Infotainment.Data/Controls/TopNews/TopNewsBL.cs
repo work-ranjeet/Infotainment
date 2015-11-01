@@ -128,8 +128,7 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Select
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, int IsActive, int IsApproved, string Heading)
-        {
-            //DateTime dateFrom, DateTime dateTo, int IsActive = 0, int IsApproved = 0, string Heading = null
+        {            
             IEnumerable<ITopNews> list = null;
             try
             {
