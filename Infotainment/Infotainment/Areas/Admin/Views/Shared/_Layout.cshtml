@@ -4,27 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/modernizr") 
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jqueryui")
 
     @Scripts.Render("~/bundles/Angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/txtEditor")
-    
+
     @Scripts.Render("~/bundles/AngularModule")
     @Scripts.Render("~/bundles/Common")
     @Scripts.Render("~/bundles/Services")
 
     @Scripts.Render("~/bundles/AngularModule")
     @Scripts.Render("~/bundles/Common")
-    @Scripts.Render("~/bundles/Services") 
+    @Scripts.Render("~/bundles/Services")
 
     @Scripts.Render("~/bundles/AdminController")
-   
+
+    @Styles.Render("~/Content/css")
+
+    @RenderSection("scripts",required:false)
 </head>
 <body>
     <div ng-app="infotainment" ng-controller="mainCtrl" style="width:100%;">

@@ -4,18 +4,14 @@
     ViewBag.Title = "MainNewsSearch";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<script>
-    $(document).ready(function () {
-        //var yesterdayDate = new Date().getMonth() + 1 + "/" + (new Date().getDate() - 1) + "/" + new Date().getFullYear();
-        //var todayDate = new Date().getMonth() + 1 + "/" + new Date().getDate() + "/" + new Date().getFullYear();
-        //$('#dateFrom').datepicker('setDate', yesterdayDate);
-        //$('#dateTo').datepicker('setDate', todayDate);
-        $('#dateFrom').datepicker();
-        $('#dateTo').datepicker();
-    });
-
-</script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#DateFrom').datepicker({ dateFormat: "d-M-yy" });
+            $('#DateTo').datepicker({ dateFormat: "d-M-yy" });
+        });
+    </script>
+}
 @using (Html.BeginForm("MainNewsSearch", "Search", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -27,33 +23,20 @@
                     <tr>
                         <td class="text-left" style="width:15%;">
                             <span class="control-label">Date from:</span>
-                            @*<div id="dateFrom" class='input-group date' style="z-index:0">
-                                <input type='text' class="form-control" style="height:22px;" name="DateFrom" id="DateFrom" data-val="true"/>
-                                <span class="input-group-addon add-on" style="padding: 0 2px 2px;">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>*@
-                            <input id="dateFrom" name="DateFrom" type='text' class="form-control" style="height:22px;" data-val="true" value="@Model.DateFrom.ToShortDateString()" />
+                            <input id="DateFrom" name="DateFrom" type='text' class="form-control" style="height:22px;" value="@Model.DateFrom.ToString("dd-MMM-yyyy")" />
                         </td>
                         <td class="text-left" style="width:15%;">
                             <span class="control-label">Date to:</span>
-                            @*<div id="dateTo" class='input-group  date'>
-                                <input type='text' class="form-control" style="height:22px;" name="DateTo" />
-                                <span class="input-group-addon add-on" style="padding: 0 2px 2px;">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>*@
-
-                            <input id="dateTo" name="DateTo" type='text' class="form-control" style="height:22px;" data-val="true" value="@Model.DateTo.ToShortDateString()"/>
+                            <input id="DateTo" name="DateTo" type='text' class="form-control" style="height:22px;" value="@Model.DateTo.ToString("dd-MMM-yyyy")" />
                         </td>
                         <td class="text-right" style="width:5%; vertical-align:bottom;">
-                            <input class="checkbox" style="height:20px;" data-val="true" id="IsActive" name="IsActive" type="checkbox" value="true">
+                            @Html.CheckBoxFor(m => m.IsActive)
                         </td>
                         <td class="text-left" style="width:15%; vertical-align:bottom;">
                             &nbsp;Include Active
                         </td>
                         <td class="text-right" style="width:5%; vertical-align:bottom;">
-                            <input class="checkbox" style="height:20px;" data-val="true"  id="IsApproved" name="IsApproved" type="checkbox" value="true">
+                            @Html.CheckBoxFor(m => m.IsApproved)
                         </td>
                         <td class="text-left" style="width:15%; vertical-align:bottom;">&nbsp;Include Approved</td>
                         <td class="text-left" style="width:20%;">

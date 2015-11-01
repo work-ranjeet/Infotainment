@@ -161,10 +161,8 @@
     <Content Include="Areas\Admin\Scripts\Controller\searchCtrl.js" />
     <Content Include="Areas\Admin\Scripts\Controller\loginCtrl.js" />
     <Content Include="Content\css\Admin.css" />
-    <Content Include="Content\css\bootstrap-datepicker.css" />
-    <Content Include="Content\css\bootstrap-theme.css" />
-    <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\BootStrapCss\bootstrap-theme.css" />
+    <Content Include="Content\BootStrapCss\bootstrap.css" />
     <Content Include="Content\css\common.css" />
     <Content Include="Content\css\Default.css" />
     <Content Include="Content\css\HomePage.css" />
@@ -183,6 +181,7 @@
     <Content Include="Content\images\sub-menu-bg.jpg" />
     <Content Include="Content\images\twiter-icon-off.png" />
     <Content Include="Content\images\twiter-icon-on.png" />
+    <Content Include="Content\JQueryCss\jquery-ui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -241,12 +240,9 @@
     <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js" />
     <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js" />
     <Content Include="Scripts\Components\StateNews\StateNewsListCtrl.js" />
-    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.css" />
-    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.structure.css" />
-    <Content Include="Scripts\Vendor\JQuery\css\jquery-ui.theme.css" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-1.10.2.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-1.10.2.min.js" />
     <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Vendor\JQuery\jquery-1.11.3.js" />
+    <Content Include="Scripts\Vendor\JQuery\jquery-ui.js" />
     <Content Include="Scripts\Vendor\JQuery\jquery.validate.js" />
     <Content Include="Scripts\Vendor\JQuery\jquery.validate.min.js" />
     <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.js" />
@@ -283,8 +279,6 @@
     <Content Include="Scripts\Vendor\Angular\ngCookies.js" />
     <Content Include="Scripts\Vendor\Angular\TweenMax.min.js" />
     <Content Include="Scripts\Vendor\Angular\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\Vendor\Bootstrap\bootstrap-datepicker.js" />
-    <Content Include="Scripts\Vendor\Bootstrap\date-picker.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.bg.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.ca.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.cs.js" />
@@ -322,8 +316,6 @@
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.uk.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.zh-CN.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.zh-TW.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-ui-1.8.20.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.js" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\adapters\jquery.js" />
@@ -593,7 +585,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Infotainment.Data\Infotainment.Data.csproj">

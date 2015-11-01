@@ -15,7 +15,7 @@ namespace Infotainment.Areas.Admin.Models
 
         [Required]
         public DateTime DateTo { get; set; }
-
+       
         public bool IsActive { get; set; }
 
         public bool IsApproved { get; set; }

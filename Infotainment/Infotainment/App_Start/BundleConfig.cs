@@ -11,7 +11,7 @@ namespace Infotainment
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/Vendor/JQuery/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/Vendor/JQuery/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/Vendor/JQuery/modernizr-*"));
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/Vendor/JQuery/jquery-ui-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/Vendor/JQuery/jquery-ui.js"));
 
             // Adding angularjs vendor js to support angularjs           
             bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
@@ -53,24 +53,11 @@ namespace Infotainment
             //bundles.Add(new ScriptBundle("~/bundles/MainNewsCtrl").Include("~/Scripts/Angular/Controllers/MainNews/*.js"));
             //bundles.Add(new ScriptBundle("~/bundles/StateNewsCtrl").Include("~/Scripts/Angular/Controllers/StateNews/*.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/css/bootstrap.css",
-                      "~/Content/css/*.css",
-                      "~/Scripts/Vendor/JQuery/css/*.css"));
 
-            //bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-            //            "~/Content/themes/base/jquery.ui.core.css",
-            //            "~/Content/themes/base/jquery.ui.resizable.css",
-            //            "~/Content/themes/base/jquery.ui.selectable.css",
-            //            "~/Content/themes/base/jquery.ui.accordion.css",
-            //            "~/Content/themes/base/jquery.ui.autocomplete.css",
-            //            "~/Content/themes/base/jquery.ui.button.css",
-            //            "~/Content/themes/base/jquery.ui.dialog.css",
-            //            "~/Content/themes/base/jquery.ui.slider.css",
-            //            "~/Content/themes/base/jquery.ui.tabs.css",
-            //            "~/Content/themes/base/jquery.ui.datepicker.css",
-            //            "~/Content/themes/base/jquery.ui.progressbar.css",
-            //            "~/Content/themes/base/jquery.ui.theme.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/JQueryCss/*.css",
+                      "~/Content/BootStrapCss/*.css",
+                      "~/Content/css/*.css"));
         }
     }
 }
