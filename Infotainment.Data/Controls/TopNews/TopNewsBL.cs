@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using PCL.DBHelper;
 using System.Web;
 
+
 namespace Infotainment.Data.Controls
 {
     public class TopNewsBL : IDisposable
@@ -128,7 +129,7 @@ namespace Infotainment.Data.Controls
         #region Auto Generated Code - Select
         public ITopNews Select(string NewsID)
         {
-            return null;
+            return TopNewsDB.Instance.Select(NewsID);
         }
 
 

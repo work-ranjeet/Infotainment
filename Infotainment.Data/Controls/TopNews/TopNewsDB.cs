@@ -118,13 +118,14 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
-        public ITopNews Select()
+        public ITopNews Select(string NewsID)
         {
             ITopNews objTopNews = null;
             IDataReader objDataReader = null;
             var dbHelper = DBHelper.Instance;
             try
             {
+                dbHelper.AddInParameter("@NewsID", NewsID, DbType.String);
                 objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
@@ -342,76 +343,7 @@ namespace Infotainment.Data.Controls
 
             return objTopNewsList;
         }
-        #endregion
-
-        #region SetectImage Details
-        public IEnumerable<IImageDetail> SelectImageList(string NewsID)
-        {
-            IDataReader objDataReader = null;
-            List<IImageDetail> objImageDetailList = null;
-            IImageDetail objImageDetail = null;
-
-            var dbHelper = DBHelper.Instance;
-            try
-            {
-                dbHelper.AddInParameter("@NewsID", NewsID, DbType.String);
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectTopNewsForUpdate, CommandType.StoredProcedure);
-
-                if (objDataReader != null)
-                {
-                    objImageDetailList = new List<IImageDetail>();
-                    do
-                    {
-                        while (objDataReader.Read())
-                        {
-                            objImageDetail = new ImageDetail();
-
-                            if (!objDataReader.IsDBNull(0))
-                                objImageDetail.ImageID = objDataReader.GetString(0);
-
-                            if (!objDataReader.IsDBNull(1))
-                                objImageDetail.ImageUrl = objDataReader.GetString(1);
-
-                            if (!objDataReader.IsDBNull(2))
-                                objImageDetail.ImageType = objDataReader.GetInt32(2);
-
-                            if (!objDataReader.IsDBNull(3))
-                                objImageDetail.IsFirst = objDataReader.GetInt32(3);
-
-                            if (!objDataReader.IsDBNull(4))
-                                objImageDetail.IsActive = objDataReader.GetInt32(4);
-
-                            if (!objDataReader.IsDBNull(5))
-                                objImageDetail.DttmCreated = objDataReader.GetDateTime(5);
-
-                            if (!objDataReader.IsDBNull(6))
-                                objImageDetail.DttmModified = objDataReader.GetDateTime(6);
-
-
-                            objImageDetailList.Add(objImageDetail);
-                        }
-
-                    }
-                    while (objDataReader.NextResult());
-                }
-
-                if (!objDataReader.IsClosed)
-                    objDataReader.Close();
-            }
-            catch (Exception objExp)
-            {
-                throw objExp;
-            }
-            finally
-            {
-                dbHelper.ClearAllParameters();
-                dbHelper.CloseConnection();
-                dbHelper.Dispose();
-            }
-
-            return objImageDetailList;
-        }
-        #endregion
+        #endregion      
 
         #region Memory
         private bool disposed = false;

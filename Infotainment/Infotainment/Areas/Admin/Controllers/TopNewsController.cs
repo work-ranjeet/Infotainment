@@ -245,9 +245,13 @@ namespace Infotainment.Areas.Admin.Controllers
             {
                 ViewBag.Message = "Update new news.";
 
-                var newForUpdate = new UpdateNews();
+                var news = TopNewsBL.Instance.Select(NewsID);
+                var imgList = ImageDetailBL.Instance.SelectImageList(NewsID);
 
-                //TopNewsBL.Instance.SelectAll
+                var newForUpdate = new UpdateNews
+                {
+                    NewsID = ""
+                };
 
                 return View(newForUpdate);
             });

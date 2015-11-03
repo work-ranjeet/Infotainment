@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infotainment.Data.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,28 +8,31 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class UpdateNews :IDisposable
+    public class UpdateNews : IDisposable
     {
-        //[Required]
-        //public string EditorID { get; set; }
+        public string NewsID { get; set; }
 
-        [Required]
-        public int DisplayOrder { get; set; }
+        public string EditorID { get; set; }
 
         [Required]
         public string Heading { get; set; }
 
         public string ImageUrl { get; set; }
 
-        [Required]
         public HttpPostedFileBase Image { get; set; }
 
         [Required]
-        public string ShortDesc { get; set; }
+        public bool IsActiveImage { get; set; }
+
+        [Required]
+        public bool IsFirstImage { get; set; }
+
+        [Required]
+        public  string ShortDesc { get; set; }
 
         [AllowHtml]
         //[Required]
-        public string Description { get; set; }
+        public  string Description { get; set; }
 
 
         #region /// Memory Management
