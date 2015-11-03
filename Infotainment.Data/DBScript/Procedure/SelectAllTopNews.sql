@@ -2,7 +2,7 @@
 AS
 BEGIN
 	BEGIN TRY
-		SELECT TopNewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID, ImageID, IsApproved, IsActive, DttmCreated, DttmModified
+		SELECT TopNewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID,  IsApproved, IsActive, DttmCreated, DttmModified
 		FROM TopNews
 	END TRY
 

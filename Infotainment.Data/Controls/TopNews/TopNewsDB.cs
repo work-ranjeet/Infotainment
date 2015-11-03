@@ -45,7 +45,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@LanguageID", objTopNews.LanguageID, DbType.Int32);
                 dbInstance.AddInParameter("@ImageUrl", objImageDetail.ImageUrl, DbType.String);
                 dbInstance.AddInParameter("@ImageType", objImageDetail.ImageType, DbType.Int32);
-                dbInstance.AddInParameter("@IsNewsImage", objImageDetail.IsNewsImage, DbType.Int32);
+                dbInstance.AddInParameter("@IsFirst", objImageDetail.IsFirst, DbType.Int32);
 
                 dbInstance.ExecuteNonQuery(ProcedureName.InsertLatestNews, CommandType.StoredProcedure);
             }

@@ -10,7 +10,7 @@ CREATE PROCEDURE SearchNews(@DateFrom DATETIME, @DateTo DATETIME, @Heading Nvarc
 AS
 BEGIN
 	BEGIN TRY
-		SELECT TopNewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID, ImageID, IsApproved, IsActive, DttmCreated, DttmModified
+		SELECT TopNewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID, IsApproved, IsActive, DttmCreated, DttmModified
 		FROM TopNews
 		WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo AND Heading LIKE @Heading
 	END TRY

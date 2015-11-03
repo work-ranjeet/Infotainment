@@ -48,7 +48,7 @@ namespace Infotainment.Data.Controls
                 objTopNews.LanguageID = 1;
 
                 objImageDetail.IsActive = 0;
-                objImageDetail.IsNewsImage = 1;
+                objImageDetail.IsFirst = 1;
 
 
                 objTopNewsDB.Insert(ref objdbhelper, objTopNews, objImageDetail);

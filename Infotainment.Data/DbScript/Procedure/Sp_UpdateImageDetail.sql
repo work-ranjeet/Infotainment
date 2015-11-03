@@ -14,7 +14,7 @@ CREATE PROCEDURE UpdateImageDetail (
 	@ImageID NVARCHAR(50) OUTPUT,
 	@ImageUrl NVARCHAR(500),
 	@ImageType INT,
-	@IsNewsImage INT
+	@IsFirst INT
 	)
 AS
 BEGIN
@@ -22,7 +22,7 @@ BEGIN
 		UPDATE ImageDetail
 		SET ImageUrl = @ImageUrl,
 			ImageType = @ImageType,
-			IsNewsImage = @IsNewsImage
+			IsFirst = @IsFirst
 		WHERE ImageID = @ImageID
 	END TRY
 

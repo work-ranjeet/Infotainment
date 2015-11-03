@@ -32,7 +32,6 @@
             get;
             set;
         }
-
         System.DateTime DttmCreated
         {
             get;
