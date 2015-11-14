@@ -3,8 +3,20 @@
 <tr>
     <td style="display:none;">@Html.HiddenFor(m => m.TopNewsID)</td>
     <td>@Html.CheckBoxFor(m => m.Selected, new { @class = "chkSelect" })</td>
-
-    <td>@(Model.IsActive == 1 ? "Active" : "Not Active")</td>
+    @*<td class="text-center">
+            <img src="@Model.ImageUrl" alt="" width="20">
+        </td>*@
     <td>@Model.Heading</td>
+    <td class="text-center">
+        <span style="font-size:100%; padding:4px;" class="@(Model.IsActive == 1 ? "label label-success" : "label label-warning")">
+            @(Model.IsActive == 1 ? "Active" : "Not Active")
+        </span>
+    </td>
     <td>@Model.DttmCreated</td>
+    <td>
+        @{
+            var url = HttpUtility.UrlDecode(Url.Action("UpdateNews", "TopNews", new { NewsID = Model.TopNewsID }));
+        }
+        <a href="#" style="font-size:100%;" class="label label-warning" ng-click="OpenWindow('@url');"><i class="et-edit"></i>Update</a>
+    </td>
 </tr>

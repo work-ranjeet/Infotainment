@@ -221,6 +221,7 @@
     <Content Include="Areas\Admin\Views\Shared\_PartialLogOut.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Search\MainNewsSearch.cshtml" />
+    <Content Include="Areas\Admin\Views\TopNews\UpdateNews.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common\appDirectives.js" />
     <Content Include="Scripts\Common\appFactory.js" />

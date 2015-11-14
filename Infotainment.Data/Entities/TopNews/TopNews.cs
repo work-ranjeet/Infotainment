@@ -22,6 +22,7 @@ namespace Infotainment.Data.Controls
     public class TopNews : ITopNews
     {
         private System.String _TopNewsID;
+        private System.String _ImageUrl;
         private System.String _EditorID;
         private System.Int32 _DisplayOrder;
         private System.String _Heading;
@@ -85,6 +86,26 @@ namespace Infotainment.Data.Controls
             get
             {
                 return ((this._EditorID == null) || !(this._EditorID != null && this._EditorID.Length > 0));
+            }
+        }
+
+        public System.String ImageUrl
+        {
+            get
+            {
+                return this._ImageUrl;
+            }
+            set
+            {
+                this._ImageUrl = value;
+            }
+        }
+
+        public bool ImageUrlIsNull
+        {
+            get
+            {
+                return ((this._ImageUrl == null) || !(this._ImageUrl != null && this._ImageUrl.Length > 0));
             }
         }
 

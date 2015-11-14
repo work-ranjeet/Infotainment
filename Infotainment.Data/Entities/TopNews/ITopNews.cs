@@ -14,6 +14,12 @@
             set;
         }
 
+        System.String ImageUrl
+        {
+            get;
+            set;
+        }
+
         System.Int32 DisplayOrder
         {
             get;

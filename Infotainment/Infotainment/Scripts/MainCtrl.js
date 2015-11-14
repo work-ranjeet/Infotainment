@@ -1,9 +1,13 @@
 ﻿(function () {
     angular
 		.module('infotainment')
-		.controller('mainCtrl', indexCtrl);
+		.controller('mainCtrl', mainCtrl);
 
-    function indexCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, ServiceProvider) {
+    function mainCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, ServiceProvider) {
+        $scope.OpenWindow = function (url) {
+            var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=400, width=1100, height=900");
+            win.focus();
+        };
 
     };
 

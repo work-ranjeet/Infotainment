@@ -19,9 +19,11 @@ namespace Infotainment.Areas.Admin.Models
 
         public string TopNewsID { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public int IsActive { get; set; }
 
-        public string Heading { get; set; }
+        public string Heading { get; set; }       
 
         public DateTime DttmCreated { get; set; }
 

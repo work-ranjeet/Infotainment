@@ -12,7 +12,7 @@ CREATE TABLE ErrorLog (
 	)
 GO
 ----------------- Language -------------
-CREATE TABLE LANGUAGE (
+CREATE TABLE [Language] (
 	LanguageID INT,
 	LanguageDesc NVARCHAR(100)
 	)
@@ -44,7 +44,7 @@ CREATE TABLE TopNews (
 	DisplayOrder INT NOT NULL,
 	Heading NVARCHAR(300) NOT NULL,
 	ShortDescription NVARCHAR(1000),
-	NewsDescription TEXT,
+	NewsDescription NVARCHAR(MAX),
 	LanguageID INT,
 	IsApproved INT DEFAULT 0,
 	IsActive INT DEFAULT 0,

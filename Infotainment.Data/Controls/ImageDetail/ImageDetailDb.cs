@@ -27,7 +27,7 @@ namespace Infotainment.Data.Controls
             try
             {
                 dbHelper.AddInParameter("@NewsID", NewsID, DbType.String);
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.UpdateTopNewsImageDetail, CommandType.StoredProcedure);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectTopNewsImageDetail, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {

@@ -22,16 +22,15 @@ namespace Infotainment.Areas.Admin.Models
         public HttpPostedFileBase Image { get; set; }
 
         [Required]
-        public bool IsActiveImage { get; set; }
+        public bool IsActiveNews { get; set; }
 
         [Required]
-        public bool IsFirstImage { get; set; }
+        public bool IsApprovedNews { get; set; }
 
         [Required]
         public  string ShortDesc { get; set; }
 
         [AllowHtml]
-        //[Required]
         public  string Description { get; set; }
 
 

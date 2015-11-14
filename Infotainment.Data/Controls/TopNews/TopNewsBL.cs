@@ -105,7 +105,6 @@ namespace Infotainment.Data.Controls
                 throw objExp;
             }
         }
-
         public void MakeActiveFor(IList<ITopNews> topNewsList)
         {
             var dbhelper = new DBHelper();
@@ -121,6 +120,19 @@ namespace Infotainment.Data.Controls
             {
                 dbhelper.RollbackTransaction();
                 throw objExp;
+            }
+        }
+
+        public void UpdateNews(ref DBHelper dbHelper, ITopNews news, IImageDetail image)
+        {
+            try
+            {
+                news.EditorID = news.EditorID == null ? String.Empty : news.EditorID;
+                TopNewsDB.Instance.Update(ref dbHelper, news, image);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

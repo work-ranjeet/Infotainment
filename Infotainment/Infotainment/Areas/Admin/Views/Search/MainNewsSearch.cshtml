@@ -41,7 +41,7 @@
                         <td class="text-left" style="width:15%; vertical-align:bottom;">&nbsp;Is Approved</td>
                         <td class="text-left" style="width:20%;">
                             <span class="control-label">Header:</span>
-                            <input type="text" class="form-control" style="height:22px;" name="Header" id="Header"/>
+                            <input type="text" class="form-control" style="height:22px;" name="Header" id="Header" />
                         </td>
                         <td class="text-right" style="width:10%; vertical-align:bottom;">
                             <input class="btn btn-default" style="height:22px; padding:0 10px 0 10px;" type="submit" value="Submit">
@@ -56,11 +56,10 @@
                     <thead class="boxHeader">
                         <tr>
                             <th style="display:none;">TopNewsID</th>
-                            <th class="text-left" width="2%">Order</th>
-                            <th class="text-left" width="10%">Approval Status</th>
-                            <th class="text-left" width="10%">Active Status</th>
-                            <th class="text-left" width="15%">Heading</th>
-                            <th class="text-left" width="45%">Sort Desc</th>
+                            <th style="display:none;" class="text-left" width="2%">Order</th>
+                            <th class="text-left" width="22%">Status</th>
+                            <th class="text-left" width="58%">Heading</th>
+                            @*<th class="text-left" width="45%">Sort Desc</th>*@
                             @*<th class="text-left" width="16%">Editor Name</th>*@
                             <th class="text-left" width="18%">Created Date Time</th>
                         </tr>
@@ -70,15 +69,22 @@
                         {
                             foreach (var item in Model.TopNewsList)
                             {
-                                <tr>
-                                    <td style="display:none;">
+                                <tr style="cursor:pointer;" ng-click="OpenWindow('@HttpUtility.UrlDecode(Url.Action("UpdateNews", "TopNews", new { NewsID = item.TopNewsID }))');">
+                                    <td style=" display:none;">
                                         <input id="IsActiveHidden" type="hidden" value=">@item.TopNewsID" name="TopNewsID" />
                                     </td>
-                                    <td>@item.DisplayOrder</td>
-                                    <td>@(item.IsApproved == 1 ? "Approved" : "Not Approved")</td>
-                                    <td>@(item.IsActive == 1 ? "Active" : "Not Active")</td>
+                                    <td style="display:none;">@item.DisplayOrder</td>
+                                    <td class="text-center">
+                                        <span style="font-size:100%; padding:4px; display:inline; float:left;" class="@(item.IsApproved == 1 ? "label label-success" : "label label-warning")">
+                                            @(item.IsApproved == 1 ? "Approved" : "Approval Pending")
+                                        </span>
+                                        <span style="font-size:100%; padding:4px; display:inline; float:left;">&nbsp;</span>
+                                        <span style="font-size:100%; padding:4px; display:inline; float:left;" class="@(item.IsActive == 1 ? "label label-success" : "label label-warning")">
+                                            @(item.IsActive == 1 ? "Active" : "Not Active")
+                                        </span>
+                                    </td>
                                     <td>@item.Heading </td>
-                                    <td>@item.ShortDescription </td>
+                                    @*<td>@item.ShortDescription </td>*@
                                     <td>@item.DttmCreated</td>
                                 </tr>
                             }
@@ -91,6 +97,3 @@
     </section>
 
 }
-
-
-

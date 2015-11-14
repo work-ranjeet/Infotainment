@@ -81,17 +81,24 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void Update(ref DBHelper dbHelper, TopNews objTopNews)
+        public void Update(ref DBHelper dbHelper, ITopNews news, IImageDetail image)
         {
             try
             {
-                string strQuery = String.Empty;
-                strQuery += "Update TopNews set TopNewsID= " + objTopNews.TopNewsID + ", DisplayOrder= " + objTopNews.DisplayOrder + ", Heading= '";
-                strQuery += objTopNews.Heading + "', ShortDescription= '" + objTopNews.ShortDescription + "', NewsDescription= '" + objTopNews.NewsDescription + "', ";
-                strQuery += "LanguageID= " + objTopNews.LanguageID + ", IsActive= " + objTopNews.IsActive + ", ";
-                strQuery += "DttmModified= '" + objTopNews.DttmModified + "',  where TopNewsID = " + objTopNews.TopNewsID;
+                dbHelper.AddInParameter("@TopNewsID", news.TopNewsID, DbType.String);
+                dbHelper.AddInParameter("@EditorID", news.EditorID, DbType.String);
+                dbHelper.AddInParameter("@DisplayOrder", news.DisplayOrder, DbType.Int32);
+                dbHelper.AddInParameter("@Heading", news.Heading, DbType.String);
+                dbHelper.AddInParameter("@ShortDescription", news.ShortDescription, DbType.String);
+                dbHelper.AddInParameter("@NewsDescription", news.NewsDescription, DbType.String);
+                dbHelper.AddInParameter("@LanguageID", news.LanguageID, DbType.Int32);
+                dbHelper.AddInParameter("@IsActive", news.IsActive, DbType.Int32);
+                dbHelper.AddInParameter("@ImageUrl", image.ImageUrl, DbType.String);
+                dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
+                dbHelper.AddInParameter("@IsFirst", image.IsFirst, DbType.Int32);
+                dbHelper.AddInParameter("@IsActieImage", image.IsActive, DbType.Int32);
 
-                dbHelper.ExecuteNonQuery(strQuery);
+                dbHelper.ExecuteNonQuery(ProcedureName.UpdateLatestNews, CommandType.StoredProcedure);
             }
             catch (Exception objExp)
             {
@@ -126,7 +133,7 @@ namespace Infotainment.Data.Controls
             try
             {
                 dbHelper.AddInParameter("@NewsID", NewsID, DbType.String);
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectTopNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {
@@ -239,6 +246,9 @@ namespace Infotainment.Data.Controls
 
                             if (!objDataReader.IsDBNull(10))
                                 objTopNews.DttmModified = objDataReader.GetDateTime(10);
+
+                            if (!objDataReader.IsDBNull(11))
+                                objTopNews.ImageUrl = objDataReader.GetString(11);
 
                             objTopNewsList.Add(objTopNews);
                         }
