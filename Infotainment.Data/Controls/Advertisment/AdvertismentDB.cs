@@ -100,17 +100,20 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Select
 
-        public List<IAdvertisment> SelectAll(System.Int32 AdvertismentType, System.Int32 IsActive, System.Int32 IsApproved)
+        public List<IAdvertisment> SelectAll(System.Int32 AdvertismentType, System.Int32 IsActive = -1, System.Int32 IsApproved = -1)
         {
             IDataReader objDataReader = null;
             List<IAdvertisment> objAdvertismentList = null;
             IAdvertisment objAdvertisment = null;
 
-            DBHelper dbHelper = DBHelper.Instance;
+            DBHelper dbInstance = DBHelper.Instance;
             try
             {
+                dbInstance.AddInParameter("@AddType", AdvertismentType, DbType.Int32);
+                dbInstance.AddInParameter("@IsActive", IsActive, DbType.Int32);
+                dbInstance.AddInParameter("@IsApproved", IsApproved, DbType.Int32);
 
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAdvertisment, CommandType.StoredProcedure);
+                objDataReader = dbInstance.ExecuteDataReader(ProcedureName.SelectAdvertisment, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {
@@ -173,9 +176,9 @@ namespace Infotainment.Data.Controls
             }
             finally
             {
-                dbHelper.ClearAllParameters();
-                dbHelper.CloseConnection();
-                dbHelper.Dispose();
+                dbInstance.ClearAllParameters();
+                dbInstance.CloseConnection();
+                dbInstance.Dispose();
             }
 
             return objAdvertismentList;

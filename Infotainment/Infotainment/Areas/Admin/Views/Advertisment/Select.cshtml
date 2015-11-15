@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Infotainment.Areas.Admin.Models.AdvertismentModal>
+
+@{
+    ViewBag.Title = "Select";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Select", " Advertisment", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <section class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <h3>All Advertisment</h3>
+            <hr />
+            <div class="col-xs-12 col-sm-9">
+                <div class="row">
+                    @foreach (var advertise in Model)
+                    {
+                        <div class="col-xs-6 col-lg-4">                            
+                            <div class="advetise round-corner">
+                                <div class="text-border" style=" width:100%; height:30px; padding:5px 1px 5px 1px;">
+                                    <div style="width:100%;">
+                                        <span style="font-size:100%;" class="@(advertise.IsApproved  ? "label label-success" : "label label-warning")">
+                                            @(advertise.IsApproved ? "Approved" : "Approval Pending")
+                                        </span>
+                                        &nbsp;
+                                        <span style="font-size:100%; padding:4px;" class="@(advertise.IsActive ? "label label-success" : "label label-warning")">
+                                            @(advertise.IsActive ? "Active" : "Not Active")
+                                        </span>
+                                        &nbsp;
+                                        <span style="font-size: 100%;  padding: 8px; margin-top: -5px; margin-right: -1px; cursor:pointer;" class="label label-danger pull-right">X</span>
+                                    </div>
+                                    
+                                </div>
+                                @{
+                                    var url = "http://" + advertise.WebUrl;
+                                }
+                                <a href="@url" target="_blank">
+                                    <div class="text-border" style="width:100%;margin-top:1px;">
+                                        <img style="width:100%;" src="@Url.Content(advertise.ImgUrl)" alt="">
+                                        <span class="caption">@advertise.Heading</span>
+                                        <span class="url">@advertise.WebUrl</span>
+                                        <span class="text">@advertise.ShortDesc</span>
+                                    </div>
+                                </a>
+                                <div style="width:100%; text-align:center; padding:5px 1px 5px 1px;">
+                                    <button type="button" class="btn btn-success" style="padding:2px; width:100%;">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </section>
+ }

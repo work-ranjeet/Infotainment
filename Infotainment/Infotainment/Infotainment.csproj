@@ -224,6 +224,9 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Search\MainNewsSearch.cshtml" />
     <Content Include="Areas\Admin\Views\TopNews\UpdateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Advertisment\Insert.cshtml" />
+    <Content Include="Areas\Admin\Views\Advertisment\EditorTemplates\AdverismentList.cshtml" />
+    <Content Include="Areas\Admin\Views\Advertisment\Select.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common\appDirectives.js" />
     <Content Include="Scripts\Common\appFactory.js" />
@@ -580,7 +583,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Advertisment\" />
+    <Folder Include="Images\Advertisment\Topten\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>

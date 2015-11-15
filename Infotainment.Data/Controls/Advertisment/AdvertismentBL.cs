@@ -27,23 +27,10 @@ namespace Infotainment.Data.Controls
 {
     public class AdvertismentBL 
     {
-        #region Auto Generated Code - Insert
-
-        public void Insert(IAdvertisment objAdvertisment)
+        public static AdvertismentBL Instance
         {
-            try
-            {
-
-            }
-            catch (Exception objExp)
-            {
-                throw objExp;
-            }
-            finally
-            {
-            }
+            get { return new AdvertismentBL(); }
         }
-        #endregion
 
         #region Auto Generated Code - Update
 
@@ -79,9 +66,13 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Select
 
-        public List<IAdvertisment> SelectAll(System.String AdvertismentID)
+        public List<IAdvertisment> SelectAll(AdvertismentType addType)
         {
-            return new List<IAdvertisment>();
+            var result = new List<IAdvertisment>();
+
+            result = AdvertismentDB.Instance.SelectAll((int)addType);
+
+            return result;
         }
         #endregion
 

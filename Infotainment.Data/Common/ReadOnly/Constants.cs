@@ -24,7 +24,11 @@ namespace Infotainment.Data
         BottomRight = 4,
         Center = 5,
         CenterLeft = 6,
-        CenterRight = 7
+        CenterRight = 7,
+        PageRight = 8,
+        PageLeft = 9,
+        PageTop = 10,
+        PageBottom = 11
     }
     public class Constants
     {
@@ -35,6 +39,7 @@ namespace Infotainment.Data
     public class ImagePath
     {
         public static readonly string TopTenNewsImage = "~/Images/Top-ten";
+        public static readonly string TopTenAdvertisment = "~/Images/Advertisment/Topten";
 
     }
 }

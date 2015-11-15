@@ -16,8 +16,8 @@ namespace Infotainment.Areas.Admin.Models
             set;
         }
 
-        [Display(Description = "Enter Heading")]
-        [Required(ErrorMessage = "Heading should not be empty")]
+        [Display(Description = "Enter Caption")]
+        [Required(ErrorMessage = "Caption should not be empty")]
         public System.String Heading
         {
             get;
@@ -65,8 +65,5 @@ namespace Infotainment.Areas.Admin.Models
             get;
             set;
         }
-
-
-
     }
 }

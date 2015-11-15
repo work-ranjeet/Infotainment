@@ -1,5 +1,5 @@
 ﻿<div class="admin-header-menu header-menu" style="width:1000px; margin:auto;">
-    <ul id="menu"  class="main-menu-ul">
+    <ul id="menu" class="main-menu-ul">
         <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 @{
@@ -9,7 +9,7 @@
             </div>
 
         </li>
-        <li  style="float:left; padding:0 5px 0 5px;">
+        <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 <span class="menu-text pull-left">News Update</span>
                 <span class="pull-right down-arrow"></span>
@@ -42,9 +42,9 @@
 
             </div>
         </li>
-        <li  style="float:left; padding:0 5px 0 5px;">
+        <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
-                <span class="menu-text pull-left">Search News</span>
+                <span class="menu-text pull-left">Search</span>
                 <span class="pull-right down-arrow"></span>
             </div>
             <div class="news-menu" style="z-index:10;">
@@ -57,17 +57,17 @@
                             <a data-ng-href="@url" target="_self"><span class="news-heading-text">Search Main News</span></a>
                         </li>
                         @*<li>
-                            @{
-                                url = HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"));
-                            }
-                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Need Approval</span></a>
-                        </li>
-                        <li>
-                            @{
-                                url = HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"));
-                            }
-                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Make Active</span></a>
-                        </li>*@
+                                @{
+                                    url = HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"));
+                                }
+                                <a data-ng-href="@url" target="_self"><span class="news-heading-text">Need Approval</span></a>
+                            </li>
+                            <li>
+                                @{
+                                    url = HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"));
+                                }
+                                <a data-ng-href="@url" target="_self"><span class="news-heading-text">Make Active</span></a>
+                            </li>*@
 
                     </ul>
                 </div>
@@ -76,37 +76,25 @@
         </li>
         <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
-                <span class="menu-text pull-left">खबरें&nbsp;</span>
+                <span class="menu-text pull-left">Advertisment</span>
                 <span class="pull-right down-arrow"></span>
             </div>
-            <div class="news-menu">
+            <div class="news-menu" style="z-index:10;">
                 <div class="column-first">
-                    <div class="sub-menu-heading">समाचार&nbsp;</div>
                     <ul>
-                        <li><span>राजनीति समाचार</span></li>
-                        <li><span>व्यापार समाचार</span>	</li>
-                        <li><span>अंतरराष्ट्रीय समाचार</span></li>
-                    </ul>
-                </div>
-                <div class="column-first">
-                    <div class="sub-menu-heading">क्षेत्रीय समाचार</div>
-                    <ul>
-                        <li><span>छत्तीसगढ़</span></li>
-                        <li><span>बिहार</span></li>
-                        <li><span>उत्तर प्रदेश</span></li>
-                        <li><span>मध्य प्रदेश</span></li>
-                        <li><span>राजस्थान</span></li>
-                        <li><span>हिमाचल प्रदेश</span></li>
-                        <li><span>पंजाब</span></li>
-                    </ul>
-                </div>
-                <div class="column-first">
-                    <div class="sub-menu-heading">खेल समाचार</div>
-                    <ul>
-                        <li><span>खेल कहानियां</span></li>
-                        <li><span>क्रिकेट</span></li>
-                        <li><span>फ़ुटबॉल</span></li>
-                        <li><span>हॉकी</span></li>
+                        <li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("Select", "Advertisment"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">View All</span></a>
+                        </li>
+                        <li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("Insert", "Advertisment"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Create</span></a>
+                        </li>
+                      
                     </ul>
                 </div>
             </div>
