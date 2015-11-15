@@ -10,6 +10,22 @@ namespace Infotainment.Data
     {
         TopNewsImage = 1
     }
+
+    public enum AdvertismentType
+    {
+        TopNewsAdd = 1
+    }
+
+    public enum Position
+    {
+        TopLeft = 1,
+        TopRight = 2,
+        BottmLeft = 3,
+        BottomRight = 4,
+        Center = 5,
+        CenterLeft = 6,
+        CenterRight = 7
+    }
     public class Constants
     {
         public static readonly string UserSessionKey = "UserLoginDetail";
