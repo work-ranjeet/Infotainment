@@ -132,9 +132,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdvertismentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
+    <Compile Include="Areas\Admin\Models\Advertisment\AdvertismentModal.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\CreateTopTenNews.cs" />
     <Compile Include="Areas\Admin\Models\Search\TopNewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsActivationList.cs" />
@@ -578,6 +580,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Advertisment\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>
