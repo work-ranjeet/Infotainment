@@ -1,0 +1,94 @@
+﻿@model Infotainment.Areas.Admin.Models.AdvertismentModal
+
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Insert", "Advertisment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+            function fileCheck(obj) {
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+                if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+                }
+            }
+        </script>
+    }
+
+    <section id="insertNews" class="admin-section">
+        <div id="content" class="content form-horizontal">
+            <div class="alert alert-info " style="width:83%; margin-top:0px; margin-left:17%;">
+                <strong> @ViewBag.Message </strong>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Heading, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WebUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WebUrl, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WebLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WebLink, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShortDesc, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.ImgUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImgUrl, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>*@
+            <div style="width:81%; float:right;">
+                <div class="form-group" style="width:150px; display:inline; float:left;">
+                    <span style="">Order Number</span>
+                    <br />
+                    <input style="width:85px; padding: 2px; font-size: 14px; color: #555555; vertical-align: middle; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 4px;" class="text-box" data-val="true" data-val-required="*" id="DisplayOrder" name="DisplayOrder" type="number" value="@Model.DisplayOrder">
+                </div>
+                <div class="form-group" style="width:320px; display:inline; float:left;">
+                    <span style="">Image</span>
+                    <br />
+                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);" style="    border: 1px solid #cccccc; border-radius: 4px;">
+                </div>
+                <div class="form-group" style="width:150px; display:inline; float:left;">
+                    <div class="checkbox" style="margin-top:14px;">
+                        @Html.CheckBoxFor(model => model.IsActive, new { @style="height:15px; width:15px; padding:2px;"})
+                        <span style="vertical-align:baseline;">&nbsp;Is Active</span>
+                    </div>
+                </div>
+                <div class="form-group" style="width:150px; display:inline; float:left;">
+                    <div class="checkbox" style="margin-top:14px;">
+                        @Html.CheckBoxFor(model => model.IsApproved, new { @style = "height:15px; width:15px; padding:2px;" })
+                        <span style="vertical-align:baseline;">&nbsp;Is Approved</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-center">
+                    <input type="submit" id="btnSubmit" value="Click to Insert News" style="width:50%; height:30px; padding:5px;" />
+                </div>
+            </div>
+        </div>
+    </section>
+}
