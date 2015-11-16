@@ -19,7 +19,7 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                ViewBag.Title = "Top-Ten Advertisment";
+                ViewBag.Heading = "Top-Ten Advertisment";
                 ViewBag.Message = "Insert New Avertisment.";
 
                 var resultList = new List<AdvertismentModal>();
@@ -44,7 +44,7 @@ namespace Infotainment.Areas.Admin.Controllers
                    });
                 }
 
-                return View(resultList);
+                return View(resultList.OrderBy(v => v.DisplayOrder));
             });
         }
 
@@ -159,7 +159,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             advertise.DisplayOrder = objAdvertise.DisplayOrder;
                             advertise.IsActive = objAdvertise.IsActive == 1 ? true : false;
                             advertise.IsApproved = objAdvertise.IsApproved == 1 ? true : false;
-                            advertise.AdvertismentType = (Int32)AdvertismentType.TopNewsAdd;
+                            //advertise.AdvertismentType = (Int32)AdvertismentType.TopNewsAdd;
                         }
                     }
                 }
@@ -201,6 +201,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         objAdvertise.Position = (Int32)Position.PageRight;
                         objAdvertise.AdvertismentType = (Int32)AdvertismentType.TopNewsAdd;
 
+                        IsValid = advertise.Image == null;
                         var fileName = string.Empty;
                         if (advertise.Image != null && advertise.Image.ContentLength > 0)
                         {

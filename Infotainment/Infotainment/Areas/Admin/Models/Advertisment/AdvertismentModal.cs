@@ -55,7 +55,6 @@ namespace Infotainment.Areas.Admin.Models
         }
 
         [Display(Description = "Select Image")]
-        [Required(ErrorMessage = "Image is required")]
         public HttpPostedFileBase Image
         {
             get;

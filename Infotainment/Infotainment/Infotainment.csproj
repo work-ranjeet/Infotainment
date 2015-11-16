@@ -225,7 +225,6 @@
     <Content Include="Areas\Admin\Views\Search\MainNewsSearch.cshtml" />
     <Content Include="Areas\Admin\Views\TopNews\UpdateNews.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Insert.cshtml" />
-    <Content Include="Areas\Admin\Views\Advertisment\EditorTemplates\AdverismentList.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Select.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Update.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js" />

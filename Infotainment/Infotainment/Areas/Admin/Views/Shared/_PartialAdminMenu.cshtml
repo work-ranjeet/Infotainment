@@ -1,20 +1,40 @@
-﻿<div class="admin-header-menu header-menu" style="width:1000px; margin:auto;">
+﻿<style>
+    .sub-menu-heading {
+        font-size: 14px;
+        margin: 3px 0px 8px;
+        border-bottom: 1px solid #888;
+        vertical-align: bottom;
+        color: wheat;
+        display: block;
+    }
+
+    .news-heading-text {
+        font-size: 14px;
+        color: #bbb8b8;
+        text-decoration:none;
+        
+    }
+    .news-heading-text:hover{
+        color: #fbf9f9;
+    }
+</style>
+<div class="admin-header-menu header-menu" style="width:1000px; margin:auto;">
     <ul id="menu" class="main-menu-ul">
         <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
                 @{
                     var url = HttpUtility.UrlDecode(Url.Action("Index", "Home"));
                 }
-                <a data-ng-href="@url" target="_self"><span class="menu-text">Home</span></a>
+                <a data-ng-href="@url" target="_self" style="color: #f3f3f3;"><span class="menu-text">Home</span></a>
             </div>
 
         </li>
         <li style="float:left; padding:0 5px 0 5px;">
             <div class="menu-heading">
-                <span class="menu-text pull-left">News Update</span>
+                <span class="menu-text pull-left">All News</span>
                 <span class="pull-right down-arrow"></span>
             </div>
-            <div class="news-menu" style="z-index:10;">
+            <div class="news-menu" style="z-index:10; margin-left:-6px;">
                 <div class="column-first">
                     <div class="sub-menu-heading">Main News</div>
                     <ul>
@@ -47,7 +67,7 @@
                 <span class="menu-text pull-left">Search</span>
                 <span class="pull-right down-arrow"></span>
             </div>
-            <div class="news-menu" style="z-index:10;">
+            <div class="news-menu" style="z-index:10; margin-left:-6px;">
                 <div class="column-first">
                     <ul>
                         <li>
@@ -79,41 +99,27 @@
                 <span class="menu-text pull-left">Advertisment</span>
                 <span class="pull-right down-arrow"></span>
             </div>
-            <div class="news-menu" style="z-index:10;">
+            <div class="news-menu" style="z-index:10; margin-left:-6px;">
                 <div class="column-first">
+                    <div class="sub-menu-heading">Top-Ten</div>
                     <ul>
+                        <li>
+                            @{
+                                url = HttpUtility.UrlDecode(Url.Action("Insert", "Advertisment"));
+                            }
+                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Create New</span></a>
+                        </li>
                         <li>
                             @{
                                 url = HttpUtility.UrlDecode(Url.Action("Select", "Advertisment"));
                             }
                             <a data-ng-href="@url" target="_self"><span class="news-heading-text">View All</span></a>
                         </li>
-                        <li>
-                            @{
-                                url = HttpUtility.UrlDecode(Url.Action("Insert", "Advertisment"));
-                            }
-                            <a data-ng-href="@url" target="_self"><span class="news-heading-text">Create</span></a>
-                        </li>
-                      
                     </ul>
                 </div>
             </div>
         </li>
-        <li style="float:left; padding:0 5px 0 5px;">
-            <div class="menu-heading">
-                <span class="menu-text pull-left">मनोरंजन</span>
-                <span class="pull-right down-arrow"></span>
-            </div>
-            <div class="manoranjan-menu">
-                <div class="column-first">
-                    <ul>
-                        <li><span>सिनेमा</span></li>
-                        <li><span>मजाक</span></li>
-                    </ul>
-                </div>
 
-            </div>
-        </li>
     </ul>
 </div>
 
