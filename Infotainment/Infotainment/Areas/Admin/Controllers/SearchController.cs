@@ -7,9 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Infotainment.Filter;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
+    [Autherisation]
     public class SearchController : Controller
     {
         public async Task<ActionResult> MainNewsSearch()

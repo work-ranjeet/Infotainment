@@ -11,9 +11,11 @@ using Infotainment.Areas.Admin.Models;
 using Infotainment.Data.Controls;
 using Infotainment.Data;
 using PCL.DBHelper;
+using Infotainment.Filter;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
+    [Autherisation]
     public class TopNewsController : Controller
     {
         public async Task<ActionResult> NeedApproval()

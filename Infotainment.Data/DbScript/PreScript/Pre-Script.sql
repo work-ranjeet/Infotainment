@@ -18,6 +18,22 @@ VALUES (
 		SELECT FLOOR(DATEDIFF(day, '1983-10-17', getDate()) / 365.25)
 		), 0, 1, 0, 1
 	)
+GO
+
+INSERT INTO UserAddress (UserID, CareOf, Address1, Address2, City, STATE, Country, MobileNo, PhoneNo, IsPrimary)
+VALUES (4, 'Shri Ram Kishor Singha', 'add1', 'add2', 'Patna', 'Bihar', 'India', '9535304488', '0000000000', 1)
+GO
+
+INSERT INTO UserEmail (UserID, Email, IsActive, IsVerified, IsVerCodeSent, VerificationCode)
+VALUES (4,'er.ranjeetkumar@gmail.com', 1,1 ,1,'')
+GO
+
+INSERT INTO Infotainment.dbo.PwdManagement (UserID, Password, IsPwdReset, IsNew)
+VALUES (4, 'janeman', 0, 0)
+GO
+
+
+
 
 --------------------ImageType---------------------------
 INSERT INTO ImageType (ImageType, ImageDesc)

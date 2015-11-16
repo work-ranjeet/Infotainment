@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
-    //[Autherisation]
+    [Autherisation]
     public class HomeController : Controller
     {
         public async Task<ActionResult> Index()

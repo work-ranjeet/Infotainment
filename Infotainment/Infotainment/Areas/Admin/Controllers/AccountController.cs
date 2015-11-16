@@ -9,6 +9,7 @@ using Infotainment.Models;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
+    
     public class AccountController : Controller
     {
         public async Task<ActionResult> Login()

@@ -2,6 +2,7 @@
 using Infotainment.Data;
 using Infotainment.Data.Controls;
 using Infotainment.Data.Entities;
+using Infotainment.Filter;
 using PCL.DBHelper;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
+    [Autherisation]
     public class AdvertismentController : Controller
     {
         public async Task<ActionResult> Select()
