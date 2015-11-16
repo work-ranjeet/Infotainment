@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Infotainment.Areas.Admin.Models
 {
 
-    public class CreateTopTenNews
+    public class CreateTopTenNews :IDisposable
     {
         //[Required]
         //public string EditorID { get; set; }
@@ -32,6 +32,33 @@ namespace Infotainment.Areas.Admin.Models
         //[Required]
         //public int LanguageID { get; set; }
 
-        
+        #region Memory
+        private bool disposed = false;
+        ~CreateTopTenNews()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
+
     }
 }

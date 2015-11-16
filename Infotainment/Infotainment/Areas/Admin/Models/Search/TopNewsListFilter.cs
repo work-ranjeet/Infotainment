@@ -8,7 +8,7 @@ using Infotainment.Data.Controls;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class TopNewsListFilter
+    public class TopNewsListFilter : IDisposable
     {
         [Required]
         public DateTime DateFrom { get; set; }
@@ -24,5 +24,33 @@ namespace Infotainment.Areas.Admin.Models
         public string Header { get; set; }
 
         public ConcurrentBag<ITopNews> TopNewsList { get; set; }
+
+        #region Memory
+        private bool disposed = false;
+        ~TopNewsListFilter()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
     }
 }

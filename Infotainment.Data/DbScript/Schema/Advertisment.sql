@@ -41,6 +41,7 @@ CREATE TABLE Advertisment (
 	DisplayOrder INT NOT NULL DEFAULT(0),
 	Heading NVARCHAR(300) NOT NULL,
 	WebUrl NVARCHAR(200),
+	WebLink NVARCHAR(1000),
 	ShortDesc NVARCHAR(300),
 	ImgUrl NVARCHAR(1000),
 	AdvertismentType INT DEFAULT(0),

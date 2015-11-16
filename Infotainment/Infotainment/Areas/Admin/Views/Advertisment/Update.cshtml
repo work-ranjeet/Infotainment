@@ -1,0 +1,122 @@
+﻿@model Infotainment.Areas.Admin.Models.AdvertismentModal
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Update", "Advertisment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="container">
+        <h3>Top-ten Advertismet</h3>
+        <hr />
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="pull-left" style="width:154px; margin-left:10px;">
+                        <figure style="border:solid 2px #808080;">
+                            <img src="@Url.Content(Model.ImgUrl)" alt="Image" style="width:150px; height:170px;" />
+                            <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImgUrl" />
+                            <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
+                        </figure>
+                    </div>
+                    <div class="pull-right" style="width:83%;">
+                        <div class="alert alert-info" style="width:98%; margin-bottom:2px;">
+                            <strong> @ViewBag.Message </strong>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                        <div style="width:98%;">
+                            <div class="pull-left" style="width:49%; border:solid thin #ccc; height:140px; padding:5px;">
+                                <div style="padding:8px;">To change this image. Select new image and update.<br /><br />Select new image</div>
+                                <div style="padding:8px; padding-top:0px;">
+                                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="pull-right" style="width:50%; border:solid thin #ccc; height:140px;  padding:5px; ">
+                                <div class="pull-left" style="width:45%;">
+                                    <div class="checkbox">
+                                        <span>Is Active</span>
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="checkbox">
+                                        <span>Is Approved</span>
+                                        @Html.EditorFor(model => model.IsApproved)
+                                        @Html.ValidationMessageFor(model => model.IsApproved, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="pull-right" style="width:45%; text-align:right; margin-right:20px;">
+                                    <div class="form-group">
+                                        <span style="">Order Number</span>
+                                        <input style="width:45px; padding: 2px; text-align:center; font-size: 14px; color: #555555; vertical-align: middle; background-color: #ffffff; 
+                                            border: 1px solid #cccccc; border-radius: 4px;" class="text-box" data-val="true" data-val-required="*" 
+                                               id="DisplayOrder" name="DisplayOrder" type="number" value="@Model.DisplayOrder">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                @Html.HiddenFor(model => model.AdvertismentID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.ImgUrl, new { htmlAttributes = new { @class = "form-control" } })
+                <hr />
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Heading, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Heading, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WebUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WebUrl, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WebUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WebLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WebLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WebLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShortDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShortDesc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShortDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-center">
+                        <input type="submit" id="btnSubmit" value="Save Changes" style="width:50%;" />
+                    </div>
+                </div>
+            </div>
+       
+    </section>
+
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function fileCheck(obj) {
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+            }
+        }
+    </script>
+}

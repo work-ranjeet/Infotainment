@@ -6,8 +6,14 @@ using System.Web;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class AdvertismentModal
+    public class AdvertismentModal :IDisposable
     {
+        public System.String AdvertismentID
+        {
+            get;
+            set;
+        }
+
         [Display(Description ="Enter unique number")]
         [Required(ErrorMessage ="Enter Dispaly Order")]
         public System.Int32 DisplayOrder
@@ -27,6 +33,14 @@ namespace Infotainment.Areas.Admin.Models
         [Display(Description = "Enter web url")]
         [Required(ErrorMessage = "Web url should not be empty")]
         public System.String WebUrl
+        {
+            get;
+            set;
+        }
+
+        [Display(Description = "Enter web url link")]
+        [Required(ErrorMessage = "Web url link should not be empty")]
+        public System.String WebLink
         {
             get;
             set;
@@ -65,5 +79,33 @@ namespace Infotainment.Areas.Admin.Models
             get;
             set;
         }
+
+        #region Memory
+        private bool disposed = false;
+        ~AdvertismentModal()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
     }
 }

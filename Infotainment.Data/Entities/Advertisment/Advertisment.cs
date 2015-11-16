@@ -27,7 +27,8 @@ namespace Infotainment.Data.Entities
 		private System.Int32 _DisplayOrder;
 		private System.String _Heading;
 		private System.String _WebUrl;
-		private System.String _ShortDesc;
+        private System.String _WebLink;
+        private System.String _ShortDesc;
 		private System.String _ImgUrl;
 		private System.Int32 _AdvertismentType;
 		private System.Int32 _Position;
@@ -132,7 +133,27 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.String ShortDesc
+        public System.String WebLink
+        {
+            get
+            {
+                return this._WebLink;
+            }
+            set
+            {
+                this._WebLink = value;
+            }
+        }
+
+        public bool WebLinkIsNull
+        {
+            get
+            {
+                return ((this._WebLink == null) || !(this._WebLink != null && this._WebLink.Length > 0));
+            }
+        }
+
+        public System.String ShortDesc
 		{
 			get
 			{

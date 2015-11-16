@@ -25,7 +25,7 @@ using Infotainment.Data.Common;
 
 namespace Infotainment.Data.Controls
 {
-    public class AdvertismentDB
+    public class AdvertismentDB : IDisposable
     {
         public static AdvertismentDB Instance
         {
@@ -41,6 +41,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@DisplayOrder", objAdvertisment.DisplayOrder, DbType.Int32);
                 dbInstance.AddInParameter("@Heading", objAdvertisment.Heading, DbType.String);
                 dbInstance.AddInParameter("@WebUrl", objAdvertisment.WebUrl, DbType.String);
+                dbInstance.AddInParameter("@WebLink", objAdvertisment.WebLink, DbType.String);
                 dbInstance.AddInParameter("@ShortDesc", objAdvertisment.ShortDesc, DbType.String);
                 dbInstance.AddInParameter("@ImgUrl", objAdvertisment.ImgUrl, DbType.String);
                 dbInstance.AddInParameter("@AdvertismentType", objAdvertisment.AdvertismentType, DbType.Int32);
@@ -65,12 +66,15 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@DisplayOrder", objAdvertisment.DisplayOrder, DbType.Int32);
                 dbInstance.AddInParameter("@Heading", objAdvertisment.Heading, DbType.String);
                 dbInstance.AddInParameter("@WebUrl", objAdvertisment.WebUrl, DbType.String);
+                dbInstance.AddInParameter("@WebLink", objAdvertisment.WebLink, DbType.String);
                 dbInstance.AddInParameter("@ShortDesc", objAdvertisment.ShortDesc, DbType.String);
                 dbInstance.AddInParameter("@ImgUrl", objAdvertisment.ImgUrl, DbType.String);
                 dbInstance.AddInParameter("@AdvertismentType", objAdvertisment.AdvertismentType, DbType.Int32);
                 dbInstance.AddInParameter("@Position", objAdvertisment.Position, DbType.Int32);
                 dbInstance.AddInParameter("@IsApproved", objAdvertisment.IsApproved, DbType.Int32);
                 dbInstance.AddInParameter("@IsActive", objAdvertisment.IsActive, DbType.Int32);
+
+                dbInstance.ExecuteNonQuery(ProcedureName.UpdateAdvertisment, CommandType.StoredProcedure);
 
 
             }
@@ -100,6 +104,85 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Select
 
+        public IAdvertisment Select( System.String AdvertismentID)
+        {
+            IDataReader objDataReader = null;
+            IAdvertisment objAdvertisment = null;
+
+            DBHelper dbInstance = DBHelper.Instance;
+            try
+            {
+                dbInstance.AddInParameter("@AdvertismentID", AdvertismentID, DbType.String);
+
+                objDataReader = dbInstance.ExecuteDataReader(ProcedureName.SelectAdvertisment, CommandType.StoredProcedure);
+
+                if (objDataReader != null)
+                {
+
+                    while (objDataReader.Read())
+                    {
+                        objAdvertisment = new Advertisment();
+
+                        if (!objDataReader.IsDBNull(0))
+                            objAdvertisment.AdvertismentID = objDataReader.GetString(0);
+
+                        if (!objDataReader.IsDBNull(1))
+                            objAdvertisment.DisplayOrder = objDataReader.GetInt32(1);
+
+                        if (!objDataReader.IsDBNull(2))
+                            objAdvertisment.Heading = objDataReader.GetString(2);
+
+                        if (!objDataReader.IsDBNull(3))
+                            objAdvertisment.WebUrl = objDataReader.GetString(3);
+
+                        if (!objDataReader.IsDBNull(4))
+                            objAdvertisment.WebLink = objDataReader.GetString(4);
+
+                        if (!objDataReader.IsDBNull(5))
+                            objAdvertisment.ShortDesc = objDataReader.GetString(5);
+
+                        if (!objDataReader.IsDBNull(6))
+                            objAdvertisment.ImgUrl = objDataReader.GetString(6);
+
+                        if (!objDataReader.IsDBNull(7))
+                            objAdvertisment.AdvertismentType = objDataReader.GetInt32(7);
+
+                        if (!objDataReader.IsDBNull(8))
+                            objAdvertisment.Position = objDataReader.GetInt32(8);
+
+                        if (!objDataReader.IsDBNull(9))
+                            objAdvertisment.IsApproved = objDataReader.GetInt32(9);
+
+                        if (!objDataReader.IsDBNull(10))
+                            objAdvertisment.IsActive = objDataReader.GetInt32(10);
+
+                        if (!objDataReader.IsDBNull(11))
+                            objAdvertisment.DttmCreated = objDataReader.GetDateTime(11);
+
+                        if (!objDataReader.IsDBNull(12))
+                            objAdvertisment.DttmModified = objDataReader.GetDateTime(12);
+
+                    }
+                }
+
+                if (!objDataReader.IsClosed)
+                    objDataReader.Close();
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+            finally
+            {
+                dbInstance.ClearAllParameters();
+                dbInstance.CloseConnection();
+                dbInstance.Dispose();
+            }
+
+            return objAdvertisment;
+
+        }
+
         public List<IAdvertisment> SelectAll(System.Int32 AdvertismentType, System.Int32 IsActive = -1, System.Int32 IsApproved = -1)
         {
             IDataReader objDataReader = null;
@@ -113,7 +196,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@IsActive", IsActive, DbType.Int32);
                 dbInstance.AddInParameter("@IsApproved", IsApproved, DbType.Int32);
 
-                objDataReader = dbInstance.ExecuteDataReader(ProcedureName.SelectAdvertisment, CommandType.StoredProcedure);
+                objDataReader = dbInstance.ExecuteDataReader(ProcedureName.SelectAllAdvertisment, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {
@@ -137,28 +220,31 @@ namespace Infotainment.Data.Controls
                                 objAdvertisment.WebUrl = objDataReader.GetString(3);
 
                             if (!objDataReader.IsDBNull(4))
-                                objAdvertisment.ShortDesc = objDataReader.GetString(4);
+                                objAdvertisment.WebLink = objDataReader.GetString(4);
 
                             if (!objDataReader.IsDBNull(5))
-                                objAdvertisment.ImgUrl = objDataReader.GetString(5);
+                                objAdvertisment.ShortDesc = objDataReader.GetString(5);
 
                             if (!objDataReader.IsDBNull(6))
-                                objAdvertisment.AdvertismentType = objDataReader.GetInt32(6);
+                                objAdvertisment.ImgUrl = objDataReader.GetString(6);
 
                             if (!objDataReader.IsDBNull(7))
-                                objAdvertisment.Position = objDataReader.GetInt32(7);
+                                objAdvertisment.AdvertismentType = objDataReader.GetInt32(7);
 
                             if (!objDataReader.IsDBNull(8))
-                                objAdvertisment.IsApproved = objDataReader.GetInt32(8);
+                                objAdvertisment.Position = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objAdvertisment.IsActive = objDataReader.GetInt32(9);
+                                objAdvertisment.IsApproved = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objAdvertisment.DttmCreated = objDataReader.GetDateTime(10);
+                                objAdvertisment.IsActive = objDataReader.GetInt32(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objAdvertisment.DttmModified = objDataReader.GetDateTime(11);
+                                objAdvertisment.DttmCreated = objDataReader.GetDateTime(11);
+
+                            if (!objDataReader.IsDBNull(12))
+                                objAdvertisment.DttmModified = objDataReader.GetDateTime(12);
 
                             objAdvertismentList.Add(objAdvertisment);
                         }
@@ -186,6 +272,33 @@ namespace Infotainment.Data.Controls
         }
         #endregion
 
+        #region Memory
+        private bool disposed = false;
+        ~AdvertismentDB()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
     }
 }
 

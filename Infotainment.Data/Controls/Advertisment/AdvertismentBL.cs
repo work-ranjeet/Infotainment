@@ -25,7 +25,7 @@ using PCL.DBHelper;
 
 namespace Infotainment.Data.Controls
 {
-    public class AdvertismentBL 
+    public class AdvertismentBL : IDisposable
     {
         public static AdvertismentBL Instance
         {
@@ -34,11 +34,11 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Update
 
-        public void Update(Advertisment objAdvertisment)
+        public void Update( ref DBHelper dbInstance,  IAdvertisment Advertisment)
         {
             try
             {
-
+                AdvertismentDB.Instance.Update(ref dbInstance, Advertisment);
             }
             catch (Exception objExp)
             {
@@ -65,7 +65,13 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
+        public IAdvertisment Select(string AdvertismentId)
+        {
 
+            IAdvertisment result = AdvertismentDB.Instance.Select(AdvertismentId);
+
+            return result;
+        }
         public List<IAdvertisment> SelectAll(AdvertismentType addType)
         {
             var result = new List<IAdvertisment>();
@@ -73,6 +79,34 @@ namespace Infotainment.Data.Controls
             result = AdvertismentDB.Instance.SelectAll((int)addType);
 
             return result;
+        }
+        #endregion
+
+        #region Memory
+        private bool disposed = false;
+        ~AdvertismentBL()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
         }
         #endregion
 

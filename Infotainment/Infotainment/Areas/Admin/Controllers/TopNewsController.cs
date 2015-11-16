@@ -204,7 +204,7 @@ namespace Infotainment.Areas.Admin.Controllers
                     {
                         int MaxContentLength = 1024 * 1024 * 10; //Size = 10 MB
                         string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
-                        if (!AllowedFileExtensions.Contains(news.Image.FileName.Substring(news.Image.FileName.LastIndexOf('.'))))
+                        if (!AllowedFileExtensions.Contains(news.Image.FileName.Substring(news.Image.FileName.LastIndexOf('.')).ToLower()))
                         {
                             ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
                             ViewBag.Message = "Please file of type: " + string.Join(", ", AllowedFileExtensions);
@@ -385,7 +385,7 @@ namespace Infotainment.Areas.Admin.Controllers
             {
                 int MaxContentLength = 1024 * 1024 * 10; //Size = 10 MB
                 string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
-                if (!AllowedFileExtensions.Contains(image.FileName.Substring(image.FileName.LastIndexOf('.'))))
+                if (!AllowedFileExtensions.Contains(image.FileName.Substring(image.FileName.LastIndexOf('.')).ToLower()))
                 {
                     ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
                     ViewBag.Message = "Please file of type: " + string.Join(", ", AllowedFileExtensions);

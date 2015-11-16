@@ -48,6 +48,12 @@ namespace Infotainment.Data.Entities
             set;
         }
 
+        System.String WebLink
+        {
+            get;
+            set;
+        }
+
         System.String ShortDesc
         {
             get;

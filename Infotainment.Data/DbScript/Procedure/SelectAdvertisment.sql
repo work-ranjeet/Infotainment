@@ -6,37 +6,15 @@ IF EXISTS (
 	DROP PROCEDURE SelectAdvertisment
 GO
 
-CREATE PROCEDURE SelectAdvertisment (@AddType INT, @IsActive INT = - 1, @IsApproved INT = - 1)
+CREATE PROCEDURE SelectAdvertisment (@AdvertismentID nvarchar(50))
 AS
 BEGIN
 	BEGIN TRY
-		IF (@IsActive = - 1 AND @IsApproved = - 1)
-		BEGIN
-			SELECT AdvertismentID, DisplayOrder, Heading, WebUrl, ShortDesc, ImgUrl, AdvertismentType, Position, IsApproved, IsActive, DttmCreated, DttmModified
+		
+			SELECT AdvertismentID, DisplayOrder, Heading, WebUrl, WebLink, ShortDesc, ImgUrl, AdvertismentType, Position, IsApproved, IsActive, DttmCreated, DttmModified
 			FROM Advertisment
-			WHERE AdvertismentType = @AddType
-		END
-
-		IF (@IsActive = - 1 AND @IsApproved <> - 1)
-		BEGIN
-			SELECT AdvertismentID, DisplayOrder, Heading, WebUrl, ShortDesc, ImgUrl, AdvertismentType, Position, IsApproved, IsActive, DttmCreated, DttmModified
-			FROM Advertisment
-			WHERE AdvertismentType = @AddType AND IsApproved = @IsApproved
-		END
-
-		IF (@IsActive <> - 1 AND @IsApproved = - 1)
-		BEGIN
-			SELECT AdvertismentID, DisplayOrder, Heading, WebUrl, ShortDesc, ImgUrl, AdvertismentType, Position, IsApproved, IsActive, DttmCreated, DttmModified
-			FROM Advertisment
-			WHERE AdvertismentType = @AddType AND IsActive = @IsActive
-		END
-
-		IF (@IsActive <> - 1 AND @IsApproved <> - 1)
-		BEGIN
-			SELECT AdvertismentID, DisplayOrder, Heading, WebUrl, ShortDesc, ImgUrl, AdvertismentType, Position, IsApproved, IsActive, DttmCreated, DttmModified
-			FROM Advertisment
-			WHERE AdvertismentType = @AddType AND IsActive = @IsActive AND IsApproved = @IsApproved
-		END
+			WHERE AdvertismentID = @AdvertismentID
+		
 	END TRY
 
 	BEGIN CATCH

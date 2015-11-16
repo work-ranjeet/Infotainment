@@ -6,14 +6,42 @@ using System.Web;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class TopNewsApprovalList
+    public class TopNewsApprovalList :IDisposable
     {
         public string Message { get; set; }
 
         public IList<TopNewsApproval> ApprovalList { get; set; }
+
+        #region Memory
+        private bool disposed = false;
+        ~TopNewsApprovalList()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
     }
 
-    public class TopNewsApproval
+    public class TopNewsApproval :IDisposable
     {
         public bool Selected { get; set; }
 
@@ -27,6 +55,34 @@ namespace Infotainment.Areas.Admin.Models
 
         public DateTime DttmCreated { get; set; }
 
+        #region Memory
+        private bool disposed = false;
+        ~TopNewsApproval()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
+
     }
-   
+
 }
