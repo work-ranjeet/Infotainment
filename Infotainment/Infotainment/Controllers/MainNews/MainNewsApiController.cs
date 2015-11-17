@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Infotainment.Data.Controls;
+using Infotainment.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,31 +11,88 @@ namespace Infotainment.Controllers
 {
     public class MainNewsApiController : ApiController
     {
-        // GET api/homemainnewsapi
-        public IEnumerable<string> Get()
+        [HttpGet]
+        public IEnumerable<INews> TopNews()
         {
-            return new string[] { "value1", "value2" };
+            var newsInstance = TopNewsBL.Instance;
+            List<INews> newsList = new List<INews>();
+            try
+            {
+                var result = newsInstance.SelectFirst10TopNews();
+                result.AsParallel().AsOrdered().ForAll(val =>
+                {
+                    newsList.Add(new News
+                    {
+                        NewsID = val.TopNewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        ShortDesc = val.ShortDescription,
+                        NewsDesc= val.NewsDescription
+                    });
+                });
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                newsInstance.Dispose();
+            }
+
+            return newsList;
         }
 
-        // GET api/homemainnewsapi/5
-        public string Get(int id)
+        [HttpGet]
+        public IEnumerable<INews> TopNewsHeader()
         {
-            return "value";
+            var newsInstance = TopNewsBL.Instance;
+            List<INews> newsList = new List<INews>();
+            try
+            {
+                var result = newsInstance.SelectRest10TopNews();
+                result.AsParallel().AsOrdered().ForAll(val =>
+                {
+                    newsList.Add(new News
+                    {
+                        NewsID = val.TopNewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        ShortDesc = val.ShortDescription,
+                        NewsDesc = val.NewsDescription
+                    });
+                });
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                newsInstance.Dispose();
+            }
+
+            return newsList;
         }
 
-        // POST api/homemainnewsapi
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT api/homemainnewsapi/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE api/homemainnewsapi/5
-        public void Delete(int id)
-        {
-        }
+        //// GET api/homemainnewsapi
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        //// GET api/homemainnewsapi/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
+
+
     }
 }

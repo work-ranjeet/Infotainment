@@ -1,49 +1,24 @@
 ﻿IF EXISTS (
 		SELECT *
 		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'SelectAllTopNews') AND type IN (
-				N'P',
-				N'PC'
-				)
+		WHERE object_id = OBJECT_ID(N'SelectAllTopNews') AND type IN (N'P', N'PC')
 		)
 	DROP PROCEDURE SelectAllTopNews
 GO
+
 CREATE PROCEDURE SelectAllTopNews
 AS
 BEGIN
 	BEGIN TRY
-		SELECT TN.TopNewsID,
-			TN.EditorID,
-			TN.DisplayOrder,
-			TN.Heading,
-			TN.ShortDescription,
-			TN.NewsDescription,
-			TN.LanguageID,
-			TN.IsApproved,
-			TN.IsActive,
-			TN.DttmCreated,
-			TN.DttmModified,
-			ImgD.ImageUrl
+		SELECT TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl
 		FROM TopNews TN
 		LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
 		LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (
-			ErrorType,
-			ProcedureName,
-			CustomMesage,
-			ErrorNumber,
-			ErrorMessage
-			)
-		VALUES (
-			'Database Error',
-			'SelectAllTopNews',
-			'Error from SelectAllTopNews Store Procedure',
-			ERROR_NUMBER(),
-			ERROR_MESSAGE()
-			)
+		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES ('Database Error', 'SelectAllTopNews', 'Error from SelectAllTopNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END
 	--declare @date datetime =CONVERT(DATETIME, '2015-5-21' , 110)

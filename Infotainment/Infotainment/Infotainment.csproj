@@ -158,6 +158,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\Crendential.cs" />
+    <Compile Include="Models\Common\AdvertismentModal.cs" />
+    <Compile Include="Models\Common\NewsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

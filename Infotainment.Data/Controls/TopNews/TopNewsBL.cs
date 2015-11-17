@@ -189,6 +189,20 @@ namespace Infotainment.Data.Controls
             }
             return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
         }
+
+        public IEnumerable<ITopNews> SelectFirst10TopNews ()
+        {
+          var top20 =  TopNewsDB.Instance.Select20TopNews();
+
+            return top20.Take(10);
+        }
+
+        public IEnumerable<ITopNews> SelectRest10TopNews()
+        {
+            var top20 =  TopNewsDB.Instance.Select20TopNews();
+
+            return top20.Skip(10).Take(10);
+        }
         #endregion
 
         #region Memory

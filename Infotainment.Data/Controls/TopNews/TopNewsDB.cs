@@ -194,6 +194,86 @@ namespace Infotainment.Data.Controls
             return objTopNews;
         }
 
+        internal IEnumerable<ITopNews> Select20TopNews()
+        {
+            IDataReader objDataReader = null;
+            List<ITopNews> objTopNewsList = null;
+            ITopNews objTopNews = null;
+
+            var dbHelper = DBHelper.Instance;
+            try
+            {
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.Select20TopNews, CommandType.StoredProcedure);
+
+                if (objDataReader != null)
+                {
+                    objTopNewsList = new List<ITopNews>();
+                    do
+                    {
+                        while (objDataReader.Read())
+                        {
+                            objTopNews = new TopNews();
+
+                            if (!objDataReader.IsDBNull(0))
+                                objTopNews.TopNewsID = objDataReader.GetString(0);
+
+                            if (!objDataReader.IsDBNull(1))
+                                objTopNews.EditorID = objDataReader.GetString(1);
+
+                            if (!objDataReader.IsDBNull(2))
+                                objTopNews.DisplayOrder = objDataReader.GetInt32(2);
+
+                            if (!objDataReader.IsDBNull(3))
+                                objTopNews.Heading = objDataReader.GetString(3);
+
+                            if (!objDataReader.IsDBNull(4))
+                                objTopNews.ShortDescription = objDataReader.GetString(4);
+
+                            if (!objDataReader.IsDBNull(5))
+                                objTopNews.NewsDescription = objDataReader.GetString(5);
+
+                            if (!objDataReader.IsDBNull(6))
+                                objTopNews.LanguageID = objDataReader.GetInt32(6);
+
+                            if (!objDataReader.IsDBNull(7))
+                                objTopNews.IsApproved = objDataReader.GetInt32(7);
+
+                            if (!objDataReader.IsDBNull(8))
+                                objTopNews.IsActive = objDataReader.GetInt32(8);
+
+                            if (!objDataReader.IsDBNull(9))
+                                objTopNews.DttmCreated = objDataReader.GetDateTime(9);
+
+                            if (!objDataReader.IsDBNull(10))
+                                objTopNews.DttmModified = objDataReader.GetDateTime(10);
+
+                            if (!objDataReader.IsDBNull(11))
+                                objTopNews.ImageUrl = objDataReader.GetString(11);
+
+                            objTopNewsList.Add(objTopNews);
+                        }
+
+                    }
+                    while (objDataReader.NextResult());
+                }
+
+                if (!objDataReader.IsClosed)
+                    objDataReader.Close();
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+            finally
+            {
+                dbHelper.ClearAllParameters();
+                dbHelper.CloseConnection();
+                dbHelper.Dispose();
+            }
+
+            return objTopNewsList;
+        }
+
         public List<ITopNews> SelectAllTopNews()
         {
             IDataReader objDataReader = null;
