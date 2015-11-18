@@ -8,11 +8,11 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/modernizr")    
+    @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/Angular")
     @Scripts.Render("~/bundles/bootstrap")
-    
+
     @Scripts.Render("~/bundles/AngularModule")
     @Scripts.Render("~/bundles/Common")
     @Scripts.Render("~/bundles/Services")
@@ -58,93 +58,7 @@
             </section>
         </header>
         <section id="stickyMenu" class="main-menu">
-            <div class="menu-container">
-                @*<div style="height:8px;"></div>*@
-                <ul id="menu" class="main-menu-ul">
-                    <li>
-                        <div class="menu-heading">
-                            <span class="menu-text">होम&nbsp;&nbsp;</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="menu-heading">
-                            <span class="menu-text pull-left">गेलरी</span>
-                            <span class="pull-right down-arrow"></span>
-                        </div>
-                        <div class="gallery-menu">
-                            <div class="column-first">
-                                <ul>
-                                    <li><span>तस्वीर</span></li>
-                                    <li><span>वीडियोज</span></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="menu-heading">
-                            <span class="menu-text pull-left">खबरें&nbsp;</span>
-                            <span class="pull-right down-arrow"></span>
-                        </div>
-                        <div class="news-menu">
-                            <div class="column-first">
-                                <div class="sub-menu-heading">समाचार&nbsp;</div>
-                                <ul>
-                                    <li><span>राजनीति समाचार</span></li>
-                                    <li><span>व्यापार समाचार</span>	</li>
-                                    <li><span>अंतरराष्ट्रीय समाचार</span></li>
-                                </ul>
-                            </div>
-                            <div class="column-first">
-                                <div class="sub-menu-heading">क्षेत्रीय समाचार</div>
-                                <ul>
-                                    <li><span>छत्तीसगढ़</span></li>
-                                    <li><span>बिहार</span></li>
-                                    <li><span>उत्तर प्रदेश</span></li>
-                                    <li><span>मध्य प्रदेश</span></li>
-                                    <li><span>राजस्थान</span></li>
-                                    <li><span>हिमाचल प्रदेश</span></li>
-                                    <li><span>पंजाब</span></li>
-                                </ul>
-                            </div>
-                            <div class="column-first">
-                                <div class="sub-menu-heading">खेल समाचार</div>
-                                <ul>
-                                    <li><span>खेल कहानियां</span></li>
-                                    <li><span>क्रिकेट</span></li>
-                                    <li><span>फ़ुटबॉल</span></li>
-                                    <li><span>हॉकी</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="menu-heading">
-                            <span class="menu-text pull-left">मनोरंजन</span>
-                            <span class="pull-right down-arrow"></span>
-                        </div>
-                        <div class="manoranjan-menu">
-                            <div class="column-first">
-                                <ul>
-                                    <li><span>सिनेमा</span></li>
-                                    <li><span>मजाक</span></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="menu-heading">
-                            <span class="menu-text">ज्योतिष</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="news-heading">
-                            <span class="menu-text">हमारे बारे में</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            @Html.RenderPartial("_PartialMainMenu.cshtml")
         </section>
         <section id="body" class="bodySection">@RenderBody()</section>
         <footer class="footer round-corner">
