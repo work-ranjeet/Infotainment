@@ -80,6 +80,13 @@ namespace Infotainment.Data.Controls
 
             return result;
         }
+
+        public IEnumerable<IAdvertisment> SelectActive(AdvertismentType addType)
+        {
+            var result = AdvertismentDB.Instance.SelectAll((int)addType);
+
+            return result.FindAll(v => v.IsActive == 1 && v.IsApproved == 1);
+        }
         #endregion
 
         #region Memory

@@ -11,14 +11,13 @@
 .header {
     width: 100%;
     margin: 0px;
-    /*height:150px;*/
-    /*border: solid 1px black;*/
 }
 
     .header .social-media-banner {
         height: 30px;
         width: 100%;
         background: #003 url(../images/header-top-bg.jpg) repeat-x;
+        padding: 4px;
     }
 
     .header .header-banner { /*margin-top: 1px;*/
@@ -39,7 +38,7 @@
         margin-top: 30px;
     }
 
-    .header .header-banner .top {
+    /*.header .header-banner .top {
         height: 42px;
         padding-right: 5px;
     }
@@ -47,12 +46,12 @@
     .header .header-banner .bottom {
         padding-right: 5px;
         margin-top: 20px;
-    }
+    }*/
 
-        .header .header-banner .bottom > span {
+        /*.header .header-banner .bottom > span {
             font-weight: bold;
             color: #e0e0e0;
-        }
+        }*/
 
 .main-menu {
     height: 35px;
@@ -149,7 +148,7 @@
 .news-menu, .gallery-menu, .jyotishi-menu, .manoranjan-menu {
     position: absolute;
     min-width: 80px;
-    margin: 1px 0px 0px -1px; 
+    margin: 1px 0px 0px -1px;
     padding: 10px 5px;
     background-color: #414141;
     border-radius: 0px 5px 0px 0px;
@@ -257,3 +256,59 @@
     }
 
 /* ----- End of Footer ----- */
+
+
+.social-media {
+}
+
+    .social-media > li {
+        float: left;
+        padding: 2px 5px 2px 5px;
+        list-style-type: none;
+    }
+
+    .social-media .fbook-icon-small,
+    .social-media .twitter-icon-small,
+    .social-media .gplus-icon-small {
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+    }
+
+    .social-media .fbook-icon-medium,
+    .social-media .twitter-icon-medium,
+    .social-media .gplus-icon-medium {
+        height: 25px;
+        width: 25px;
+        background-size: cover;
+    }
+
+    .social-media .fbook-icon-small,
+    .social-media .fbook-icon-medium,
+    .social-media .fbook-icon-large {
+        background-image: url(../images/fb-icon-off.png);
+    }
+
+    .social-media .twitter-icon-small,
+    .social-media .twitter-icon-medium,
+    .social-media .twitter-icon-large {
+        background-image: url(../images/twiter-icon-off.png);
+    }
+
+    .social-media .gplus-icon-small,
+    .social-media .gplus-icon-medium,
+    .social-media .gplus-icon-large {
+        background-image: url(../images/gplus-icon-off.png);
+    }
+
+    .social-media .fbook-icon-small:hover {
+        background-image: url(../images/fb-icon-on.png);
+    }
+
+    .social-media .twitter-icon-small:hover {
+        background-image: url(../images/twiter-icon-on.png);
+    }
+
+    .social-media .gplus-icon-small:hover {
+        background-image: url(../images/gplus-icon-on.png);
+    }

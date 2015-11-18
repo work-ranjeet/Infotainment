@@ -1,4 +1,5 @@
-﻿using Infotainment.Data.Controls;
+﻿using Infotainment.Data;
+using Infotainment.Data.Controls;
 using Infotainment.Data.Entities;
 using Infotainment.Models.Entities;
 using System;
@@ -13,23 +14,24 @@ namespace Infotainment.Controllers
     public class AdvertismentApiController : ApiController
     {
         [HttpGet]
-        public IEnumerable<IAdvertisment> TopNews()
+        public IEnumerable<IAdvertisment> TopNewsAdvertisment()
         {
-            var newsInstance = TopNewsBL.Instance;
+            var instance = AdvertismentBL.Instance;
             List<IAdvertisment> advertismentList = new List<IAdvertisment>();
             try
             {
-                var result = newsInstance.SelectFirst10TopNews();
-                result.AsParallel().AsOrdered().ForAll(val =>
+                var result = instance.SelectActive(AdvertismentType.TopNewsAdd);
+                result.AsParallel().AsOrdered().ForAll(addvertise =>
                 {
-                    newsList.Add(new News
+                    advertismentList.Add(new Advertisment
                     {
-                        NewsID = val.TopNewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
-                        ShortDesc = val.ShortDescription,
-                        NewsDesc= val.NewsDescription
+                        AdvertismentID = addvertise.AdvertismentID,
+                        DisplayOrder = addvertise.DisplayOrder,
+                        Heading = addvertise.Heading,
+                        ShortDesc = addvertise.ShortDesc,
+                        WebUrl = addvertise.WebUrl,
+                        WebLink = addvertise.WebLink,
+                        ImgUrl = addvertise.ImgUrl
                     });
                 });
 
@@ -40,10 +42,10 @@ namespace Infotainment.Controllers
             }
             finally
             {
-                newsInstance.Dispose();
+                instance.Dispose();
             }
 
-            return newsList;
+            return advertismentList;
         }
 
         [HttpGet]

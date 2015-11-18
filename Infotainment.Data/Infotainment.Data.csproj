@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -114,6 +118,7 @@
     <Content Include="DBScript\Schema\Advertisment.sql" />
     <Content Include="DBScript\Schema\Infotainment-Schema.sql" />
     <Content Include="DBScript\Schema\Sp_UsrMangementSchema.sql" />
+    <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Lib\System.Web.Mvc.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

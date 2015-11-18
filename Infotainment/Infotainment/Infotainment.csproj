@@ -574,7 +574,7 @@
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\plugins\wsc\README.md" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\skins\moono\readme.md" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\Home1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MainNews\NewsDetail.cshtml" />
     <Content Include="Views\MainNews\NewsList.cshtml" />
@@ -583,6 +583,9 @@
     <Content Include="Views\StateNews\AllStateNews.cshtml" />
     <Content Include="Views\StateNews\StateNews.cshtml" />
     <Content Include="Views\StateNews\StateNewsList.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Shared\_PartialMainMenu.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

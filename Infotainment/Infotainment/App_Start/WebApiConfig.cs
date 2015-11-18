@@ -16,7 +16,7 @@ namespace Infotainment
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "request/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

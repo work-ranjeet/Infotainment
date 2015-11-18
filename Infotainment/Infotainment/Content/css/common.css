@@ -14,10 +14,12 @@ body {
     padding: 0;
     background: transparent;
     cursor: default;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     height: 100%;
     display: block;
+    line-height:18px;
+    color:#E6E6E6;
 }
 
 .body {
@@ -231,60 +233,6 @@ body {
     text-align: -webkit-left;
 }
 
-.social-media {
-}
-
-    .social-media > li {
-        float: left;
-        padding: 5px;
-        list-style-type: none;
-    }
-
-    .social-media .fbook-icon-small,
-    .social-media .twitter-icon-small,
-    .social-media .gplus-icon-small {
-        height: 20px;
-        width: 20px;
-        background-size: cover;
-    }
-
-    .social-media .fbook-icon-medium,
-    .social-media .twitter-icon-medium,
-    .social-media .gplus-icon-medium {
-        height: 25px;
-        width: 25px;
-        background-size: cover;
-    }
-
-    .social-media .fbook-icon-small,
-    .social-media .fbook-icon-medium,
-    .social-media .fbook-icon-large {
-        background-image: url(../images/fb-icon-off.png);
-    }
-
-    .social-media .twitter-icon-small,
-    .social-media .twitter-icon-medium,
-    .social-media .twitter-icon-large {
-        background-image: url(../images/twiter-icon-off.png);
-    }
-
-    .social-media .gplus-icon-small,
-    .social-media .gplus-icon-medium,
-    .social-media .gplus-icon-large {
-        background-image: url(../images/gplus-icon-off.png);
-    }
-
-    .social-media .fbook-icon-small:hover {
-        background-image: url(../images/fb-icon-on.png);
-    }
-
-    .social-media .twitter-icon-small:hover {
-        background-image: url(../images/twiter-icon-on.png);
-    }
-
-    .social-media .gplus-icon-small:hover {
-        background-image: url(../images/gplus-icon-on.png);
-    }
 
 .arrow-up {
     width: 0;

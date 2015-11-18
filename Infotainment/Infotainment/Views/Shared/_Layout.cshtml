@@ -22,68 +22,61 @@
         @Scripts.Render("~/bundles/StateNewsCtrl")*@
 
 </head>
-<body>
-    <div class="page-container" ng-app="infotainment" ng-controller="mainCtrl">
-        <header class="header">
-            <section id="stickyHeader" class="social-media-banner">
-                <div class="pull-left"><span style="padding: 2px; color: white; padding-top: 5px;">बुधवार, 19 अगस्त, 2015 | 02:29 | IST</span></div>
-                <div class="pull-right">
-                    <ul class="social-media">
-                        <li>
-                            <a href="https://www.facebook.com/profile.php?id=100008360352835&fref=ts" title="Facebook" target="_blank">
-                                <div class="fbook-icon-small round-corner"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="twitter-icon" title="Twitter" target="_blank">
-                                <div class="twitter-icon-small round-corner"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="gplus-icon" title="Google Plus" target="_blank">
-                                <div class="gplus-icon-small round-corner"></div>
-                            </a>
-                        </li>
-                    </ul>
+<body ng-app="infotainment" ng-controller="mainCtrl">
+    <header class="header">
+        <section id="stickyHeader" class="social-media-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <span style="padding: 2px; padding-top: 5px;">बुधवार, 19 अगस्त, 2015 | 02:29 | IST</span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span style="padding: 2px; padding-top: 5px;">Etiam imperdiet volutpat libero eu tristique.</span>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="social-media">
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100008360352835&fref=ts" title="Facebook" target="_blank">
+                                    <div class="fbook-icon-small round-corner"></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter-icon" title="Twitter" target="_blank">
+                                    <div class="twitter-icon-small round-corner"></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="gplus-icon" title="Google Plus" target="_blank">
+                                    <div class="gplus-icon-small round-corner"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
-            <section id="headerBanner" class="header-banner">
-                <div class="pull-left">
-                    @*<div class="logo"></div>*@
-                </div>
-                <div class="pull-right">
-                    <div id="top-row" class="top"></div>
-                    <div id="bottom-row" class="bottom"><span></span></div>
-                </div>
-            </section>
-        </header>
-        <section id="stickyMenu" class="main-menu">
-            @Html.RenderPartial("_PartialMainMenu.cshtml")
+            </div>
         </section>
-        <section id="body" class="bodySection">@RenderBody()</section>
-        <footer class="footer round-corner">
-            <div class="full-row">
-                <div class="footer-left-column">
-                    <p>This is a website where you can find all type of news as well as entertainment things. Thats why Its name Info + Entertainment  = Infotainment.</p>
+        <section id="headerBanner" class="header-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">@*<div class="logo"></div>*@tr</div>
+                    <div class="col-lg-12">Test</div>
                 </div>
             </div>
-            <div class="full-row pull-center copyright shadow">
-                <span>Copyright © 2020 <a href="http://www.anandinfotainment.com/"><strong>Infotainment Company/</strong></a> - Designed by <a href="#" target="_parent">Ranjeet Kumar</a></span>
+        </section>
+        <section id="stickyMenu" class="main-menu">
+            <div class="container">
+                <div class="row">
+                </div>
             </div>
-        </footer>
-    </div>
+        </section>
+    </header>
 
+    <section id="body" class="bodySection">@RenderBody()</section>
     <script>
         $(function () {
-            //var stickyHeader = $('#stickyHeader').offset().top + 30;
             var stickyMenu = $('#stickyMenu').offset().top;
 
             $(window).scroll(function () {
-                //if ($(window).scrollTop() > stickyHeader) {
-                //    $('#stickyHeader').css({ position: 'fixed', top: '0px' });
-                //} else {k
-                //    $('#stickyHeader').css({ position: 'static', top: '0px' });
-                //}
                 if ($(window).scrollTop() > stickyMenu) {
                     $('#stickyMenu').css({ position: 'fixed', width: '1000px', top: '-1px' });
                 } else {

@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using Newtonsoft.Json;
 
 
 namespace Infotainment.Data.Entities
@@ -53,7 +54,8 @@ namespace Infotainment.Data.Entities
 			this._DttmModified = System.DateTime.MinValue;
 		}
 
-		public System.String AdvertismentID
+        [JsonIgnore]
+        public System.String AdvertismentID
 		{
 			get
 			{
@@ -65,7 +67,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool AdvertismentIDIsNull
+        [JsonIgnore]
+        public bool AdvertismentIDIsNull
 		{
 			get
 			{
@@ -73,7 +76,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.Int32 DisplayOrder
+        [JsonIgnore]
+        public System.Int32 DisplayOrder
 		{
 			get
 			{
@@ -85,7 +89,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool DisplayOrderIsNull
+        [JsonIgnore]
+        public bool DisplayOrderIsNull
 		{
 			get
 			{
@@ -105,7 +110,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool HeadingIsNull
+        [JsonIgnore]
+        public bool HeadingIsNull
 		{
 			get
 			{
@@ -125,7 +131,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool WebUrlIsNull
+        [JsonIgnore]
+        public bool WebUrlIsNull
 		{
 			get
 			{
@@ -145,6 +152,7 @@ namespace Infotainment.Data.Entities
             }
         }
 
+        [JsonIgnore]
         public bool WebLinkIsNull
         {
             get
@@ -165,7 +173,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool ShortDescIsNull
+        [JsonIgnore]
+        public bool ShortDescIsNull
 		{
 			get
 			{
@@ -185,7 +194,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool ImgUrlIsNull
+        [JsonIgnore]
+        public bool ImgUrlIsNull
 		{
 			get
 			{
@@ -193,7 +203,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.Int32 AdvertismentType
+        [JsonIgnore]
+        public System.Int32 AdvertismentType
 		{
 			get
 			{
@@ -205,7 +216,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool AdvertismentTypeIsNull
+        [JsonIgnore]
+        public bool AdvertismentTypeIsNull
 		{
 			get
 			{
@@ -213,7 +225,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.Int32 Position
+        [JsonIgnore]
+        public System.Int32 Position
 		{
 			get
 			{
@@ -225,7 +238,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool PositionIsNull
+        [JsonIgnore]
+        public bool PositionIsNull
 		{
 			get
 			{
@@ -233,7 +247,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.Int32 IsApproved
+        [JsonIgnore]
+        public System.Int32 IsApproved
 		{
 			get
 			{
@@ -245,7 +260,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool IsApprovedIsNull
+        [JsonIgnore]
+        public bool IsApprovedIsNull
 		{
 			get
 			{
@@ -253,7 +269,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.Int32 IsActive
+        [JsonIgnore]
+        public System.Int32 IsActive
 		{
 			get
 			{
@@ -265,7 +282,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool IsActiveIsNull
+        [JsonIgnore]
+        public bool IsActiveIsNull
 		{
 			get
 			{
@@ -273,7 +291,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.DateTime DttmCreated
+        [JsonIgnore]
+        public System.DateTime DttmCreated
 		{
 			get
 			{
@@ -285,7 +304,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool DttmCreatedIsNull
+        [JsonIgnore]
+        public bool DttmCreatedIsNull
 		{
 			get
 			{
@@ -293,7 +313,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public System.DateTime DttmModified
+        [JsonIgnore]
+        public System.DateTime DttmModified
 		{
 			get
 			{
@@ -305,7 +326,8 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-		public bool DttmModifiedIsNull
+        [JsonIgnore]
+        public bool DttmModifiedIsNull
 		{
 			get
 			{
