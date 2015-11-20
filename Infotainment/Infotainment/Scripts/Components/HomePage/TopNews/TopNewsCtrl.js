@@ -1,7 +1,7 @@
 ﻿(function () {
-    angular.module('infotainment').controller('TopTenNewsCtrl', ImageGalarySliderCtrl);
+    angular.module('infotainment').controller('TopNewsCtrl', TopNewsCtrl);
 
-    function ImageGalarySliderCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, $interval, ServiceProvider) {
+    function TopNewsCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, $interval, ServiceProvider) {
 
         var ServiceProvider = ServiceProvider;
 
@@ -38,13 +38,6 @@
             {
                 NewsID: "1",
                 Order: 6,
-                Heading: "लाेकसभा : आडवाणी ने सुषमा की पीठ थपथपाई, भाषण सुन आंखें हुईं नम",
-                ShortDescription: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                ImageUrl: "Images/Top-ten/advani-sushma_1439374915.jpg"
-            },
-            {
-                NewsID: "1",
-                Order: 7,
                 Heading: "लाेकसभा : आडवाणी ने सुषमा की पीठ थपथपाई, भाषण सुन आंखें हुईं नम",
                 ShortDescription: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
                 ImageUrl: "Images/Top-ten/advani-sushma_1439374915.jpg"

@@ -2,11 +2,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="page-body">
-    <div class="page-row" ng-controller="homeCtrl">
-        <div class="first-second-column">
-            <div id="mainNews" ng-controller="TopTenNewsCtrl" class="border round-corner-bottom" style="height: 908px;">
-                <div class="page-column">
+<div id="topNews" class="container" ng-controller="TopNewsCtrl">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-6 col-lg-6" style="min-width:150px;">
                     <div class="top-ten-news">
                         <div ng-repeat="news in imageNewsList" class="news">
                             <div class="news-heading">
@@ -40,17 +40,7 @@
                         <div class="read-more" style="margin-top: -18px"><a data-ng-href="@url" target="_blank"><span>और पढ़ें</span></a></div>
                     </div>
                 </div>
-                <div class="page-column">
-                    <div id="exclusie-video" class="exclusie-video">
-                        <div class="news-heading">
-                            <a href="#" class="heading">
-                                <span>{{videoHeading}}</span>
-                            </a>
-                        </div>
-                        <div class="news-body">
-                            <iframe class="video" ng-src="{{videoUrl}}" frameborder="1" allowfullscreen></iframe>
-                        </div>
-                    </div>
+                <div class="col-xs-6 col-lg-6" style="min-width:150px;">
                     <div class="general-news">
                         <div class="news-title">
                             <span>{{simpleNewsHeading}}</span>
@@ -74,62 +64,59 @@
                         </ul>
 
                     </div>
-
-                </div>
-            </div>
-                </div>
-
-        <div class="page-column third-column-container">
-            <div class="advertise-container">
-                <div class="advetise round-corner">
-                    <a href="http://www.dentistry.com" target="_blank">
-                        <div class="text-border">
-                            <img class="image" src="~/Images/Topten-Ad/dentistry-com.JPG" alt="24 Hours dental service">
-                            <span class="caption">Dental care, articles & forum</span>
-                            <span class="url">www.dentistry.com</span>
-                            <span class="text">We have expert dental doctors. Dental emergency? Call 1-866-922-4095</span>
-                        </div>
-                    </a>
-                    <div class="space-top3"></div>
-                </div>
-                <div class="advetise round-corner">
-                    <a href="http://www.jabong.com/men/accessories/watches/?utm_source=facebook&utm_medium=social_paid&utm_campaign=m.1864.Ace_10591.150729.1421.AceM009.STA.CU152.TC000.INT000.BRD000.PC001.PS019.BR000.SC03.LPC&utm_content=AceF009+Ad+50&utm_id=55b87b8258e7ab3f578b4569&sort=discount&dir=desc&utm_term=f.1864.PAN.PR0000.ALL.C000.RS00.TL0451.TX0451.AceF009+Ad+50" target="_blank">
-                        <div class="text-border">
-                            <img class="image" src="~/Images/Topten-Ad/11409993_6035408267582_658037972_n.png" alt="Watches - Upto 70% Off">
-                            <span class="caption">Watches - Upto 70% Off</span>
-                            <span class="url">jabong.com</span>
-                            <span class="text">Don’t miss your Favorite Brand Collections at Upto 80% Off. Pay on Delivery. Shop Now!</span>
-                        </div>
-                    </a>
-                    <div class="space-top3"></div>
-                </div>
-                <div class="advetise round-corner">
-                    <a href="http://www.naturesbasket.co.in" target="_blank">
-                        <div class="text-border">
-                            <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
-                            <span class="caption">Fresher. Tastier. Healthier.</span>
-                            <span class="url">naturesbasket.co.in</span>
-                            <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
-                        </div>
-                    </a>
-                    <div class="space-top3"></div>
-                </div>
-                <div class="advetise round-corner">
-                    <a href="http://www.naturesbasket.co.in" target="_blank">
-                        <div class="text-border">
-                            <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
-                            <span class="caption">Fresher. Tastier. Healthier.</span>
-                            <span class="url">naturesbasket.co.in</span>
-                            <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
-                        </div>
-                    </a>
-                    <div class="space-top3"></div>
                 </div>
             </div>
         </div>
-    </div>
 
-  
+        <div class="col-xs-4">
+
+            <div class="advetise round-corner">
+                <a href="http://www.dentistry.com" target="_blank">
+                    <div class="text-border">
+                        <img class="image" src="~/Images/Topten-Ad/dentistry-com.JPG" alt="24 Hours dental service">
+                        <span class="caption">Dental care, articles & forum</span>
+                        <span class="url">www.dentistry.com</span>
+                        <span class="text">We have expert dental doctors. Dental emergency? Call 1-866-922-4095</span>
+                    </div>
+                </a>
+                <div class="space-top3"></div>
+            </div>
+            <div class="advetise round-corner">
+                <a href="http://www.jabong.com/men/accessories/watches/?utm_source=facebook&utm_medium=social_paid&utm_campaign=m.1864.Ace_10591.150729.1421.AceM009.STA.CU152.TC000.INT000.BRD000.PC001.PS019.BR000.SC03.LPC&utm_content=AceF009+Ad+50&utm_id=55b87b8258e7ab3f578b4569&sort=discount&dir=desc&utm_term=f.1864.PAN.PR0000.ALL.C000.RS00.TL0451.TX0451.AceF009+Ad+50" target="_blank">
+                    <div class="text-border">
+                        <img class="image" src="~/Images/Topten-Ad/11409993_6035408267582_658037972_n.png" alt="Watches - Upto 70% Off">
+                        <span class="caption">Watches - Upto 70% Off</span>
+                        <span class="url">jabong.com</span>
+                        <span class="text">Don’t miss your Favorite Brand Collections at Upto 80% Off. Pay on Delivery. Shop Now!</span>
+                    </div>
+                </a>
+                <div class="space-top3"></div>
+            </div>
+            <div class="advetise round-corner">
+                <a href="http://www.naturesbasket.co.in" target="_blank">
+                    <div class="text-border">
+                        <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
+                        <span class="caption">Fresher. Tastier. Healthier.</span>
+                        <span class="url">naturesbasket.co.in</span>
+                        <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
+                    </div>
+                </a>
+                <div class="space-top3"></div>
+            </div>
+            <div class="advetise round-corner">
+                <a href="http://www.naturesbasket.co.in" target="_blank">
+                    <div class="text-border">
+                        <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
+                        <span class="caption">Fresher. Tastier. Healthier.</span>
+                        <span class="url">naturesbasket.co.in</span>
+                        <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
+                    </div>
+                </a>
+                <div class="space-top3"></div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 

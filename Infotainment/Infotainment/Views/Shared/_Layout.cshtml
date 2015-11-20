@@ -58,27 +58,29 @@
         <section id="headerBanner" class="header-banner">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">@*<div class="logo"></div>*@tr</div>
-                    <div class="col-lg-12">Test</div>
+                    <div class="col-lg-3">@*<div class="logo"></div>*@</div>
+                    <div class="col-lg-12"></div>
                 </div>
             </div>
         </section>
         <section id="stickyMenu" class="main-menu">
             <div class="container">
                 <div class="row">
+                    @Html.Partial("_PartialMainMenu")
                 </div>
             </div>
         </section>
     </header>
-
-    <section id="body" class="bodySection">@RenderBody()</section>
+    <section id="body" class="bodySection">
+        @RenderBody()
+    </section>
     <script>
         $(function () {
             var stickyMenu = $('#stickyMenu').offset().top;
 
             $(window).scroll(function () {
                 if ($(window).scrollTop() > stickyMenu) {
-                    $('#stickyMenu').css({ position: 'fixed', width: '1000px', top: '-1px' });
+                    $('#stickyMenu').css({ position: 'fixed', width: '100%', top: '-1px' });
                 } else {
                     $('#stickyMenu').css({ position: 'static', width: '100%', top: '1px' });
                 }

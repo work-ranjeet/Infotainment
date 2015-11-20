@@ -238,13 +238,11 @@
     <Content Include="Scripts\Common\HelperFactory.js" />
     <Content Include="Scripts\Common\MessageFactory.js" />
     <Content Include="Scripts\Components\HomePage\GameNewsCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\HomeCtrl.js" />
     <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js" />
     <Content Include="Scripts\Components\HomePage\internationalNewsCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\MainNews\MainNewsCtrl.js" />
     <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js" />
     <Content Include="Scripts\Components\HomePage\StateNewsHomeCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\TopTenNews\TopTenNewsCtrl.js" />
+    <Content Include="Scripts\Components\HomePage\TopNews\TopNewsCtrl.js" />
     <Content Include="Scripts\Components\Module\Home.js" />
     <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js" />
     <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js" />
