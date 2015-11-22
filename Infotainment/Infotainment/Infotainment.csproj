@@ -268,7 +268,7 @@
     <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\internationalNewsCtrl.js">
+    <Content Include="Scripts\Components\HomePage\International\internationalNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js">

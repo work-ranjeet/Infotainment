@@ -20,7 +20,7 @@
                                 <p class="news-text padding-top-2">
                                     {{news.ShortDesc}}&nbsp;&nbsp;
                                     <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>
-                                    
+
                                 </p>
                             </a>
                             <hr class="style-two" />
@@ -43,7 +43,39 @@
                     <div><bdi>और पढ़ें - आज की बाकी खबरें...</bdi></div>
                 </a>
             </div>
+            @*<div class="row">
+                <div id="internationalNews" ng-controller="internationalNewsCtrl" class="page-row">
+                    <div class="page-column first-second-column space-top3">
+                        <div class="international-news-container round-corner">
+                            <div class="column-title"><a href="{{PageUrl}}" target="_blank"><span>{{Title}}</span></a></div>
+                            <hr class="style-three" />
+                            <div class="image-news-list">
+                                <div ng-repeat="imageNews in imageNewsList" class="image-news border-bottom">
+                                    <a href="{{imageNews.ID}}" target="_blank">
+                                        <div class="news-image pull-left">
+                                            <img src="~/{{imageNews.ImageUrl}}" alt="" class="image">
+                                        </div>
+                                        <div class="news-text pull-right">
+                                            <span>{{imageNews.Heading}}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="simple-news-list newslist-container">
+                                <div class="newslist-simmple">
+                                    <strong>{{Others}}</strong>
+                                    <hr class="style-five" />
+                                    <ul>
+                                        <li ng-repeat="news in simpleNewsList"><a href="{{news.ID}}" target="_blank"><span class="heading">{{news.Heading}}</span></a></li>
+                                    </ul>
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="read-more" style="margin-top: -22px;"><a href="#" target="_blank"><span>और पढ़ें</span></a></div>
+                    </div>
+                </div>
+            </div>*@
 
         </div>
 
