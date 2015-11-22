@@ -144,6 +144,28 @@ namespace Infotainment.Data.Controls
             return TopNewsDB.Instance.Select(NewsID);
         }
 
+        public IEnumerable<ITopNews> SelectAll(NewsType newsType)
+        {
+            List<ITopNews> list = null;
+            try
+            {
+                switch (newsType)
+                {
+                    case NewsType.TopNews:
+                        list = TopNewsDB.Instance.SelectAll();
+                        break;
+
+                    default:
+                        throw new NotImplementedException();
+
+                }
+            }
+            catch (Exception objExp)
+            {
+                throw objExp;
+            }
+            return list.OrderByDescending( v => v.DttmCreated);
+        }
 
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
         {
@@ -160,7 +182,7 @@ namespace Infotainment.Data.Controls
             return list;
         }
 
-        public IEnumerable<ITopNews> SelectTopeNewsForApproval()
+        public IEnumerable<ITopNews> SelectTopNewsForApproval()
         {
             IEnumerable<ITopNews> list = null;
             try
@@ -175,7 +197,7 @@ namespace Infotainment.Data.Controls
             return list.ToList().FindAll(v => v.IsApproved == 0).OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<ITopNews> SelectTopeNewsForActivate()
+        public IEnumerable<ITopNews> SelectTopNewsForActivate()
         {
             IEnumerable<ITopNews> list = null;
             try

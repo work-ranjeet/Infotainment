@@ -1,4 +1,5 @@
-﻿using Infotainment.Data.Controls;
+﻿using Infotainment.Data;
+using Infotainment.Data.Controls;
 using Infotainment.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,46 @@ namespace Infotainment.Controllers
             }
 
             return news;
+        }
+
+        [HttpGet]
+        public IEnumerable<INews> NewsList()
+        {
+            var newsInstance = TopNewsBL.Instance;
+            List<INews> newsList = new List<INews>();
+            try
+            {
+                var result = newsInstance.SelectAll(NewsType.TopNews);
+                result.AsParallel().AsOrdered().ForAll(val =>
+                {
+                    if (val.IsActive == 1 && val.IsApproved == 1)
+                    {
+                        newsList.Add(new News
+                        {
+                            NewsID = val.TopNewsID,
+                            DisplayOrder = val.DisplayOrder,
+                            Heading = val.Heading,
+                            ImageUrl = val.ImageUrl,
+                            EditorID = string.Empty,
+                            EditorName = "",
+                            ShortDesc = val.ShortDescription,
+                            NewsDesc = val.NewsDescription,
+                            DttmCreated = val.DttmCreated
+                        });
+                    }
+                });
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                newsInstance.Dispose();
+            }
+
+            return newsList;
         }
 
     }

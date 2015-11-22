@@ -24,16 +24,16 @@
 }
 
 .news-image-container {
-    height: 108px;
-    width: 108px;
+    height: 128px;
+    width: 128px;
     border: 1px solid #ddd;
     padding: 3px;
     border-radius: 50%;
 }
 
 .news-image {
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     /*border: inset 1px #ccc;*/
 }

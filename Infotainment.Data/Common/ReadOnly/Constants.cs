@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Infotainment.Data
 {
+    public enum NewsType
+    {
+        TopNews = 1
+    }
     public enum ImageType
     {
         TopNewsImage = 1

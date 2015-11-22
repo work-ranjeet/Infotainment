@@ -12,7 +12,7 @@ namespace Infotainment.Controllers
 {
     public class MainNewsController : Controller
     {
-        public async Task<ActionResult> NewsList(int? NewsType)
+        public async Task<ActionResult> NewsList()
         {
             return await Task.Run(() =>
             {
@@ -38,7 +38,7 @@ namespace Infotainment.Controllers
                         ShortDesc = result.ShortDescription,
                         NewsDesc = result.NewsDescription,
                         EditorID = string.Empty,
-                        EditorName = "Ranjeet Kumar",
+                        EditorName = "",
                         DttmCreated = result.DttmCreated
                     }; ;
                 }

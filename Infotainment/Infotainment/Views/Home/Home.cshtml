@@ -17,7 +17,11 @@
                                 <div class="pull-left padding-right-five">
                                     <img class=" news-image" ng-src="{{news.ImageUrl}}" alt=" ">
                                 </div>
-                                <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>
+                                <p class="news-text padding-top-2">
+                                    {{news.ShortDesc}}&nbsp;&nbsp;
+                                    <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span>
+                                    
+                                </p>
                             </a>
                             <hr class="style-two" />
                         </div>
@@ -34,8 +38,15 @@
                         </div>
                     </div>
                 </div>
+
+                <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" style="width:100%;" class="show-all">
+                    <div><bdi>और पढ़ें - आज की बाकी खबरें...</bdi></div>
+                </a>
             </div>
+
+
         </div>
+
         <div class="col-xs-4">
             <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
                 <a href="{{advertise.WebLink}}" target="_blank">
@@ -47,7 +58,7 @@
                     </div>
                 </a>
                 <div class="space-top3"></div>
-            </div>         
+            </div>
         </div>
     </div>
     @* End Top ten news *@

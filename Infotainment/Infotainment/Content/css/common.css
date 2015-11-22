@@ -102,6 +102,15 @@ a {
             text-decoration: none;
         }
 
+    a:before,
+    a::before, a::before(2),
+    a:after,
+    a::after,
+    a::after(2) a.more:hover {
+        color: #0528cc;
+        text-decoration: none;
+    }
+
 input[type="checkbox" i] {
     margin: 0px;
 }

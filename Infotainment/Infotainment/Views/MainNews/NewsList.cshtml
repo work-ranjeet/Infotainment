@@ -2,37 +2,44 @@
     ViewBag.Title = "NewsList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="page-body">
-    <div class="page-row">
-        <div class="column col-span-three">
-            <div class="news-container" ng-controller="mainnewsCtrl">
-                <div class="news-list" ng-repeat="news in NewsList">
-                    <div class="pull-left news-Image">
-                        <img src="~/{{news.ImageUrl}}" />
-                    </div>
-                    <div class="pull-right news-content">
-                        @{
-                            var url = Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" });
-                            url = HttpUtility.UrlDecode(url);
-                        }
-                        <a data-ng-href="@url" target="_blank"><span class="heading">{{news.Heading}}</span></a>
-                        <hr class="style-three" />
-                        <a href="#" target="_blank"><span class="editor">{{news.EditorName}} &nbsp;|&nbsp;{{news.Date}}</span></a>
-                        <span class="short-desc">{{news.ShortDesc}}  
-                            @{
-                                url = Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" });
-                                url = HttpUtility.UrlDecode(url);
-                            }
-                            <a data-ng-href="@url" class="more"  target="_blank">More..</a></span>
-                    </div>
-                </div>
-            </div>
-            @* <div>More</div>*@
+<div id="topNews" class="container" ng-controller="newsDetailCtrl">
+    <div class="row">
+        <div class="col-xs-1">
         </div>
-        <div class="column column-four">
+        <div class="col-xs-8">
+            <div class="row" ng-repeat="news in PartialNewsList">
+                <div id="topNewsList" class="col-xs-12 list-container">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
+                        <span class="news-list-heading">{{news.Heading}}</span>
+                    </a>
+                    <div class="pull-left padding-right-five">
+                        <img class="news-list-image" ng-src="{{news.ImageUrl}}" />
+                    </div>
+
+                    <a href="#" target="_blank">
+                        <span class="news-list-editor">{{news.EditorName}} &nbsp;|&nbsp;{{news.DttmCreated}}</span>
+                    </a>
+                    <p>
+                        <span class="news-list-short-desc">{{news.ShortDesc}}</span>
+                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" class="text-primary" target="_blank">और पढ़ें ..</a>
+                    </p>
+                </div>
+                <hr />
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
+                <a href="{{advertise.WebLink}}" target="_blank">
+                    <div class="text-border">
+                        <img class="image" src="{{advertise.ImgUrl}}" alt="24 Hours dental service">
+                        <span class="caption">{{advertise.Heading}}</span>
+                        <span class="url">{{advertise.WebUrl}}</span>
+                        <span class="text">{{advertise.ShortDesc}}</span>
+                    </div>
+                </a>
+                <div class="space-top3"></div>
+            </div>
         </div>
     </div>
-
 </div>
-

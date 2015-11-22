@@ -28,7 +28,7 @@ namespace Infotainment.Areas.Admin.Controllers
                 list.ApprovalList = new List<TopNewsApproval>();
 
                 var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectTopeNewsForApproval();
+                var result = topNewsBL.SelectTopNewsForApproval();
                 result.ToList().ForEach(v =>
                 {
                     list.ApprovalList.Add(
@@ -65,7 +65,7 @@ namespace Infotainment.Areas.Admin.Controllers
 
                 TopNewsBL.Instance.GiveApprovalFor(list);
 
-                TopNewsBL.Instance.SelectTopeNewsForApproval().ToList().ForEach(v =>
+                TopNewsBL.Instance.SelectTopNewsForApproval().ToList().ForEach(v =>
                 {
                     activeList.ApprovalList.Add(
                         new TopNewsApproval
@@ -98,7 +98,7 @@ namespace Infotainment.Areas.Admin.Controllers
                 list.ActivationlList = new List<TopNewsActivation>();
 
                 var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectTopeNewsForActivate();
+                var result = topNewsBL.SelectTopNewsForActivate();
                 result.ToList().ForEach(v =>
                 {
                     list.ActivationlList.Add(
@@ -135,7 +135,7 @@ namespace Infotainment.Areas.Admin.Controllers
 
                 TopNewsBL.Instance.MakeActiveFor(list);
 
-                TopNewsBL.Instance.SelectTopeNewsForActivate().ToList().ForEach(v =>
+                TopNewsBL.Instance.SelectTopNewsForActivate().ToList().ForEach(v =>
                 {
                     activeList.ActivationlList.Add(
                         new TopNewsActivation
