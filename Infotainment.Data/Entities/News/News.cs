@@ -17,6 +17,12 @@ namespace Infotainment.Models.Entities
         public string ShortDesc { get; set; }
 
         public string NewsDesc { get; set; }
+
+        public string EditorID { get; set; }
+
+        public string EditorName { get; set; }
+
+        public System.DateTime DttmCreated { get; set; }
     }
 
     //public class TopTenNewsList

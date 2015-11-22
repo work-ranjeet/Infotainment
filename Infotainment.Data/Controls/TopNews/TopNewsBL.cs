@@ -95,7 +95,7 @@ namespace Infotainment.Data.Controls
 
             try
             {
-                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item));              
+                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item));
 
                 dbhelper.CommitTransaction();
             }
@@ -146,7 +146,7 @@ namespace Infotainment.Data.Controls
 
 
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
-        {            
+        {
             IEnumerable<ITopNews> list = null;
             try
             {
@@ -190,18 +190,18 @@ namespace Infotainment.Data.Controls
             return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<ITopNews> SelectFirst10TopNews ()
+        public IEnumerable<ITopNews> SelectFirst10TopNews()
         {
-          var top20 =  TopNewsDB.Instance.Select20TopNews();
+            var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return top20.Take(10);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(7);
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
         {
-            var top20 =  TopNewsDB.Instance.Select20TopNews();
+            var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return top20.Skip(10).Take(10);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(13);
         }
         #endregion
 

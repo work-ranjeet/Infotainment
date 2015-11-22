@@ -1,12 +1,15 @@
 ﻿angular.module('infotainment').factory('InfotainmentService', function ($http, $q) {
-    var localHost = 'http://localhost:55592/';
-    var webUrl = localHost;
+    
+    var webHost = "";
 
     return {
+        Host: function setHost(host) {
+            webHost = host +"/";
+        },
 
         getPostData: function (url, postdata) {
             var deferred = $q.defer();
-            var completeUrl = webUrl + url;
+            var completeUrl = webHost + url;
 
             $http.post(completeUrl, postdata)
               .then(function (result) {
@@ -17,7 +20,7 @@
 
         getData: function (url, locale) {
             var deferred = $q.defer();
-            var completeUrl = webUrl + url;
+            var completeUrl = webHost + url;
 
             $http.get(completeUrl)
               .then(function (result) {

@@ -208,10 +208,21 @@
     <Content Include="Images\Topten-Ad\11409993_6035408267582_658037972_n.png" />
     <Content Include="Images\Topten-Ad\dentistry-com.JPG" />
     <Content Include="Images\Topten-Ad\safe_image.png" />
-    <Content Include="Scripts\App.js" />
-    <Content Include="Scripts\MainCtrl.js" />
-    <Content Include="Scripts\Vendor\Bootstrap\bootstrap.js" />
-    <Content Include="Scripts\Vendor\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\App.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\MainCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Bootstrap\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Bootstrap\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
@@ -230,62 +241,171 @@
     <Content Include="Areas\Admin\Views\Advertisment\Insert.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Select.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Update.cshtml" />
-    <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Common\appDirectives.js" />
-    <Content Include="Scripts\Common\appFactory.js" />
-    <Content Include="Scripts\Common\appFilters.js" />
-    <Content Include="Scripts\Common\Constants.js" />
-    <Content Include="Scripts\Common\HelperFactory.js" />
-    <Content Include="Scripts\Common\MessageFactory.js" />
-    <Content Include="Scripts\Components\HomePage\GameNewsCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\internationalNewsCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\StateNewsHomeCtrl.js" />
-    <Content Include="Scripts\Components\HomePage\TopNews\TopNewsCtrl.js" />
-    <Content Include="Scripts\Components\Module\Home.js" />
-    <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js" />
-    <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js" />
-    <Content Include="Scripts\Components\StateNews\StateNewsListCtrl.js" />
-    <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-1.11.3.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery-ui.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery.validate.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery.validate.min.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\Vendor\JQuery\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Vendor\JQuery\respond.js" />
-    <Content Include="Scripts\Vendor\JQuery\respond.min.js" />
-    <Content Include="Scripts\Services\InfotainmentService.js" />
-    <Content Include="Scripts\Services\ServiceProvider.js" />
-    <Content Include="Scripts\Services\UrlProvider.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-animate.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-animate.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-cookies.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-cookies.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-csp.css" />
-    <Content Include="Scripts\Vendor\Angular\angular-loader.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-loader.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-message-format.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-message-format.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-messages.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-messages.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-mocks.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-resource.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-resource.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-route.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-route.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-sanitize.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-sanitize.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-scenario.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-touch.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-touch.min.js" />
-    <Content Include="Scripts\Vendor\Angular\angular-ui-router.js" />
-    <Content Include="Scripts\Vendor\Angular\angular.js" />
-    <Content Include="Scripts\Vendor\Angular\ngCookies.js" />
-    <Content Include="Scripts\Vendor\Angular\TweenMax.min.js" />
-    <Content Include="Scripts\Vendor\Angular\ui-bootstrap-tpls.js" />
+    <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Scripts\Common\appDirectives.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Common\appFactory.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Common\appFilters.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Common\Constants.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Common\HelperFactory.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Common\MessageFactory.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\GameNewsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\internationalNewsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\StateNewsHomeCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\HomePage\TopNews\TopNewsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\StateNews\StateNewsListCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Scripts\Vendor\JQuery\jquery-1.11.3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery-ui.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery.validate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery.validate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\modernizr-2.6.2.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\respond.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\respond.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Services\InfotainmentService.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Services\ServiceProvider.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Services\UrlProvider.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-animate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-animate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-cookies.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-cookies.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-csp.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-loader.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-loader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-message-format.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-message-format.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-messages.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-messages.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-mocks.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-resource.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-resource.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-route.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-route.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-sanitize.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-sanitize.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-scenario.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-touch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-touch.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-ui-router.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\ngCookies.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\TweenMax.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\ui-bootstrap-tpls.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.bg.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.ca.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.cs.js" />
@@ -323,10 +443,16 @@
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.uk.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.zh-CN.js" />
     <Content Include="Scripts\Vendor\Bootstrap\locales\bootstrap-datepicker.zh-TW.js" />
-    <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.debug.js" />
-    <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.js" />
+    <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.debug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Knockout\knockout-2.3.0.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\adapters\jquery.js" />
-    <Content Include="Scripts\Vendor\TxtEditor\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\Vendor\TxtEditor\ckeditor\ckeditor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\lang\af.js" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\lang\ar.js" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\lang\bg.js" />
@@ -546,8 +672,12 @@
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\skins\moono\images\lock-open.png" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\skins\moono\images\lock.png" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\skins\moono\images\refresh.png" />
-    <Content Include="Scripts\Vendor\TxtEditor\ckeditor\styles.js" />
-    <Content Include="Scripts\Vendor\JQuery\_references.js" />
+    <Content Include="Scripts\Vendor\TxtEditor\ckeditor\styles.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\JQuery\_references.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -556,16 +686,36 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\Vendor\Angular\angular-animate.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-cookies.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-loader.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-message-format.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-messages.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-resource.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-route.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular-touch.min.js.map" />
-    <Content Include="Scripts\Vendor\Angular\angular.min.js.map" />
+    <Content Include="Scripts\Vendor\Angular\angular-animate.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-cookies.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-loader.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-message-format.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-messages.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-resource.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-route.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-sanitize.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular-touch.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Vendor\Angular\angular.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\plugins\scayt\README.md" />
     <Content Include="Scripts\Vendor\TxtEditor\ckeditor\plugins\wsc\LICENSE.md" />
@@ -574,16 +724,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Home1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\MainNews\NewsDetail.cshtml" />
     <Content Include="Views\MainNews\NewsList.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\StateNews\AllStateNews.cshtml" />
     <Content Include="Views\StateNews\StateNews.cshtml" />
     <Content Include="Views\StateNews\StateNewsList.cshtml" />
-    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\Home.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Shared\_PartialMainMenu.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\MainNews\NewsDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,6 +18,7 @@
         width: 100%;
         background: #003 url(../images/header-top-bg.jpg) repeat-x;
         padding: 4px;
+        color:#D5D7D8;
     }
 
     .header .header-banner { /*margin-top: 1px;*/

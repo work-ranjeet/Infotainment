@@ -18,11 +18,12 @@ body {
     font-size: 13px;
     height: 100%;
     display: block;
-    line-height:18px;
-    color:#E6E6E6;
+    line-height: 21px;
+    color: #575757;
+    text-align: justify;
 }
 
-.body {
+/*.body {
     position: absolute;
     top: -20px;
     left: -20px;
@@ -30,7 +31,8 @@ body {
     bottom: -40px;
     width: auto;
     height: auto;
-}
+}*/
+
 
 ul {
     list-style-type: none;
@@ -81,6 +83,7 @@ a {
     text-decoration: none;
     padding: 0px;
     margin: 0px;
+    color: #616161;
 }
 
     a.more {
@@ -96,6 +99,7 @@ a {
         a:hover,
         a.more:hover {
             color: #0528cc;
+            text-decoration: none;
         }
 
 input[type="checkbox" i] {
@@ -125,8 +129,9 @@ hr.style-one {
 hr.style-two {
     border: 0;
     height: 1px;
-    background: #FBD5D5;
-    background-image: linear-gradient(to right, #ECECEC, #739DAB, #ECECEC);
+    background: #a5bdda;
+    margin-top: 0px;
+    background-image: linear-gradient(to right, #ECECEC, #BACAD0, #ECECEC);
 }
 
 hr.style-three {
@@ -154,6 +159,7 @@ hr.style-five {
     background: #a3a3a3;
     background-image: linear-gradient(to right, #B7B7B7, #D2D2D2, #F5F5F5);
 }
+
 hr.style-six {
     border: 0;
     padding: 0px;
@@ -223,12 +229,12 @@ body {
     margin: auto;
 }
 
-.text-right{
+.text-right {
     text-align: right;
     text-align: -webkit-right;
 }
 
-.text-left{
+.text-left {
     text-align: left;
     text-align: -webkit-left;
 }
@@ -401,6 +407,18 @@ body {
 
 .padding-left-four {
     padding-left: 10px !important;
+}
+
+.padding-right-five {
+    padding-right: 5px;
+}
+
+.padding-top-2 {
+    padding-top: 2px;
+}
+
+.padding-top-5 {
+    padding-top: 5px;
 }
 
 .vetical-scroll {

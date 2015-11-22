@@ -2,121 +2,55 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@* Top ten news *@
 <div id="topNews" class="container" ng-controller="TopNewsCtrl">
+
     <div class="row">
         <div class="col-xs-8">
             <div class="row">
-                <div class="col-xs-6 col-lg-6" style="min-width:150px;">
-                    <div class="top-ten-news">
-                        <div ng-repeat="news in imageNewsList" class="news">
-                            <div class="news-heading">
-                                @{
-                                    var url = Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" });
-                                    url = HttpUtility.UrlDecode(url);
-                                }
-                                <a data-ng-href="@url" target="_blank"><span class="news-heading-text">{{news.Heading}}</span></a>
-                            </div>
-                            <div class="news-body">
-                                <div class="pull-left">
-                                    <a href="{{news.NewsID}}">
-                                        @*<img src="~/{{news.ImageUrl}}" alt="" class="image">*@
-                                        <img ng-src="{{news.ImageUrl}}" alt="" class="image">
-                                    </a>
+                <div id="topNewsItem" class="col-xs-6 col-lg-6" ng-repeat="news in imageNewsList">
+
+                    <div ng-show="news.ImageUrl.length > 0" class="row">
+                        <div class="col-xs-12">
+                            <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
+                                <span class="news-heading"> {{news.Heading}}</span>
+                                <div class="pull-left padding-right-five">
+                                    <img class=" news-image" ng-src="{{news.ImageUrl}}" alt=" ">
                                 </div>
-                                <div class="article pull-right">
-                                    <span>{{news.ShortDescription}}</span>
-                                    @{
-                                        url = Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" });
-                                        url = HttpUtility.UrlDecode(url);
-                                    }
-                                    <a data-ng-href="@url" target="_blank"><span class="more">&nbsp;&nbsp;More..</span></a>
-                                </div>
-                            </div>
+                                <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>
+                            </a>
+                            <hr class="style-two" />
                         </div>
-                        @{
-                            url = Url.Action("NewsList", "MainNews", new { NewsType = "{{newsListPageUrl}}" });
-                            url = HttpUtility.UrlDecode(url);
-                        }
-                        <div class="read-more" style="margin-top: -18px"><a data-ng-href="@url" target="_blank"><span>और पढ़ें</span></a></div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-lg-6" style="min-width:150px;">
-                    <div class="general-news">
-                        <div class="news-title">
-                            <span>{{simpleNewsHeading}}</span>
-                            <hr class="style-five" />
+                <div id="topNewsItemDesc" class="col-xs-6 col-lg-6" ng-repeat="news in simpleNewsList">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
+                                <span class="news-heading"> {{news.Heading}}</span>
+                                <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>
+                            </a>
+                            <hr class="style-two" />
                         </div>
-                        <ul>
-                            <li ng-repeat="simNews in simpleNewsList">
-                                @{
-                                    url = Url.Action("NewsDetail", "MainNews", new { NewsId = "{{simNews.NewsID}}" });
-                                    url = HttpUtility.UrlDecode(url);
-                                }
-                                <a data-ng-href="@url" target="_blank" class="heading">
-                                    <span>{{simNews.Heading}}</span>
-                                </a>
-                            </li>
-                            @{
-                                url = Url.Action("NewsList", "MainNews", new { NewsType = "{{simpleNewsPageUrl}}" });
-                                url = HttpUtility.UrlDecode(url);
-                            }
-                            <div class="read-more" style="margin-top: -18px"><a data-ng-href="@url" target="_blank"><span>और पढ़ें</span></a></div>
-                        </ul>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-xs-4">
-
-            <div class="advetise round-corner">
-                <a href="http://www.dentistry.com" target="_blank">
+            <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
+                <a href="{{advertise.WebLink}}" target="_blank">
                     <div class="text-border">
-                        <img class="image" src="~/Images/Topten-Ad/dentistry-com.JPG" alt="24 Hours dental service">
-                        <span class="caption">Dental care, articles & forum</span>
-                        <span class="url">www.dentistry.com</span>
-                        <span class="text">We have expert dental doctors. Dental emergency? Call 1-866-922-4095</span>
+                        <img class="image" src="{{advertise.ImgUrl}}" alt="24 Hours dental service">
+                        <span class="caption">{{advertise.Heading}}</span>
+                        <span class="url">{{advertise.WebUrl}}</span>
+                        <span class="text">{{advertise.ShortDesc}}</span>
                     </div>
                 </a>
                 <div class="space-top3"></div>
-            </div>
-            <div class="advetise round-corner">
-                <a href="http://www.jabong.com/men/accessories/watches/?utm_source=facebook&utm_medium=social_paid&utm_campaign=m.1864.Ace_10591.150729.1421.AceM009.STA.CU152.TC000.INT000.BRD000.PC001.PS019.BR000.SC03.LPC&utm_content=AceF009+Ad+50&utm_id=55b87b8258e7ab3f578b4569&sort=discount&dir=desc&utm_term=f.1864.PAN.PR0000.ALL.C000.RS00.TL0451.TX0451.AceF009+Ad+50" target="_blank">
-                    <div class="text-border">
-                        <img class="image" src="~/Images/Topten-Ad/11409993_6035408267582_658037972_n.png" alt="Watches - Upto 70% Off">
-                        <span class="caption">Watches - Upto 70% Off</span>
-                        <span class="url">jabong.com</span>
-                        <span class="text">Don’t miss your Favorite Brand Collections at Upto 80% Off. Pay on Delivery. Shop Now!</span>
-                    </div>
-                </a>
-                <div class="space-top3"></div>
-            </div>
-            <div class="advetise round-corner">
-                <a href="http://www.naturesbasket.co.in" target="_blank">
-                    <div class="text-border">
-                        <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
-                        <span class="caption">Fresher. Tastier. Healthier.</span>
-                        <span class="url">naturesbasket.co.in</span>
-                        <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
-                    </div>
-                </a>
-                <div class="space-top3"></div>
-            </div>
-            <div class="advetise round-corner">
-                <a href="http://www.naturesbasket.co.in" target="_blank">
-                    <div class="text-border">
-                        <img class="image" src="~/Images/Topten-Ad/safe_image.png" alt="naturesbasket.co.in">
-                        <span class="caption">Fresher. Tastier. Healthier.</span>
-                        <span class="url">naturesbasket.co.in</span>
-                        <span class="text">Fresh fruits & vegetables delivered in 3 hours. Use Code GNB200 to Get Rs. 200 Off!</span>
-                    </div>
-                </a>
-                <div class="space-top3"></div>
-            </div>
-
+            </div>         
         </div>
     </div>
+    @* End Top ten news *@
 </div>
 
 

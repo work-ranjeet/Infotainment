@@ -1,27 +1,59 @@
-﻿@{
+﻿@model Infotainment.Models.Entities.News
+
+@{
     ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="page-body page-row">
-    <div class="news-detail-container" ng-controller="mainnewsCtrl">
-        <div class="column left-column"></div>
-        <div class="column center-column">
-            <span class="heading">{{NewsDetail.Heading}}</span>
-            <hr class="style-three" />
-            <a href="#" target="_blank"><span class="editor">{{NewsDetail.EditorName}} &nbsp;|&nbsp;{{NewsDetail.Date}}</span></a>
-            <hr class="style-three" />
-            <div class="pull-left news-Image">
-                <img src="~/{{NewsDetail.ImageUrl}}" />
-            </div>
-            <div class="pull-right news-content">
+<div class="container" ng-controller="newsDetailCtrl">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-12" ng-repeat="news in imageNewsList">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
 
-                <p><span class="desc">{{NewsDetail.ShortDesc}}</span></p>
-                <p><span class="desc">{{NewsDetail.Desc}}</span></p>
+                        <div class="pull-left padding-right-five">
+                            <img class="news-image" ng-src="{{news.ImageUrl}}" alt=" ">
+                        </div>
+                        <p>
+                            <span class="news-heading" style="font-weight:normal; font-size:14px;"> {{news.Heading}}</span>
+                            <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span>
+                        </p>
+
+
+                        @*<span class="news-date text-center">{{news.DttmCreated}}</span>*@
+                        @*<p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>*@
+                    </a>
+                    <hr class="style-two" />
+                </div>
             </div>
+        </div>
+        <div class="col-xs-6">
+            <p>
+                <span class="news-detail-heading">@Model.Heading</span>
+            </p>
+            <a href="#" target="_blank"><span class="news-detail-editor">Reported by: @Model.EditorName &nbsp;|&nbsp;@Model.DttmCreated</span></a>
+            <p>
+                <img class="news-detail-Image" src="@Url.Content(Model.ImageUrl)" />
+            </p>
+            <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
+            <p class="news-detail-content"><span class="news-detail-desc">@Model.NewsDesc</span></p>
+
             @* <div>More</div>*@
         </div>
-        <div class="column right-column">
+        <div class="col-xs-3">
+
+            <div class="row">
+                <div class="col-xs-12" ng-repeat="news in simpleNewsList">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
+                        <span class="news-heading"> {{news.Heading}}</span>
+                        <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>
+                    </a>
+                    <hr class="style-two" />
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
 

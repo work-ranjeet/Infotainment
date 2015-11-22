@@ -38,8 +38,8 @@ namespace Infotainment.Data
 
     public class ImagePath
     {
-        public static readonly string TopTenNewsImage = "~/Images/Top-ten";
-        public static readonly string TopTenAdvertisment = "~/Images/Advertisment/ToptenAdd";
+        public static readonly string TopTenNewsImage = "/Images/Top-ten";
+        public static readonly string TopTenAdvertisment = "/Images/Advertisment/ToptenAdd";
 
     }
 }

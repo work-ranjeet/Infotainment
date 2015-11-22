@@ -1,7 +1,56 @@
-﻿.page-body {
+﻿.news-heading {
+    font-size: 15px;
+    line-height: 20px;
+    color: #616161;
+    font-weight: bold;
+    padding: 0px 0px 10px 0px;
+}
+
+    .news-heading:hover {
+        color: #5f74ba;
+        cursor: pointer;
+    }
+
+.news-date {
+    color: #aaaaaa;
+    white-space: nowrap;
+    font-family: georgia;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.news-text {
+    font-size: 14px;
+}
+
+.news-image-container {
+    height: 108px;
+    width: 108px;
+    border: 1px solid #ddd;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.news-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /*border: inset 1px #ccc;*/
+}
+
+/*.nws-article {
+    margin-top: -5px;
+    width: 205px;
+    font-size: 13px;
+    text-align: justify;
+    color: #4e4e4e;
+}*/
+
+
+/*.page-body {
     width: 100%;
     height: auto;
-    /*border: solid thin #d8d8d8;*/
+   
 }
 
 .news-heading {
@@ -17,9 +66,9 @@
 
         .news-heading .news-heading-text:hover {
             color: #5e72d1;
-        }
+        }*/
 
-.news-body {
+. /*news-body {
     margin-top: 5px;
 }
 
@@ -53,30 +102,28 @@
         .top-ten-news .news .more {
             color: #1234ff;
             font-size: smaller;
-        }
-
-
+        }*/
 .exclusie-video {
     padding: 5px 0 0 17px;
 }
 
-    .exclusie-video .heading {
-        font-size: 16px;
-        text-align: justify;
-        color: #4e4e4e;
+.exclusie-video .heading {
+    font-size: 16px;
+    text-align: justify;
+    color: #4e4e4e;
+}
+
+    .exclusie-video .heading:hover {
+        color: #5e72d1;
     }
 
-        .exclusie-video .heading:hover {
-            color: #5e72d1;
-        }
+.exclusie-video .video {
+    height: 200px;
+    width: 100%;
+    border: none;
+}
 
-    .exclusie-video .video {
-        height: 200px;
-        width: 100%;
-        border: none;
-    }
-
-.general-news {
+/*.general-news {
     margin-top: 8px;
     text-align: justify;
     padding: 0 4px 0 10px;
@@ -96,12 +143,12 @@
         .general-news ul > li {
             padding: 10px 0 0 0;
             list-style-type:disc;
-        }
+        }*/
 
 
 /* State tab control css*/
 .dispaly {
-    display: block ;
+    display: block;
 }
 
 .hide {
@@ -114,89 +161,89 @@
     border: solid thin #ccc;
 }
 
-.state-tab-control .tab-header-container {
-    width: 104px;
-    height: 384px;
-    float: left;
-    background-color: rgba(246, 246, 246, 0.67);
-}
-
-    .state-tab-control .tab-header-container > ul {
-        padding: 0px;
-    }
-
-        .state-tab-control .tab-header-container > ul > li {
-            list-style-type: none;
-        }
-
-    .state-tab-control .tab-header-container .active-state-news-header {
-        height: 30px;
+    .state-tab-control .tab-header-container {
         width: 104px;
-        padding: 0px;
-        margin: 1px;
-        color: #5e72d1;
+        height: 384px;
+        float: left;
         background-color: rgba(246, 246, 246, 0.67);
-        border-bottom: solid thin #ccc;
-        border-right: none;
     }
 
-    .state-tab-control .tab-header-container .de-active-state-news-header {
-        height: 30px;
-        width: 104px;
-        padding: 0px;
-        margin: 1px;
-        color: white;
-        background-color: #454545;
-    }
-
-        .state-tab-control .tab-header-container .active-state-news-header > span,
-        .state-tab-control .tab-header-container .de-active-state-news-header > span {
-            padding: 0px 0px 4px 5px;
-            line-height: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+        .state-tab-control .tab-header-container > ul {
+            padding: 0px;
         }
 
-
-.state-tab-control .tab-content-container {
-    height: 384px;
-    width: 562px;
-    float: right;
-    background-color: rgba(246, 246, 246, 0.67);
-}
-
-    .state-tab-control .tab-content-container .tab-height {
-        height: 364px;
-    }
-
-    .state-tab-control .tab-content-container .tab-content {
-        height: 100px;
-    }
-
-        .state-tab-control .tab-content-container .tab-content .topnews {
-            padding: 0 2px 0 2px;
-            width: 225px;
-            float: left;
-            display: block;
-        }
-
-            .state-tab-control .tab-content-container .tab-content .topnews img {
-                height: 150px;
-                width: 232px;
+            .state-tab-control .tab-header-container > ul > li {
+                list-style-type: none;
             }
 
-            .state-tab-control .tab-content-container .tab-content .topnews p {
-                text-align: justify;
-                font-size: 13px;
-                color: #4e4e4e;
-                line-height: 22px;
+        .state-tab-control .tab-header-container .active-state-news-header {
+            height: 30px;
+            width: 104px;
+            padding: 0px;
+            margin: 1px;
+            color: #5e72d1;
+            background-color: rgba(246, 246, 246, 0.67);
+            border-bottom: solid thin #ccc;
+            border-right: none;
+        }
+
+        .state-tab-control .tab-header-container .de-active-state-news-header {
+            height: 30px;
+            width: 104px;
+            padding: 0px;
+            margin: 1px;
+            color: white;
+            background-color: #454545;
+        }
+
+            .state-tab-control .tab-header-container .active-state-news-header > span,
+            .state-tab-control .tab-header-container .de-active-state-news-header > span {
+                padding: 0px 0px 4px 5px;
+                line-height: 30px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
             }
 
-        .state-tab-control .tab-content-container .tab-content .newslist-container {
-            float: right;
-            width: 315px;
+
+    .state-tab-control .tab-content-container {
+        height: 384px;
+        width: 562px;
+        float: right;
+        background-color: rgba(246, 246, 246, 0.67);
+    }
+
+        .state-tab-control .tab-content-container .tab-height {
+            height: 364px;
         }
+
+        .state-tab-control .tab-content-container .tab-content {
+            height: 100px;
+        }
+
+            .state-tab-control .tab-content-container .tab-content .topnews {
+                padding: 0 2px 0 2px;
+                width: 225px;
+                float: left;
+                display: block;
+            }
+
+                .state-tab-control .tab-content-container .tab-content .topnews img {
+                    height: 150px;
+                    width: 232px;
+                }
+
+                .state-tab-control .tab-content-container .tab-content .topnews p {
+                    text-align: justify;
+                    font-size: 13px;
+                    color: #4e4e4e;
+                    line-height: 22px;
+                }
+
+            .state-tab-control .tab-content-container .tab-content .newslist-container {
+                float: right;
+                width: 315px;
+            }
 /* End of state news */
 
 /*international news*/
@@ -251,27 +298,34 @@
 /* Internation News end */
 
 
-.advertise-container {
-    margin-top: 4px;
-    height: 2016px;
+.advetise {
+    border: none;
+    padding-left: 5px;
 }
 
-    .advertise-container .advetise {
-        border: none;
-        padding-left: 5px;
+    .advetise .text-border {
+        border: thin solid #d4d2d2;
+        margin-top: -3px;
     }
 
-.advetise .text-border {
-    width: 325px;
-    border: thin solid #d4d2d2;
-    margin-top: -3px;
-}
+    .advetise .text {
+        color: #9197a3;        
+        font-family: helvetica, arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.28;
+        padding-top: 6px 2px 2px 2px;
+    }
 
-.advetise > a {
-    color: #3b5998;
-    cursor: pointer;
-    text-decoration: none;
-}
+    .advetise > a {
+        color: #3b5998;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .advetise .image {
+        width: 100%;
+        height: auto;
+    }
 
 .text-border > span {
     display: block;

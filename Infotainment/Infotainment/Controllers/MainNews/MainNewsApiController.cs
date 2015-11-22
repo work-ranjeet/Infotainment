@@ -21,15 +21,19 @@ namespace Infotainment.Controllers
                 var result = newsInstance.SelectFirst10TopNews();
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
-                    newsList.Add(new News
+                    if (val.IsActive == 1 && val.IsApproved == 1)
                     {
-                        NewsID = val.TopNewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
-                        ShortDesc = val.ShortDescription,
-                        NewsDesc= val.NewsDescription
-                    });
+                        newsList.Add(new News
+                        {
+                            NewsID = val.TopNewsID,
+                            DisplayOrder = val.DisplayOrder,
+                            Heading = val.Heading,
+                            ImageUrl = val.ImageUrl,
+                            ShortDesc = val.ShortDescription,
+                            //NewsDesc= val.NewsDescription,
+                            DttmCreated = val.DttmCreated
+                        });
+                    }
                 });
 
             }
@@ -55,15 +59,19 @@ namespace Infotainment.Controllers
                 var result = newsInstance.SelectRest10TopNews();
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
-                    newsList.Add(new News
+                    if (val.IsActive == 1 && val.IsApproved == 1)
                     {
-                        NewsID = val.TopNewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
-                        ShortDesc = val.ShortDescription,
-                        NewsDesc = val.NewsDescription
-                    });
+                        newsList.Add(new News
+                        {
+                            NewsID = val.TopNewsID,
+                            DisplayOrder = val.DisplayOrder,
+                            Heading = val.Heading,
+                            ImageUrl = val.ImageUrl,
+                            ShortDesc = val.ShortDescription,
+                            //NewsDesc = val.NewsDescription,
+                            DttmCreated = val.DttmCreated
+                        });
+                    }
                 });
 
             }
@@ -79,20 +87,40 @@ namespace Infotainment.Controllers
             return newsList;
         }
 
+        [HttpGet]
+        public INews NewsDetail(string NewsId)
+        {
+            var newsInstance = TopNewsBL.Instance;
+            INews news = null;
+            try
+            {
+                var result = newsInstance.Select(NewsId);
 
+                if (result.IsActive == 1 && result.IsApproved == 1)
+                {
+                    news = new News
+                    {
+                        NewsID = result.TopNewsID,
+                        DisplayOrder = result.DisplayOrder,
+                        Heading = result.Heading,
+                        ImageUrl = result.ImageUrl,
+                        ShortDesc = result.ShortDescription,
+                        NewsDesc = result.NewsDescription,
+                        DttmCreated = result.DttmCreated
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                newsInstance.Dispose();
+            }
 
-        //// GET api/homemainnewsapi
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/homemainnewsapi/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
+            return news;
+        }
 
     }
 }

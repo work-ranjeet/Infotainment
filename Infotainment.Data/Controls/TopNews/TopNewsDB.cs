@@ -93,6 +93,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.AddInParameter("@NewsDescription", news.NewsDescription, DbType.String);
                 dbHelper.AddInParameter("@LanguageID", news.LanguageID, DbType.Int32);
                 dbHelper.AddInParameter("@IsActive", news.IsActive, DbType.Int32);
+                dbHelper.AddInParameter("@IsApproved", news.IsApproved, DbType.Int32);
                 dbHelper.AddInParameter("@ImageUrl", image.ImageUrl, DbType.String);
                 dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
                 dbHelper.AddInParameter("@IsFirst", image.IsFirst, DbType.Int32);
@@ -161,7 +162,7 @@ namespace Infotainment.Data.Controls
 
                         if (!objDataReader.IsDBNull(6))
                             objTopNews.LanguageID = objDataReader.GetInt32(6);
-                        
+
                         if (!objDataReader.IsDBNull(7))
                             objTopNews.IsApproved = objDataReader.GetInt32(7);
 
@@ -173,6 +174,9 @@ namespace Infotainment.Data.Controls
 
                         if (!objDataReader.IsDBNull(10))
                             objTopNews.DttmModified = objDataReader.GetDateTime(10);
+
+                        if (!objDataReader.IsDBNull(11))
+                            objTopNews.ImageUrl = objDataReader.GetString(11);
 
                     }
                 }

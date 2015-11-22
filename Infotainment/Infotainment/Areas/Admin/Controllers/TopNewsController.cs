@@ -251,28 +251,30 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Update new news.";
-
+                UpdateNews newForUpdate = null;
                 var news = TopNewsBL.Instance.Select(NewsID);
-                var imgList = ImageDetailBL.Instance.SelectImageList(NewsID);
-                IImageDetail image = null;
-                if (imgList != null && imgList.Count() > 0)
+                if (news != null)
                 {
-                    image = imgList.FirstOrDefault(v => v.IsActive == 1 && v.IsFirst == 1);
+                    var imgList = ImageDetailBL.Instance.SelectImageList(NewsID);
+                    IImageDetail image = null;
+                    if (imgList != null && imgList.Count() > 0)
+                    {
+                        image = imgList.FirstOrDefault(v => v.IsActive == 1 && v.IsFirst == 1);
+                    }
+
+                    newForUpdate = new UpdateNews
+                    {
+                        NewsID = news.TopNewsID,
+                        Heading = news.Heading,
+                        ShortDesc = news.ShortDescription,
+                        Description = news.NewsDescription,
+                        Image = null,
+                        ImageUrl = image.ImageUrl,
+                        IsActiveNews = news.IsActive == 1 ? true : false,
+                        IsApprovedNews = news.IsApproved == 1 ? true : false
+
+                    };
                 }
-
-                var newForUpdate = new UpdateNews
-                {
-                    NewsID = news.TopNewsID,
-                    Heading = news.Heading,
-                    ShortDesc = news.ShortDescription,
-                    Description = news.NewsDescription,
-                    Image = null,
-                    ImageUrl = image.ImageUrl,
-                    IsActiveNews = news.IsActive == 1 ? true : false,
-                    IsApprovedNews = news.IsApproved == 1 ? true : false
-
-                };
-
                 return View(newForUpdate);
             });
         }
