@@ -3,6 +3,7 @@ using Infotainment.Data.Controls;
 using Infotainment.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,25 +17,23 @@ namespace Infotainment.Controllers
         public IEnumerable<INews> TopNews()
         {
             var newsInstance = TopNewsBL.Instance;
-            List<INews> newsList = new List<INews>();
+            ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
                 var result = newsInstance.SelectFirst10TopNews();
-                result.AsParallel().AsOrdered().ForAll(val =>
+                result.AsParallel().ForAll(val =>
                 {
-                    if (val.IsActive == 1 && val.IsApproved == 1)
+                    newsList.Add(new News
                     {
-                        newsList.Add(new News
-                        {
-                            NewsID = val.TopNewsID,
-                            DisplayOrder = val.DisplayOrder,
-                            Heading = val.Heading,
-                            ImageUrl = val.ImageUrl,
-                            ShortDesc = val.ShortDescription,
-                            //NewsDesc= val.NewsDescription,
-                            DttmCreated = val.DttmCreated
-                        });
-                    }
+                        NewsID = val.TopNewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        ShortDesc = val.ShortDescription,
+                        //NewsDesc= val.NewsDescription,
+                        DttmCreated = val.DttmCreated
+                    });
+
                 });
 
             }
@@ -47,32 +46,29 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList;
+            return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
         [HttpGet]
         public IEnumerable<INews> TopNewsHeader()
         {
             var newsInstance = TopNewsBL.Instance;
-            List<INews> newsList = new List<INews>();
+            ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
                 var result = newsInstance.SelectRest10TopNews();
-                result.AsParallel().AsOrdered().ForAll(val =>
+                result.AsParallel().ForAll(val =>
                 {
-                    if (val.IsActive == 1 && val.IsApproved == 1)
+                    newsList.Add(new News
                     {
-                        newsList.Add(new News
-                        {
-                            NewsID = val.TopNewsID,
-                            DisplayOrder = val.DisplayOrder,
-                            Heading = val.Heading,
-                            ImageUrl = val.ImageUrl,
-                            ShortDesc = val.ShortDescription,
-                            //NewsDesc = val.NewsDescription,
-                            DttmCreated = val.DttmCreated
-                        });
-                    }
+                        NewsID = val.TopNewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        ShortDesc = val.ShortDescription,
+                        //NewsDesc = val.NewsDescription,
+                        DttmCreated = val.DttmCreated
+                    });
                 });
 
             }
@@ -85,7 +81,7 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList;
+            return newsList.OrderByDescending(v => v.DttmCreated); 
         }
 
         [HttpGet]
@@ -127,7 +123,7 @@ namespace Infotainment.Controllers
         public IEnumerable<INews> NewsList()
         {
             var newsInstance = TopNewsBL.Instance;
-            List<INews> newsList = new List<INews>();
+            ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
                 var result = newsInstance.SelectAll(NewsType.TopNews);
@@ -160,7 +156,7 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList;
+            return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
     }

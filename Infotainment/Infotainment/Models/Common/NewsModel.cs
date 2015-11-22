@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Infotainment.Models.Common
 {
-    public class NewsModel : INews, INewsHeading, IDisposable
+    public class NewsModel : INewDesc, IDisposable
     {
         public string NewsID { get; set; }
 

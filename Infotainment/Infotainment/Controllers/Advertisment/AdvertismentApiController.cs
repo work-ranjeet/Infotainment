@@ -3,6 +3,7 @@ using Infotainment.Data.Controls;
 using Infotainment.Data.Entities;
 using Infotainment.Models.Entities;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,7 +18,7 @@ namespace Infotainment.Controllers
         public IEnumerable<IAdvertisment> TopNewsAdvertisment()
         {
             var instance = AdvertismentBL.Instance;
-            List<IAdvertisment> advertismentList = new List<IAdvertisment>();
+            ConcurrentBag<IAdvertisment> advertismentList = new ConcurrentBag<IAdvertisment>();
             try
             {
                 var result = instance.SelectActive(AdvertismentType.TopNewsAdd);

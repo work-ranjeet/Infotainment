@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdvertismentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InternationalController.cs" />
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
     <Compile Include="Areas\Admin\Models\Advertisment\AdvertismentModal.cs" />
@@ -741,6 +742,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\International\" />
     <Folder Include="Images\Advertisment\ToptenAdd\" />
     <Folder Include="Models\TopTenNews\" />
     <Folder Include="Scripts\i18n\" />

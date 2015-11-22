@@ -1,22 +1,18 @@
-﻿using System;
+﻿using Infotainment.Areas.Admin.Models;
+using Infotainment.Data;
+using Infotainment.Data.Controls;
+using PCL.DBHelper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Infotainment.Areas.Admin.Models;
-using Infotainment.Data.Controls;
-using Infotainment.Data;
-using PCL.DBHelper;
-using Infotainment.Filter;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
-    [Autherisation]
-    public class TopNewsController : Controller
+    public class InternationalController : Controller
     {
         public async Task<ActionResult> NeedApproval()
         {
@@ -195,7 +191,7 @@ namespace Infotainment.Areas.Admin.Controllers
                     objTopNews.NewsDescription = string.IsNullOrEmpty(news.Description) ? string.Empty : news.Description.Trim();
                     objTopNews.DisplayOrder = 1;
 
-                    string dirPath = ImagePath.TopTenNewsImage;
+                    string dirPath = "~/Images/Top-ten";
 
                     if (news.Image == null)
                     {

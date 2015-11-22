@@ -54,11 +54,38 @@ CREATE TABLE TopNews (
 	
 	GO
 	
-
+	
 CREATE TABLE TopNewsImage (
 	TopNewsID NVARCHAR(50),
 	ImageID NVARCHAR(50),
 	IsActive INT DEFAULT 1
 	)
 GO
+	
+	----------------- TopNews -------------
+CREATE TABLE InternationalNews (
+	NewsID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
+	EditorID NVARCHAR(50),
+	DisplayOrder INT NOT NULL,
+	Heading NVARCHAR(300) NOT NULL,
+	ShortDescription NVARCHAR(1000),
+	NewsDescription NVARCHAR(MAX),
+	LanguageID INT,
+	CountryCode NVARCHAR(100),
+	IsApproved INT DEFAULT 0,
+	IsActive INT DEFAULT 0,
+	DttmCreated DATETIME DEFAULT(getdate()),
+	DttmModified DATETIME DEFAULT(getdate())
+	);
+	
+	GO
+	
+	CREATE TABLE InterNewsImage (
+	NewsID NVARCHAR(50),
+	ImageID NVARCHAR(50),
+	IsActive INT DEFAULT 1
+	)
+GO
+	
+
 

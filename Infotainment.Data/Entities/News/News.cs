@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Infotainment.Models.Entities
 {
-    public class News : INews, INewsHeading
+    public class News : INews
     {
         public string NewsID { get; set; }
 
