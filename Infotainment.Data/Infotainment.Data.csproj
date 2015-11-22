@@ -101,6 +101,13 @@
     <Content Include="DBScript\PreScript\Pre-Script.sql" />
     <Content Include="DBScript\Procedure\DeleteAdvertisment.sql" />
     <Content Include="DBScript\Procedure\InsertAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\International\InsertInterNews.sql" />
+    <Content Include="DBScript\Procedure\International\SearchInterNews.sql" />
+    <Content Include="DBScript\Procedure\International\Select20InterNews.sql" />
+    <Content Include="DBScript\Procedure\International\SelectInterNews.sql" />
+    <Content Include="DBScript\Procedure\International\SelectInterNewsToActivesql.sql" />
+    <Content Include="DBScript\Procedure\International\SelectInterNewsToApprove.sql" />
+    <Content Include="DBScript\Procedure\International\UpdateIntertNews.sql" />
     <Content Include="DBScript\Procedure\Select20TopNews.sql" />
     <Content Include="DBScript\Procedure\SelectAdvertisment.sql" />
     <Content Include="DBScript\Procedure\SelectAllAdvertisment.sql" />
