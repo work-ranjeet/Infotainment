@@ -1,38 +1,39 @@
 ﻿Constants = {
     Empty: "",
     EmptyCellValue: "-",
-    NullValue: null,
-    DateFormat: "dd-MMM-yyyy"
+    NullValue: null
 };
 
-FieldType = {
-    EmptyCell: "",
-    Label: "label",
-    Data: "data"
-};
-
-DataType = {
-    String: "string"
-}
-
-DataFormat = {
-    Url: "url",
-    Text: "text",
-    Percent: "percent",
-    PercentChange: "percentChange",
-    Money: "money",
-    Address: "address",
-    MoreText: "more",
-    Date: "date",
-    Function: "function",
-    Json: "json"
-};
 
 NewsType = {
     TopNews: 1
 
 };
 
-
+DateFormat: "dd-MMM-yyyy";
 RegEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 RegMob = /^\d{10}$/;
+
+var day = {
+    mon: "सोमवार",
+    tue: "मंगलवार",
+    wed: "बुधवार",
+    thu: "गुरुवार",
+    fri: "शुक्रवार",
+    sat: "शनिवार",
+    sun: "रविवार"
+};
+var Month = {
+    jan: "जनवरी",
+    feb: "फ़रवरी",
+    mar: "मार्च",
+    apr: "अप्रैल",
+    may: "मई",
+    jun: "जून",
+    jul: "जुलाई",
+    aug: "आगस्त",
+    sep: "सितम्बर",
+    oct: "अकतूबर",
+    nov: "नवेम्बर",
+    dec: "दिसम्बर"
+};

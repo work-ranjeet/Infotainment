@@ -16,7 +16,7 @@
                         </div>
                         <p>
                             <span class="news-heading" style="font-weight:normal; font-size:14px;"> {{news.Heading}}</span>
-                            <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span>
+                            <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>
                         </p>
 
 
@@ -46,7 +46,7 @@
                 <div class="col-xs-12" ng-repeat="news in simpleNewsList">
                     <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
                         <span class="news-heading"> {{news.Heading}}</span>
-                        <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated}}</span></p>
+                        <p class="news-text padding-top-2">{{news.ShortDesc}}&nbsp;&nbsp;<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span></p>
                     </a>
                     <hr class="style-two" />
                 </div>

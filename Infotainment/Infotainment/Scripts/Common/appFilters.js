@@ -110,4 +110,36 @@
 
             return result;
         };
+    })
+    .filter('hindiDate', function () {
+        return function (d) {
+            var date = new Date(d);
+            var weekday = new Array(7);
+            weekday[0] = "रविवार";
+            weekday[1] = "सोमवार";
+            weekday[2] = "मंगलवार";
+            weekday[3] = "बुधवार";
+            weekday[4] = "गुरुवार";
+            weekday[5] = "शुक्रवार";
+            weekday[6] = "शनिवार";
+
+            var day = weekday[date.getDay()];
+
+            var month = new Array();
+            month[0] = "जनवरी";
+            month[1] = "फ़रवरी";
+            month[2] = "मार्च";
+            month[3] = "अप्रैल";
+            month[4] = "मई";
+            month[5] = "जून";
+            month[6] = "जुलाई";
+            month[7] = "आगस्त";
+            month[8] = "सितम्बर";
+            month[9] = "अकतूबर";
+            month[10] = "नवेम्बर";
+            month[11] = "दिसम्बर";
+            var mon = month[date.getMonth()];
+
+            return day + ", " + date.getDate() + " " + mon + " " + date.getFullYear();
+        };
     });
