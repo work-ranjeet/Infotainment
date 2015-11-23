@@ -39,6 +39,15 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-md-2" for="Image">Image Caption</label>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.ImageCaption)
+                    <input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required." id="ImageCaption" name="ImageCaption" type="text" value="@Model.ImageCaption">
+
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="control-label col-md-2" for="Description">Short Description</label>
                 <div class="col-md-10">
                     @Html.ValidationMessageFor(model => model.ShortDesc)

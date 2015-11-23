@@ -21,24 +21,28 @@ VALUES (
 GO
 
 INSERT INTO UserAddress (UserID, CareOf, Address1, Address2, City, STATE, Country, MobileNo, PhoneNo, IsPrimary)
-VALUES (4, 'Shri Ram Kishor Singha', 'add1', 'add2', 'Patna', 'Bihar', 'India', '9535304488', '0000000000', 1)
+VALUES (1, 'Shri Ram Kishor Singha', 'add1', 'add2', 'Patna', 'Bihar', 'India', '9535304488', '0000000000', 1)
 GO
 
 INSERT INTO UserEmail (UserID, Email, IsActive, IsVerified, IsVerCodeSent, VerificationCode)
-VALUES (4,'er.ranjeetkumar@gmail.com', 1,1 ,1,'')
+VALUES (1, 'er.ranjeetkumar@gmail.com', 1, 1, 1, '')
 GO
 
 INSERT INTO Infotainment.dbo.PwdManagement (UserID, Password, IsPwdReset, IsNew)
-VALUES (4, 'janeman', 0, 0)
+VALUES (1, 'janeman', 0, 0)
 GO
 
-
-
-
 --------------------ImageType---------------------------
-INSERT INTO ImageType (ImageType, ImageDesc)
-VALUES (1, 'Top News Image')
+INSERT INTO ImageType (ImageType, EnumWord, ImageDesc)
+VALUES (1, 'TopImage', 'Top News Image')
 
 -------------------- AdvertismentType --------------------
-INSERT INTO AdvertismentType (AddType, AddTypeDesc)
-VALUES (1, 'Top News Advertisment')
+INSERT INTO AdvertismentType (AddType, EnumWord, AddTypeDesc)
+VALUES (1, 'TopNews', 'Top News Advertisment')
+
+--------------------ImageType---------------------------
+INSERT INTO NewsType (NewsType, EnumWord, NewsDesc)
+VALUES (1, 'TopNews', 'Top News')
+
+INSERT INTO NewsType (NewsType, EnumWord, NewsDesc)
+VALUES (3, 'InternationalNews', 'International News')

@@ -26,6 +26,7 @@ namespace Infotainment.Data.Controls
         private System.String _ImageID;
         private System.String _ImageUrl;
         private System.Int32 _ImageType;
+        private System.String _Caption;
         private System.Int32 _IsFirst;
         private System.Int32 _IsActive;
         private System.DateTime _DttmCreated;
@@ -36,6 +37,7 @@ namespace Infotainment.Data.Controls
             this._ImageID = null;
             this._ImageUrl = null;
             this._ImageType = System.Int32.MinValue;
+            this._Caption = null;
             this._IsFirst = System.Int32.MinValue;
             this._IsActive = System.Int32.MinValue;
             this._DttmCreated = System.DateTime.MinValue;
@@ -102,6 +104,27 @@ namespace Infotainment.Data.Controls
                 return (this._ImageType == System.Int32.MinValue);
             }
         }
+
+        public System.String Caption
+        {
+            get
+            {
+                return this._Caption;
+            }
+            set
+            {
+                this._Caption = value;
+            }
+        }
+
+        public bool CaptionIsNull
+        {
+            get
+            {
+                return ((this._Caption == null) || !(this._Caption != null && this._Caption.Length > 0));
+            }
+        }
+
 
         public System.Int32 IsFirst
         {

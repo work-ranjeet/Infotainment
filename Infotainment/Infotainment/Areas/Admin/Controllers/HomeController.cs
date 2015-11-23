@@ -17,6 +17,7 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
+                ViewBag.IsPopup = false;
                 return View();
             });
         }

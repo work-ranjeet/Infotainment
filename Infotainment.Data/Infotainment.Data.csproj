@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ReadOnly\Constants.cs" />
     <Compile Include="Common\ReadOnly\ProcedureName.cs" />
     <Compile Include="Controls\Account\UserBL.cs" />
@@ -99,8 +100,11 @@
   <ItemGroup>
     <Content Include="DBScript\Drop\Schema Drop.sql" />
     <Content Include="DBScript\PreScript\Pre-Script.sql" />
-    <Content Include="DBScript\Procedure\DeleteAdvertisment.sql" />
-    <Content Include="DBScript\Procedure\InsertAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\Advertisment\DeleteAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\Advertisment\InsertAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\Advertisment\SelectAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\Advertisment\SelectAllAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\Advertisment\UpdateAdvertisment.sql" />
     <Content Include="DBScript\Procedure\International\InsertInterNews.sql" />
     <Content Include="DBScript\Procedure\International\SearchInterNews.sql" />
     <Content Include="DBScript\Procedure\International\Select20InterNews.sql" />
@@ -108,20 +112,17 @@
     <Content Include="DBScript\Procedure\International\SelectInterNewsToActivesql.sql" />
     <Content Include="DBScript\Procedure\International\SelectInterNewsToApprove.sql" />
     <Content Include="DBScript\Procedure\International\UpdateIntertNews.sql" />
-    <Content Include="DBScript\Procedure\Select20TopNews.sql" />
-    <Content Include="DBScript\Procedure\SelectAdvertisment.sql" />
-    <Content Include="DBScript\Procedure\SelectAllAdvertisment.sql" />
-    <Content Include="DBScript\Procedure\SelectAllTopNews.sql" />
-    <Content Include="DBScript\Procedure\SelectTopNews.sql" />
-    <Content Include="DBScript\Procedure\SelectTopNewsImageDetail.sql" />
     <Content Include="DBScript\Procedure\Sp_InsertImageDetail.sql" />
-    <Content Include="DBScript\Procedure\Sp_InsertLatestNews.sql" />
-    <Content Include="DBScript\Procedure\SP_SearchNews.sql" />
     <Content Include="DBScript\Procedure\Sp_SelectUser.sql" />
     <Content Include="DBScript\Procedure\Sp_SelectUserEmail.sql" />
     <Content Include="DBScript\Procedure\Sp_UpdateImageDetail.sql" />
-    <Content Include="DBScript\Procedure\Sp_UpdateLatestNews.sql" />
-    <Content Include="DBScript\Procedure\UpdateAdvertisment.sql" />
+    <Content Include="DBScript\Procedure\TopNews\Select20TopNews.sql" />
+    <Content Include="DBScript\Procedure\TopNews\SelectAllTopNews.sql" />
+    <Content Include="DBScript\Procedure\TopNews\SelectTopNews.sql" />
+    <Content Include="DBScript\Procedure\TopNews\SelectTopNewsImageDetail.sql" />
+    <Content Include="DBScript\Procedure\TopNews\Sp_InsertLatestNews.sql" />
+    <Content Include="DBScript\Procedure\TopNews\SP_SearchNews.sql" />
+    <Content Include="DBScript\Procedure\TopNews\Sp_UpdateLatestNews.sql" />
     <Content Include="DBScript\Schema\Advertisment.sql" />
     <Content Include="DBScript\Schema\Infotainment-Schema.sql" />
     <Content Include="DBScript\Schema\Sp_UsrMangementSchema.sql" />

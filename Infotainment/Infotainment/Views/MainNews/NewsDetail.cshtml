@@ -34,6 +34,7 @@
             <a href="#" target="_blank"><span class="news-detail-editor">Reported by: @Model.EditorName &nbsp;|&nbsp;@Model.DttmCreated</span></a>
             <p>
                 <img class="news-detail-Image" src="@Url.Content(Model.ImageUrl)" />
+                <span>@Model.ImageCaption</span>
             </p>
             <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
             <p class="news-detail-content"><span class="news-detail-desc">@Model.NewsDesc</span></p>

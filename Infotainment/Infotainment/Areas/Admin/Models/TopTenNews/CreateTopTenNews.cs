@@ -23,7 +23,10 @@ namespace Infotainment.Areas.Admin.Models
         public HttpPostedFileBase Image { get; set; }
 
         [Required]
-        public string  ShortDesc { get; set; }
+        public string ShortDesc { get; set; }
+
+        [Required]
+        public string  ImageCaption { get; set; }
 
         [AllowHtml]
         //[Required]

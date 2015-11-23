@@ -4,6 +4,8 @@ namespace Infotainment.Models.Entities
     public interface INewDesc : INewsHeading
     {
         string ImageUrl { get; set; }
+
+        string ImageCaption { get; set; }
         string ShortDesc { get; set; }
         string NewsDesc { get; set; }
     }

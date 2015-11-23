@@ -21,6 +21,12 @@
             set;
         }
 
+        System.String Caption
+        {
+            get;
+            set;
+        }
+
         System.Int32 IsFirst
         {
             get;

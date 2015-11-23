@@ -744,7 +744,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\International\" />
     <Folder Include="Images\Advertisment\ToptenAdd\" />
-    <Folder Include="Models\TopTenNews\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>
