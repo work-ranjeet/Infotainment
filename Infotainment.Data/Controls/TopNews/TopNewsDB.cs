@@ -44,6 +44,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@NewsDescription", objTopNews.ShortDescription, DbType.String);
                 dbInstance.AddInParameter("@LanguageID", objTopNews.LanguageID, DbType.Int32);
                 dbInstance.AddInParameter("@ImageUrl", objImageDetail.ImageUrl, DbType.String);
+                dbInstance.AddInParameter("@Caption", objImageDetail.Caption, DbType.String);
                 dbInstance.AddInParameter("@ImageType", objImageDetail.ImageType, DbType.Int32);
                 dbInstance.AddInParameter("@IsFirst", objImageDetail.IsFirst, DbType.Int32);
 
@@ -95,6 +96,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.AddInParameter("@IsActive", news.IsActive, DbType.Int32);
                 dbHelper.AddInParameter("@IsApproved", news.IsApproved, DbType.Int32);
                 dbHelper.AddInParameter("@ImageUrl", image.ImageUrl, DbType.String);
+                dbHelper.AddInParameter("@Caption", image.Caption, DbType.String);
                 dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
                 dbHelper.AddInParameter("@IsFirst", image.IsFirst, DbType.Int32);
                 dbHelper.AddInParameter("@IsActieImage", image.IsActive, DbType.Int32);
@@ -178,6 +180,9 @@ namespace Infotainment.Data.Controls
                         if (!objDataReader.IsDBNull(11))
                             objTopNews.ImageUrl = objDataReader.GetString(11);
 
+                        if (!objDataReader.IsDBNull(12))
+                            objTopNews.ImageCaption = objDataReader.GetString(12);
+
                     }
                 }
 
@@ -253,6 +258,9 @@ namespace Infotainment.Data.Controls
 
                             if (!objDataReader.IsDBNull(11))
                                 objTopNews.ImageUrl = objDataReader.GetString(11);
+
+                            if (!objDataReader.IsDBNull(12))
+                                objTopNews.ImageCaption = objDataReader.GetString(12);
 
                             objTopNewsList.Add(objTopNews);
                         }
@@ -334,6 +342,9 @@ namespace Infotainment.Data.Controls
                             if (!objDataReader.IsDBNull(11))
                                 objTopNews.ImageUrl = objDataReader.GetString(11);
 
+                            if (!objDataReader.IsDBNull(12))
+                                objTopNews.ImageCaption = objDataReader.GetString(12);
+
                             objTopNewsList.Add(objTopNews);
                         }
 
@@ -413,6 +424,9 @@ namespace Infotainment.Data.Controls
 
                             if (!objDataReader.IsDBNull(11))
                                 objTopNews.ImageUrl = objDataReader.GetString(11);
+
+                            if (!objDataReader.IsDBNull(12))
+                                objTopNews.ImageCaption = objDataReader.GetString(12);
 
                             objTopNewsList.Add(objTopNews);
                         }

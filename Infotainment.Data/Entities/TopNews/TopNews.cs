@@ -23,6 +23,7 @@ namespace Infotainment.Data.Controls
     {
         private System.String _TopNewsID;
         private System.String _ImageUrl;
+        private System.String _ImageCaption;
         private System.String _EditorID;
         private System.Int32 _DisplayOrder;
         private System.String _Heading;
@@ -38,6 +39,7 @@ namespace Infotainment.Data.Controls
         {
             this._TopNewsID = null;
             this._EditorID = null;
+            this._ImageCaption = null;
             this._DisplayOrder = System.Int32.MinValue;
             this._Heading = null;
             this._ShortDescription = null;
@@ -106,6 +108,26 @@ namespace Infotainment.Data.Controls
             get
             {
                 return ((this._ImageUrl == null) || !(this._ImageUrl != null && this._ImageUrl.Length > 0));
+            }
+        }
+
+        public System.String ImageCaption
+        {
+            get
+            {
+                return this._ImageCaption;
+            }
+            set
+            {
+                this._ImageCaption = value;
+            }
+        }
+
+        public bool ImageCaptionIsNull
+        {
+            get
+            {
+                return ((this._ImageCaption == null) || !(this._ImageCaption != null && this._ImageCaption.Length > 0));
             }
         }
 

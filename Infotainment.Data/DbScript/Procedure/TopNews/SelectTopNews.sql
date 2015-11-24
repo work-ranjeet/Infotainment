@@ -10,11 +10,14 @@ CREATE PROCEDURE SelectTopNews (@NewsID NVARCHAR(50))
 AS
 BEGIN
 	BEGIN TRY
-		SELECT TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl
+		DECLARE @NewsType INT
+		SELECT @NewsType = NewsType from NewsTYpe where EnumWord like 'TopNews'
+		
+		SELECT TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl, ImgD.Caption
 		FROM TopNews TN
 		LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
 		LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
-		WHERE TN.TopNewsID = @NewsID
+		WHERE TN.TopNewsID = @NewsID AND TN.NewsType = @NewsType
 	END TRY
 
 	BEGIN CATCH
@@ -24,4 +27,4 @@ BEGIN
 END
 	--declare @date datetime =CONVERT(DATETIME, '2015-5-21' , 110)
 	--declare @date1 datetime=CONVERT(DATETIME, '2015-10-21' , 110)
-	--EXEC SelectTopNews @date, @date1, N'%%', 0, 0
+	--EXEC SelectTopNews '14956B84-0194-4320-94D3-7D962298B107'

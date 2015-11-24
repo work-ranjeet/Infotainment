@@ -1,9 +1,9 @@
 ﻿@model Infotainment.Areas.Admin.Models.UpdateNews
 
-@{
+@*@{
     ViewBag.Title = "";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
+}*@
 
 
 @using (Html.BeginForm("UpdateNews", "TopNews", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <div class="pull-left" style="width:154px; margin-left:15px;">
                         <figure style="border:solid 2px #808080;">
-                            <img src="@Url.Content(Model.ImageUrl)" alt="Image"  style="width:150px; height:170px;" />
+                            <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:150px; height:170px;" />
                             <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImageUrl" />
                             <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
                         </figure>
@@ -57,10 +57,7 @@
                                     @Html.EditorFor(model => model.IsApprovedNews)
                                     @Html.ValidationMessageFor(model => model.IsApprovedNews, "", new { @class = "text-danger" })
                                 </div>
-                                @*<div>
-                                    @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Heading, "", new { @class = "text-danger" })
-                                </div>*@
+
                             </div>
                         </div>
                     </div>
@@ -70,6 +67,14 @@
                 @Html.HiddenFor(model => model.NewsID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.HiddenFor(model => model.EditorID, new { htmlAttributes = new { @class = "form-control" } })
                 <hr />
+
+                <div class="form-group">
+                    <span class="control-label col-md-2">Image Caption</span>
+                    <div class="col-md-10">
+                        @Html.ValidationMessageFor(model => model.Caption)
+                        <input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required." id="Caption" name="Caption" type="text" value="@Model.Caption">
+                    </div>
+                </div>
 
 
                 <div class="form-group">

@@ -1,55 +1,28 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'SearchInterNews')
-			AND type IN (
-				N'P',
-				N'PC'
-				)
+		WHERE object_id = OBJECT_ID(N'SearchInterNews') AND type IN (N'P', N'PC')
 		)
 	DROP PROCEDURE SearchInterNews
 GO
 
-CREATE PROCEDURE SearchInterNews (
-	@DateFrom DATETIME,
-	@DateTo DATETIME,
-	@Heading NVARCHAR(300)
-	)
+CREATE PROCEDURE SearchInterNews (@DateFrom DATETIME, @DateTo DATETIME, @Heading NVARCHAR(300))
 AS
 BEGIN
 	BEGIN TRY
-		SELECT NewsID,
-			EditorID,
-			DisplayOrder,
-			Heading,
-			ShortDescription,
-			NewsDescription,
-			LanguageID,
-			CountryCode,
-			IsApproved,
-			IsActive,
-			DttmCreated,
-			DttmModified
+		DECLARE @NewsType INT
+
+		SELECT @NewsType = NewsType
+		FROM NewsTYpe
+		WHERE EnumWord LIKE 'InternatioanlNews'
+
+		SELECT NewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID, CountryCode, IsApproved, IsActive, DttmCreated, DttmModified
 		FROM InternationalNews
-		WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom
-			AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo
-			AND Heading LIKE @Heading
+		WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo AND Heading LIKE @Heading AND NewsType = @NewsType
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (
-			ErrorType,
-			ProcedureName,
-			CustomMesage,
-			ErrorNumber,
-			ErrorMessage
-			)
-		VALUES (
-			'Database Error',
-			'SearchInterNews',
-			'Error from SearchInterNews Store Procedure',
-			ERROR_NUMBER(),
-			ERROR_MESSAGE()
-			)
+		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES ('Database Error', 'SearchInterNews', 'Error from SearchInterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END

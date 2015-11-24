@@ -101,6 +101,7 @@ namespace Infotainment.Controllers
                         DisplayOrder = result.DisplayOrder,
                         Heading = result.Heading,
                         ImageUrl = result.ImageUrl,
+                        ImageCaption = result.ImageCaption,
                         ShortDesc = result.ShortDescription,
                         NewsDesc = result.NewsDescription,
                         DttmCreated = result.DttmCreated

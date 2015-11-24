@@ -7,9 +7,12 @@
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
 
         $scope.todayDate = $filter('hindiDate')(new Date());
+        $scope.fbUrl = "https://www.facebook.com/anandcreation/?ref=hl";
+        $scope.twiterUrl ="#";
+        $scope.gPlusUrl = "#";
 
         $scope.OpenWindow = function (url) {
-            var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=400, width=1100, height=900");
+            var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=10, left=400, width=1100, height=900");
             win.focus();
         };
 

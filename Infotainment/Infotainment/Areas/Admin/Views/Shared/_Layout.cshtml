@@ -26,14 +26,16 @@
 
     @Styles.Render("~/Content/css")
 
-    @RenderSection("scripts",required:false)
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div ng-app="infotainment" ng-controller="mainCtrl" style="width:100%;">
-        <header id="admin-header" class="admin-header">
-            @{Html.RenderPartial("_PartialLogOut");}
-            @{Html.RenderPartial("_PartialAdminMenu");}
-        </header>
+       
+            <header id="admin-header" class="admin-header">
+                @{Html.RenderPartial("_PartialLogOut");}
+                @{Html.RenderPartial("_PartialAdminMenu");}
+            </header>
+       
         <section id="body" style="width:100%;">@RenderBody()</section>
 
     </div>

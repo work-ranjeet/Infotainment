@@ -10,9 +10,13 @@ CREATE PROCEDURE SearchNews(@DateFrom DATETIME, @DateTo DATETIME, @Heading Nvarc
 AS
 BEGIN
 	BEGIN TRY
+		DECLARE @NewsType INT
+		SELECT @NewsType = NewsType from NewsTYpe where EnumWord like 'TopNews'
+		
 		SELECT TopNewsID, EditorID, DisplayOrder, Heading, ShortDescription, NewsDescription, LanguageID, IsApproved, IsActive, DttmCreated, DttmModified
 		FROM TopNews
 		WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo AND Heading LIKE @Heading
+		AND NewsType = @NewsType
 	END TRY
 
 	BEGIN CATCH

@@ -9,6 +9,7 @@ GO
 CREATE TABLE AdvertismentType (
 	AddTypeID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
 	AddType INT DEFAULT(1),
+	EnumWord NVARCHAR(100),
 	AddTypeDesc NVARCHAR(300)
 	)
 GO

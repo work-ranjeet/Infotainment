@@ -223,6 +223,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             if (Path.IsPathRooted(serverPath))
                             {
                                 objImageDetail.ImageUrl = dirPath + "/" + fileName;
+                                objImageDetail.Caption = news.ImageCaption;
                                 var path = Path.Combine(serverPath, fileName);
                                 news.Image.SaveAs(path);
                             }
@@ -251,6 +252,7 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Update new news.";
+                ViewBag.IsPopup = true;
                 UpdateNews newForUpdate = null;
                 var news = TopNewsBL.Instance.Select(NewsID);
                 if (news != null)
@@ -270,6 +272,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         Description = news.NewsDescription,
                         Image = null,
                         ImageUrl = image.ImageUrl,
+                        Caption = news.ImageCaption,
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false
 
@@ -306,6 +309,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         {
                             //ImageType = ImageType.TopNewsImage
                             ImageUrl = newForUpdate.ImageUrl,
+                            Caption = newForUpdate.Caption,
                             IsActive = 1,
                             IsFirst = 1
                         };

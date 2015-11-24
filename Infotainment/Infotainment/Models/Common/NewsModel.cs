@@ -16,6 +16,8 @@ namespace Infotainment.Models.Common
 
         public string ImageUrl { get; set; }
 
+        public string ImageCaption { get; set; }
+
         public string ShortDesc { get; set; }
 
         public string NewsDesc { get; set; }

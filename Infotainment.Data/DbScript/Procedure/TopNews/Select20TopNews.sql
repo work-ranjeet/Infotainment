@@ -10,11 +10,14 @@ CREATE PROCEDURE Select20TopNews
 AS
 BEGIN
 	BEGIN TRY
-		SELECT TOP 20 TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl
+		DECLARE @NewsType INT
+		SELECT @NewsType = NewsType from NewsTYpe where EnumWord like 'TopNews'
+	
+		SELECT TOP 20 TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl, Imgd.Caption
 		FROM TopNews TN
 		LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
 		LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
-		WHERE TN.IsActive = 1 AND TN.IsApproved = 1
+		WHERE TN.IsActive = 1 AND TN.IsApproved = 1 AND TN.NewsType = @NewsType
 		ORDER BY TN.DttmCreated DESC
 	END TRY
 

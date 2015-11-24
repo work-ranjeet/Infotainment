@@ -19,6 +19,8 @@ namespace Infotainment.Areas.Admin.Models
 
         public string ImageUrl { get; set; }
 
+        public string Caption { get; set; }
+
         public HttpPostedFileBase Image { get; set; }
 
         [Required]

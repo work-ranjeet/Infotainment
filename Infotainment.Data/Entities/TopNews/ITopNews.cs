@@ -20,6 +20,12 @@
             set;
         }
 
+        System.String ImageCaption
+        {
+            get;
+            set;
+        }
+
         System.Int32 DisplayOrder
         {
             get;
