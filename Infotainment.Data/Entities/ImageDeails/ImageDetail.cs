@@ -21,7 +21,7 @@ using System;
 
 namespace Infotainment.Data.Controls
 {
-    public class ImageDetail : IImageDetail
+    public class ImageDetail : IImageDetail, IDisposable
     {
         private System.String _ImageID;
         private System.String _ImageUrl;
@@ -205,6 +205,34 @@ namespace Infotainment.Data.Controls
                 return (this._DttmModified == System.DateTime.MinValue);
             }
         }
+
+        #region Memory
+        private bool disposed = false;
+        ~ImageDetail()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
 
     }
 

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Infotainment.Models.Entities
 {
-    public class News : INews
+    public class News : INews , IDisposable
     {
         public string NewsID { get; set; }
 
@@ -25,6 +25,34 @@ namespace Infotainment.Models.Entities
         public string EditorName { get; set; }
 
         public System.DateTime DttmCreated { get; set; }
+
+        #region Memory
+        private bool disposed = false;
+        ~News()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
     }
 
     //public class TopTenNewsList

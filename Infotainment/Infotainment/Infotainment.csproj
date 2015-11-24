@@ -212,6 +212,7 @@
     <Content Include="Scripts\App.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Common\MenuDirectives.js" />
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

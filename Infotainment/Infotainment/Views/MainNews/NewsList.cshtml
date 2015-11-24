@@ -9,19 +9,19 @@
         <div class="col-xs-8">
             <div class="row" ng-repeat="news in PartialNewsList">
                 <div id="topNewsList" class="col-xs-12 list-container">
-                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_blank">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                         <span class="news-list-heading">{{news.Heading}}</span>
                     </a>
                     <div class="pull-left padding-right-five">
                         <img class="news-list-image" ng-src="{{news.ImageUrl}}" />
                     </div>
 
-                    <a href="#" target="_blank">
+                    <a href="#" target="_self">
                         <span class="news-list-editor">{{news.EditorName}} &nbsp;|&nbsp;{{news.DttmCreated | hindiDate}}</span>
                     </a>
                     <p>
                         <span class="news-list-short-desc">{{news.ShortDesc}}</span>
-                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" class="text-primary" target="_blank">और पढ़ें ..</a>
+                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" class="text-primary" target="_self">और पढ़ें ..</a>
                     </p>
                 </div>
                 <hr />
@@ -30,7 +30,7 @@
 
         <div class="col-xs-3">
             <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
-                <a href="{{advertise.WebLink}}" target="_blank">
+                <a href="{{advertise.WebLink}}" target="_self">
                     <div class="text-border">
                         <img class="image" src="{{advertise.ImgUrl}}" alt="24 Hours dental service">
                         <span class="caption">{{advertise.Heading}}</span>

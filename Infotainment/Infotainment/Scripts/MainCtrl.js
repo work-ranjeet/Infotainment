@@ -12,7 +12,7 @@
         $scope.gPlusUrl = "#";
 
         $scope.OpenWindow = function (url) {
-            var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=10, left=400, width=1100, height=900");
+            var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=10, left=400, width=1100, height=950");
             win.focus();
         };
 

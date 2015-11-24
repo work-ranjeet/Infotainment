@@ -19,7 +19,7 @@
 using System;
 namespace Infotainment.Data.Controls
 {
-    public class TopNews : ITopNews
+    public class TopNews : ITopNews, IDisposable
     {
         private System.String _TopNewsID;
         private System.String _ImageUrl;
@@ -310,6 +310,34 @@ namespace Infotainment.Data.Controls
                 return (this._DttmModified == System.DateTime.MinValue);
             }
         }
+
+        #region Memory
+        private bool disposed = false;
+        ~TopNews()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
 
     }
 }

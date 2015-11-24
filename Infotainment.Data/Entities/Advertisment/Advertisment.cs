@@ -22,7 +22,7 @@ using Newtonsoft.Json;
 
 namespace Infotainment.Data.Entities
 {
-	public class Advertisment : IAdvertisment
+	public class Advertisment : IAdvertisment, IDisposable
     {
 		private System.String _AdvertismentID;
 		private System.Int32 _DisplayOrder;
@@ -335,6 +335,34 @@ namespace Infotainment.Data.Entities
 			}
 		}
 
-	}
+        #region Memory
+        private bool disposed = false;
+        ~Advertisment()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                }
+
+
+                disposed = true;
+            }
+        }
+        #endregion
+
+    }
 
 }

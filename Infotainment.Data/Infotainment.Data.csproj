@@ -60,6 +60,7 @@
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ReadOnly\Constants.cs" />
     <Compile Include="Common\ReadOnly\ProcedureName.cs" />
+    <Compile Include="Common\RSACrypto.cs" />
     <Compile Include="Controls\Account\UserBL.cs" />
     <Compile Include="Controls\Account\UserEmailDB.cs" />
     <Compile Include="Controls\Account\UsersDB.cs" />

@@ -4,6 +4,7 @@ using Infotainment.Data.Controls;
 using Infotainment.Data.Entities;
 using System.Web.Security;
 using Infotainment.Data;
+using Infotainment.Data.Crypto;
 using Infotainment.Filter;
 using Infotainment.Models;
 

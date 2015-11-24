@@ -1,4 +1,5 @@
 ﻿using System;
+using Infotainment.Data.Crypto;
 
 namespace Infotainment.Data.Controls
 {
@@ -18,6 +19,7 @@ namespace Infotainment.Data.Controls
         public async Task<IUsers> SelectUser(string Email)
         {
             var user = await UserDataAccess.Value.Select(Email);
+            user.Password = RSACrypto.Instance.Decrypt(user.Password);
             return user;
         }
 
