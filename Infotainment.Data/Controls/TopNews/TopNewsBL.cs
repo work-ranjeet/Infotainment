@@ -216,14 +216,14 @@ namespace Infotainment.Data.Controls
         {
             var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(7);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(10);
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
         {
             var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(13);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(10);
         }
         #endregion
 

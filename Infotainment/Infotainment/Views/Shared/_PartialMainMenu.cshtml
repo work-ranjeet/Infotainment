@@ -1,88 +1,87 @@
-﻿<div class="menu-container">
-    <ul id="menu" class="main-menu-ul">
-        <li>
-            <div class="menu-heading">
-                @*<a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" target="_self">*@
-                    <span class="menu-text">होम&nbsp;&nbsp;</span>
-                @*</a>*@
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text pull-left">गेलरी</span>
-                <span class="pull-right down-arrow"></span>
-            </div>
-            <div class="gallery-menu">
-                <div class="column-first">
-                    <ul>
-                        <li><span>तस्वीर</span></li>
-                        <li><span>वीडियोज</span></li>
-                    </ul>
-                </div>
+﻿
 
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text pull-left">खबरें&nbsp;</span>
-                <span class="pull-right down-arrow"></span>
-            </div>
-            <div class="news-menu">
-                <div class="column-first">
-                    <div class="sub-menu-heading">समाचार&nbsp;</div>
-                    <ul>
-                        <li><span>राजनीति समाचार</span></li>
-                        <li><span>व्यापार समाचार</span>	</li>
-                        <li><span>अंतरराष्ट्रीय समाचार</span></li>
-                    </ul>
-                </div>
-                <div class="column-first">
-                    <div class="sub-menu-heading">क्षेत्रीय समाचार</div>
-                    <ul>
-                        <li><span>छत्तीसगढ़</span></li>
-                        <li><span>बिहार</span></li>
-                        <li><span>उत्तर प्रदेश</span></li>
-                        <li><span>मध्य प्रदेश</span></li>
-                        <li><span>राजस्थान</span></li>
-                        <li><span>हिमाचल प्रदेश</span></li>
-                        <li><span>पंजाब</span></li>
-                    </ul>
-                </div>
-                <div class="column-first">
-                    <div class="sub-menu-heading">खेल समाचार</div>
-                    <ul>
-                        <li><span>खेल कहानियां</span></li>
-                        <li><span>क्रिकेट</span></li>
-                        <li><span>फ़ुटबॉल</span></li>
-                        <li><span>हॉकी</span></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text pull-left">मनोरंजन</span>
-                <span class="pull-right down-arrow"></span>
-            </div>
-            <div class="manoranjan-menu">
-                <div class="column-first">
-                    <ul>
-                        <li><span>सिनेमा</span></li>
-                        <li><span>मजाक</span></li>
-                    </ul>
-                </div>
+<ul class="menu">
+    <li>
+        <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+            <span>होम&nbsp;&nbsp;</span>
+        </a>
 
-            </div>
-        </li>
-        <li>
-            <div class="menu-heading">
-                <span class="menu-text">ज्योतिष</span>
-            </div>
-        </li>
-        <li>
-            <div class="news-heading">
-                <span class="menu-text">हमारे बारे में</span>
-            </div>
-        </li>
-    </ul>
-</div>
+    </li>
+    <li>
+        <a href="#">
+            <span>गेलरी&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#">तस्वीर</a></li>
+            <li><a href="#">वीडियोज</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>समाचार&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#" class="documents">राजनीति समाचार</a></li>
+            <li><a href="#" class="documents">व्यापार समाचार</a></li>
+            <li><a href="#" class="documents">अंतरराष्ट्रीय समाचार</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>क्षेत्रीय समाचार&nbsp;</span> 
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#" class="documents">छत्तीसगढ़</a></li>
+            <li><a href="#" class="messages">बिहार</a></li>
+            <li><a href="#" class="messages">उत्तर प्रदेश</a> </li>
+            <li><a href="#" class="messages">मध्य प्रदेश</a></li>
+            <li><a href="#" class="messages">राजस्थान</a></li>
+            <li><a href="#" class="messages">हिमाचल प्रदेश</a></li>
+            <li><a href="#" class="messages">पंजाब</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>खेल समाचार&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#" class="documents">क्रिकेट</a></li>
+            <li><a href="#" class="documents">फ़ुटबॉल</a></li>
+            <li><a href="#" class="documents">हॉकी</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>मनोरंजन&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#" class="documents">सिनेमा</a></li>
+            <li><a href="#" class="documents">मजाक</a></li>
+            <li><a href="#" class="documents">कहानियां</a></li>
+        </ul>
+    </li>
+    <li><a href="#">ज्योतिष</a></li>
+    <li><a href="#">हमारे बारे में</a></li>
+
+</ul>
+@*<style>
+
+        .menu a.documents {
+                background: url(../img/docs.png) no-repeat 6px center;
+            }
+
+            .menu a.messages {
+                background: url(../img/bubble.png) no-repeat 6px center;
+            }
+
+            .menu a.signout {
+                background: url(../img/arrow.png) no-repeat 6px center;
+            }
+    </style>*@
+
+

@@ -1,5 +1,5 @@
 ﻿angular.module('infotainment').
-    directive('homepage', function () {
+    directive('capitalizeFirst', function () {
         return {
             require: 'ngModel',
             link: function (scope, element, attrs, modelCtrl) {
