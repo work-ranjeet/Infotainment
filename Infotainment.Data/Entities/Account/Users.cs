@@ -17,6 +17,8 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
+
 namespace Infotainment.Data.Entities
 {
     [Serializable]
@@ -375,5 +377,11 @@ namespace Infotainment.Data.Entities
             }
         }
 
+        public List<UserGroup> GroupList
+        {
+            get;
+
+            set;
+        }
     }
 }

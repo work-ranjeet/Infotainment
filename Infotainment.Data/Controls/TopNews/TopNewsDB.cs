@@ -42,7 +42,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@DisplayOrder", objTopNews.DisplayOrder, DbType.Int32);
                 dbInstance.AddInParameter("@Heading", objTopNews.Heading, DbType.String);
                 dbInstance.AddInParameter("@ShortDescription", objTopNews.ShortDescription, DbType.String);
-                dbInstance.AddInParameter("@NewsDescription", objTopNews.ShortDescription, DbType.String);
+                dbInstance.AddInParameter("@NewsDescription", objTopNews.NewsDescription, DbType.String);
                 dbInstance.AddInParameter("@LanguageID", objTopNews.LanguageID, DbType.Int32);
                 dbInstance.AddInParameter("@ImageUrl", objImageDetail.ImageUrl, DbType.String);
                 dbInstance.AddInParameter("@Caption", objImageDetail.Caption, DbType.String);

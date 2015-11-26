@@ -4,6 +4,7 @@ using Infotainment.Data.Crypto;
 namespace Infotainment.Data.Controls
 {
     using Entities;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class UserBL : IDisposable
@@ -21,6 +22,14 @@ namespace Infotainment.Data.Controls
             var user = await UserDataAccess.Value.Select(Email);
             user.Password = RSACrypto.Instance.Decrypt(user.Password);
             return user;
+        }
+
+        public async Task<IEnumerable<UserGroup>> SelectGroup(string UserID)
+        {
+            return await Task.Run(() =>
+            {
+                return UserDataAccess.Value.SelectUserGroup(UserID);
+            });
         }
 
         public async Task<bool> IsValidUser(IUsers userDetail, string EmailPwd, string Password)

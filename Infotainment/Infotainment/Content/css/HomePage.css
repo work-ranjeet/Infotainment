@@ -21,7 +21,7 @@
 
 .news-text {
     font-size: 14px;
-    height: 120px;
+    min-height: 50px;
 }
 
 .news-image-container {

@@ -22,6 +22,7 @@ using PCL.DBHelper;
 using Infotainment.Data.Common;
 using Infotainment.Data.Entities;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Infotainment.Data.Controls
 {
@@ -161,6 +162,74 @@ namespace Infotainment.Data.Controls
         }
         #endregion
 
+        public async Task<IEnumerable<UserGroup>> SelectUserGroup(string UserID)
+        {
+            return await Task.Run(() =>
+            {
+                IDataReader objDataReader = null;
+                List<UserGroup> objUserGroupList = null;
+                UserGroup objUserGroup = null;
+
+                var dbHelper = DBHelper.Instance;
+                try
+                {
+                    dbHelper.AddInParameter("@UserID", UserID, DbType.Int64);
+                    objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectUserGroup, CommandType.StoredProcedure);
+
+                    if (objDataReader != null)
+                    {
+                        objUserGroupList = new List<UserGroup>();
+                        do
+                        {
+                            while (objDataReader.Read())
+                            {
+                                objUserGroup = new UserGroup();
+
+                                if (!objDataReader.IsDBNull(0))
+                                    objUserGroup.GroupID = objDataReader.GetInt32(0);
+
+                                if (!objDataReader.IsDBNull(1))
+                                    objUserGroup.GroupType = objDataReader.GetString(1);
+
+                                if (!objDataReader.IsDBNull(2))
+                                    objUserGroup.GroupDetails = objDataReader.GetString(2);
+
+                                if (!objDataReader.IsDBNull(3))
+                                    objUserGroup.IsActive = objDataReader.GetInt16(3);
+
+                                if (!objDataReader.IsDBNull(4))
+                                    objUserGroup.DttmCreate = objDataReader.GetDateTime(4);
+
+                                if (!objDataReader.IsDBNull(5))
+                                    objUserGroup.DttmModified = objDataReader.GetDateTime(5);
+
+
+                                objUserGroupList.Add(objUserGroup);
+                            }
+
+                        }
+                        while (objDataReader.NextResult());
+                    }
+
+                    if (!objDataReader.IsClosed)
+                        objDataReader.Close();
+                }
+                catch (Exception objExp)
+                {
+                    throw objExp;
+                }
+                finally
+                {
+                    dbHelper.ClearAllParameters();
+                    dbHelper.CloseConnection();
+                    dbHelper.Dispose();
+                }
+
+                return objUserGroupList;
+            });
+        }
+
+
         #region Memory
         private bool disposed = false;
         ~UsersDB()
@@ -187,6 +256,8 @@ namespace Infotainment.Data.Controls
                 disposed = true;
             }
         }
+
+
         #endregion
 
     }

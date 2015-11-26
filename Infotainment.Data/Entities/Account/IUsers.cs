@@ -3,7 +3,7 @@ namespace Infotainment.Data.Entities
 {
     public interface IUsers
     {
-        System.Int64 UserID { get; set; }
+        System.Int64 UserID { get; set; }      
         System.String FName { get; set; }
         System.String MName { get; set; }
         System.String LName { get; set; }
@@ -24,5 +24,7 @@ namespace Infotainment.Data.Entities
 
         System.DateTime DttmCreated { get; set; }
         System.DateTime DttmModified { get; set; }
+
+        System.Collections.Generic.List<UserGroup> GroupList { get; set; }
     }
 }

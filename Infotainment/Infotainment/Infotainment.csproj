@@ -155,6 +155,7 @@
     <Compile Include="Controllers\NationalNewsController.cs" />
     <Compile Include="Controllers\PoliticalNewsController.cs" />
     <Compile Include="Controllers\StateNewsController.cs" />
+    <Compile Include="Filter\Authentication.cs" />
     <Compile Include="Filter\Autherisation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

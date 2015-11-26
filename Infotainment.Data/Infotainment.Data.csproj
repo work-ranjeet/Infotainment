@@ -87,6 +87,7 @@
     <Compile Include="Entities\Account\UserAddress.cs" />
     <Compile Include="Entities\Account\UserEmail.cs" />
     <Compile Include="Entities\Account\Users.cs" />
+    <Compile Include="Entities\UserGroup.cs" />
     <Compile Include="ExtentionMethods\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\TopNews\TopNews.cs" />

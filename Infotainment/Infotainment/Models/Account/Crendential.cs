@@ -10,7 +10,7 @@ namespace Infotainment.Models
     public class Crendential  : IDisposable
     {
         [Required]
-        public string UserID { get; set; }
+        public string UserID { get; set; }        
 
         [Required]
         public string Password { get; set; }

@@ -140,6 +140,6 @@
             month[11] = "दिसम्बर";
             var mon = month[date.getMonth()];
 
-            return day + ", " + date.getDate() + " " + mon + " " + date.getFullYear();
+            return day + ", " + date.getDate() + " " + mon + " " + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
         };
     });

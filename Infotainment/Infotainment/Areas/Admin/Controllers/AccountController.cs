@@ -30,8 +30,15 @@ namespace Infotainment.Areas.Admin.Controllers
                 var  userDetail = await userBL.SelectUser(User.UserID);
                 if (await userBL.IsValidUser(userDetail, User.UserID, User.Password))
                 {
+                    var authentication = await userBL.SelectGroup(User.UserID);
+
+                    userDetail.GroupList = new System.Collections.Generic.List<UserGroup>();
+                    userDetail.GroupList.AddRange(authentication);
+
                     this.Session[Constants.UserSessionKey] = userDetail;
-                    FormsAuthentication.SetAuthCookie(User.UserID, User.RememberMe);                    
+
+                    FormsAuthentication.SetAuthCookie(User.UserID, User.RememberMe);   
+                                     
                     ModelState.Clear();
                     User.UserID = User.Password = string.Empty;
 

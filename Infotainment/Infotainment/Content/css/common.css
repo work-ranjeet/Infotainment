@@ -87,22 +87,21 @@ a {
 }
 
     a.more {
-        font-size: 13px;
-        color: #FFFFFF;
-        font-weight: bold;
+        font-size: 14px;
+        color: #8fde62;
         line-height: 20px;
         padding-right: 2px;
         text-decoration: none;
-        padding: 3px 5px 3px 5px;
-        border: solid 1px #6a9650;
-        border-radius: 15%;
-        background-color: #737373;
+        padding: 3px;
+        /*border: solid 1px #6a9650;*/
+        /*border-radius: 15%;
+        background-color: #737373;*/
         white-space:nowrap;
     }
 
         a:hover,
         a.more:hover {
-            color: #8fde62;
+            color: #305db9;
             text-decoration: none;
         }
 
@@ -180,6 +179,13 @@ hr.style-six {
     height: 1px;
     background: #a3a3a3;
     background-image: linear-gradient(to right, #B7B7B7, #D2D2D2, #F5F5F5);
+}
+hr.style-seven{
+    border: 0;
+    height: 1px;
+    background: #489BFF;
+    margin-top: 0px;
+    background-image: linear-gradient(to right, #FFFFFF, #DFEDF3, #FFFFFF);
 }
 
 .red-border {
