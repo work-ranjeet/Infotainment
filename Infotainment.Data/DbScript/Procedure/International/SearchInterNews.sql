@@ -22,7 +22,7 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
-		VALUES ('Database Error', 'SearchInterNews', 'Error from SearchInterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
+		INSERT INTO ErrorLog (ErrorType, ErrorName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES (1, 'SearchInterNews', 'Error from SearchInterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END

@@ -11,9 +11,13 @@ AS
 BEGIN
 	BEGIN TRY
 		DECLARE @NewsType INT
-		SELECT @NewsType = NewsType from NewsTYpe where EnumWord like 'TopNews'
-		
-		SELECT TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl, ImgD.Caption
+
+		SELECT @NewsType = NewsType
+		FROM NewsTYpe
+		WHERE EnumWord LIKE 'TopNews'
+
+		SELECT TN.TopNewsID, TN.EditorID, TN.DisplayOrder, TN.Heading, TN.ShortDescription, TN.NewsDescription, TN.LanguageID, TN.IsApproved, TN.IsActive, TN.DttmCreated, TN.DttmModified, ImgD.ImageUrl, ImgD.
+			Caption
 		FROM TopNews TN
 		LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
 		LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
@@ -21,8 +25,8 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
-		VALUES ('Database Error', 'SelectAllTopNews', 'Error from SelectAllTopNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
+		INSERT INTO ErrorLog (ErrorType, ErrorName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES (1, 'SelectAllTopNews', 'Error from SelectAllTopNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END
 	--declare @date datetime =CONVERT(DATETIME, '2015-5-21' , 110)

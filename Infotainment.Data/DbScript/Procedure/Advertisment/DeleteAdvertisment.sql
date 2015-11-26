@@ -1,10 +1,7 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'DeleteAdvertisment') AND type IN (
-				N'P',
-				N'PC'
-				)
+		WHERE object_id = OBJECT_ID(N'DeleteAdvertisment') AND type IN (N'P', N'PC')
 		)
 	DROP PROCEDURE DeleteAdvertisment
 GO
@@ -25,19 +22,7 @@ BEGIN
 	BEGIN CATCH
 		ROLLBACK TRANSACTION
 
-		INSERT INTO ErrorLog (
-			ErrorType,
-			ProcedureName,
-			CustomMesage,
-			ErrorNumber,
-			ErrorMessage
-			)
-		VALUES (
-			'Database Error',
-			'DeleteAdvertisment',
-			'Error from DeleteAdvertisment Store Procedure',
-			ERROR_NUMBER(),
-			ERROR_MESSAGE()
-			)
+		INSERT INTO ErrorLog (ErrorType, ErrorName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES (1, 'DeleteAdvertisment', 'Error from DeleteAdvertisment Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END

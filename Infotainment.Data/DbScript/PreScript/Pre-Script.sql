@@ -1,6 +1,9 @@
 USE Infotainment
 GO
 
+INSERT INTO ErrorType (TypeID, EnumWord, Detail)
+VALUES (1, 'DataBaseError', 'Error from store procedure')
+
 -------------------------------Groups-------------------------
 INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
 VALUES (1, 'SuperAdmin', 'Super Admin users', 1)
@@ -31,6 +34,31 @@ GO
 INSERT INTO Infotainment.dbo.PwdManagement (UserID, Password, IsPwdReset, IsNew)
 VALUES (1, 'janeman', 0, 0)
 GO
+
+------------------- News Status ------------------------
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (1, 'Entry', 'News entered')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (2, 'Update', 'News updated')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (3, 'Approved', 'News approved')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (4, 'Active', 'News activeted')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (5, 'NotApprove', 'News not approved')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (6, 'NotActive', 'News not active')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (7, 'UnApproved', 'News again un-approved')
+
+INSERT INTO NewsStatus (NewsStatusID, EnumWord, Detail)
+VALUES (8, 'UnActive', 'News again un-activated')
 
 --------------------ImageType---------------------------
 INSERT INTO ImageType (ImageType, EnumWord, ImageDesc)

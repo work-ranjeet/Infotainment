@@ -12,6 +12,7 @@ using Infotainment.Data.Controls;
 using Infotainment.Data;
 using PCL.DBHelper;
 using Infotainment.Filter;
+using Infotainment.Data.Entities;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
@@ -63,7 +64,8 @@ namespace Infotainment.Areas.Admin.Controllers
                     IsApproved = item.Selected ? 1 : 0
                 }));
 
-                TopNewsBL.Instance.GiveApprovalFor(list);
+                var user = (IUsers)this.Session[Constants.UserSessionKey];
+                TopNewsBL.Instance.GiveApprovalFor(list, user);
 
                 TopNewsBL.Instance.SelectTopNewsForApproval().ToList().ForEach(v =>
                 {
@@ -230,7 +232,9 @@ namespace Infotainment.Areas.Admin.Controllers
                         }
                     }
 
-                    topNewsBL.Insert(objTopNews, objImageDetail);
+                    var user =  (IUsers)this.Session[Constants.UserSessionKey];
+
+                    topNewsBL.Insert(objTopNews, objImageDetail, user);
 
                     news = new CreateTopTenNews();
                     ViewBag.Message = "File saved successfully.";
@@ -323,7 +327,8 @@ namespace Infotainment.Areas.Admin.Controllers
                             image.IsFirst = 1;
                         }
 
-                        TopNewsBL.Instance.UpdateNews(ref dbHelpre, news, image);
+                        var user = (IUsers)this.Session[Constants.UserSessionKey];
+                        TopNewsBL.Instance.UpdateNews(ref dbHelpre, news, image, user);
 
                         if (!string.IsNullOrEmpty(fileName))
                         {

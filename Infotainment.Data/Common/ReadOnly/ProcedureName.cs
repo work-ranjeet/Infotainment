@@ -17,6 +17,9 @@ namespace Infotainment.Data.Common
         public static readonly string Select20TopNews = "Select20TopNews";
         public static readonly string SelectTopNewsImageDetail = "SelectTopNewsImageDetail";
         public static readonly string UpdateLatestNews = "UpdateLatestNews";
+        public static readonly string MakeApprovedTopNews = "MakeApprovedTopNews";
+        public static readonly string MakeActiveTopNews = "MakeActiveTopNews";
+
         public static readonly string InsertAdvertisment = "InsertAdvertisment";
         public static readonly string SelectAdvertisment = "SelectAdvertisment";
         public static readonly string SelectAllAdvertisment = "SelectAllAdvertisment";

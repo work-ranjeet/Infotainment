@@ -26,8 +26,8 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
-		VALUES ('Database Error', 'Select20InterNews', 'Error from Select20InterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
+		INSERT INTO ErrorLog (ErrorType, ErrorName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES (1, 'Select20InterNews', 'Error from Select20InterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END
 	--EXEC Select20TopNews

@@ -21,6 +21,7 @@ using System.Data;
 using PCL.DBHelper;
 using System.Collections.Generic;
 using Infotainment.Data.Common;
+using Infotainment.Data.Entities;
 
 namespace Infotainment.Data.Controls
 {
@@ -33,7 +34,7 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Insert
 
-        public void Insert(ref DBHelper dbInstance, ITopNews objTopNews, IImageDetail objImageDetail)
+        public void Insert(ref DBHelper dbInstance, ITopNews objTopNews, IImageDetail objImageDetail, IUsers user)
         {
             try
             {
@@ -47,6 +48,7 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@Caption", objImageDetail.Caption, DbType.String);
                 dbInstance.AddInParameter("@ImageType", objImageDetail.ImageType, DbType.Int32);
                 dbInstance.AddInParameter("@IsFirst", objImageDetail.IsFirst, DbType.Int32);
+                dbInstance.AddInParameter("@UserID", user.UserID, DbType.Int32);
 
                 dbInstance.ExecuteNonQuery(ProcedureName.InsertLatestNews, CommandType.StoredProcedure);
             }
@@ -58,11 +60,14 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Update
-        public void GiveApproval(ref DBHelper dbHelper, ITopNews objTopNews)
+        public void GiveApproval(ref DBHelper dbHelper, ITopNews objTopNews, IUsers user)
         {
             try
             {
-                dbHelper.ExecuteNonQuery("Update TopNews set IsApproved= " + objTopNews.IsApproved + " where TopNewsID = '" + objTopNews.TopNewsID + "'");
+                dbHelper.AddInParameter("@TopNewsID", objTopNews.TopNewsID, DbType.String);
+                dbHelper.AddInParameter("@IsApproved", objTopNews.IsApproved, DbType.Int32);
+                dbHelper.AddInParameter("@UserID", user.UserID, DbType.String);
+                dbHelper.ExecuteNonQuery(ProcedureName.MakeApprovedTopNews, CommandType.StoredProcedure);
             }
             catch (Exception objExp)
             {
@@ -70,11 +75,14 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void MakeActive(ref DBHelper dbHelper, ITopNews objTopNews)
+        public void MakeActive(ref DBHelper dbHelper, ITopNews objTopNews, IUsers user)
         {
             try
             {
-                dbHelper.ExecuteNonQuery("Update TopNews set IsActive= " + objTopNews.IsActive + " where TopNewsID = '" + objTopNews.TopNewsID + "'");
+                dbHelper.AddInParameter("@TopNewsID", objTopNews.TopNewsID, DbType.String);
+                dbHelper.AddInParameter("@IsActive", objTopNews.IsActive, DbType.Int32);
+                dbHelper.AddInParameter("@UserID", user.UserID, DbType.String);
+                dbHelper.ExecuteNonQuery(ProcedureName.MakeActiveTopNews, CommandType.StoredProcedure);
             }
             catch (Exception objExp)
             {
@@ -82,7 +90,7 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void Update(ref DBHelper dbHelper, ITopNews news, IImageDetail image)
+        public void Update(ref DBHelper dbHelper, ITopNews news, IImageDetail image, IUsers user)
         {
             try
             {
@@ -100,6 +108,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
                 dbHelper.AddInParameter("@IsFirst", image.IsFirst, DbType.Int32);
                 dbHelper.AddInParameter("@IsActieImage", image.IsActive, DbType.Int32);
+                dbHelper.AddInParameter("@UserID", user.UserID, DbType.Int32);
 
                 dbHelper.ExecuteNonQuery(ProcedureName.UpdateLatestNews, CommandType.StoredProcedure);
             }

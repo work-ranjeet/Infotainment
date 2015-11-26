@@ -25,7 +25,7 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		INSERT INTO ErrorLog (ErrorType, ProcedureName, CustomMesage, ErrorNumber, ErrorMessage)
-		VALUES ('Database Error', 'SelectInterNews', 'Error from SelectInterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
+		INSERT INTO ErrorLog (ErrorType, ErrorName, CustomMesage, ErrorNumber, ErrorMessage)
+		VALUES (1, 'SelectInterNews', 'Error from SelectInterNews Store Procedure', ERROR_NUMBER(), ERROR_MESSAGE())
 	END CATCH
 END

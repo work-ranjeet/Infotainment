@@ -24,7 +24,7 @@ using System.Net;
 using System.Threading.Tasks;
 using PCL.DBHelper;
 using System.Web;
-
+using Infotainment.Data.Entities;
 
 namespace Infotainment.Data.Controls
 {
@@ -36,7 +36,7 @@ namespace Infotainment.Data.Controls
         }
 
         #region Auto Generated Code - Insert
-        public void Insert(ITopNews objTopNews, IImageDetail objImageDetail)
+        public void Insert(ITopNews objTopNews, IImageDetail objImageDetail, IUsers user)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Infotainment.Data.Controls
                 objImageDetail.IsFirst = 1;
 
 
-                objTopNewsDB.Insert(ref objdbhelper, objTopNews, objImageDetail);
+                objTopNewsDB.Insert(ref objdbhelper, objTopNews, objImageDetail, user);
             }
             catch (Exception objExp)
             {
@@ -88,14 +88,14 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void GiveApprovalFor(IList<ITopNews> topNewsList)
+        public void GiveApprovalFor(IList<ITopNews> topNewsList, IUsers user)
         {
             var dbhelper = new DBHelper();
             dbhelper.BeginTransaction();
 
             try
             {
-                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item));
+                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item, user));
 
                 dbhelper.CommitTransaction();
             }
@@ -105,14 +105,14 @@ namespace Infotainment.Data.Controls
                 throw objExp;
             }
         }
-        public void MakeActiveFor(IList<ITopNews> topNewsList)
+        public void MakeActiveFor(IList<ITopNews> topNewsList, IUsers user)
         {
             var dbhelper = new DBHelper();
             dbhelper.BeginTransaction();
 
             try
             {
-                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.MakeActive(ref dbhelper, item));
+                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.MakeActive(ref dbhelper, item, user));
 
                 dbhelper.CommitTransaction();
             }
@@ -123,12 +123,12 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void UpdateNews(ref DBHelper dbHelper, ITopNews news, IImageDetail image)
+        public void UpdateNews(ref DBHelper dbHelper, ITopNews news, IImageDetail image, IUsers user)
         {
             try
             {
                 news.EditorID = news.EditorID == null ? String.Empty : news.EditorID;
-                TopNewsDB.Instance.Update(ref dbHelper, news, image);
+                TopNewsDB.Instance.Update(ref dbHelper, news, image, IUsers user);
             }
             catch (Exception ex)
             {

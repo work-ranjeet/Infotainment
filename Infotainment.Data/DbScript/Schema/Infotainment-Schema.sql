@@ -4,11 +4,18 @@ GO
 ---------------------ErrorLog-------------------------
 CREATE TABLE ErrorLog (
 	ErrorLogID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
-	ErrorType NVARCHAR(200) NOT NULL,
-	ProcedureName NVARCHAR(200) NOT NULL,
+	ErrorType INT,
+	ErrorName NVARCHAR(200) NOT NULL,
 	CustomMesage NVARCHAR(200) NOT NULL,
 	ErrorNumber NVARCHAR(MAX) NOT NULL,
 	ErrorMessage NVARCHAR(MAX) NOT NULL
+	)
+GO
+
+CREATE TABLE ErrorType (
+	TypeID INT,
+	EnumWord nvarchar(50),
+	Detail NVARCHAR(100)
 	)
 GO
 
@@ -18,11 +25,17 @@ GO
 --	IsFaceBook INT
 --	)
 --GO
-
 ----------------- Language -------------
 CREATE TABLE [Language] (
 	LanguageID INT,
 	LanguageDesc NVARCHAR(100)
+	)
+GO
+
+CREATE TABLE NewsStatus (
+	NewsStatusID INT,
+	EnumWord NVARCHAR(50),
+	Detail NVARCHAR(200)
 	)
 GO
 
@@ -78,6 +91,16 @@ CREATE TABLE TopNewsImage (
 	)
 GO
 
+CREATE TABLE TopNewsTacking (
+	TackingID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
+	TopNewsID NVARCHAR(50),
+	NewsStatusID INT,
+	UserID NVARCHAR(50),
+	DttmCreated DATETIME DEFAULT(getdate()),
+	DttmModified DATETIME DEFAULT(getdate())
+	)
+GO
+
 ----------------- TopNews -------------
 CREATE TABLE InternationalNews (
 	NewsID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
@@ -103,5 +126,14 @@ CREATE TABLE InterNewsImage (
 	)
 GO
 
+CREATE TABLE InternationalNewsTacking (
+	TackingID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
+	NewsID NVARCHAR(50),
+	NewsStatusID INT,
+	UserID INT,
+	DttmCreated DATETIME DEFAULT(getdate()),
+	DttmModified DATETIME DEFAULT(getdate())
+	)
+GO
 
 
