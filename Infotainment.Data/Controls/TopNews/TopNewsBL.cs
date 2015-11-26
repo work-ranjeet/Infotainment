@@ -62,12 +62,12 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region /// Update News
-        public void GiveApproval(ITopNews topNews)
+        public void GiveApproval(ITopNews topNews, IUsers user)
         {
             var objdbhelper = new DBHelper();
             try
             {
-                TopNewsDB.Instance.GiveApproval(ref objdbhelper, topNews);
+                TopNewsDB.Instance.GiveApproval(ref objdbhelper, topNews, user);
             }
             catch (Exception objExp)
             {
@@ -75,12 +75,12 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void MakeActive(ITopNews topNews)
+        public void MakeActive(ITopNews topNews, IUsers user)
         {
             var objdbhelper = new DBHelper();
             try
             {
-                TopNewsDB.Instance.MakeActive(ref objdbhelper, topNews);
+                TopNewsDB.Instance.MakeActive(ref objdbhelper, topNews, user);
             }
             catch (Exception objExp)
             {
@@ -128,7 +128,7 @@ namespace Infotainment.Data.Controls
             try
             {
                 news.EditorID = news.EditorID == null ? String.Empty : news.EditorID;
-                TopNewsDB.Instance.Update(ref dbHelper, news, image, IUsers user);
+                TopNewsDB.Instance.Update(ref dbHelper, news, image, user);
             }
             catch (Exception ex)
             {

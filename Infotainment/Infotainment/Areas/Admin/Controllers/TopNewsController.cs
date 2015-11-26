@@ -135,7 +135,8 @@ namespace Infotainment.Areas.Admin.Controllers
                     IsActive = item.Selected ? 1 : 0
                 }));
 
-                TopNewsBL.Instance.MakeActiveFor(list);
+                var user = (IUsers)this.Session[Constants.UserSessionKey];
+                TopNewsBL.Instance.MakeActiveFor(list, user);
 
                 TopNewsBL.Instance.SelectTopNewsForActivate().ToList().ForEach(v =>
                 {

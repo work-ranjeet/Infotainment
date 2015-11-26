@@ -14,6 +14,24 @@ VALUES (2, 'Admin', 'Admin users', 1)
 INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
 VALUES (3, 'General', 'General users', 1)
 
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (4, 'InsertUpdate', 'Can insert and update.', 1)
+
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (5, 'InsertOnly', 'Can insert only.', 1)
+
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (6, 'UpdateOnly', 'Can update only.', 1)
+
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (7, 'Approver', 'Can approve.', 1)
+
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (8, 'Activeter', 'Can activate.', 1)
+
+INSERT INTO Groups (GroupID, GroupType, GroupDetails, IsActive)
+VALUES (9, 'ActiveApprove', 'Can activate.', 1)
+
 --------------------------------Usrs ------------------------
 INSERT INTO Users (FName, MName, LName, Gender, Dob, Age, MariedSatus, IsActive, IsNew, GroupID)
 VALUES (
