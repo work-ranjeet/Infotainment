@@ -17,7 +17,14 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                ViewBag.IsPopup = false;
+                return View();
+            });
+        }
+
+        public async Task<ActionResult> Authentication()
+        {
+            return await Task.Run(() =>
+            {
                 return View();
             });
         }

@@ -24,7 +24,7 @@ namespace Infotainment.Data.Controls
             return user;
         }
 
-        public async Task<IEnumerable<UserGroup>> SelectGroup(string UserID)
+        public async Task<IEnumerable<UserGroup>> SelectGroup(Int64 UserID)
         {
             return await Task.Run(() =>
             {

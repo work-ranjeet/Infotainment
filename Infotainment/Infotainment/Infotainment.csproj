@@ -243,6 +243,7 @@
     <Content Include="Areas\Admin\Views\Advertisment\Insert.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Select.cshtml" />
     <Content Include="Areas\Admin\Views\Advertisment\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Authentication.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

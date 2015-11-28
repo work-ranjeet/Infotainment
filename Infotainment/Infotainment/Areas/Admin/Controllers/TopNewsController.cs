@@ -19,6 +19,8 @@ namespace Infotainment.Areas.Admin.Controllers
     [Autherisation]
     public class TopNewsController : Controller
     {
+        [Approve]
+        [HttpGet]
         public async Task<ActionResult> NeedApproval()
         {
             return await Task.Run(() =>
@@ -48,6 +50,7 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Approve]
         [HttpPost]
         public ActionResult NeedApproval(TopNewsApprovalList selectedNewsList)
         {
@@ -90,6 +93,8 @@ namespace Infotainment.Areas.Admin.Controllers
             return View(activeList);
         }
 
+        [Active]
+        [HttpGet]
         public async Task<ActionResult> MakeActive()
         {
             return await Task.Run(() =>
@@ -119,6 +124,7 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Active]
         [HttpPost]
         public ActionResult MakeActive(TopNewsActivationlList selectedNewsList)
         {
@@ -172,7 +178,8 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
-        [HttpGet]
+        [Insert]
+        [HttpGet]        
         public async Task<ActionResult> InsertNews()
         {
             return await Task.Run(() =>
@@ -182,6 +189,7 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Insert]
         [HttpPost]
         public async Task<ActionResult> InsertNews(CreateTopTenNews news)
         {
@@ -251,6 +259,7 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Update]
         [HttpGet]
         public async Task<ActionResult> UpdateNews(string NewsID)
         {
@@ -286,6 +295,8 @@ namespace Infotainment.Areas.Admin.Controllers
                 return View(newForUpdate);
             });
         }
+
+        [Update]
         [HttpPost]
         public async Task<ActionResult> UpdateNews(UpdateNews newForUpdate)
         {

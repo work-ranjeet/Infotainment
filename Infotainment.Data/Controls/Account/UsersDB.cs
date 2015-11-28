@@ -28,17 +28,24 @@ namespace Infotainment.Data.Controls
 {
     public class UsersDB : IDisposable
     {
+        public static UsersDB Instance
+        {
+            get { return new UsersDB(); }
+        }
         public UsersDB()
         {
         }
 
         #region Auto Generated Code - Insert
 
-        public void Insert(ref DBHelper dbHelper, Users objUsers)
+        public void InsertLoginDetail(Int64 UserID)
         {
             try
             {
+                var dbInstance = DBHelper.Instance;
+                dbInstance.AddInParameter("@UserID", UserID, DbType.Int64);
 
+                dbInstance.ExecuteNonQuery(ProcedureName.InsertUserLoginDetails, CommandType.StoredProcedure);
             }
             catch (Exception objExp)
             {
@@ -49,11 +56,21 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Update
 
-        public void Update(ref DBHelper dbHelper, Users objUsers)
+        public void UpdateLoginDetail(Int64 UserID)
         {
             try
             {
+                try
+                {
+                    var dbInstance = DBHelper.Instance;
+                    dbInstance.AddInParameter("@UserID", UserID, DbType.Int64);
 
+                    dbInstance.ExecuteNonQuery(ProcedureName.UpdateLogOut, CommandType.StoredProcedure);
+                }
+                catch (Exception objExp)
+                {
+                    throw objExp;
+                }
             }
             catch (Exception objExp)
             {
@@ -159,10 +176,9 @@ namespace Infotainment.Data.Controls
 
                 return objUsers;
             });
-        }
-        #endregion
+        }        
 
-        public async Task<IEnumerable<UserGroup>> SelectUserGroup(string UserID)
+        public async Task<IEnumerable<UserGroup>> SelectUserGroup(Int64 UserID)
         {
             return await Task.Run(() =>
             {
@@ -228,7 +244,7 @@ namespace Infotainment.Data.Controls
                 return objUserGroupList;
             });
         }
-
+        #endregion
 
         #region Memory
         private bool disposed = false;

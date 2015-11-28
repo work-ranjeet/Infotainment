@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Authentication";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script type="text/javascript">
+        function sendInformationToAdmin() {
+            Confirm("Testing");
+            }
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Oops! You are not authenticated for this action. Contact your administrator for more details.</h3>
+            <div>
+                <a href="#" onclick="sendInformationToAdmin()" class=" btn btn-info">Inform Admin</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

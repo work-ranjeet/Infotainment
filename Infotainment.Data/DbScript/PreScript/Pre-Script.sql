@@ -49,8 +49,11 @@ INSERT INTO UserEmail (UserID, Email, IsActive, IsVerified, IsVerCodeSent, Verif
 VALUES (1, 'er.ranjeetkumar@gmail.com', 1, 1, 1, '')
 GO
 
-INSERT INTO Infotainment.dbo.PwdManagement (UserID, Password, IsPwdReset, IsNew)
+INSERT INTO PwdManagement (UserID, Password, IsPwdReset, IsNew)
 VALUES (1, 'janeman', 0, 0)
+
+INSERT INTO UserGroups (UserID, GroupID)
+VALUES (1, 1)
 GO
 
 ------------------- News Status ------------------------
