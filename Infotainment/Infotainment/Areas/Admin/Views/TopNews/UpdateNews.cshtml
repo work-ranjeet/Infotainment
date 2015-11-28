@@ -1,9 +1,9 @@
 ﻿@model Infotainment.Areas.Admin.Models.UpdateNews
 
-@*@{
+@{
     ViewBag.Title = "";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}*@
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPopup.cshtml";
+}
 
 
 @using (Html.BeginForm("UpdateNews", "TopNews", FormMethod.Post, new { enctype = "multipart/form-data" }))

@@ -60,13 +60,9 @@ input[type="checkbox"].input-validation-error {
 
 .admin-header {
     background-color: #212121;
-    width: 100%;
-    margin: 0px;
-    z-index: 10;
 }
 
 .admin-header-user {
-    width: 970px;
     margin: auto;
     line-height: 25px;
     font-size: 20px;

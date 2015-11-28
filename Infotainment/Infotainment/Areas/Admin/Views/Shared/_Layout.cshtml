@@ -28,18 +28,33 @@
 
     @RenderSection("scripts", required: false)
 </head>
-<body>
-    <div ng-app="infotainment" ng-controller="mainCtrl" style="width:100%;">
-       
-            <header id="admin-header" class="admin-header">
-                @{Html.RenderPartial("_PartialLogOut");}
-                @{Html.RenderPartial("_PartialAdminMenu");}
-            </header>
-       
-        <section id="body" style="width:100%;">@RenderBody()</section>
+<body ng-app="infotainment" ng-controller="mainCtrl">
 
-    </div>
-
+    <header id="admin-header" class="admin-header">
+        <section class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    @{Html.RenderPartial("_PartialLogOut");}
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @{Html.RenderPartial("_PartialAdminMenu");}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <section id="body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         $(function () {
             var stickyMenu = $('#admin-header').offset().top;
