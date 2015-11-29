@@ -19,7 +19,8 @@ namespace Infotainment
                          "~/Scripts/Vendor/Angular/angular-ui-router.js",
                          "~/Scripts/Vendor/Angular/ui-bootstrap-tpls.js",
                          "~/Scripts/Vendor/Angular/angular-animate.js",
-                         "~/Scripts/Vendor/Angular/ngCookies.js"));
+                         "~/Scripts/Vendor/Angular/ngCookies.js",
+                         "~/Scripts/Vendor/Angular/ng-infinite-scroll.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Vendor/Bootstrap/bootstrap.js",

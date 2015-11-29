@@ -1,7 +1,8 @@
 ﻿angular.module('infotainment', [
         'ui.bootstrap',
         'ui.router',
-        'ngCookies'
+        'ngCookies',
+        'infinite-scroll'        
 ]);
 
 

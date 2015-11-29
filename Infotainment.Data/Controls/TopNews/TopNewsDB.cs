@@ -215,7 +215,7 @@ namespace Infotainment.Data.Controls
             return objTopNews;
         }
 
-        public List<ITopNews> SelectAll()
+        public List<ITopNews> SelectAll(Int64? NextPageValue)
         {
             IDataReader objDataReader = null;
             List<ITopNews> objTopNewsList = null;
@@ -224,6 +224,8 @@ namespace Infotainment.Data.Controls
             DBHelper dbHelper = new DBHelper();
             try
             {
+                
+                dbHelper.AddInParameter("@NextPageValue", NextPageValue, DbType.Int64);
                 objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllTopNews, CommandType.StoredProcedure);
 
                 if (objDataReader != null)

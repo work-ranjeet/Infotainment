@@ -21,14 +21,14 @@
             }
         });
 
-        
+
         var parameter = $location.$$absUrl.split('?');
         if (parameter.length > 1) {
             parameter = parameter[1];
         }
         parameter = parameter.split('=');
 
-        var newsType = parameter.length > 1 ? parameter[1] : Constants.Empty;       
+        var newsType = parameter.length > 1 ? parameter[1] : Constants.Empty;
         var url = Constants.Empty;
 
         switch (newsType) {
@@ -36,14 +36,36 @@
                 url = ServiceProvider.Url.TopNewsList;
                 break;
         }
-       
+
 
         $scope.PartialNewsList = [];
-        ServiceProvider.Services.getData(url, null).then(function (result) {
-            if (result != null) {
-                $scope.PartialNewsList = result;
-            }
-        });
+        $scope.nextPage = 0;
+        $scope.loadingMore = false;
+        $scope.PartialNewsBusy = false;
+        $scope.pagingFunction = function () {
+            if (!$scope.PartialNewsBusy) {
+                $scope.loadingMore = true;
+                ServiceProvider.Services.getData(url + $scope.nextPage, null).then(function (result) {
+                    if (result != null) {
+                        $scope.loadingMore = false;
+                        if (result.length > 0) {
+                            $scope.nextPage = $scope.nextPage + result.length;
+                            // $scope.PartialNewsBusy = false;
+                            angular.forEach(result, function (listItem) {
+                                $scope.PartialNewsList.push(listItem);
+                            });
+                        }
+                        else {
+                            $scope.PartialNewsBusy = true;
+                        }
+                    }
+                });
+            };
+        };
+        $scope.pagingFunction();
+
+
+
 
         $scope.advertiseList = [];
         ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsAdvertise, null).then(function (result) {

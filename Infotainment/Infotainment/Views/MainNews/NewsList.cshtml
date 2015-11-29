@@ -4,8 +4,8 @@
 }
 <div id="topNews" class="container" ng-controller="newsDetailCtrl">
     <div class="row">        
-        <div class="col-xs-9">
-            <div class="row" ng-repeat="news in PartialNewsList">
+        <div class="col-xs-9"  infinite-scroll="pagingFunction()" infinite-scroll-distance="2" infinite-scroll-delay="100" infinite-scroll-disable="{{PartialNewsBusy}}" infinite-scroll-immediate-check="false" >
+            <div class="row delay" ng-repeat="news in PartialNewsList">
                 <div id="topNewsList" class="col-xs-12 list-container">
                     <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                         <span class="news-list-heading">{{news.Heading}}</span>
@@ -15,7 +15,7 @@
                     </div>
 
                     <a href="#" target="_self">
-                        <span class="news-list-editor">{{news.EditorName}} &nbsp;|&nbsp;{{news.DttmCreated | hindiDate}}</span>
+                        <span class="news-list-editor">{{news.DttmCreated | hindiDate}}</span>
                     </a>
                     <p>
                         <span class="news-list-short-desc">{{news.ShortDesc}}</span>
@@ -23,6 +23,11 @@
                     </p>
                 </div>
                 <hr />
+            </div>
+            <div ng-show="loadingMore"  style="height:100px;" class="row loading">
+                <div class="col-xs-12 btn btn-lg btn-warning">
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">Loading.....</span>
+                </div>
             </div>
         </div>
 

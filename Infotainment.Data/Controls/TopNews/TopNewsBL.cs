@@ -144,7 +144,7 @@ namespace Infotainment.Data.Controls
             return TopNewsDB.Instance.Select(NewsID);
         }
 
-        public IEnumerable<ITopNews> SelectAll(NewsType newsType)
+        public IEnumerable<ITopNews> SelectAll(NewsType newsType, Int64? NextPageValue)
         {
             List<ITopNews> list = null;
             try
@@ -152,7 +152,7 @@ namespace Infotainment.Data.Controls
                 switch (newsType)
                 {
                     case NewsType.TopNews:
-                        list = TopNewsDB.Instance.SelectAll();
+                        list = TopNewsDB.Instance.SelectAll(NextPageValue);
                         break;
 
                     default:

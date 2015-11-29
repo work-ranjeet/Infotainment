@@ -221,6 +221,8 @@
     <Content Include="Scripts\MainCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Vendor\Angular\ng-infinite-scroll.js" />
+    <Content Include="Scripts\Vendor\Angular\ng-infinite-scroll.min.js" />
     <Content Include="Scripts\Vendor\Bootstrap\bootstrap.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

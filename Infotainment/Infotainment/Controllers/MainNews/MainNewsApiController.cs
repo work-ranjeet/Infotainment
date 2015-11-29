@@ -121,13 +121,13 @@ namespace Infotainment.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<INews> NewsList()
+        public IEnumerable<INews> NewsList(Int64 NextPage)
         {
             var newsInstance = TopNewsBL.Instance;
             ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectAll(NewsType.TopNews);
+                var result = newsInstance.SelectAll(NewsType.TopNews, NextPage);
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     if (val.IsActive == 1 && val.IsApproved == 1)

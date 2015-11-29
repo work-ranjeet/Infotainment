@@ -127,7 +127,7 @@ namespace Infotainment.Controllers
             ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectAll(NewsType.TopNews);
+                var result = newsInstance.SelectAll(NewsType.TopNews, null);
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     if (val.IsActive == 1 && val.IsApproved == 1)
