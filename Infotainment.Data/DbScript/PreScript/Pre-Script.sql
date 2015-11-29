@@ -73,7 +73,7 @@ VALUES (2, 'ravianandpat@gmail.com', 1, 1, 1, '')
 GO
 
 INSERT INTO PwdManagement (UserID, Password, IsPwdReset, IsNew)
-VALUES (2, 'H4voJgFDZ0yZiYLOzUAcMQ==', 0, 0)
+VALUES (2, 'EVGYDGz9wwKk1xi1rzxZ38AE17G4o6kVDDU3qD7Rsgx/fZe1z6S8RA==', 0, 0)
 
 INSERT INTO UserGroups (UserID, GroupID)
 VALUES (2, 1)

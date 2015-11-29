@@ -10,7 +10,7 @@ namespace UnitTest
         [TestMethod]
         public void Encryption()
         {
-            string text = "janeman";
+            string text = "newsPa$$word@123";
             string encrypt = RSACrypto.Instance.Encrypt(text);
             Assert.IsTrue(text == RSACrypto.Instance.Decrypt(encrypt));
         }

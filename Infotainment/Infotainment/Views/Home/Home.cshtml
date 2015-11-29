@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Infotainment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @* Top ten news *@
@@ -74,7 +74,7 @@
 
                             <p class="news-text padding-top-2">
                                 {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
-                                @*<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>*@
+                                
                                 <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                             </p>
 
@@ -97,8 +97,9 @@
                                 <hr class="style-two" />
                             </div>
                         </div>*@
-                </div>
+                @*</div>
             </div>*@
+            @*<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>*@
             @*  End International News *@
         </div>
 

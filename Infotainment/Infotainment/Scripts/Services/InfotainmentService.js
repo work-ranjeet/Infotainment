@@ -5,7 +5,7 @@
     return {
         Host: function setHost(host) {
 
-            webHost = host + "/Infotainment/";
+            webHost = host + "/";//Infotainment/";
         },
 
         getPostData: function (url, postdata) {

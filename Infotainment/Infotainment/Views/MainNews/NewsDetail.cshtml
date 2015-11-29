@@ -1,7 +1,9 @@
-﻿@model Infotainment.Models.Entities.News
+﻿@using Infotainment.Extension
+@model Infotainment.Models.Entities.News
+
 
 @{
-    ViewBag.Title = "NewsDetail";
+    ViewBag.Title = "Infotainment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container" ng-controller="newsDetailCtrl">
@@ -42,7 +44,11 @@
                 <span>@Model.ImageCaption</span>
             </p>
             <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
-            <p class="news-detail-content"><span class="news-detail-desc">@Model.NewsDesc</span></p>
+            <div class="news-detail-content">
+                <div class="news-detail-desc">
+                    @Html.Literal(Model.NewsDesc)
+                </div>
+            </div>
 
             @* <div>More</div>*@
         </div>

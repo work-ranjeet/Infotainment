@@ -157,6 +157,7 @@
     <Compile Include="Controllers\NationalNewsController.cs" />
     <Compile Include="Controllers\PoliticalNewsController.cs" />
     <Compile Include="Controllers\StateNewsController.cs" />
+    <Compile Include="ExtendedControls\ExtendedControls.cs" />
     <Compile Include="Filter\Authentication.cs" />
     <Compile Include="Filter\Autherisation.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +196,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Advertisment\ToptenAdd\city.jpg" />
     <Content Include="Images\Gallery\img00.jpg" />
     <Content Include="Images\Gallery\img01.jpg" />
     <Content Include="Images\Gallery\img02.jpg" />
@@ -205,10 +207,8 @@
     <Content Include="Images\GameSection\Hockey\download.jpg" />
     <Content Include="Images\GameSection\Story\sachin1-18-08-2015-1439880811_mainmng.jpg" />
     <Content Include="Images\HealthTips\1_1439210609.jpg" />
-    <Content Include="Images\MainNews\pm-narendra-modi_240x180_81439867577.jpg" />
-    <Content Include="Images\News\Top-ten\advani-sushma_1439374915.jpg" />
-    <Content Include="Images\News\Top-ten\picture-4_1439378226.jpg" />
-    <Content Include="Images\News\Top-ten\rahul-1_1439387439.jpg" />
+    <Content Include="Images\News\International\desert.jpg" />
+    <Content Include="Images\News\Top-ten\sunset.jpg" />
     <Content Include="Scripts\App.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -256,6 +256,7 @@
     <Content Include="Areas\Admin\Views\International\NeedApproval.cshtml" />
     <Content Include="Areas\Admin\Views\International\UpdateNews.cshtml" />
     <Content Include="Areas\Admin\Views\Search\InterNewsSearch.cshtml" />
+    <None Include="Properties\PublishProfiles\Infotainment.pubxml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -693,7 +694,9 @@
     <Content Include="Scripts\Vendor\JQuery\_references.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -756,8 +759,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Advertisment\ToptenAdd\" />
-    <Folder Include="Images\News\International\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>

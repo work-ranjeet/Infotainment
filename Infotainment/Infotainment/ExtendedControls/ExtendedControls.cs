@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 
 
-namespace Baidyanath.Extension
+namespace Infotainment.Extension
 {
     public static partial class ExtensionMethod
     {
