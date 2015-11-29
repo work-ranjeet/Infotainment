@@ -1,0 +1,114 @@
+﻿@model Infotainment.Areas.Admin.Models.UpdateNews
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPopup.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateNews", "International", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+            function fileCheck(obj) {
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+                if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+                }
+            }
+        </script>
+    }
+
+    <section id="NewsDetails" class="admin-section">
+        <div id="content" class="content">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="pull-left" style="width:154px; margin-left:15px;">
+                        <figure style="border:solid 2px #808080;">
+                            <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:150px; height:170px;" />
+                            <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImageUrl" />
+                            <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
+                        </figure>
+                    </div>
+                    <div class="pull-right" style="width:83%;">
+                        <div class="alert alert-info" style="width:98%; margin-bottom:2px;">
+                            <strong> @ViewBag.Message </strong>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                        <div style="width:98%;">
+                            <div class="pull-left" style="width:49%; border:solid thin #ccc; height:140px; padding:5px;">
+                                <div style="padding:8px;">To change this image. Select new image and update.<br /><br />Select new image</div>
+                                <div style="padding:8px; padding-top:0px;">
+                                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="pull-right" style="width:50%; border:solid thin #ccc; height:140px;  padding:5px;">
+                                <div class="checkbox pull-left" style="width:40%; display:inline;">
+                                    <span>Is Active News</span>
+                                    @Html.EditorFor(model => model.IsActiveNews)
+                                    @Html.ValidationMessageFor(model => model.IsActiveNews, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="checkbox pull-right" style="width:55%; text-align:left">
+                                    <span>Is News Approved</span>
+                                    @Html.EditorFor(model => model.IsApprovedNews)
+                                    @Html.ValidationMessageFor(model => model.IsApprovedNews, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                @Html.HiddenFor(model => model.NewsID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.EditorID, new { htmlAttributes = new { @class = "form-control" } })
+                <hr />
+
+                <div class="form-group">
+                    <span class="control-label col-md-2">Image Caption</span>
+                    <div class="col-md-10">
+                        @Html.ValidationMessageFor(model => model.Caption)
+                        <input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required." id="Caption" name="Caption" type="text" value="@Model.Caption">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <sapn class="control-label col-md-2">News Heading</sapn>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Heading, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <sapn class="control-label col-md-2">Short Description</sapn>
+                    <div class="col-md-10">
+                        <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."
+                                  data-val-required="The ShortDesc field is required." rows="5">
+                            @Model.ShortDesc
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <sapn class="control-label col-md-2">Description</sapn>
+                    <div class="col-md-10">
+                        <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-center">
+                        <input type="submit" id="btnSubmit" value="Click to Update News" style="width:50%; height:30px; padding:5px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+

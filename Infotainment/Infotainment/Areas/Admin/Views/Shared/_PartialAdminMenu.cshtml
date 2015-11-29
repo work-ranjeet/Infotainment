@@ -7,7 +7,7 @@
     </li>
     <li>
         <a href="#">
-            <span>All News&nbsp;</span>
+            <span>Main News&nbsp;</span>
             <span class="pull-right down-arrow"></span>
         </a>
         <ul>
@@ -18,24 +18,34 @@
     </li>
     <li>
         <a href="#">
+            <span>International News&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "International"))">Insert News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "International"))">Approve News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "International"))">Make Active</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
             <span>Search&nbsp;</span>
             <span class="pull-right down-arrow"></span>
         </a>
         <ul>
             <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("MainNewsSearch", "Search"))">Main News</a></li>
-            <li><a class="documents" href="#">International News</a></li>
+            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("InterNewsSearch", "Search"))">International News</a></li>
             <li><a class="documents" href="#">State News</a></li>
         </ul>
     </li>
     <li>
         <a href="#">
-            <span>Advertisment&nbsp;</span>
+            <span>Top Advertisment&nbsp;</span>
             <span class="pull-right down-arrow"></span>
         </a>
         <ul>
-            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "TopNews"))">Insert News</a></li>
-            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"))">Approve News</a></li>
-            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"))">Make Active</a></li>
+            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("Insert", "Advertisment"))">Insert</a></li>
+            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("Select", "Advertisment"))">View All</a></li>
         </ul>
     </li>
     @*<li>

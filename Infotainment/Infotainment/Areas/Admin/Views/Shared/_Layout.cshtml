@@ -60,9 +60,9 @@
             var stickyMenu = $('#admin-header').offset().top;
             $(window).scroll(function () {
                 if ($(window).scrollTop() > stickyMenu) {
-                    $('#admin-header').css({ position: 'fixed', top: '0px' });
+                    $('#admin-header').css({ position: 'fixed', width: '100%', top: '0px' });
                 } else {
-                    $('#admin-header').css({ position: 'static', top: '0px' });
+                    $('#admin-header').css({ position: 'static', width: '100%', top: '0px' });
                 }
 
 

@@ -68,10 +68,14 @@
     <Compile Include="Controls\Advertisment\AdvertismentDB.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailBL.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailDb.cs" />
+    <Compile Include="Controls\TopNews\TopNewsBL.cs" />
+    <Compile Include="Controls\TopNews\TopNewsDB.cs" />
     <Compile Include="Entities\Advertisment\Advertisment.cs" />
     <Compile Include="Entities\Advertisment\IAdvertisment.cs" />
     <Compile Include="Entities\ImageDeails\IImageDetail.cs" />
     <Compile Include="Entities\ImageDeails\ImageDetail.cs" />
+    <Compile Include="Entities\InterationalNews\IInterNews.cs" />
+    <Compile Include="Entities\InterationalNews\InterNews.cs" />
     <Compile Include="Entities\TopNews\ITopNews.cs" />
     <Compile Include="DBHelper\DBHelper.cs" />
     <Compile Include="DBHelper\DbHelperAbstract.cs" />
@@ -91,8 +95,8 @@
     <Compile Include="ExtentionMethods\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\TopNews\TopNews.cs" />
-    <Compile Include="Controls\TopNews\TopNewsBL.cs" />
-    <Compile Include="Controls\TopNews\TopNewsDB.cs" />
+    <Compile Include="Controls\InternationalNews\InterNewsBL.cs" />
+    <Compile Include="Controls\InternationalNews\InterNewsDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

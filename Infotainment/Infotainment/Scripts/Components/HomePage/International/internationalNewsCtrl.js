@@ -4,37 +4,21 @@
 		.controller('internationalNewsCtrl', internationalNewsCtrl);
 
     function internationalNewsCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile) {
-        $scope.Title = "अंतरराष्ट्रीय खबर";
-        $scope.PageUrl = "#";
+        ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
+        $scope.NewsType = NewsType.InternationalNews;
+
+
+        $scope.InterTitle = "अंतरराष्ट्रीय खबर";
         $scope.Others = "अन्य खबर";
 
-        $scope.newsList = [
-            {
-                NewsID: "#",
-                Order:1,
-                ImageUrl: "Images/Top-ten/advani-sushma_1439374915.jpg",
-                Heading: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                ShortDesc: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                DttmCreated:new Date()
-
-            },
-            {
-                NewsID: "#",
-                Order: 2,
-                ImageUrl: "Images/Top-ten/advani-sushma_1439374915.jpg",
-                Heading: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                ShortDesc: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                DttmCreated: new Date()
-            },
-            {
-                NewsID: "#",
-                Order: 3,
-                ImageUrl: "Images/Top-ten/advani-sushma_1439374915.jpg",
-                Heading: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                ShortDesc: "लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।लोकसभा में बुधवार को ललितगेट पर चर्चा के दौरान बीजेपी सांसद की टिप्पणी पर सोनिया गांधी ने कड़ा एतराज जताया।",
-                DttmCreated: new Date()
+        $scope.newsList = [];
+        ServiceProvider.Services.getData(ServiceProvider.Url.InternationalNews, null).then(function (result) {
+            if (result != null) {
+                $scope.newsList = result;
             }
-        ];
+        });
+
+      
 
     };
 })();

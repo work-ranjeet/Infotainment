@@ -25,17 +25,17 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var list = new TopNewsApprovalList();
+                var list = new NewsApprovalList();
                 list.Message = "Select news and click on submit to approve.";
 
-                list.ApprovalList = new List<TopNewsApproval>();
+                list.ApprovalList = new List<NewsApproval>();
 
                 var topNewsBL = new TopNewsBL();
                 var result = topNewsBL.SelectTopNewsForApproval();
                 result.ToList().ForEach(v =>
                 {
                     list.ApprovalList.Add(
-                        new TopNewsApproval
+                        new NewsApproval
                         {
                             Selected = false,
                             TopNewsID = v.TopNewsID,
@@ -52,16 +52,17 @@ namespace Infotainment.Areas.Admin.Controllers
 
         [Approve]
         [HttpPost]
-        public ActionResult NeedApproval(TopNewsApprovalList selectedNewsList)
+        public ActionResult NeedApproval(NewsApprovalList selectedNewsList)
         {
-            var activeList = new TopNewsApprovalList();
-            activeList.ApprovalList = new List<TopNewsApproval>();
-            int selectedItemCount = selectedNewsList.ApprovalList.Where(t => t.Selected).Count();
+            var activeList = new NewsApprovalList();
+            activeList.ApprovalList = new List<NewsApproval>();
+            var selectedItem = selectedNewsList.ApprovalList.Where(t => t.Selected);
+            int selectedItemCount = selectedItem.Count();
 
             if (selectedItemCount > 0)
             {
                 var list = new List<ITopNews>();
-                selectedNewsList.ApprovalList.ToList().ForEach(item => list.Add(new TopNews()
+                selectedItem.ToList().ForEach(item => list.Add(new TopNews
                 {
                     TopNewsID = item.TopNewsID,
                     IsApproved = item.Selected ? 1 : 0
@@ -70,10 +71,11 @@ namespace Infotainment.Areas.Admin.Controllers
                 var user = (IUsers)this.Session[Constants.UserSessionKey];
                 TopNewsBL.Instance.GiveApprovalFor(list, user);
 
+                activeList.ApprovalList.Clear();
                 TopNewsBL.Instance.SelectTopNewsForApproval().ToList().ForEach(v =>
                 {
                     activeList.ApprovalList.Add(
-                        new TopNewsApproval
+                        new NewsApproval
                         {
                             Selected = false,
                             TopNewsID = v.TopNewsID,
@@ -83,6 +85,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         });
                 });
 
+                ModelState.Clear();
                 activeList.Message = selectedItemCount.ToString() + " news has been approves successfuly.";
             }
             else
@@ -99,17 +102,17 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var list = new TopNewsActivationlList();
+                var list = new NewsActivationlList();
                 list.Message = "Select news and click on submit to make active.";
 
-                list.ActivationlList = new List<TopNewsActivation>();
+                list.ActivationlList = new List<NewsActivation>();
 
                 var topNewsBL = new TopNewsBL();
                 var result = topNewsBL.SelectTopNewsForActivate();
                 result.ToList().ForEach(v =>
                 {
                     list.ActivationlList.Add(
-                        new TopNewsActivation
+                        new NewsActivation
                         {
                             Selected = false,
                             TopNewsID = v.TopNewsID,
@@ -126,16 +129,17 @@ namespace Infotainment.Areas.Admin.Controllers
 
         [Active]
         [HttpPost]
-        public ActionResult MakeActive(TopNewsActivationlList selectedNewsList)
+        public ActionResult MakeActive(NewsActivationlList selectedNewsList)
         {
-            var activeList = new TopNewsActivationlList();
-            activeList.ActivationlList = new List<TopNewsActivation>();
-            int selectedItemCount = selectedNewsList.ActivationlList.Where(t => t.Selected).Count();
+            var activeList = new NewsActivationlList();
+            activeList.ActivationlList = new List<NewsActivation>();
+            var selectedItem = selectedNewsList.ActivationlList.Where(t => t.Selected);
+            int selectedItemCount = selectedItem.Count();
 
             if (selectedItemCount > 0)
             {
                 var list = new List<ITopNews>();
-                selectedNewsList.ActivationlList.ToList().ForEach(item => list.Add(new TopNews()
+                selectedItem.ToList().ForEach(item => list.Add(new TopNews()
                 {
                     TopNewsID = item.TopNewsID,
                     IsActive = item.Selected ? 1 : 0
@@ -144,10 +148,12 @@ namespace Infotainment.Areas.Admin.Controllers
                 var user = (IUsers)this.Session[Constants.UserSessionKey];
                 TopNewsBL.Instance.MakeActiveFor(list, user);
 
+                activeList.ActivationlList.Clear();
+
                 TopNewsBL.Instance.SelectTopNewsForActivate().ToList().ForEach(v =>
                 {
                     activeList.ActivationlList.Add(
-                        new TopNewsActivation
+                        new NewsActivation
                         {
                             Selected = false,
                             TopNewsID = v.TopNewsID,
@@ -156,7 +162,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             DttmCreated = v.DttmCreated
                         });
                 });
-
+                ModelState.Clear();
                 activeList.Message = selectedItemCount.ToString() + " news has been activeted.";
             }
             else
@@ -185,13 +191,13 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Inser new news.";
-                return View(new CreateTopTenNews());
+                return View(new CreateNews());
             });
         }
 
         [Insert]
         [HttpPost]
-        public async Task<ActionResult> InsertNews(CreateTopTenNews news)
+        public async Task<ActionResult> InsertNews(CreateNews news)
         {
             return await Task.Run(() =>
             {
@@ -235,6 +241,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             {
                                 objImageDetail.ImageUrl = dirPath + "/" + fileName;
                                 objImageDetail.Caption = news.ImageCaption;
+                                objImageDetail.ImageType = 1;
                                 var path = Path.Combine(serverPath, fileName);
                                 news.Image.SaveAs(path);
                             }
@@ -245,7 +252,7 @@ namespace Infotainment.Areas.Admin.Controllers
 
                     topNewsBL.Insert(objTopNews, objImageDetail, user);
 
-                    news = new CreateTopTenNews();
+                    news = new CreateNews();
                     ViewBag.Message = "File saved successfully.";
                     ModelState.Clear();
                 }
@@ -323,7 +330,7 @@ namespace Infotainment.Areas.Admin.Controllers
 
                         var image = new ImageDetail
                         {
-                            //ImageType = ImageType.TopNewsImage
+                            ImageType = 1,
                             ImageUrl = newForUpdate.ImageUrl,
                             Caption = newForUpdate.Caption,
                             IsActive = 1,

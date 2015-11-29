@@ -18,7 +18,7 @@ namespace Infotainment.Controllers
         public IEnumerable<IAdvertisment> TopNewsAdvertisment()
         {
             var instance = AdvertismentBL.Instance;
-            ConcurrentBag<IAdvertisment> advertismentList = new ConcurrentBag<IAdvertisment>();
+            var advertismentList = new ConcurrentBag<IAdvertisment>();
             try
             {
                 var result = instance.SelectActive(AdvertismentType.TopNewsAdd);

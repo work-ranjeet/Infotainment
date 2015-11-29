@@ -95,7 +95,7 @@ CREATE TABLE TopNewsTacking (
 	TackingID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
 	TopNewsID NVARCHAR(50),
 	NewsStatusID INT,
-	UserID NVARCHAR(50),
+	UserID BIGINT,
 	DttmCreated DATETIME DEFAULT(getdate()),
 	DttmModified DATETIME DEFAULT(getdate())
 	)
@@ -130,7 +130,7 @@ CREATE TABLE InternationalNewsTacking (
 	TackingID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
 	NewsID NVARCHAR(50),
 	NewsStatusID INT,
-	UserID INT,
+	UserID BIGINT,
 	DttmCreated DATETIME DEFAULT(getdate()),
 	DttmModified DATETIME DEFAULT(getdate())
 	)

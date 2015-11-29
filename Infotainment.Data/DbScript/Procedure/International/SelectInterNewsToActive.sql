@@ -1,15 +1,15 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'SelectInterNewsToApprove') AND type IN (
+		WHERE object_id = OBJECT_ID(N'SelectInterNewsToActive') AND type IN (
 				N'P',
 				N'PC'
 				)
 		)
-	DROP PROCEDURE SelectInterNewsToApprove
+	DROP PROCEDURE SelectInterNewsToActive
 GO
 
-CREATE PROCEDURE SelectInterNewsToApprove
+CREATE PROCEDURE SelectInterNewsToActive
 AS
 BEGIN
 	BEGIN TRY
@@ -36,7 +36,7 @@ BEGIN
 		FROM InternationalNews TN
 		LEFT JOIN InterNewsImage TPI ON TPI.NewsID = TN.NewsID
 		LEFT JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
-		WHERE TN.IsApproved = 0 AND TN.NewsType = @NewsType
+		WHERE TN.IsActive = 0 AND TN.IsApproved = 1 AND TN.NewsType = @NewsType
 	END TRY
 
 	BEGIN CATCH
@@ -49,11 +49,10 @@ BEGIN
 			)
 		VALUES (
 			1,
-			'SelectInterNewsToApprove',
-			'Error from SelectInterNewsToApprove Store Procedure',
+			'SelectInterNewsToActive',
+			'Error from SelectInterNewsToActive Store Procedure',
 			ERROR_NUMBER(),
 			ERROR_MESSAGE()
 			)
 	END CATCH
 END
-	--exec SelectInterNewsToApprove

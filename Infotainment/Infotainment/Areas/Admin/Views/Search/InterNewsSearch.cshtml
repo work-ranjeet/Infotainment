@@ -1,7 +1,7 @@
-﻿@model Infotainment.Areas.Admin.Models.MainNewsListFilter
+﻿@model Infotainment.Areas.Admin.Models.InterNewsListFilter
 
 @{
-    ViewBag.Title = "MainNewsSearch";
+    ViewBag.Title = "InterNewsSearch";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
@@ -12,18 +12,18 @@
         });
     </script>
 }
-@using (Html.BeginForm("MainNewsSearch", "Search", FormMethod.Post))
+@using (Html.BeginForm("InterNewsSearch", "Search", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <section id="NewsDetails" class="container" ng-controller="searchCtrl">
 
         <div class="round-corner-top row">
-            <div>
-                <h3>Main News</h3>
-                <hr class="style-six" />
-            </div>
             <div class="col-xs-12">
+                <div>
+                    <h3>Internationa News</h3>
+                    <hr class="style-six" />
+                </div>
                 <table style="width:100%; border:0px; border-collapse:collapse; padding:0px; border-spacing:0px;">
                     <tr>
                         <td class="text-left" style="width:15%;">
@@ -77,9 +77,9 @@
                                 {
                                     foreach (var item in Model.NewsList)
                                     {
-                                        <tr style="cursor:pointer;" ng-click="OpenWindow('@HttpUtility.UrlDecode(Url.Action("UpdateNews", "TopNews", new { NewsID = item.TopNewsID }))');">
+                                        <tr style="cursor:pointer;" ng-click="OpenWindow('@HttpUtility.UrlDecode(Url.Action("UpdateNews", "International", new { NewsID = item.NewsID }))');">
                                             <td style=" display:none;">
-                                                <input id="IsActiveHidden" type="hidden" value=">@item.TopNewsID" name="TopNewsID" />
+                                                <input id="IsActiveHidden" type="hidden" value=">@item.NewsID" name="TopNewsID" />
                                             </td>
                                             <td style="display:none;">@item.DisplayOrder</td>
                                             <td class="text-center">
@@ -105,5 +105,4 @@
         </div>
 
     </section>
-
 }

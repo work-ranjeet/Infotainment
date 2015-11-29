@@ -28,31 +28,31 @@ using Infotainment.Data.Entities;
 
 namespace Infotainment.Data.Controls
 {
-    public class TopNewsBL : IDisposable
+    public class InterNewsBL : IDisposable
     {
-        public static TopNewsBL Instance
+        public static InterNewsBL Instance
         {
-            get { return new TopNewsBL(); }
+            get { return new InterNewsBL(); }
         }
 
         #region Auto Generated Code - Insert
-        public void Insert(ITopNews objTopNews, IImageDetail objImageDetail, IUsers user)
+        public void Insert(IInterNews objNews, IImageDetail objImageDetail, IUsers user)
         {
             try
             {
                 var objdbhelper = new DBHelper();
-                var objTopNewsDB = new TopNewsDB();
-                objTopNews.EditorID = "1";
-                objTopNews.DisplayOrder = 1;
-                objTopNews.IsActive = 0;
-                objTopNews.IsApproved = 0;
-                objTopNews.LanguageID = 1;
+                var objNewsDB = new InterNewsDB();
+                objNews.EditorID = "1";
+                objNews.DisplayOrder = 1;
+                objNews.IsActive = 0;
+                objNews.IsApproved = 0;
+                objNews.LanguageID = 1;
 
                 objImageDetail.IsActive = 0;
                 objImageDetail.IsFirst = 1;
 
 
-                objTopNewsDB.Insert(ref objdbhelper, objTopNews, objImageDetail, user);
+                objNewsDB.Insert(ref objdbhelper, objNews, objImageDetail, user);
             }
             catch (Exception objExp)
             {
@@ -62,12 +62,12 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region /// Update News
-        public void GiveApproval(ITopNews topNews, IUsers user)
+        public void GiveApproval(IInterNews news, IUsers user)
         {
             var objdbhelper = new DBHelper();
             try
             {
-                TopNewsDB.Instance.GiveApproval(ref objdbhelper, topNews, user);
+                InterNewsDB.Instance.GiveApproval(ref objdbhelper, news, user);
             }
             catch (Exception objExp)
             {
@@ -75,12 +75,12 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void MakeActive(ITopNews topNews, IUsers user)
+        public void MakeActive(IInterNews news, IUsers user)
         {
             var objdbhelper = new DBHelper();
             try
             {
-                TopNewsDB.Instance.MakeActive(ref objdbhelper, topNews, user);
+                InterNewsDB.Instance.MakeActive(ref objdbhelper, news, user);
             }
             catch (Exception objExp)
             {
@@ -88,14 +88,14 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void GiveApprovalFor(IList<ITopNews> topNewsList, IUsers user)
+        public void GiveApprovalFor(IList<IInterNews> newsList, IUsers user)
         {
             var dbhelper = new DBHelper();
             dbhelper.BeginTransaction();
 
             try
             {
-                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.GiveApproval(ref dbhelper, item, user));
+                newsList.ToList().ForEach(item => InterNewsDB.Instance.GiveApproval(ref dbhelper, item, user));
 
                 dbhelper.CommitTransaction();
             }
@@ -105,14 +105,14 @@ namespace Infotainment.Data.Controls
                 throw objExp;
             }
         }
-        public void MakeActiveFor(IList<ITopNews> topNewsList, IUsers user)
+        public void MakeActiveFor(IList<IInterNews> newsList, IUsers user)
         {
             var dbhelper = new DBHelper();
             dbhelper.BeginTransaction();
 
             try
             {
-                topNewsList.ToList().ForEach(item => TopNewsDB.Instance.MakeActive(ref dbhelper, item, user));
+                newsList.ToList().ForEach(item => InterNewsDB.Instance.MakeActive(ref dbhelper, item, user));
 
                 dbhelper.CommitTransaction();
             }
@@ -123,12 +123,12 @@ namespace Infotainment.Data.Controls
             }
         }
 
-        public void UpdateNews(ref DBHelper dbHelper, ITopNews news, IImageDetail image, IUsers user)
+        public void UpdateNews(ref DBHelper dbHelper, IInterNews news, IImageDetail image, IUsers user)
         {
             try
             {
                 news.EditorID = news.EditorID == null ? String.Empty : news.EditorID;
-                TopNewsDB.Instance.Update(ref dbHelper, news, image, user);
+                InterNewsDB.Instance.Update(ref dbHelper, news, image, user);
             }
             catch (Exception ex)
             {
@@ -139,20 +139,20 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
-        public ITopNews Select(string NewsID)
+        public IInterNews Select(string NewsID)
         {
-            return TopNewsDB.Instance.Select(NewsID);
+            return InterNewsDB.Instance.Select(NewsID);
         }
 
-        public IEnumerable<ITopNews> SelectAll(NewsType newsType)
+        public IEnumerable<IInterNews> SelectAllForList(NewsType newsType)
         {
-            List<ITopNews> list = null;
+            List<IInterNews> list = null;
             try
             {
                 switch (newsType)
                 {
                     case NewsType.TopNews:
-                        list = TopNewsDB.Instance.SelectAll();
+                        list = InterNewsDB.Instance.SelectAllForList();
                         break;
 
                     default:
@@ -164,16 +164,16 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
-            return list.OrderByDescending( v => v.DttmCreated);
+            return list.OrderByDescending(v => v.DttmCreated);
         }
 
-        public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
+        public IEnumerable<IInterNews> Search(DateTime dateFrom, DateTime dateTo, string Heading)
         {
-            IEnumerable<ITopNews> list = null;
+            IEnumerable<IInterNews> list = null;
             try
             {
-                var objTopNewsDB = new TopNewsDB();
-                list = objTopNewsDB.Search(dateFrom, dateTo, Heading);
+                var objNewsDB = new InterNewsDB();
+                list = objNewsDB.Search(dateFrom, dateTo, Heading);
             }
             catch (Exception objExp)
             {
@@ -182,46 +182,46 @@ namespace Infotainment.Data.Controls
             return list;
         }
 
-        public IEnumerable<ITopNews> SelectTopNewsForApproval()
+        public IEnumerable<IInterNews> SelectToApprove()
         {
-            IEnumerable<ITopNews> list = null;
+            IEnumerable<IInterNews> list = null;
             try
             {
-                var objTopNewsDB = new TopNewsDB();
-                list = objTopNewsDB.SelectTopNewsForActivate();
+                var objNewsDB = new InterNewsDB();
+                list = objNewsDB.SelectToApprove();
             }
             catch (Exception objExp)
             {
                 throw objExp;
             }
-            return list.ToList().FindAll(v => v.IsApproved == 0).OrderByDescending(v => v.DttmModified);
+            return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<ITopNews> SelectTopNewsForActivate()
+        public IEnumerable<IInterNews> SelectToActive()
         {
-            IEnumerable<ITopNews> list = null;
+            IEnumerable<IInterNews> list = null;
             try
             {
-                var objTopNewsDB = new TopNewsDB();
-                list = objTopNewsDB.SelectTopNewsForActivate();
+                var objTopNewsDB = new InterNewsDB();
+                list = objTopNewsDB.SelectToActive();
             }
             catch (Exception objExp)
             {
                 throw objExp;
             }
-            return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
+            return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<ITopNews> SelectFirst10TopNews()
+        public IEnumerable<IInterNews> SelectFirst10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+            var top20 = InterNewsDB.Instance.Select20TopNews();
 
             return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(10);
         }
 
-        public IEnumerable<ITopNews> SelectRest10TopNews()
+        public IEnumerable<IInterNews> SelectRest10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+            var top20 = InterNewsDB.Instance.Select20TopNews();
 
             return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(10);
         }
@@ -229,7 +229,7 @@ namespace Infotainment.Data.Controls
 
         #region Memory
         private bool disposed = false;
-        ~TopNewsBL()
+        ~InterNewsBL()
         {
             Dispose(false);
         }

@@ -3,11 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @* Top ten news *@
-<div id="topNews" class="container" ng-controller="TopNewsCtrl">
+<div id="topNews" class="container">
 
     <div class="row">
         <div class="col-xs-8">
-            <div class="row">
+            <div class="row" ng-controller="TopNewsCtrl">
                 <div id="topNewsItem" class="col-xs-6 col-lg-6">
                     <div ng-show="news.ImageUrl.length > 0" class="row" ng-repeat="news in imageNewsList">
                         <div class="col-xs-12">
@@ -17,7 +17,7 @@
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                                 <span class="news-heading"> {{news.Heading}}</span>                                
                             </a>
-                            <span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>
+                            @*<span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>*@
                             <p class="news-text padding-top-2">
                                 {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
                                 <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
@@ -33,7 +33,7 @@
                                 <span class="news-heading"> {{news.Heading}}</span>
                                
                             </a>
-                            <span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>
+                            @*<span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>*@
                             <p class="news-text padding-top-2">
                                 {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
                                 <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
@@ -52,7 +52,7 @@
             @*  International News *@
             <div class="row" id="internationalNews" ng-controller="internationalNewsCtrl">
                 <div class="col-xs-12 news-title">
-                    <a href="#" target="_self"><span>{{Title}}</span></a>
+                    <a href="#" target="_self"><span>{{InterTitle}}</span></a>
                     <hr class="style-six" />
                 </div>
 
@@ -68,8 +68,8 @@
 
                             <p class="news-text padding-top-2">
                                 {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
-                                <span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>
-                                <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                                @*<span class="news-date text-right" style="white-space:nowrap">{{news.DttmCreated | hindiDate}}</span>*@
+                                <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                             </p>
 
                             <hr class="style-seven" />
@@ -96,9 +96,9 @@
             @*  End International News *@
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-xs-4" ng-controller="advertismentCtrl">
             <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
-                <a href="{{advertise.WebLink}}" target="_self">
+                <a href="{{advertise.WebLink}}" target="_blank">
                     <div class="text-border">
                         <img class="image" src="{{advertise.ImgUrl}}" alt="24 Hours dental service">
                         <span class="caption">{{advertise.Heading}}</span>

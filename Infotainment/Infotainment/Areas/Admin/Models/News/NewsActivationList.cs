@@ -6,15 +6,15 @@ using Infotainment.Data.Controls;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class TopNewsActivationlList :IDisposable
+    public class NewsActivationlList :IDisposable
     {
         public string Message { get; set; }
 
-        public List<TopNewsActivation> ActivationlList { get; set; }
+        public List<NewsActivation> ActivationlList { get; set; }
 
         #region Memory
         private bool disposed = false;
-        ~TopNewsActivationlList()
+        ~NewsActivationlList()
         {
             Dispose(false);
         }
@@ -41,7 +41,7 @@ namespace Infotainment.Areas.Admin.Models
         #endregion
     }
 
-    public class TopNewsActivation :IDisposable
+    public class NewsActivation :IDisposable
     {
         public bool Selected { get; set; }
 
@@ -57,7 +57,7 @@ namespace Infotainment.Areas.Admin.Models
 
         #region Memory
         private bool disposed = false;
-        ~TopNewsActivation()
+        ~NewsActivation()
         {
             Dispose(false);
         }

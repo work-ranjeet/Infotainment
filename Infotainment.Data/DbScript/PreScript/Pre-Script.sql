@@ -85,6 +85,9 @@ VALUES (8, 'UnActive', 'News again un-activated')
 INSERT INTO ImageType (ImageType, EnumWord, ImageDesc)
 VALUES (1, 'TopImage', 'Top News Image')
 
+INSERT INTO ImageType (ImageType, EnumWord, ImageDesc)
+VALUES (2, 'InterNewsImage', 'Inter News Image')
+
 -------------------- AdvertismentType --------------------
 INSERT INTO AdvertismentType (AddType, EnumWord, AddTypeDesc)
 VALUES (1, 'TopNews', 'Top News Advertisment')

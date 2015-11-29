@@ -1,33 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
-using Infotainment.Data.Controls;
+using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class MainNewsListFilter : IDisposable
+
+    public class CreateNews :IDisposable
     {
-        [Required]
-        public DateTime DateFrom { get; set; }
+        //[Required]
+        //public string EditorID { get; set; }
+
+        //[Required]
+        //public int DisplayOrder { get; set; }
 
         [Required]
-        public DateTime DateTo { get; set; }
-       
-        public bool IsActive { get; set; }
-
-        public bool IsApproved { get; set; }
+        public string Heading { get; set; }
 
         [Required]
-        public string Header { get; set; }
+        public HttpPostedFileBase Image { get; set; }
 
-        public ConcurrentBag<ITopNews> NewsList { get; set; }
+        [Required]
+        public string ShortDesc { get; set; }
+
+        [Required]
+        public string  ImageCaption { get; set; }
+
+        [AllowHtml]
+        //[Required]
+        public string Description { get; set; }
+
+        //[Required]
+        //public int LanguageID { get; set; }
 
         #region Memory
         private bool disposed = false;
-        ~MainNewsListFilter()
+        ~CreateNews()
         {
             Dispose(false);
         }
@@ -52,5 +62,6 @@ namespace Infotainment.Areas.Admin.Models
             }
         }
         #endregion
+
     }
 }

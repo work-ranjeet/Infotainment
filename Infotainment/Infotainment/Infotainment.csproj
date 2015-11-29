@@ -138,17 +138,19 @@
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
     <Compile Include="Areas\Admin\Models\Advertisment\AdvertismentModal.cs" />
-    <Compile Include="Areas\Admin\Models\TopTenNews\CreateTopTenNews.cs" />
+    <Compile Include="Areas\Admin\Models\News\CreateNews.cs" />
+    <Compile Include="Areas\Admin\Models\Search\InterNewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\Search\TopNewsListFilter.cs" />
-    <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsActivationList.cs" />
-    <Compile Include="Areas\Admin\Models\TopTenNews\TopNewsApprovalList.cs" />
-    <Compile Include="Areas\Admin\Models\TopTenNews\UpdateNews.cs" />
+    <Compile Include="Areas\Admin\Models\News\NewsActivationList.cs" />
+    <Compile Include="Areas\Admin\Models\News\NewsApprovalList.cs" />
+    <Compile Include="Areas\Admin\Models\News\UpdateNews.cs" />
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
     <Compile Include="Controllers\Advertisment\AdvertismentApiController.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeController.cs" />
+    <Compile Include="Controllers\InternationalNews\InternationalNewsApiController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsApiController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsController.cs" />
     <Compile Include="Controllers\MarketNewsController.cs" />
@@ -204,13 +206,13 @@
     <Content Include="Images\GameSection\Story\sachin1-18-08-2015-1439880811_mainmng.jpg" />
     <Content Include="Images\HealthTips\1_1439210609.jpg" />
     <Content Include="Images\MainNews\pm-narendra-modi_240x180_81439867577.jpg" />
-    <Content Include="Images\Top-ten\advani-sushma_1439374915.jpg" />
-    <Content Include="Images\Top-ten\picture-4_1439378226.jpg" />
-    <Content Include="Images\Top-ten\rahul-1_1439387439.jpg" />
-    <Content Include="Images\Topten-Ad\11409993_6035408267582_658037972_n.png" />
-    <Content Include="Images\Topten-Ad\dentistry-com.JPG" />
-    <Content Include="Images\Topten-Ad\safe_image.png" />
+    <Content Include="Images\News\Top-ten\advani-sushma_1439374915.jpg" />
+    <Content Include="Images\News\Top-ten\picture-4_1439378226.jpg" />
+    <Content Include="Images\News\Top-ten\rahul-1_1439387439.jpg" />
     <Content Include="Scripts\App.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\Advertisment\AdvertismentCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
@@ -228,8 +230,8 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TopNews\EditorTemplates\TopNewsActivation.cshtml" />
-    <Content Include="Areas\Admin\Views\TopNews\EditorTemplates\TopNewsApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\TopNews\EditorTemplates\NewsActivation.cshtml" />
+    <Content Include="Areas\Admin\Views\TopNews\EditorTemplates\NewsApproval.cshtml" />
     <Content Include="Areas\Admin\Views\TopNews\InsertNews.cshtml" />
     <Content Include="Areas\Admin\Views\TopNews\MakeActive.cshtml" />
     <Content Include="Areas\Admin\Views\TopNews\NeedApproval.cshtml" />
@@ -245,6 +247,13 @@
     <Content Include="Areas\Admin\Views\Advertisment\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Authentication.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutPopup.cshtml" />
+    <Content Include="Areas\Admin\Views\International\EditorTemplates\NewsActivation.cshtml" />
+    <Content Include="Areas\Admin\Views\International\EditorTemplates\NewsApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\International\InsertNews.cshtml" />
+    <Content Include="Areas\Admin\Views\International\MakeActive.cshtml" />
+    <Content Include="Areas\Admin\Views\International\NeedApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\International\UpdateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\InterNewsSearch.cshtml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -745,8 +754,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\International\" />
     <Folder Include="Images\Advertisment\ToptenAdd\" />
+    <Folder Include="Images\News\International\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>

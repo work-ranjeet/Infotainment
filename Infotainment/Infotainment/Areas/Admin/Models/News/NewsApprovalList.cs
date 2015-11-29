@@ -6,15 +6,15 @@ using System.Web;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class TopNewsApprovalList :IDisposable
+    public class NewsApprovalList :IDisposable
     {
         public string Message { get; set; }
 
-        public IList<TopNewsApproval> ApprovalList { get; set; }
+        public IList<NewsApproval> ApprovalList { get; set; }
 
         #region Memory
         private bool disposed = false;
-        ~TopNewsApprovalList()
+        ~NewsApprovalList()
         {
             Dispose(false);
         }
@@ -41,7 +41,7 @@ namespace Infotainment.Areas.Admin.Models
         #endregion
     }
 
-    public class TopNewsApproval :IDisposable
+    public class NewsApproval :IDisposable
     {
         public bool Selected { get; set; }
 
@@ -57,7 +57,7 @@ namespace Infotainment.Areas.Admin.Models
 
         #region Memory
         private bool disposed = false;
-        ~TopNewsApproval()
+        ~NewsApproval()
         {
             Dispose(false);
         }

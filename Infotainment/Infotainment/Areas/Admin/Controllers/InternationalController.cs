@@ -2,6 +2,7 @@
 using Infotainment.Data;
 using Infotainment.Data.Controls;
 using Infotainment.Data.Entities;
+using Infotainment.Filter;
 using PCL.DBHelper;
 using System;
 using System.Collections.Generic;
@@ -13,26 +14,29 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Controllers
 {
+    [Autherisation]
     public class InternationalController : Controller
     {
+        [Approve]
+        [HttpGet]
         public async Task<ActionResult> NeedApproval()
         {
             return await Task.Run(() =>
             {
-                var list = new TopNewsApprovalList();
+                var list = new NewsApprovalList();
                 list.Message = "Select news and click on submit to approve.";
 
-                list.ApprovalList = new List<TopNewsApproval>();
+                list.ApprovalList = new List<NewsApproval>();
 
-                var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectTopNewsForApproval();
+                var newsBL = new InterNewsBL();
+                var result = newsBL.SelectToApprove();
                 result.ToList().ForEach(v =>
                 {
                     list.ApprovalList.Add(
-                        new TopNewsApproval
+                        new NewsApproval
                         {
                             Selected = false,
-                            TopNewsID = v.TopNewsID,
+                            TopNewsID = v.NewsID,
                             ImageUrl = v.ImageUrl,
                             IsApproved = v.IsApproved,
                             Heading = v.Heading,
@@ -44,66 +48,73 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Approve]
         [HttpPost]
-        public ActionResult NeedApproval(TopNewsApprovalList selectedNewsList)
+        public async Task<ActionResult> NeedApproval(NewsApprovalList selectedNewsList)
         {
-            var activeList = new TopNewsApprovalList();
-            activeList.ApprovalList = new List<TopNewsApproval>();
-            int selectedItemCount = selectedNewsList.ApprovalList.Where(t => t.Selected).Count();
-
-            if (selectedItemCount > 0)
+            return await Task.Run(() =>
             {
-                var list = new List<ITopNews>();
-                selectedNewsList.ApprovalList.ToList().ForEach(item => list.Add(new TopNews()
+                var activeList = new NewsApprovalList();
+                activeList.ApprovalList = new List<NewsApproval>();
+                var selectedItem = selectedNewsList.ApprovalList.Where(t => t.Selected);
+
+                if (selectedItem.Count() > 0)
                 {
-                    TopNewsID = item.TopNewsID,
-                    IsApproved = item.Selected ? 1 : 0
-                }));
+                    var list = new List<IInterNews>();
+                    selectedItem.ToList().ForEach(item => list.Add(new InterNews()
+                    {
+                        NewsID = item.TopNewsID,
+                        IsApproved = item.Selected ? 1 : 0
+                    }));
 
-                var user = (IUsers)this.Session[Constants.UserSessionKey];
-                TopNewsBL.Instance.GiveApprovalFor(list, user);
+                    var user = (IUsers)this.Session[Constants.UserSessionKey];
+                    InterNewsBL.Instance.GiveApprovalFor(list, user);
 
-                TopNewsBL.Instance.SelectTopNewsForApproval().ToList().ForEach(v =>
+                    InterNewsBL.Instance.SelectToApprove().ToList().ForEach(v =>
+                    {
+                        activeList.ApprovalList.Add(
+                            new NewsApproval
+                            {
+                                Selected = false,
+                                TopNewsID = v.NewsID,
+                                IsApproved = v.IsApproved,
+                                Heading = v.Heading,
+                                DttmCreated = v.DttmCreated
+                            });
+                    });
+                    ModelState.Clear();
+
+                    activeList.Message = selectedItem.Count().ToString() + " news has been approves successfuly.";
+                }
+                else
                 {
-                    activeList.ApprovalList.Add(
-                        new TopNewsApproval
-                        {
-                            Selected = false,
-                            TopNewsID = v.TopNewsID,
-                            IsApproved = v.IsApproved,
-                            Heading = v.Heading,
-                            DttmCreated = v.DttmCreated
-                        });
-                });
+                    activeList.Message = "Please select atleast one news to approve!";
+                }
 
-                activeList.Message = selectedItemCount.ToString() + " news has been approves successfuly.";
-            }
-            else
-            {
-                activeList.Message = "Please select atleast one news to approve!";
-            }
-
-            return View(activeList);
+                return View(activeList);
+            });
         }
 
+        [Active]
+        [HttpGet]
         public async Task<ActionResult> MakeActive()
         {
             return await Task.Run(() =>
             {
-                var list = new TopNewsActivationlList();
+                var list = new NewsActivationlList();
                 list.Message = "Select news and click on submit to make active.";
 
-                list.ActivationlList = new List<TopNewsActivation>();
+                list.ActivationlList = new List<NewsActivation>();
 
-                var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectTopNewsForActivate();
+                var newsBL = new InterNewsBL();
+                var result = newsBL.SelectToActive();
                 result.ToList().ForEach(v =>
                 {
                     list.ActivationlList.Add(
-                        new TopNewsActivation
+                        new NewsActivation
                         {
                             Selected = false,
-                            TopNewsID = v.TopNewsID,
+                            TopNewsID = v.NewsID,
                             ImageUrl = v.ImageUrl,
                             IsActive = v.IsActive,
                             Heading = v.Heading,
@@ -115,46 +126,50 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Active]
         [HttpPost]
-        public ActionResult MakeActive(TopNewsActivationlList selectedNewsList)
+        public async Task<ActionResult> MakeActive(NewsActivationlList selectedNewsList)
         {
-            var activeList = new TopNewsActivationlList();
-            activeList.ActivationlList = new List<TopNewsActivation>();
-            int selectedItemCount = selectedNewsList.ActivationlList.Where(t => t.Selected).Count();
-
-            if (selectedItemCount > 0)
+            return await Task.Run(() =>
             {
-                var list = new List<ITopNews>();
-                selectedNewsList.ActivationlList.ToList().ForEach(item => list.Add(new TopNews()
+                var activeList = new NewsActivationlList();
+                activeList.ActivationlList = new List<NewsActivation>();
+                var selectedItem = selectedNewsList.ActivationlList.Where(t => t.Selected);
+
+                if (selectedItem.Count() > 0)
                 {
-                    TopNewsID = item.TopNewsID,
-                    IsActive = item.Selected ? 1 : 0
-                }));
+                    var list = new List<IInterNews>();
+                    selectedItem.ToList().ForEach(item => list.Add(new InterNews()
+                    {
+                        NewsID = item.TopNewsID,
+                        IsActive = item.Selected ? 1 : 0
+                    }));
 
-                var user = (IUsers)this.Session[Constants.UserSessionKey];
-                TopNewsBL.Instance.MakeActiveFor(list, user);
+                    var user = (IUsers)this.Session[Constants.UserSessionKey];
+                    InterNewsBL.Instance.MakeActiveFor(list, user);
 
-                TopNewsBL.Instance.SelectTopNewsForActivate().ToList().ForEach(v =>
+                    InterNewsBL.Instance.SelectToActive().ToList().ForEach(v =>
+                    {
+                        activeList.ActivationlList.Add(
+                            new NewsActivation
+                            {
+                                Selected = false,
+                                TopNewsID = v.NewsID,
+                                IsActive = v.IsActive,
+                                Heading = v.Heading,
+                                DttmCreated = v.DttmCreated
+                            });
+                    });
+                    ModelState.Clear();
+                    activeList.Message = selectedItem.Count().ToString() + " news has been activeted.";
+                }
+                else
                 {
-                    activeList.ActivationlList.Add(
-                        new TopNewsActivation
-                        {
-                            Selected = false,
-                            TopNewsID = v.TopNewsID,
-                            IsActive = v.IsActive,
-                            Heading = v.Heading,
-                            DttmCreated = v.DttmCreated
-                        });
-                });
+                    activeList.Message = "Please select atleast one news to approve!";
+                }
 
-                activeList.Message = selectedItemCount.ToString() + " news has been activeted.";
-            }
-            else
-            {
-                activeList.Message = "Please select atleast one news to approve!";
-            }
-
-            return View(activeList);
+                return View(activeList);
+            });
         }
 
         [HttpGet]
@@ -162,39 +177,41 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var topNewsBL = new TopNewsBL();
-                var result = topNewsBL.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
+                var newsBL = new InterNewsBL();
+                var result = newsBL.Search(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
                 return View(result);
             });
         }
 
+        [Insert]
         [HttpGet]
         public async Task<ActionResult> InsertNews()
         {
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Inser new news.";
-                return View(new CreateTopTenNews());
+                return View(new CreateNews());
             });
         }
 
+        [Insert]
         [HttpPost]
-        public async Task<ActionResult> InsertNews(CreateTopTenNews news)
+        public async Task<ActionResult> InsertNews(CreateNews news)
         {
             return await Task.Run(() =>
             {
                 if (ModelState.IsValid)
                 {
-                    var objTopNews = new TopNews();
+                    var objNews = new InterNews();
                     var objImageDetail = new ImageDetail();
-                    var topNewsBL = new TopNewsBL();
+                    var newsBL = new InterNewsBL();
 
-                    objTopNews.Heading = news.Heading.Trim();
-                    objTopNews.ShortDescription = news.ShortDesc.Trim();
-                    objTopNews.NewsDescription = string.IsNullOrEmpty(news.Description) ? string.Empty : news.Description.Trim();
-                    objTopNews.DisplayOrder = 1;
+                    objNews.Heading = news.Heading.Trim();
+                    objNews.ShortDescription = news.ShortDesc.Trim();
+                    objNews.NewsDescription = string.IsNullOrEmpty(news.Description) ? string.Empty : news.Description.Trim();
+                    objNews.DisplayOrder = 1;
 
-                    string dirPath = "~/Images/Top-ten";
+                    string dirPath = ImagePath.InternationalNewsImage;
 
                     if (news.Image == null)
                     {
@@ -222,6 +239,8 @@ namespace Infotainment.Areas.Admin.Controllers
                             if (Path.IsPathRooted(serverPath))
                             {
                                 objImageDetail.ImageUrl = dirPath + "/" + fileName;
+                                objImageDetail.Caption = news.ImageCaption;
+                                objImageDetail.ImageType = 2;
                                 var path = Path.Combine(serverPath, fileName);
                                 news.Image.SaveAs(path);
                             }
@@ -229,9 +248,10 @@ namespace Infotainment.Areas.Admin.Controllers
                     }
 
                     var user = (IUsers)this.Session[Constants.UserSessionKey];
-                    topNewsBL.Insert(objTopNews, objImageDetail, user);
 
-                    news = new CreateTopTenNews();
+                    newsBL.Insert(objNews, objImageDetail, user);
+
+                    news = new CreateNews();
                     ViewBag.Message = "File saved successfully.";
                     ModelState.Clear();
                 }
@@ -245,17 +265,19 @@ namespace Infotainment.Areas.Admin.Controllers
             });
         }
 
+        [Update]
         [HttpGet]
         public async Task<ActionResult> UpdateNews(string NewsID)
         {
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Update new news.";
+                ViewBag.IsPopup = true;
                 UpdateNews newForUpdate = null;
-                var news = TopNewsBL.Instance.Select(NewsID);
+                var news = InterNewsBL.Instance.Select(NewsID);
                 if (news != null)
                 {
-                    var imgList = ImageDetailBL.Instance.SelectImageList(NewsID);
+                    var imgList = ImageDetailBL.Instance.SelectInterNewsImageList(NewsID);
                     IImageDetail image = null;
                     if (imgList != null && imgList.Count() > 0)
                     {
@@ -264,20 +286,23 @@ namespace Infotainment.Areas.Admin.Controllers
 
                     newForUpdate = new UpdateNews
                     {
-                        NewsID = news.TopNewsID,
+                        NewsID = news.NewsID,
                         Heading = news.Heading,
                         ShortDesc = news.ShortDescription,
                         Description = news.NewsDescription,
                         Image = null,
                         ImageUrl = image.ImageUrl,
+                        Caption = news.ImageCaption,
                         IsActiveNews = news.IsActive == 1 ? true : false,
-                        IsApprovedNews = news.IsApproved == 1 ? true : false
+                        IsApprovedNews = news.IsApproved == 1 ? true : false                       
 
                     };
                 }
                 return View(newForUpdate);
             });
         }
+
+        [Update]
         [HttpPost]
         public async Task<ActionResult> UpdateNews(UpdateNews newForUpdate)
         {
@@ -292,9 +317,9 @@ namespace Infotainment.Areas.Admin.Controllers
                     ViewBag.Message = "Update new news.";
                     if (ModelState.IsValid)
                     {
-                        var news = new TopNews
+                        var news = new InterNews
                         {
-                            TopNewsID = newForUpdate.NewsID,
+                            NewsID = newForUpdate.NewsID,
                             Heading = newForUpdate.Heading.Trim(),
                             ShortDescription = newForUpdate.ShortDesc.Trim(),
                             NewsDescription = string.IsNullOrEmpty(newForUpdate.Description) ? string.Empty : newForUpdate.Description.Trim(),
@@ -304,8 +329,9 @@ namespace Infotainment.Areas.Admin.Controllers
 
                         var image = new ImageDetail
                         {
-                            //ImageType = ImageType.TopNewsImage
+                            ImageType = 2,
                             ImageUrl = newForUpdate.ImageUrl,
+                            Caption = newForUpdate.Caption,
                             IsActive = 1,
                             IsFirst = 1
                         };
@@ -314,20 +340,20 @@ namespace Infotainment.Areas.Admin.Controllers
                         if (newForUpdate.Image != null && newForUpdate.Image.ContentLength > 0)
                         {
                             fileName = new Random().Next(1000000000).ToString() + Path.GetFileName(newForUpdate.Image.FileName);
-                            image.ImageUrl = ImagePath.TopTenNewsImage + "/" + fileName;
+                            image.ImageUrl = ImagePath.InternationalNewsImage + "/" + fileName;
                             image.IsActive = 1;
                             image.IsFirst = 1;
                         }
 
                         var user = (IUsers)this.Session[Constants.UserSessionKey];
-                        TopNewsBL.Instance.UpdateNews(ref dbHelpre, news, image, user);
+                        InterNewsBL.Instance.UpdateNews(ref dbHelpre, news, image, user);
 
                         if (!string.IsNullOrEmpty(fileName))
                         {
 
-                            if (SaveImage(ImagePath.TopTenNewsImage, fileName, newForUpdate.Image))
+                            if (SaveImage(ImagePath.InternationalNewsImage, fileName, newForUpdate.Image))
                             {
-                                if (DeleteImage(ImagePath.TopTenNewsImage, newForUpdate.ImageUrl))
+                                if (DeleteImage(ImagePath.InternationalNewsImage, newForUpdate.ImageUrl))
                                 {
                                     ViewBag.Message = "Updated successfully.";
                                     ModelState.Clear();

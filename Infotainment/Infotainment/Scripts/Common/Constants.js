@@ -6,8 +6,8 @@
 
 
 NewsType = {
-    TopNews: 1
-
+    TopNews: 1,
+    InternationalNews :2
 };
 
 DateFormat: "dd-MMM-yyyy";

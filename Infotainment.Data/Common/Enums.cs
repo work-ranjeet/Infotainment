@@ -13,7 +13,8 @@ namespace Infotainment.Data
     }
     public enum ImageType
     {
-        TopNewsImage = 1
+        TopNewsImage = 1,
+        InterNewsImage = 2
     }
 
     public enum AdvertismentType

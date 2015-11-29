@@ -29,6 +29,19 @@ namespace Infotainment.Data.Common
         public static readonly string SelectAllAdvertisment = "SelectAllAdvertisment";
         public static readonly string UpdateAdvertisment = "UpdateAdvertisment";
         public static readonly string DeleteAdvertisment = "DeleteAdvertisment";
-        
+
+        public static readonly string InsertInterNews = "InsertInterNews";
+        public static readonly string SearchInterNews = "SearchInterNews";
+        public static readonly string Select20InterNews = "Select20InterNews";
+        public static readonly string SelectAllInterForList = "SelectAllInterForList";
+        public static readonly string SelectInterNews = "SelectInterNews";
+        public static readonly string SelectInterNewsToActive = "SelectInterNewsToActive";
+        public static readonly string SelectInterNewsToApprove = "SelectInterNewsToApprove";
+        public static readonly string UpdateIntertNews = "UpdateIntertNews";
+        public static readonly string MakeApprovedInterNews = "MakeApprovedInterNews";
+        public static readonly string MakeActiveInterNews = "MakeActiveInterNews";
+        public static readonly string SelectInterNewsImageDetail = "SelectInterNewsImageDetail";
+
+
     }
 }

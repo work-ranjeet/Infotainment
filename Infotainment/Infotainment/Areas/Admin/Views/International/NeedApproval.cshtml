@@ -1,0 +1,69 @@
+﻿@model Infotainment.Areas.Admin.Models.NewsApprovalList
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#chkSelectAll").bind("change", function () {
+                $(".chkSelect").prop("checked", $(this).prop("checked"));
+            });
+            $(".chkSelect").bind("change", function () {
+                if (!$(this).prop("checked"))
+                    $("#chkSelectAll").prop("checked", false);
+            });
+            $(".alert").hide().fadeIn("slow");            
+        });
+    </script>
+}
+
+
+@using (Html.BeginForm("NeedApproval", "International", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <section id="NewsDetails" class="admin-section">
+        <div id="content" class="content">
+            <div id="container">
+                <div class="alert alert-info pull-left" style="padding: 6px 12px; margin:0px; width:86%;">
+                    <strong> @Model.Message </strong>
+                </div>
+                <div class="pull-right">
+                    <input id="approvalButton" class="btn btn-success" type="submit" value="Approve Selected">
+                </div>
+            </div>
+
+            <div id="grid" class="grid-control table-responsive">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead class="boxHeader">
+                        <tr>
+                            <th style="display:none;">TopNewsID</th>
+                            <th width="5%">
+                                <input type="checkbox" class="checkbox" id="chkSelectAll" style="height:17px; width:17px;" />
+                                <input id="IsApprovedHidden" type="hidden" value="" name="IsApproved" />
+                            </th>
+                            @*<th class="text-center" width="20px">&nbsp;</th>*@
+                            <th class="text-left" width="60%">Heading</th>
+                            <th class="text-left" width="15%">Status</th>
+                            <th class="text-left" width="20%">Created Date Time</th>
+                            <th class="text-center" width="50px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @Html.EditorFor(m => m.ApprovalList)
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+}
+
+
+
+

@@ -5,7 +5,8 @@
         TopTenNews: "request/MainNewsApi/TopNews",
         TopTenNewsDesc: "request/MainNewsApi/TopNewsHeader",
         TopTenNewsDetail: "request/MainNewsApi/NewsDetail",
-        TopTenNewsAdvertise: "request/AdvertismentApi/TopNewsAdvertisment"
+        TopTenNewsAdvertise: "request/AdvertismentApi/TopNewsAdvertisment",
+        InternationalNews: "request/InternationalNewsApi/FirstNews"
         
     };
 

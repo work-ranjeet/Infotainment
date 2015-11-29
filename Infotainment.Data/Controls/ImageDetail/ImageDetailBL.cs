@@ -17,5 +17,10 @@ namespace Infotainment.Data.Controls
         {
             return ImageDetailDb.Instance.SelectImageList(NewsID);
         }
+
+        public IEnumerable<IImageDetail> SelectInterNewsImageList(string NewsID)
+        {
+            return ImageDetailDb.Instance.SelectInterNewsImageList(NewsID);
+        }
     }
 }

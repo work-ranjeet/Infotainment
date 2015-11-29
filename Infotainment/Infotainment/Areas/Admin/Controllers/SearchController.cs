@@ -19,7 +19,7 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 var result = TopNewsBL.Instance.SelectAll(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
-                var viewModel = new TopNewsListFilter
+                var viewModel = new MainNewsListFilter
                 {
                     DateFrom = DateTime.Now.AddDays(-1),
                     DateTo = DateTime.Now,
@@ -28,16 +28,15 @@ namespace Infotainment.Areas.Admin.Controllers
                     Header = string.Empty
                 };
 
-                viewModel.TopNewsList = new ConcurrentBag<ITopNews>();
-                result.ToList().AsParallel().ForAll(news => viewModel.TopNewsList.Add(news));
+                viewModel.NewsList = new ConcurrentBag<ITopNews>();
+                result.ToList().AsParallel().ForAll(news => viewModel.NewsList.Add(news));
 
                 return View(viewModel);
             });
         }
 
-
         [HttpPost]
-        public async Task<ActionResult> MainNewsSearch(TopNewsListFilter criteria)
+        public async Task<ActionResult> MainNewsSearch(MainNewsListFilter criteria)
         {
             return await Task.Run(() =>
             {
@@ -53,8 +52,53 @@ namespace Infotainment.Areas.Admin.Controllers
                     result = result.ToList().FindAll(news => news.IsApproved == 1);
                 }
 
-                criteria.TopNewsList = new ConcurrentBag<ITopNews>();
-                result.ToList().AsParallel().ForAll(news => criteria.TopNewsList.Add(news));
+                criteria.NewsList = new ConcurrentBag<ITopNews>();
+                result.ToList().AsParallel().ForAll(news => criteria.NewsList.Add(news));
+
+                return View(criteria);
+            });
+        }
+
+        public async Task<ActionResult> InterNewsSearch()
+        {
+            return await Task.Run(() =>
+            {
+                var result = InterNewsBL.Instance.Search(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
+                var viewModel = new InterNewsListFilter
+                {
+                    DateFrom = DateTime.Now.AddDays(-1),
+                    DateTo = DateTime.Now,
+                    IsActive = false,
+                    IsApproved = false,
+                    Header = string.Empty
+                };
+
+                viewModel.NewsList = new ConcurrentBag<IInterNews>();
+                result.ToList().AsParallel().ForAll(news => viewModel.NewsList.Add(news));
+
+                return View(viewModel);
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> InterNewsSearch(InterNewsListFilter criteria)
+        {
+            return await Task.Run(() =>
+            {
+                var result = InterNewsBL.Instance.Search(criteria.DateFrom, criteria.DateTo, criteria.Header);
+
+                if (criteria.IsActive)
+                {
+                    result = result.ToList().FindAll(news => news.IsActive == 1);
+                }
+
+                if (criteria.IsApproved)
+                {
+                    result = result.ToList().FindAll(news => news.IsApproved == 1);
+                }
+
+                criteria.NewsList = new ConcurrentBag<IInterNews>();
+                result.ToList().AsParallel().ForAll(news => criteria.NewsList.Add(news));
 
                 return View(criteria);
             });
