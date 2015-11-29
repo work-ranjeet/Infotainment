@@ -223,7 +223,7 @@ namespace Infotainment.Data.Controls
         {
             var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(10);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(8).Take(10);
         }
         #endregion
 

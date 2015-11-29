@@ -8,6 +8,10 @@
     <div class="row">
         <div class="col-xs-8">
             <div class="row" ng-controller="TopNewsCtrl">
+                <div class="col-xs-12 news-title">
+                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" target="_self"><span>{{MainNewsTitle}}</span></a>
+                    <hr class="style-six" />
+                </div>
                 <div id="topNewsItem" class="col-xs-6 col-lg-6">
                     <div ng-show="news.ImageUrl.length > 0" class="row" ng-repeat="news in imageNewsList">
                         <div class="col-xs-12">
@@ -15,11 +19,12 @@
                                 <img class=" news-image" ng-src="{{news.ImageUrl}}" alt=" ">
                             </div>
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
-                                <span class="news-heading"> {{news.Heading}}</span>                                
+                                <span class="news-heading"> {{news.Heading}}</span>
                             </a>
                             @*<span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>*@
-                            <p class="news-text padding-top-2">
-                                {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
+                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                            <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                                {{news.DttmCreated | hindiDate}}
                                 <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                             </p>
                             <hr class="style-seven" />
@@ -31,11 +36,12 @@
                         <div class="col-xs-12">
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                                 <span class="news-heading"> {{news.Heading}}</span>
-                               
+
                             </a>
                             @*<span class="news-date text-right" style="white-space:nowrap; display:block;">{{news.DttmCreated | hindiDate}}</span>*@
-                            <p class="news-text padding-top-2">
-                                {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp;&nbsp;
+                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                            <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                                {{news.DttmCreated | hindiDate}}
                                 <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                             </p>
                             <hr class="style-seven" />
@@ -43,11 +49,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            @*<div class="row show-all-container">
                 <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" style="width:100%;" class="show-all">
                     <div><bdi>और पढ़ें - आज की बाकी खबरें...</bdi></div>
                 </a>
-            </div>
+            </div>*@
 
             @*  International News *@
             <div class="row" id="internationalNews" ng-controller="internationalNewsCtrl">
@@ -55,7 +61,6 @@
                     <a href="#" target="_self"><span>{{InterTitle}}</span></a>
                     <hr class="style-six" />
                 </div>
-
                 <div id="interImageNews" class="col-xs-6 col-lg-6">
                     <div ng-repeat="news in newsList" class="row">
                         <div class="col-xs-12">

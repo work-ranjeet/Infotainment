@@ -44,11 +44,10 @@ namespace Infotainment
 
             // Client
             bundles.Add(new ScriptBundle("~/bundles/ClientControllers").Include(
-                "~/Scripts/Components/HomePage/TopNews/TopNewsCtrl.js",
-                "~/Scripts/Components/NewsDetail/*.js",
-                "~/Scripts/Components/HomePage/International/internationalNewsCtrl.js"));
-
-            // "~/Scripts/Components/Module/*.js"));
+                "~/Scripts/Components/HomePage/TopNews/*.js",
+                "~/Scripts/Components/HomePage/International/*.js",
+                "~/Scripts/Components/NewsDetail/*.js",                
+                "~/Scripts/Components/Advertisment/*.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/AngularCtrl").Include("~/Scripts/Components/HomePage/*.js"));
             //bundles.Add(new ScriptBundle("~/bundles/MainNewsCtrl").Include("~/Scripts/Angular/Controllers/MainNews/*.js"));

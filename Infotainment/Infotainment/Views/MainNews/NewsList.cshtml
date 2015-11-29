@@ -3,10 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="topNews" class="container" ng-controller="newsDetailCtrl">
-    <div class="row">
-        <div class="col-xs-1">
-        </div>
-        <div class="col-xs-8">
+    <div class="row">        
+        <div class="col-xs-9">
             <div class="row" ng-repeat="news in PartialNewsList">
                 <div id="topNewsList" class="col-xs-12 list-container">
                     <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">

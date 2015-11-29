@@ -3,7 +3,7 @@
 		.module('infotainment')
 		.controller('internationalNewsCtrl', internationalNewsCtrl);
 
-    function internationalNewsCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile) {
+    function internationalNewsCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, ServiceProvider) {
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
         $scope.NewsType = NewsType.InternationalNews;
 

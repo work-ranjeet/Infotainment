@@ -444,6 +444,11 @@
 
 
 /* show All*/
+.show-all-container
+{
+    background-color:#656565;
+    height:30px;
+}
 .show-all {
     height: 30px;
     width: 100%;

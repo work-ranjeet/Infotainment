@@ -50,10 +50,33 @@ VALUES (1, 'er.ranjeetkumar@gmail.com', 1, 1, 1, '')
 GO
 
 INSERT INTO PwdManagement (UserID, Password, IsPwdReset, IsNew)
-VALUES (1, 'janeman', 0, 0)
+VALUES (1, 'H4voJgFDZ0yZiYLOzUAcMQ==', 0, 0)
 
 INSERT INTO UserGroups (UserID, GroupID)
 VALUES (1, 1)
+GO
+---------------------------------
+INSERT INTO Users (FName, MName, LName, Gender, Dob, Age, MariedSatus, IsActive, IsNew, GroupID)
+VALUES (
+	'Ravi', '', 'Singh', 'M', '1983-10-17', (
+		SELECT FLOOR(DATEDIFF(day, '1983-10-17', getDate()) / 365.25)
+		), 0, 1, 0, 1
+	)
+GO
+
+INSERT INTO UserAddress (UserID, CareOf, Address1, Address2, City, STATE, Country, MobileNo, PhoneNo, IsPrimary)
+VALUES (2, 'Shri Ram Kishor Singha', 'add1', 'Chandmari Road', 'Patna', 'Bihar', 'India', '9871213766', '0000000000', 1)
+GO
+
+INSERT INTO UserEmail (UserID, Email, IsActive, IsVerified, IsVerCodeSent, VerificationCode)
+VALUES (2, 'ravianandpat@gmail.com', 1, 1, 1, '')
+GO
+
+INSERT INTO PwdManagement (UserID, Password, IsPwdReset, IsNew)
+VALUES (2, 'H4voJgFDZ0yZiYLOzUAcMQ==', 0, 0)
+
+INSERT INTO UserGroups (UserID, GroupID)
+VALUES (2, 1)
 GO
 
 ------------------- News Status ------------------------
