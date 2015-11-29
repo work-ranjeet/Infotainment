@@ -560,8 +560,8 @@ namespace Infotainment.Data.Controls
             var dbHelper = DBHelper.Instance;
             try
             {
-                dbHelper.AddInParameter("@DateFrom", dateFrom, DbType.DateTime);
-                dbHelper.AddInParameter("@DateTo", dateTo, DbType.DateTime);
+                dbHelper.AddInParameter("@DateFrom", dateFrom.ToString("yyyy-MM-dd"));
+                dbHelper.AddInParameter("@DateTo", dateTo.ToString("yyyy-MM-dd"));
                 dbHelper.AddInParameter("@Heading", "%" + Heading + "%", DbType.String);
                 objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SearchInterNews, CommandType.StoredProcedure);
 

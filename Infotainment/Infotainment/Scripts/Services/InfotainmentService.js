@@ -1,10 +1,11 @@
-﻿angular.module('infotainment').factory('InfotainmentService', function ($http, $q) {
+﻿angular.module('infotainment').factory('InfotainmentService', function ($http, $q, $location) {
     
     var webHost = "";
-
+    var absUrl = $location.$$absUrl+"/";
     return {
         Host: function setHost(host) {
-            webHost = host +"/";
+
+            webHost = host + "/Infotainment/";
         },
 
         getPostData: function (url, postdata) {

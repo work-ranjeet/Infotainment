@@ -11,7 +11,7 @@
                         <span class="news-list-heading">{{news.Heading}}</span>
                     </a>
                     <div class="pull-left padding-right-five">
-                        <img class="news-list-image" ng-src="{{news.ImageUrl}}" />
+                        <img class="news-list-image" ng-src="~/{{news.ImageUrl}}" />
                     </div>
 
                     <a href="#" target="_self">
@@ -35,7 +35,7 @@
             <div class="advetise round-corner" ng-repeat="advertise in advertiseList">
                 <a href="{{advertise.WebLink}}" target="_self">
                     <div class="text-border">
-                        <img class="image" src="{{advertise.ImgUrl}}" alt="24 Hours dental service">
+                        <img class="image" src="~/{{advertise.ImgUrl}}" alt="24 Hours dental service">
                         <span class="caption">{{advertise.Heading}}</span>
                         <span class="url">{{advertise.WebUrl}}</span>
                         <span class="text">{{advertise.ShortDesc}}</span>

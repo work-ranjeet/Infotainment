@@ -236,7 +236,10 @@ namespace Infotainment.Areas.Admin.Controllers
                         else
                         {
                             var fileName = new Random().Next(1000000000).ToString() + Path.GetFileName(news.Image.FileName);
-                            var serverPath = Server.MapPath(dirPath);
+                            var pathArrey = Server.MapPath("Image").Replace("Admin", "@").Split('@');
+                            var serverPath = pathArrey[0] + dirPath;
+
+                            //System.IO.File.
                             if (Path.IsPathRooted(serverPath))
                             {
                                 objImageDetail.ImageUrl = dirPath + "/" + fileName;
@@ -275,7 +278,7 @@ namespace Infotainment.Areas.Admin.Controllers
                 ViewBag.Message = "Update new news.";
                 ViewBag.IsPopup = true;
                 UpdateNews newForUpdate = null;
-                var news = TopNewsBL.Instance.Select(NewsID);
+                var news = TopNewsBL.Instance.Select(NewsID).Result;
                 if (news != null)
                 {
                     var imgList = ImageDetailBL.Instance.SelectImageList(NewsID);
@@ -430,7 +433,10 @@ namespace Infotainment.Areas.Admin.Controllers
                 else
                 {
                     // var fileName = new Random(1000000000).ToString() + Path.GetFileName(image.FileName);
-                    var serverPath = Server.MapPath(dirPath);
+                    //var serverPath = Server.MapPath(dirPath);
+                    var pathArrey = Server.MapPath("Image").Replace("Admin", "@").Split('@');
+                    var serverPath = pathArrey[0] + dirPath;
+
                     if (Path.IsPathRooted(serverPath))
                     {
                         //imgUrl = dirPath + "/" + fileName;

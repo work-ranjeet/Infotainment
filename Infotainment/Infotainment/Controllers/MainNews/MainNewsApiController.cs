@@ -91,7 +91,7 @@ namespace Infotainment.Controllers
             INews news = null;
             try
             {
-                var result = newsInstance.Select(NewsId);
+                var result = newsInstance.Select(NewsId).Result;
 
                 if (result.IsActive == 1 && result.IsApproved == 1)
                 {

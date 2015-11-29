@@ -15,9 +15,9 @@ namespace Infotainment.Data
 
     public class ImagePath
     {
-        public static readonly string TopTenNewsImage = "/Images/News/Top-ten";
-        public static readonly string InternationalNewsImage = "/Images/News/International";
-        public static readonly string TopTenAdvertisment = "/Images/Advertisment/ToptenAdd";
+        public static readonly string TopTenNewsImage = "Images/News/Top-ten";
+        public static readonly string InternationalNewsImage = "Images/News/International";
+        public static readonly string TopTenAdvertisment = "Images/Advertisment/ToptenAdd";
 
     }
 }

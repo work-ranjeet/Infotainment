@@ -139,9 +139,12 @@ namespace Infotainment.Data.Controls
         #endregion
 
         #region Auto Generated Code - Select
-        public ITopNews Select(string NewsID)
+        public async Task<ITopNews> Select(string NewsID)
         {
-            return TopNewsDB.Instance.Select(NewsID);
+            return await Task.Run(() =>
+            {
+                return TopNewsDB.Instance.Select(NewsID);
+            });
         }
 
         public IEnumerable<ITopNews> SelectAll(NewsType newsType, Int64? NextPageValue)

@@ -28,7 +28,7 @@ namespace Infotainment.Controllers
                 INews news = null;
                 try
                 {
-                    var result = newsInstance.Select(NewsId);
+                    var result = newsInstance.Select(NewsId).Result;
                     news = new News
                     {
                         NewsID = result.TopNewsID,

@@ -1,5 +1,5 @@
-﻿angular.module('infotainment').factory('urlProvider', function ($http, $q, $injector) {
-
+﻿angular.module('infotainment').factory('urlProvider', function ($http, $q, $injector, $location) {
+    
     var url = {
         TopNewsList: "request/MainNewsApi/NewsList?NextPage=",
         TopTenNews: "request/MainNewsApi/TopNews",
@@ -12,4 +12,3 @@
 
     return url;
 });
-NewsDetail

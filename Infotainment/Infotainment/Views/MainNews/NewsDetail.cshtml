@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xs-12" ng-repeat="news in imageNewsList">
                     <div class="pull-left padding-right-five">
-                        <img class=" news-image" ng-src="{{news.ImageUrl}}" alt=" ">
+                        <img class=" news-image" ng-src="~/{{news.ImageUrl}}" alt=" ">
                     </div>
                     <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                         <span class="news-heading"> {{news.Heading}}</span>
@@ -38,7 +38,7 @@
                 </span>
             </a>
             <p>
-                <img class="news-detail-Image" src="@Url.Content(Model.ImageUrl)" />
+                <img class="news-detail-Image" src="~/@Url.Content(Model.ImageUrl)" />
                 <span>@Model.ImageCaption</span>
             </p>
             <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
