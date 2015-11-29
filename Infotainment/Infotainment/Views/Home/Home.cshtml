@@ -9,8 +9,11 @@
         <div class="col-xs-8">
             <div class="row" ng-controller="TopNewsCtrl">
                 <div class="col-xs-12 news-title">
-                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" target="_self"><span>{{MainNewsTitle}}</span></a>
-                    <hr class="style-six" />
+                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" target="_self">
+                        <span>{{MainNewsTitle}}</span>
+                        <span class="more pull-right">{{Moreheading}}</span>
+                    </a>
+                    <hr class="style-eight" />
                 </div>
                 <div id="topNewsItem" class="col-xs-6 col-lg-6">
                     <div ng-show="news.ImageUrl.length > 0" class="row" ng-repeat="news in imageNewsList">
@@ -49,17 +52,15 @@
                     </div>
                 </div>
             </div>
-            @*<div class="row show-all-container">
-                <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" style="width:100%;" class="show-all">
-                    <div><bdi>और पढ़ें - आज की बाकी खबरें...</bdi></div>
-                </a>
-            </div>*@
-
             @*  International News *@
+            <div class="row" style="height:15px;"></div>
             <div class="row" id="internationalNews" ng-controller="internationalNewsCtrl">
                 <div class="col-xs-12 news-title">
-                    <a href="#" target="_self"><span>{{InterTitle}}</span></a>
-                    <hr class="style-six" />
+                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" target="_self">
+                        <span>{{InterTitle}}</span>
+                        <span class="more pull-right">{{Moreheading}}</span>
+                    </a>
+                    <hr class="style-eight" />
                 </div>
                 <div id="interImageNews" class="col-xs-6 col-lg-6">
                     <div ng-repeat="news in newsList" class="row">

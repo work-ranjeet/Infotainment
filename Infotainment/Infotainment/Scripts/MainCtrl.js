@@ -7,6 +7,8 @@
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
         $scope.shortDescLimit = 220;
 
+        $scope.Moreheading = "और भी पढें";
+
         $scope.todayDate = $filter('hindiDate')(new Date());
         $scope.fbUrl = "https://www.facebook.com/anandcreation/?ref=hl";
         $scope.twiterUrl ="#";

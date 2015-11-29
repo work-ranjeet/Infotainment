@@ -444,11 +444,11 @@
 
 
 /* show All*/
-.show-all-container
-{
-    background-color:#656565;
-    height:30px;
+.show-all-container {
+    background-color: #656565;
+    height: 30px;
 }
+
 .show-all {
     height: 30px;
     width: 100%;
@@ -480,8 +480,24 @@
 /*  News Heading */
 
 .news-title {
-    height: 35px;
+    height: 41px;
 }
+
+    .news-title .more {
+        font-size: 14px;
+        color: #8fde62;
+        line-height: 20px;
+        padding-right: 2px;
+        text-decoration: none;
+        padding: 3px;
+        white-space: nowrap;
+        font-size: 14px;
+        text-align:right;
+        margin-right: 10px;
+    }
+     .news-title .more:hover{
+          color: rgba(0,0,0,.6);
+     }
 
     .news-title > span,
     .news-title > a > span {
@@ -490,6 +506,7 @@
         color: #666570;
         cursor: pointer;
         padding: 0 0 0 4px;
+        margin-left:10px;
     }
 
         .news-title > a > span:hover {

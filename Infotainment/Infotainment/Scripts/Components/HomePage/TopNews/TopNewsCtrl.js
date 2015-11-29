@@ -5,7 +5,7 @@
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
 
         $scope.NewsType = NewsType.TopNews;
-        $scope.MainNewsTitle = "आज का खबर";
+        $scope.MainNewsTitle = "बड़ी ख़बर";
 
         $scope.videoHeading = "लाेकसभा : आडवाणी ने सुषमा की पीठ थपथपाई";
         $scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/OulN7vTDq1I");

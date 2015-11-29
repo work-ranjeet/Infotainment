@@ -86,6 +86,7 @@ a {
     color: #616161;
 }
 
+
     a.more {
         font-size: 14px;
         color: #8fde62;
@@ -96,7 +97,7 @@ a {
         /*border: solid 1px #6a9650;*/
         /*border-radius: 15%;
         background-color: #737373;*/
-        white-space:nowrap;
+        white-space: nowrap;
     }
 
         a:hover,
@@ -180,12 +181,30 @@ hr.style-six {
     background: #a3a3a3;
     background-image: linear-gradient(to right, #B7B7B7, #D2D2D2, #F5F5F5);
 }
-hr.style-seven{
+
+hr.style-seven {
     border: 0;
     height: 1px;
     background: #489BFF;
     margin-top: 0px;
     background-image: linear-gradient(to right, #FFFFFF, #DFEDF3, #FFFFFF);
+}
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #ccc;
+    color: #aaa;
+    text-align: center;
+    margin-top:10px;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 .red-border {
