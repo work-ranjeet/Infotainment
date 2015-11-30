@@ -218,6 +218,8 @@
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Content\Content.js" />
+    <Content Include="Scripts\HTMLDirectives\AboutUs.html" />
     <Content Include="Scripts\MainCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
