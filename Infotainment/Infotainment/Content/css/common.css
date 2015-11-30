@@ -289,9 +289,10 @@ body {
 .arrow-down {
     width: 0;
     height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #f00;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #0fe685;
+    margin-top:5px;
 }
 
 .arrow-right {
