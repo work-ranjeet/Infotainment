@@ -2,33 +2,27 @@
     ViewBag.Title = "Contact US";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="contactus" ng-controller="contactus">
+<section class="contactus" ng-controller="contactusCtrl">
     <div class="container">
         <div class="row">
             <div class="col-xs-6">
 
             </div>
             <div class="col-xs-6">
-                <div id="googleMap"></div>
-                <div id="contacts">
+                @*<div id="googleMap"></div>*@
+                <div id="contacts" class="address">
                     <h4>Contact\Mailing Information</h4>
                     <hr class="style-seven" />
                     <p>
-                        <span>{{Name}}</span>,
-                        <span>{{houseName}}</span>
-                        <span>{{houseNo}}</span>
-                        <span>{{address1}}</span>
-                        <span>{{address2}}</span>
-                        <span>{{city}}</span>
-                        <span>{{state}}</span>
-                        <span>{{Country}}</span>
-                        <span>Mailto : {{mailID}}</span>   
-                        Surya niketan
-                        Plot no. 13,
-                        Opposite anand vihar Gurudwara
-                        Near by Kadkaduma metro station
-                        New Delhi
-                        Email Id: ravianand_pat@yahoo.com                     
+                        <span>{{ContactUS.Name}}</span>,
+                        <span>{{ContactUS.HouseName}}</span>
+                        <span>{{ContactUS.HouseNo}}</span>
+                        <span>{{ContactUS.Address1}}</span>
+                        <span>{{ContactUS.Address2}}</span>
+                        <span>{{ContactUS.City}}</span>
+                        <span>{{ContactUS.State}}</span>
+                        <span>{{ContactUS.Country}}</span>
+                        <span>Mailto : {{ContactUS.Email}}</span>
                     </p>
                 </div>
             </div>

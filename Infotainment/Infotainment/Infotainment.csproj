@@ -217,6 +217,9 @@
     <Content Include="Scripts\Components\Advertisment\AdvertismentCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Components\ContactUs\ContactUsCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

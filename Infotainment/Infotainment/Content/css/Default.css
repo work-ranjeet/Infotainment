@@ -61,9 +61,9 @@
     -ms-transition: height .25s ease .1s;
     transition: height .25s ease .1s;
 }
-.loading .symbol{
 
-}
+    .loading .symbol {
+    }
 
 /*  Menu Css */
 .menu,
@@ -524,3 +524,13 @@
         .news-title > a > span:hover {
             color: #72B163;
         }
+
+
+/* Contact US*/
+.address {
+
+}
+
+    .address > span {
+        display: block;
+    }
