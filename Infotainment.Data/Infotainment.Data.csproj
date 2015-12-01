@@ -130,7 +130,8 @@
     <Content Include="DBScript\Procedure\TopNews\SP_SearchNews.sql" />
     <Content Include="DBScript\Procedure\TopNews\Sp_UpdateLatestNews.sql" />
     <Content Include="DBScript\Schema\Advertisment.sql" />
-    <Content Include="DBScript\Schema\Infotainment-Schema.sql" />
+    <Content Include="DBScript\Schema\International.sql" />
+    <Content Include="DBScript\Schema\TopNews.sql" />
     <Content Include="DBScript\Schema\Sp_UsrMangementSchema.sql" />
     <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Lib\System.Web.Mvc.dll" />

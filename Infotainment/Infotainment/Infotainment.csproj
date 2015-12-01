@@ -209,6 +209,7 @@
     <Content Include="Images\HealthTips\1_1439210609.jpg" />
     <Content Include="Images\News\International\desert.jpg" />
     <Content Include="Images\News\Top-ten\sunset.jpg" />
+    <Content Include="Images\User\Default.jpg" />
     <Content Include="Scripts\App.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
