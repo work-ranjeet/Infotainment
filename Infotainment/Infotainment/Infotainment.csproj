@@ -146,6 +146,7 @@
     <Compile Include="Areas\Admin\Models\News\UpdateNews.cs" />
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
     <Compile Include="Controllers\Advertisment\AdvertismentApiController.cs" />
+    <Compile Include="Controllers\ContactUs\ContactUsController.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
@@ -759,6 +760,7 @@
     <Content Include="Views\MainNews\NewsDetail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\ContactUs\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
