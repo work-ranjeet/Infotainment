@@ -145,6 +145,7 @@
     <Compile Include="Areas\Admin\Models\News\NewsApprovalList.cs" />
     <Compile Include="Areas\Admin\Models\News\UpdateNews.cs" />
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
+    <Compile Include="Controllers\AboutUs\AboutUsController.cs" />
     <Compile Include="Controllers\Advertisment\AdvertismentApiController.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />
@@ -188,6 +189,8 @@
     <Content Include="Content\images\header-bg1.png" />
     <Content Include="Content\images\header-top-bg.jpg" />
     <Content Include="Content\images\header_bg.jpg" />
+    <Content Include="Content\images\Pranav-Mund-Photography-1-aboutus-header.jpg" />
+    <Content Include="Content\images\pranavMund-AboutUS-2.jpg" />
     <Content Include="Content\images\socialmedia-flat56.png" />
     <Content Include="Content\images\sub-menu-bg.jpg" />
     <Content Include="Content\images\twiter-icon-off.png" />
@@ -219,7 +222,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Content\Content.js" />
-    <Content Include="Scripts\HTMLDirectives\AboutUs.html" />
     <Content Include="Scripts\MainCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -758,6 +760,8 @@
     <Content Include="Views\MainNews\NewsDetail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\AboutUs\About.cshtml" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

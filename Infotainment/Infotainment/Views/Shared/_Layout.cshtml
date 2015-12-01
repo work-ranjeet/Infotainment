@@ -73,9 +73,12 @@
             </div>
         </section>
     </header>
-    <section id="body" class="bodySection" style="padding-top:5px;">
+    <section id="body" class="bodySection" style="padding-top:5px; min-height:900px;">
         @RenderBody()
     </section>
+    <footer style="width:100%;">
+        @Html.Partial("_PartialFooter")
+    </footer>
     <script>
         $(function () {
             var stickyMenu = $('#stickyMenu').offset().top;
@@ -91,6 +94,6 @@
             });
         });
     </script>
-    @* @RenderSection("scripts", required: false)*@
+    @RenderSection("scripts", required: false)
 </body>
 </html>
