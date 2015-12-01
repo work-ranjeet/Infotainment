@@ -33,7 +33,7 @@ namespace Infotainment
                 "~/Scripts/MainCtrl.js"));
 
             // Common
-            bundles.Add(new ScriptBundle("~/bundles/Common").Include("~/Scripts/Common/*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Common").Include("~/Scripts/Common/*.js", "~/Scripts/Content/*.js"));
 
             // Adding Services
             bundles.Add(new ScriptBundle("~/bundles/Services").Include("~/Scripts/Services/*.js"));
@@ -45,7 +45,6 @@ namespace Infotainment
 
             // Client
             bundles.Add(new ScriptBundle("~/bundles/ClientControllers").Include(
-                "~/Scripts/Content/*.js",
                 "~/Scripts/Components/HomePage/TopNews/*.js",
                 "~/Scripts/Components/HomePage/International/*.js",
                 "~/Scripts/Components/NewsDetail/*.js",                

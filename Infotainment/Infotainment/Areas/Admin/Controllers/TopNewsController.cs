@@ -456,7 +456,10 @@ namespace Infotainment.Areas.Admin.Controllers
             var filenameAray = imgUrl.Split('/');
             var fileName = filenameAray[filenameAray.Length - 1];
 
-            var serverPath = Server.MapPath(dirPath);
+            //var serverPath = Server.MapPath(dirPath);
+            var pathArrey = Server.MapPath("Image").Replace("Admin", "@").Split('@');
+            var serverPath = pathArrey[0] + dirPath;
+
             if (Path.IsPathRooted(serverPath))
             {
                 var path = Path.Combine(serverPath, fileName);
