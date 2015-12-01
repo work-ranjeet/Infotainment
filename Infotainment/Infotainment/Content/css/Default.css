@@ -504,6 +504,7 @@
         .news-title > a > span:hover {
             color: #72B163;
         }
+<<<<<<< .mine
 
 /*  About us */
 .aboutus-top-image {
@@ -578,3 +579,79 @@
     margin: 0 4px;
     width: 26px;
 }
+=======
+
+
+/* Contact US*/
+.address {
+
+}
+
+    .address > span {
+        display: block;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs

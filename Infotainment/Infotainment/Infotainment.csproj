@@ -147,6 +147,7 @@
     <Compile Include="Areas\Admin\ObjectHelper\ObjectExtension.cs" />
     <Compile Include="Controllers\AboutUs\AboutUsController.cs" />
     <Compile Include="Controllers\Advertisment\AdvertismentApiController.cs" />
+    <Compile Include="Controllers\ContactUs\ContactUsController.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomeMainNewsApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
@@ -212,10 +213,14 @@
     <Content Include="Images\HealthTips\1_1439210609.jpg" />
     <Content Include="Images\News\International\desert.jpg" />
     <Content Include="Images\News\Top-ten\sunset.jpg" />
+    <Content Include="Images\User\Default.jpg" />
     <Content Include="Scripts\App.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\Advertisment\AdvertismentCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\ContactUs\ContactUsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
@@ -760,8 +765,6 @@
     <Content Include="Views\MainNews\NewsDetail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\AboutUs\About.cshtml" />
-    <Content Include="Views\Shared\_PartialFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

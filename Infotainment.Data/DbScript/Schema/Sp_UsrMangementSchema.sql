@@ -95,4 +95,23 @@ CREATE TABLE UserLoginDetails (
 	)
 GO
 
+-----------------------------------Desiganation -------------------------------
+CREATE TABLE UserDesiganation (
+	DesiganationID NVARCHAR(100) NOT NULL PRIMARY KEY DEFAULT NEWID(),
+	UserID BIGINT,
+	DesiganationName NVARCHAR(200),
+	Detail NVARCHAR(400),
+	IsActive SMALLINT DEFAULT 0,
+	DttmCreated DATETIME DEFAULT GETDATE()
+	)
+GO
+
+-----------------------------------User & Desiganation ---------------------------
+CREATE TABLE UserDesiganationMapping (
+	DesiganationID NVARCHAR(100),
+	UserID BIGINT
+	FOREIGN KEY (UserID) REFERENCES [Users](UserID),
+	FOREIGN KEY (DesiganationID) REFERENCES UserDesiganation(DesiganationID)
+	)
+GO
 

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Contact US";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="contactus" ng-controller="contactusCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+
+            </div>
+            <div class="col-xs-6">
+                @*<div id="googleMap"></div>*@
+                <div id="contacts" class="address">
+                    <h4>Contact\Mailing Information</h4>
+                    <hr class="style-seven" />
+                    <p>
+                        <span>{{ContactUS.Name}}</span>,
+                        <span>{{ContactUS.HouseName}}</span>
+                        <span>{{ContactUS.HouseNo}}</span>
+                        <span>{{ContactUS.Address1}}</span>
+                        <span>{{ContactUS.Address2}}</span>
+                        <span>{{ContactUS.City}}</span>
+                        <span>{{ContactUS.State}}</span>
+                        <span>{{ContactUS.Country}}</span>
+                        <span>Mailto : {{ContactUS.Email}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
