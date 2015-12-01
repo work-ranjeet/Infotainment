@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infotainment.Models.Mailing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,15 @@ namespace Infotainment.Controllers
             return await Task.Run(() =>
             {
                 return View();
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ContactUs(Mail mail)
+        {
+            return await Task.Run(() =>
+            {
+                return View(mail);
             });
         }
     }

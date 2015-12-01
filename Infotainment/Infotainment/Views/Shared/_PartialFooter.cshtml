@@ -14,7 +14,7 @@
                             <li><a href="#">खेल</a></li>
                             <li><a href="#">मनोरंजन</a></li>
                             <li><a href="@HttpUtility.UrlDecode(Url.Action("About", "AboutUs"))">हमारे बारे में</a></li>
-                            <li><a href="#">हमसे संपर्क करें</a></li>
+                            <li><a href="@HttpUtility.UrlDecode(Url.Action("ContactUs", "ContactUs"))">हमसे संपर्क करें</a></li>
                             <li><a href="#">हमारे साथ विज्ञापन करें</a></li>
                         </ul>
                     </div>
@@ -25,12 +25,19 @@
         </div>
         <div class="row">
             <div class="col-xs-12" style="padding:5px; min-height:100px;">
-                
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 text-center" style="padding:5px;">
-                <strong>Copyright © 2015 आनन्द इंफोटेनमेंट.</strong>&nbsp;&nbsp;<span> आनन्द इंफोटेनमेंट, बाहरी साइटों पर मौजूद सामग्री के लिए ज़िम्मेदार नहीं है.</span>
+        <div class="row" style="font-size:14px;">
+            <div class="col-xs-12 text-center text-info">
+                <span style="display:block;">आनन्द इंफोटेनमेंट, बाहरी साइटों पर मौजूद सामग्री के लिए ज़िम्मेदार नहीं है। </span>
+                <span>
+                    अगर आप को हमारे किसी भी न्यूज़ से आपत्ति है या हमरे किसी न्यूज़ से आप अप्रसन्न हैं । हम ऐसे न्यूज़ के लिए खेद ब्यक्त करते है। न्यूज़ हटाने के लिए
+                    <a class="text-danger" href="@HttpUtility.UrlDecode(Url.Action("ContactUs", "ContactUs"))">हमसे संपर्क करें।</a>
+                </span>
+            </div>
+            <div class="col-xs-12 text-center" style="padding:10px; font-size:16px;">
+                <bdi>Copyright © 2014 आनन्द इंफोटेनमेंट.</bdi>
             </div>
         </div>
     </div>

@@ -1,21 +1,36 @@
 ﻿(function () {
-    angular.module('infotainment').controller('contactusCtrl', contactusCtrl);
+    angular.module('infotainment').controller('aboutusCtrl', aboutusCtrl);
 
-    function contactusCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, $interval, ServiceProvider) {
+    function aboutusCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, $interval, ServiceProvider) {
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
 
-        $scope.ContactUS =
-            {
-                Name: "Ravi Anand",
-                HouseName: "Surya niketan",
-                HouseNo: "Plot no. 13",
-                Address1: "Opposite anand vihar Gurudwara",
-                Address2: "Near by Kadkaduma metro station",
-                City: "New Delhi",
-                State: "New Delhi",
-                Country: "India",
-                Email: "ravianand_pat@yahoo.com"
-            };
+        $scope.AboutUS = AboutUs;
+        $scope.TeamList = [
+                         {
+                             PicUrl: "Images/User/Default.jpg",
+                             Name: "Puja Gupta",
+                             Desigantion: "Company Secretry",
+                             Qulification:"ACS, LLB, MBA",
+                             Work: "",
+                             Detail: ""
+                         },
+                         {
+                             PicUrl: "Images/User/Default.jpg",
+                             Name: "Ravi Anand",
+                             Desigantion: "",
+                             Qulification: "",
+                             Work: "Content Management",
+                             Detail: ""
+                         },
+                         {
+                             PicUrl: "Images/User/Default.jpg",
+                             Name: "Munna Kumar Gupta",
+                             Desigantion: "",
+                             Qulification: "MCA",
+                             Work: "Technical Support",
+                             Detail: ""
+                         }
 
+        ];
     };
 })();

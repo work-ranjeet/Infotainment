@@ -50,7 +50,8 @@ namespace Infotainment
                 "~/Scripts/Components/HomePage/International/*.js",
                 "~/Scripts/Components/NewsDetail/*.js",                
                 "~/Scripts/Components/Advertisment/*.js",
-                "~/Scripts/Components/ContactUs/*.js"));
+                "~/Scripts/Components/ContactUs/*.js",
+                "~/Scripts/Components/AboutUs/*.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/AngularCtrl").Include("~/Scripts/Components/HomePage/*.js"));
             //bundles.Add(new ScriptBundle("~/bundles/MainNewsCtrl").Include("~/Scripts/Angular/Controllers/MainNews/*.js"));

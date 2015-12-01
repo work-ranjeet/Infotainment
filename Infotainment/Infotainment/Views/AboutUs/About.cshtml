@@ -3,70 +3,68 @@
     ViewBag.Title = "About Us";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section ng-controller="aboutusCtrl">
+    <section id="topImage">
+        <div class="aboutus-top-image"></div>
+        <div class="aboutus-top-image-text">
+            <span>आनंद-इंफोटेनमेंट एक टीम हैं। </span>
+            <br />
+            <span>जो हमेशा सही खबरों को आप तक पहुचआने को प्रतिबद्ध है। </span>
+        </div>
+    </section>
 
-<section id="topImage">
-    <div class="aboutus-top-image"></div>
-    <div class="aboutus-top-image-text">
-        <span>आनंद-इंफोटेनमेंट एक टीम हैं। </span>
-        <br />
-        <span>आनंद-इंफोटेनमेंट हमेशा सही खबरों को आप तक पहुचआने को प्रतिबद्ध है। </span>
-    </div>
-</section>
-
-<section id="aboutus" class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="news-detail-content">
-                <div class="news-detail-desc" style="font-size:14px;">
-                    @*@Html.Literal()*@
-                    "{{AboutUS}}"
+    <section id="aboutus" class="container">
+        <div class="row">
+            <div class="col-xs-2">&nbsp;</div>
+            <div class="col-xs-8">
+                <div class="news-detail-content">
+                    <div class="news-detail-desc" style="font-size:14px;">
+                        @*@Html.Literal()*@
+                        <p>
+                            <span>{{AboutUS.P1}}</span>
+                        </p>
+                        <p>
+                            <span>{{AboutUS.P2}}</span>
+                        </p>
+                        <p>
+                            <span>{{AboutUS.P3}}</span>
+                            <span>{{AboutUS.P4}}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
+            <div class="col-xs-2">&nbsp;</div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="team" class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 text-center">
-            <br><h4 class="text-center green">हमारा सदस्य</h4>
-            <span class="title-border arrow-down "></span>
-            <br>
+    <section id="team" class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <br><h4 class="text-center green">हमारे सदस्य</h4>
+                <span class="title-border arrow-down "></span>
+                <br>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <p style="text-align:center;">
-                <img class="image-two" src="~/Images/News/International/desert.jpg" alt=" ">
-            </p>
-            <p class="team-content">
-                <span>Name</span>
-                <span>Desigantion</span>
-                <span class="small-line"></span>
-                <span>IIT-KGP alumnus and chief technical officer, driving things from the very back end.</span>
-            </p>
+        <div class="row text-center">
+            <div class="col-sm-4" ng-repeat="member in TeamList">
+                <p style="text-align:center;">
+                    <img class="image-two" ng-src="../{{member.PicUrl}}" alt=" ">
+                </p>
+                <p class="team-content">
+                    <span>{{member.Name}}&nbsp;({{member.Desigantion}})</span>
+                    <span>{{member.Qulification}}</span>
+                    <span>{{member.Work}}</span>
+                    <span class="small-line"></span>
+                    <span>{{member.Detail}}</span>
+                </p>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <p style="text-align:center;">
-                <img class="image-two" src="~/Images/News/International/desert.jpg" alt=" ">
-            </p>
-            <p class="team-content">
-                <span>Name</span>
-                <span>Desigantion</span>
-                <span class="small-line"></span>
-                <span>IIT-KGP alumnus and chief technical officer, driving things from the very back end.</span>
-            </p>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <br><h3 class="text-center green">Work in progress......</h3>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <p style="text-align:center;">
-                <img class="image-two" src="~/Images/News/International/desert.jpg" alt=" ">
-            </p>
-            <p class="team-content">
-                <span>Name</span>
-                <span>Desigantion</span>
-                <span class="small-line"></span>
-                <span>IIT-KGP alumnus and chief technical officer, driving things from the very back end.</span>
-            </p>
-        </div>
-    </div>
+    </section>
+   
+
 </section>

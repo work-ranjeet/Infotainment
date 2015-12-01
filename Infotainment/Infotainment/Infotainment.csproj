@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeController.cs" />
     <Compile Include="Controllers\InternationalNews\InternationalNewsApiController.cs" />
+    <Compile Include="Controllers\Mailing\MailingController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsApiController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsController.cs" />
     <Compile Include="Controllers\MarketNewsController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Models\Account\Crendential.cs" />
     <Compile Include="Models\Common\AdvertismentModal.cs" />
     <Compile Include="Models\Common\NewsModel.cs" />
+    <Compile Include="Models\Mailing\Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +217,9 @@
     <Content Include="Images\News\Top-ten\sunset.jpg" />
     <Content Include="Images\User\Default.jpg" />
     <Content Include="Scripts\App.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\AboutUs\AboutUsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\Advertisment\AdvertismentCtrl.js">
@@ -765,6 +770,11 @@
     <Content Include="Views\MainNews\NewsDetail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\AboutUs\About.cshtml" />
+    <Content Include="Views\ContactUs\ContactUs.cshtml" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Mailing\SendMail.cshtml" />
+    <Content Include="Views\Shared\_PartialSendMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
