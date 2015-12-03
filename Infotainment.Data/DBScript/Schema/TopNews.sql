@@ -53,6 +53,7 @@ CREATE TABLE ImageDetail (
 	ImageUrl NVARCHAR(500),
 	ImageType INT,
 	Caption NVARCHAR(200),
+	CaptionLink NVARCHAR(400),
 	IsFirst INT DEFAULT 0,
 	IsActive INT DEFAULT 1,
 	DttmCreated DATETIME DEFAULT(getdate()),
