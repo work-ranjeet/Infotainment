@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Xml.Linq;
+using Infotainment.Data.Common.Services;
 
 namespace Infotainment.Controllers
 {
@@ -48,7 +50,7 @@ namespace Infotainment.Controllers
 
             return newsList.OrderByDescending(v => v.DttmCreated);
         }
-
+               
         [HttpGet]
         public IEnumerable<INews> TopNewsHeader()
         {
@@ -82,6 +84,43 @@ namespace Infotainment.Controllers
             }
 
             return newsList.OrderByDescending(v => v.DttmCreated); 
+        }
+
+        [HttpGet]
+        public IEnumerable<INews> TopNewsWithRss()
+        {
+            var newsInstance = TopNewsBL.Instance;
+            ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
+            try
+            {
+                var v = RssProviderService.Instance.GetHindustanTopNews();
+                var result = newsInstance.SelectFirst10TopNews();
+                result.AsParallel().ForAll(val =>
+                {
+                    newsList.Add(new News
+                    {
+                        NewsID = val.TopNewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        ShortDesc = val.ShortDescription,
+                        //NewsDesc= val.NewsDescription,
+                        DttmCreated = val.DttmCreated
+                    });
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                newsInstance.Dispose();
+            }
+
+            return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
         [HttpGet]

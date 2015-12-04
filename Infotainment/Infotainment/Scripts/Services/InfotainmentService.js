@@ -28,6 +28,17 @@
                   deferred.resolve(result.data);
               });
             return deferred.promise;
+        },
+
+        getPageData: function (url, locale) {
+            var deferred = $q.defer();
+
+            $http.get(url)
+              .then(function (result) {
+                  deferred.resolve(result.data);
+              });
+            return deferred.promise;
         }
+
     }
 });

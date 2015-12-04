@@ -1,4 +1,4 @@
-USE Infotainment
+USE anandinfotainment
 GO
 
 INSERT INTO ErrorType (TypeID, EnumWord, Detail)

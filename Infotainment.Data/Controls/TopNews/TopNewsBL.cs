@@ -215,6 +215,13 @@ namespace Infotainment.Data.Controls
             return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
         }
 
+        public IEnumerable<ITopNews> Select20TopNews(int topNumber)
+        {
+            var top20 = TopNewsDB.Instance.Select20TopNews();
+
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(topNumber);
+        }
+
         public IEnumerable<ITopNews> SelectFirst10TopNews()
         {
             var top20 = TopNewsDB.Instance.Select20TopNews();

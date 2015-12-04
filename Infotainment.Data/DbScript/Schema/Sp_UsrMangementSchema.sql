@@ -1,4 +1,4 @@
-USE Infotainment
+USE anandinfotainment
 GO
 ------------------------------------------------Groups------------------------------------------------
 CREATE TABLE Groups (

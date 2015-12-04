@@ -12,20 +12,27 @@
 
       
         $scope.imageNewsList = [];
-        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
+        $scope.simpleNewsHeading = "बरी खबरें";
+        $scope.simpleNewsList = [];
+        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsWithRss, null).then(function (result) {
             if(result != null)
             {
                 $scope.imageNewsList = result;
             }
         });
 
-        $scope.simpleNewsHeading = "बरी खबरें";
-        $scope.simpleNewsList = [];
-        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsDesc, null).then(function (result) {
-            if (result != null) {
-                $scope.simpleNewsList = result;
-            }
-        });
+        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
+        //    if(result != null)
+        //    {
+        //        $scope.imageNewsList = result;
+        //    }
+        //});
+        
+        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsDesc, null).then(function (result) {
+        //    if (result != null) {
+        //        $scope.simpleNewsList = result;
+        //    }
+        //});
 
         $scope.advertiseList = [];
         ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsAdvertise, null).then(function (result) {
