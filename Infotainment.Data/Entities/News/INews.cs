@@ -8,6 +8,8 @@ namespace Infotainment.Models.Entities
         string ImageCaption { get; set; }
         string ShortDesc { get; set; }
         string NewsDesc { get; set; }
+
+        bool IsRss { get; set; }
     }
 
     public interface INews : INewDesc, INewsHeading

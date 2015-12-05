@@ -10,14 +10,21 @@
         $scope.videoHeading = "लाेकसभा : आडवाणी ने सुषमा की पीठ थपथपाई";
         $scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/OulN7vTDq1I");
 
-      
+
         $scope.imageNewsList = [];
         $scope.simpleNewsHeading = "बरी खबरें";
         $scope.simpleNewsList = [];
-        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsWithRss, null).then(function (result) {
-            if(result != null)
-            {
-                $scope.imageNewsList = result;
+        ServiceProvider.Services.getData(ServiceProvider.Url.RssTopTenNews, null).then(function (result) {
+            if (result != null) {
+                var counter = 0;
+                angular.forEach(result, function (news) {
+                    if (counter++ < 10) {
+                        $scope.imageNewsList.push(news);
+                    }
+                    else {
+                        $scope.simpleNewsList.push(news);
+                    }
+                });
             }
         });
 
@@ -27,20 +34,12 @@
         //        $scope.imageNewsList = result;
         //    }
         //});
-        
+
         //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsDesc, null).then(function (result) {
         //    if (result != null) {
         //        $scope.simpleNewsList = result;
         //    }
         //});
-
-        $scope.advertiseList = [];
-        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsAdvertise, null).then(function (result) {
-            if (result != null) {
-                $scope.advertiseList = result;
-            }
-        });
-
 
     };
 })();

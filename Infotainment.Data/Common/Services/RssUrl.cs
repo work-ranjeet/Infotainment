@@ -9,6 +9,6 @@ namespace Infotainment.Data.Common.Services
     public class RssUrl
     {
         public static readonly string BhaskarTopNews = "http://www.bhaskar.com/rss-feed/2322/";
-        public static readonly string LivehindustanTopNews = "http://www.livehindustan.com/rss/feed/1.html";
+        public static readonly string DanikJagaranTopNews = "http://rss.jagran.com/rss/news/national.xml";
     }
 }

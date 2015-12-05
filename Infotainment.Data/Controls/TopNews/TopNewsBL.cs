@@ -235,6 +235,14 @@ namespace Infotainment.Data.Controls
 
             return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(8).Take(10);
         }
+
+        public IEnumerable<ITopNews> SelectTodayTopNews()
+        {
+            var top20 = TopNewsDB.Instance.Select20TopNews();
+
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl) && v.DttmCreated.Date == DateTime.Now.Date)).Take(20);
+        }
+       
         #endregion
 
         #region Memory

@@ -3,11 +3,15 @@
     var url = {
         TopNewsList: "request/MainNewsApi/NewsList?NextPage=",
         TopTenNews: "request/MainNewsApi/TopNews",
-        TopTenNewsDesc: "request/MainNewsApi/TopNewsHeader",
-        TopTenNewsWithRss: "request/MainNewsApi/TopNewsWithRss",
+        TopTenNewsDesc: "request/MainNewsApi/TopNewsHeader",       
         TopTenNewsDetail: "request/MainNewsApi/NewsDetail",
         TopTenNewsAdvertise: "request/AdvertismentApi/TopNewsAdvertisment",
-        InternationalNews: "request/InternationalNewsApi/FirstNews"
+        InternationalNews: "request/InternationalNewsApi/FirstNews",
+
+
+
+
+        RssTopTenNews: "request/MainNewsApi/RssTopNews"
         
     };
 

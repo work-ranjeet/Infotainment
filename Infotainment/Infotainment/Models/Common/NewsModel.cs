@@ -22,6 +22,8 @@ namespace Infotainment.Models.Common
 
         public string NewsDesc { get; set; }
 
+        public bool IsRss { get; set; }
+
         #region Memory
         private bool disposed = false;
         ~NewsModel()

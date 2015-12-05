@@ -50,7 +50,7 @@ namespace Infotainment.Controllers
 
             return newsList.OrderByDescending(v => v.DttmCreated);
         }
-               
+
         [HttpGet]
         public IEnumerable<INews> TopNewsHeader()
         {
@@ -83,32 +83,88 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList.OrderByDescending(v => v.DttmCreated); 
+            return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
         [HttpGet]
-        public IEnumerable<INews> TopNewsWithRss()
+        public IEnumerable<INews> RssTopNews()
         {
             var newsInstance = TopNewsBL.Instance;
             ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
-                var v = RssProviderService.Instance.GetHindustanTopNews();
-                var result = newsInstance.SelectFirst10TopNews();
-                result.AsParallel().ForAll(val =>
+                var topTodayNews = newsInstance.SelectTodayTopNews();
+                if (topTodayNews.Count() > 0)
                 {
-                    newsList.Add(new News
+                    topTodayNews.AsParallel().ForAll(val =>
                     {
-                        NewsID = val.TopNewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
-                        ShortDesc = val.ShortDescription,
-                        //NewsDesc= val.NewsDescription,
-                        DttmCreated = val.DttmCreated
-                    });
+                        newsList.Add(new News
+                        {
+                            NewsID = val.TopNewsID,
+                            DisplayOrder = val.DisplayOrder,
+                            Heading = val.Heading,
+                            ImageUrl = val.ImageUrl,
+                            ShortDesc = val.ShortDescription,
+                            //NewsDesc= val.NewsDescription,
+                            DttmCreated = val.DttmCreated,
+                            IsRss = false
+                        });
 
-                });
+                    });
+                }
+
+                var remainNews = 20 - newsList.Count();
+                if (remainNews > 0)
+                {
+                    var topRssNews = RssProviderService.Instance.GetTopNews();
+                    if (topRssNews != null && topRssNews.Count() > 0)
+                    {
+                        int newsCounter = 0;
+                        foreach (var val in topRssNews)
+                        {
+                            if (newsCounter++ >= remainNews)
+                                break;
+
+                            newsList.Add(new News
+                            {
+                                NewsID = val.NewsID,
+                                DisplayOrder = val.DisplayOrder,
+                                Heading = val.Heading,
+                                ImageUrl = val.ImageUrl,
+                                ShortDesc = val.ShortDesc,
+                                //NewsDesc= val.NewsDescription,
+                                DttmCreated = val.DttmCreated,
+                                IsRss = true
+                            });
+                        }
+                    }
+                }
+                remainNews = 20 - newsList.Count();
+                if (remainNews > 0)
+                {
+                    var topRssNews = RssProviderService.Instance.GetTopNewsHeader();
+                    if (topRssNews != null && topRssNews.Count() > 0)
+                    {
+                        int newsCounter = 0;
+                        foreach (var val in topRssNews)
+                        {
+                            //if (newsCounter++ >= remainNews)
+                            //    break;
+
+                            newsList.Add(new News
+                            {
+                                NewsID = val.NewsID,
+                                DisplayOrder = val.DisplayOrder,
+                                Heading = val.Heading,
+                                ImageUrl = val.ImageUrl,
+                                ShortDesc = val.ShortDesc,
+                                //NewsDesc= val.NewsDescription,
+                                DttmCreated = val.DttmCreated,
+                                IsRss = true
+                            });
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -122,6 +178,7 @@ namespace Infotainment.Controllers
 
             return newsList.OrderByDescending(v => v.DttmCreated);
         }
+
 
         [HttpGet]
         public INews NewsDetail(string NewsId)

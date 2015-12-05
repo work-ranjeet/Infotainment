@@ -18,47 +18,103 @@ namespace Infotainment.Data.Common.Services
             }
         }
 
-        public IEnumerable<INews> GetHindustanTopNews()
+        public IEnumerable<INews> GetTopNews()
         {
             try
             {
                 List<INews> topNewsList = new List<INews>();
                 XDocument xDoc = new XDocument();
-                xDoc = XDocument.Load(RssUrl.LivehindustanTopNews);
+                xDoc = XDocument.Load(RssUrl.DanikJagaranTopNews);
                 var items = (from x in xDoc.Descendants("item")
                              select new
                              {
-                                 title = x.Element("title").Value,
-                                 link = x.Element("link").Value,
-                                 auther = x.Element("author").Value,
-                                 pubDate = x.Element("pubDate").Value,
-                                 guid = x.Element("guid").Value,
-                                 thumbnail = x.Element("thumbnail").Value,
-                                 smallimage = x.Element("smallimage").Value,
-                                 bigimage = x.Element("bigimage").Value,
+                                 Heading = x.Element("title").Value,
+                                 Link = x.Element("link").Value,
+                                 ShortDesc = x.Element("description").Value,
+                                 PubDate = x.Element("pubDate").Value,
+                                 guid = x.Element("guid").Value
                              });
 
                 if (items != null)
                 {
                     items.AsParallel().AsOrdered().ForAll(item =>
                    {
-                   //topNewsList.Add(
-                   //    new News
-                   //    {
-                   //        NewsID = item.,
-                   //        DisplayOrder = val.DisplayOrder,
-                   //        Heading = val.Heading,
-                   //        ImageUrl = val.ImageUrl,
-                   //        ShortDesc = val.ShortDescription,
-                   //        //NewsDesc= val.NewsDescription,
-                   //        DttmCreated = val.DttmCreated
+                       string ShortDesc = item.ShortDesc;
+                       string imgUrl = string.Empty;
+                       string desc = ShortDesc;
+                       if (desc.Contains('>'))
+                       {
+                           var arr = desc.Split('>');
+                           if (arr.Length > 1)
+                           {
+                               ShortDesc = arr[1];
+                               imgUrl = arr[0].Split('=')[1];
+                           }
+                       }
+                       topNewsList.Add(
+                           new News
+                           {
+                               NewsID = item.guid,
+                               DisplayOrder = 0,
+                               Heading = item.Heading,
+                               ImageUrl = imgUrl,
+                               ShortDesc = ShortDesc,
+                               //NewsDesc= val.NewsDescription,
+                               DttmCreated = Convert.ToDateTime(item.PubDate)
 
-                   //    });
+                           });
 
-               });
+                   });
                 }
 
-                return null;
+                return topNewsList;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public IEnumerable<INews> GetTopNewsHeader()
+        {
+            try
+            {
+                List<INews> topNewsList = new List<INews>();
+                XDocument xDoc = new XDocument();
+                xDoc = XDocument.Load(RssUrl.BhaskarTopNews);
+                var items = (from x in xDoc.Descendants("item")
+                             select new
+                             {
+                                 Heading = x.Element("title").Value,
+                                 Link = x.Element("link").Value,
+                                 ShortDesc = x.Element("description").Value,
+                                 PubDate = x.Element("pubDate").Value,
+                                 guid = x.Element("guid").Value
+                             });
+
+                if (items != null)
+                {
+                    items.AsParallel().AsOrdered().ForAll(item =>
+                    {
+                        string heading = item.Heading.Contains(':') ? item.Heading.Split(':')[1] : item.Heading;
+                        string ShortDesc = item.ShortDesc.Replace("&nbsp;", " ").Replace("\n", "");
+                        topNewsList.Add(
+                            new News
+                            {
+                                NewsID = item.guid,
+                                DisplayOrder = 0,
+                                Heading = heading,
+                                ImageUrl = String.Empty,
+                                ShortDesc = ShortDesc,
+                                //NewsDesc= val.NewsDescription,
+                                DttmCreated = Convert.ToDateTime(item.PubDate)
+
+                            });
+
+                    });
+                }
+
+                return topNewsList;
             }
             catch (Exception Ex)
             {
