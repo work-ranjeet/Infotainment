@@ -36,7 +36,7 @@
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    /*border: inset 1px #ccc;*/
+    border: solid 1px #72B100;
 }
 
 /*.nws-article {

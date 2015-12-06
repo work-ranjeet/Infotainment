@@ -3,9 +3,9 @@
 		.module('infotainment')
 		.controller('mainCtrl', mainCtrl);
 
-    function mainCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, ServiceProvider) {
+    function mainCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, Helper, ServiceProvider) {
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
-        $scope.shortDescLimit = 220;
+        $scope.shortDescLimit = 250;
 
         $scope.Moreheading = "और भी पढें";
 
@@ -19,19 +19,42 @@
             win.focus();
         };
 
-      
+        // Video News
+        $scope.videoHeading = "लाेकसभा : आडवाणी ने सुषमा की पीठ थपथपाई";
+        $scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/OulN7vTDq1I");
 
-        $scope.addHomePage = function () {
-            $('#pageContainer').empty();
+        // Top -News
+        $scope.imageNewsList = [];
+        $scope.simpleNewsList = [];
+        $scope.TopNewsType = NewsType.TopNews;
+        $scope.MainNewsTitle = "बड़ी ख़बर";
+       
+        ServiceProvider.Services.getData(ServiceProvider.Url.RssTopTenNews, null).then(function (result) {
+            if (result != null) {
+                var counter = 0;
+                angular.forEach(result, function (news) {
+                    if (counter++ < 10 && !Helper.IsNullOrEmptyOrUndefined(news.ImageUrl)) {
+                        $scope.imageNewsList.push(news);
+                    }
+                    else {
+                        $scope.simpleNewsList.push(news);
+                    }
+                });
+            }
+        });
 
-            $('#pageContainer').append($compile("<homepage></homepage>"));
-        };
+        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
+        //    if(result != null)
+        //    {
+        //        $scope.imageNewsList = result;
+        //    }
+        //});
 
-         $scope.addAboutPage= function () {
-            $('#pageContainer').empty();
-
-            $('#pageContainer').append($compile("<aboutus></aboutus>"));
-        };
+        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsDesc, null).then(function (result) {
+        //    if (result != null) {
+        //        $scope.simpleNewsList = result;
+        //    }
+        //});
 
     };
 

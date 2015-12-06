@@ -139,33 +139,6 @@ namespace Infotainment.Controllers
                         }
                     }
                 }
-                remainNews = 20 - newsList.Count();
-                if (remainNews > 0)
-                {
-                    var topRssNews = RssProviderService.Instance.GetTopNewsHeader();
-                    if (topRssNews != null && topRssNews.Count() > 0)
-                    {
-                        int newsCounter = 0;
-                        foreach (var val in topRssNews)
-                        {
-                            //if (newsCounter++ >= remainNews)
-                            //    break;
-
-                            newsList.Add(new News
-                            {
-                                NewsID = val.NewsID,
-                                DisplayOrder = val.DisplayOrder,
-                                Heading = val.Heading,
-                                ImageUrl = val.ImageUrl,
-                                ShortDesc = val.ShortDesc,
-                                //NewsDesc= val.NewsDescription,
-                                DttmCreated = val.DttmCreated,
-                                IsRss = true
-                            });
-                        }
-                    }
-                }
-
             }
             catch (Exception ex)
             {

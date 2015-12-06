@@ -23,49 +23,20 @@ namespace Infotainment.Data.Common.Services
             try
             {
                 List<INews> topNewsList = new List<INews>();
-                XDocument xDoc = new XDocument();
-                xDoc = XDocument.Load(RssUrl.DanikJagaranTopNews);
-                var items = (from x in xDoc.Descendants("item")
-                             select new
-                             {
-                                 Heading = x.Element("title").Value,
-                                 Link = x.Element("link").Value,
-                                 ShortDesc = x.Element("description").Value,
-                                 PubDate = x.Element("pubDate").Value,
-                                 guid = x.Element("guid").Value
-                             });
+                var xDocFirst = new XDocument();
+                var xDocSecond = new XDocument();
 
-                if (items != null)
-                {
-                    items.AsParallel().AsOrdered().ForAll(item =>
-                   {
-                       string ShortDesc = item.ShortDesc;
-                       string imgUrl = string.Empty;
-                       string desc = ShortDesc;
-                       if (desc.Contains('>'))
-                       {
-                           var arr = desc.Split('>');
-                           if (arr.Length > 1)
-                           {
-                               ShortDesc = arr[1];
-                               imgUrl = arr[0].Split('=')[1];
-                           }
-                       }
-                       topNewsList.Add(
-                           new News
-                           {
-                               NewsID = item.guid,
-                               DisplayOrder = 0,
-                               Heading = item.Heading,
-                               ImageUrl = imgUrl,
-                               ShortDesc = ShortDesc,
-                               //NewsDesc= val.NewsDescription,
-                               DttmCreated = Convert.ToDateTime(item.PubDate)
+                Task<XDocument>[] tasks = new Task<XDocument>[2];
+                tasks[0] = Task.Factory.StartNew(() => XDocument.Load(RssUrl.DanikJagaranTopNews));
+                tasks[1] = Task.Factory.StartNew(() => XDocument.Load(RssUrl.NawBharatTimesTopNews));
+                Task.WaitAll(tasks);
 
-                           });
+                xDocFirst = tasks[0].Result;
+                xDocSecond = tasks[1].Result;
 
-                   });
-                }
+                topNewsList.AddRange(TopNewsObject(xDocFirst, false));
+                topNewsList.AddRange(TopNewsObject(xDocSecond, true));
+
 
                 return topNewsList;
             }
@@ -75,51 +46,58 @@ namespace Infotainment.Data.Common.Services
             }
         }
 
-        public IEnumerable<INews> GetTopNewsHeader()
+        private IEnumerable<INews> TopNewsObject(XDocument xDoc, bool IsImgBreak)
         {
-            try
+            List<INews> newsList = new List<INews>();
+            var items = (from x in xDoc.Descendants("item")
+                         select new
+                         {
+                             Heading = x.Element("title").Value,
+                             Link = x.Element("link").Value,
+                             ShortDesc = x.Element("description").Value,
+                             PubDate = x.Element("pubDate").Value,
+                             guid = x.Element("guid").Value
+                         });
+
+            if (items != null)
             {
-                List<INews> topNewsList = new List<INews>();
-                XDocument xDoc = new XDocument();
-                xDoc = XDocument.Load(RssUrl.BhaskarTopNews);
-                var items = (from x in xDoc.Descendants("item")
-                             select new
-                             {
-                                 Heading = x.Element("title").Value,
-                                 Link = x.Element("link").Value,
-                                 ShortDesc = x.Element("description").Value,
-                                 PubDate = x.Element("pubDate").Value,
-                                 guid = x.Element("guid").Value
-                             });
+                items.AsParallel().AsOrdered().ForAll(item =>
+                //items.ToList().ForEach(item =>
+               {
+                   string ShortDesc = item.ShortDesc;
+                   string imgUrl = string.Empty;
+                   string desc = ShortDesc;
+                   if (desc.Contains('>'))
+                   {
+                       var arr = desc.Split('>');
+                       if (arr.Length > 1)
+                       {
+                           ShortDesc = arr[1];
+                           imgUrl = arr[0].Split('=')[1];
+                       }
+                       if (IsImgBreak && !string.IsNullOrEmpty(imgUrl))
+                       {
+                           imgUrl = imgUrl.Replace('"', ' ').Replace('"', ' ').Remove(imgUrl.LastIndexOf('/'), 1);
+                       }
+                   }
+                   newsList.Add(
+                       new News
+                       {
+                           NewsID = item.guid,
+                           DisplayOrder = 0,
+                           Heading = item.Heading,
+                           ImageUrl = imgUrl,
+                           ShortDesc = ShortDesc,
+                            //NewsDesc= val.NewsDescription,
+                            DttmCreated = Convert.ToDateTime(item.PubDate)
 
-                if (items != null)
-                {
-                    items.AsParallel().AsOrdered().ForAll(item =>
-                    {
-                        string heading = item.Heading.Contains(':') ? item.Heading.Split(':')[1] : item.Heading;
-                        string ShortDesc = item.ShortDesc.Replace("&nbsp;", " ").Replace("\n", "");
-                        topNewsList.Add(
-                            new News
-                            {
-                                NewsID = item.guid,
-                                DisplayOrder = 0,
-                                Heading = heading,
-                                ImageUrl = String.Empty,
-                                ShortDesc = ShortDesc,
-                                //NewsDesc= val.NewsDescription,
-                                DttmCreated = Convert.ToDateTime(item.PubDate)
+                       });
 
-                            });
-
-                    });
-                }
-
-                return topNewsList;
+               });
             }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
+
+            return newsList.OrderByDescending( v => v.DttmCreated.Date);
         }
+
     }
 }

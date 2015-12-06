@@ -14,7 +14,7 @@ namespace UnitTest
         [TestMethod]
         public void RssService()
         {
-            var result = RssProviderService.Instance.GetTopNewsHeader();
+            var result = RssProviderService.Instance.GetTopNews();
         }
     }
 }

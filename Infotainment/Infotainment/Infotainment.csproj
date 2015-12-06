@@ -173,6 +173,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Areas\Admin\Scripts\Controller\searchCtrl.js" />
     <Content Include="Areas\Admin\Scripts\Controller\loginCtrl.js" />
     <Content Include="Content\css\Admin.css" />
@@ -199,7 +200,7 @@
     <Content Include="Content\images\twiter-icon-off.png" />
     <Content Include="Content\images\twiter-icon-on.png" />
     <Content Include="Content\JQueryCss\jquery-ui.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon1.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Advertisment\ToptenAdd\city.jpg" />
@@ -308,9 +309,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\HomePage\StateNewsHomeCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Components\HomePage\TopNews\TopNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js">

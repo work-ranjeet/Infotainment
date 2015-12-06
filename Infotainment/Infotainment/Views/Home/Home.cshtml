@@ -7,14 +7,16 @@
 
     <div class="row">
         <div class="col-xs-8">
-            <div class="row" ng-controller="TopNewsCtrl">
-                <div class="col-xs-12 news-title">
-                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{NewsType}}" }))" target="_self">
+
+            @*  Top News *@
+            <div class="row">
+                @*<div class="col-xs-12 news-title">
+                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{TopNewsType}}" }))" target="_self">
                         <span>{{MainNewsTitle}}</span>
                         <span class="more pull-right">{{Moreheading}}</span>
                     </a>
                     <hr class="style-eight" />
-                </div>
+                </div>*@
                 <div id="topNewsItem" class="col-xs-6 col-lg-6">
                     <div class="row" ng-repeat="news in imageNewsList">
                         <div ng-show="!news.IsRss" class="col-xs-12">
@@ -37,7 +39,7 @@
                             </div>
 
                             <span class="news-heading"> {{news.Heading}}</span>
-                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc}}&nbsp; </p>
+                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
                             <p style="padding:0px; margin:0px; text-align:right" class="news-date">
                                 {{news.DttmCreated | hindiDate}}
                             </p>
@@ -46,7 +48,7 @@
                     </div>
                 </div>
                 <div id="topNewsItemDesc" class="col-xs-6 col-lg-6">
-                    <div class="row" ng-repeat="news in simpleNewsList | limitTo:13">
+                    <div class="row" ng-repeat="news in simpleNewsList | limitTo:12">
                         <div ng-show="!news.IsRss" class="col-xs-12">
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                                 <span class="news-heading"> {{news.Heading}}</span>
@@ -69,6 +71,8 @@
                     </div>
                 </div>
             </div>
+            @*  End Top News *@
+
             @*  International News *@
             <div class="row" style="height:15px;"></div>
             @*<div class="row" id="internationalNews" ng-controller="internationalNewsCtrl">
