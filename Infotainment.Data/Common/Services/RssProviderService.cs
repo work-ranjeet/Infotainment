@@ -101,3 +101,75 @@ namespace Infotainment.Data.Common.Services
 
     }
 }
+
+
+//  var client = new WebClient();
+//             client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+//             var xmlData = client.DownloadString("http://www.gazzetta.it/rss/Calcio.xml");
+// 
+//             XDocument xml = XDocument.Parse(xmlData);
+// 
+//             var GazzettaUpdates = (from story in xml.Descendants("item")
+//                              select new FeedGazzetta
+//                              {
+//                                  Title = ((string)story.Element("title")),
+//                                  Link = ((string)story.Element("link")),
+//                                  Description = ((string)story.Element("description")),
+//                                  PubDate = ((string)story.Element("pubDate")),
+//                                  Image = ((string)story.Element("enclosure").Attribute("url"))
+//                              }).Take(10).ToList();
+// 
+//             return GazzettaUpdates;
+
+//   internal Task<string> GetHttpResponseJson(string HttpContent, string UUID)
+//         {
+//             Task<string> response = null;
+//             try
+//             {
+//                 var handler = new HttpClientHandler();
+// 
+//                 var client = new HttpClient(handler);
+// 
+//                 client.DefaultRequestHeaders.Add("Accept", "application/json");
+// 
+//                 client.DefaultRequestHeaders.Add("reutersuuid", UUID);
+// 
+//                 client.DefaultRequestHeaders.Add("X-Tr-Applicationid", "PrivateEquity");
+// 
+//                 // client.DefaultRequestHeaders.Add("Authorization", "Basic SGVtYW50LmNoaXRvZGl5YUB0aG9tc29ucmV1dGVycy5jb206U2VjcmV0MTI=");
+// 
+//                 HttpContent payLoadContent = new StringContent(HttpContent);
+// 
+//                 Task<HttpResponseMessage> ResponseMessage = client.PostAsync(GetServiceURL(UUID), payLoadContent);
+// 
+//                 var result = ResponseMessage.Result;
+// 
+//                 response = result.Content.ReadAsStringAsync();
+//             }
+//             catch (Exception ex)
+//             {
+//                 throw ex;
+//             }
+// 
+//             return response;
+//         }
+
+
+//  internal string GetFirmProfile(string parameters, IAppServerServices services)
+//         {
+//             try
+//             {
+//                 var param = JsonConvert.DeserializeObject<FirmParameter>(parameters);
+// 
+//                 string payload = PayloadInstance.FirmProfilePayload(param);
+// 
+//                 var response = GetHttpResponseJson(payload, services.UserContext.UUID);
+// 
+//                 return response.Result;
+//             }
+//             catch (Exception ex)
+//             {
+//                 services.Logger.LogError("An error has been occurred during loading PE Firm Profile{0}", ex);
+//                 return ex.ToString();
+//             }
+//         }
