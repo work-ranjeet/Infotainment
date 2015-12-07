@@ -24,6 +24,8 @@
                         $scope.simpleNewsList.push(news);
                     }
                 });
+                
+                 if (!$scope.$$phase) { $scope.$apply(); }
             }
         });
 
