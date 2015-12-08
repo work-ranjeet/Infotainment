@@ -1,4 +1,5 @@
-﻿using Infotainment.Models.Entities;
+﻿using Infotainment.Data.Controls;
+using Infotainment.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,41 @@ namespace Infotainment.Data.Common.Services
             }
         }
 
-        public IEnumerable<INews> GetTopNews()
+        public IEnumerable<ITopNews> GetFirstTopNews()
         {
             try
             {
-                List<INews> topNewsList = new List<INews>();
+                var topNewsList = new List<ITopNews>();
+                var xDocFirst =  XDocument.Load(RssUrl.DanikJagaranTopNews);
+                topNewsList.AddRange(TopNewsObject(xDocFirst, false));
+                return topNewsList;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public IEnumerable<ITopNews> GetSecondTopNews()
+        {
+            try
+            {
+                var topNewsList = new List<ITopNews>();
+                var xDocFirst =  XDocument.Load(RssUrl.NawBharatTimesTopNews);
+                topNewsList.AddRange(TopNewsObject(xDocFirst, false));
+                return topNewsList;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        public IEnumerable<ITopNews> GetTopNews()
+        {
+            try
+            {
+                List<ITopNews> topNewsList = new List<ITopNews>();
                 var xDocFirst = new XDocument();
                 var xDocSecond = new XDocument();
 
@@ -46,9 +77,9 @@ namespace Infotainment.Data.Common.Services
             }
         }
 
-        private IEnumerable<INews> TopNewsObject(XDocument xDoc, bool IsImgBreak)
+        private IEnumerable<ITopNews> TopNewsObject(XDocument xDoc, bool IsImgBreak)
         {
-            List<INews> newsList = new List<INews>();
+            List<ITopNews> newsList = new List<ITopNews>();
             var items = (from x in xDoc.Descendants("item")
                          select new
                          {
@@ -81,13 +112,13 @@ namespace Infotainment.Data.Common.Services
                        }
                    }
                    newsList.Add(
-                       new News
+                       new TopNews
                        {
-                           NewsID = item.guid,
+                           TopNewsID = item.guid,
                            DisplayOrder = 0,
                            Heading = item.Heading,
                            ImageUrl = imgUrl,
-                           ShortDesc = ShortDesc,
+                           ShortDescription = ShortDesc,
                             //NewsDesc= val.NewsDescription,
                             DttmCreated = Convert.ToDateTime(item.PubDate)
 

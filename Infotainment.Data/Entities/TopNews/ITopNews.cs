@@ -79,5 +79,11 @@
             get;
             set;
         }
+
+        System.Boolean IsRss
+        {
+            get;
+            set;
+        }
     }
 }

@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using PCL.DBHelper;
 using System.Web;
 using Infotainment.Data.Entities;
+using Infotainment.Data.Common.Services;
 
 namespace Infotainment.Data.Controls
 {
@@ -224,16 +225,56 @@ namespace Infotainment.Data.Controls
 
         public IEnumerable<ITopNews> SelectFirst10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+            var top20 = TopNewsDB.Instance.Select20TopNews().ToList();
+            if(top20.Count < 10 )
+            {
+                var remainNews = 10 - top20.Count;
+                if (remainNews > 0)
+                {
+                    var topRssNews = RssProviderService.Instance.GetFirstTopNews();
+                    if (topRssNews != null && topRssNews.Count() > 0)
+                    {
+                        int newsCounter = 0;
+                        foreach (var val in topRssNews)
+                        {
+                            if (newsCounter++ >= remainNews)
+                                break;
+
+                            val.IsRss = true;
+                            top20.Add(val);
+                        }
+                    }
+                }
+            }
 
             return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(10);
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+            var top20 = TopNewsDB.Instance.Select20TopNews().ToList();
+            if (top20.Count < 102)
+            {
+                var remainNews = 10 - top20.Count;
+                if (remainNews > 0)
+                {
+                    var topRssNews = RssProviderService.Instance.GetSecondTopNews();
+                    if (topRssNews != null && topRssNews.Count() > 0)
+                    {
+                        int newsCounter = 0;
+                        foreach (var val in topRssNews)
+                        {
+                            if (newsCounter++ >= remainNews)
+                                break;
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(8).Take(10);
+                            val.IsRss = true;
+                            top20.Add(val);
+                        }
+                    }
+                }
+            }
+
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(10).Take(12);
         }
 
         public IEnumerable<ITopNews> SelectTodayTopNews()

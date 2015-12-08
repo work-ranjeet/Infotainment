@@ -13,34 +13,34 @@
         $scope.TopNewsType = NewsType.TopNews;
         $scope.MainNewsTitle = "बड़ी ख़बर";
 
-        ServiceProvider.Services.getData(ServiceProvider.Url.RssTopTenNews, null).then(function (result) {
-            if (result != null) {
-                var counter = 0;
-                angular.forEach(result, function (news) {
-                    if (counter++ < 10 && !Helper.IsNullOrEmptyOrUndefined(news.ImageUrl)) {
-                        $scope.imageNewsList.push(news);
-                    }
-                    else {
-                        $scope.simpleNewsList.push(news);
-                    }
-                });
+        //ServiceProvider.Services.getData(ServiceProvider.Url.RssTopTenNews, null).then(function (result) {
+        //    if (result != null) {
+        //        var counter = 0;
+        //        angular.forEach(result, function (news) {
+        //            if (counter++ < 10 && !Helper.IsNullOrEmptyOrUndefined(news.ImageUrl)) {
+        //                $scope.imageNewsList.push(news);
+        //            }
+        //            else {
+        //                $scope.simpleNewsList.push(news);
+        //            }
+        //        });
                 
-                 if (!$scope.$$phase) { $scope.$apply(); }
+        //         if (!$scope.$$phase) { $scope.$apply(); }
+        //    }
+        //});
+
+        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
+            if(result != null)
+            {
+                $scope.imageNewsList = result;
             }
         });
 
-        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
-        //    if(result != null)
-        //    {
-        //        $scope.imageNewsList = result;
-        //    }
-        //});
-
-        //ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsDesc, null).then(function (result) {
-        //    if (result != null) {
-        //        $scope.simpleNewsList = result;
-        //    }
-        //});
+        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsHeding, null).then(function (result) {
+            if (result != null) {
+                $scope.simpleNewsList = result;
+            }
+        });
         
     };
 })();

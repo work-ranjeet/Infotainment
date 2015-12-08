@@ -1,4 +1,4 @@
-#region Copyright(c) 2015-2020. All Rights Reserved 
+#region Copyright(c) 2015-2020. All Rights Reserved
 /*****************************************************************************
 **                                                                          **
 **                                                                          **
@@ -34,6 +34,7 @@ namespace Infotainment.Data.Controls
         private System.Int32 _IsActive;
         private System.DateTime _DttmCreated;
         private System.DateTime _DttmModified;
+        private System.Boolean _IsRss;
 
         public TopNews()
         {
@@ -49,6 +50,7 @@ namespace Infotainment.Data.Controls
             this._IsActive = System.Int32.MinValue;
             this._DttmCreated = System.DateTime.MinValue;
             this._DttmModified = System.DateTime.MinValue;
+            this._IsRss = false;
         }
 
         public System.String TopNewsID
@@ -309,6 +311,12 @@ namespace Infotainment.Data.Controls
             {
                 return (this._DttmModified == System.DateTime.MinValue);
             }
+        }
+
+        public System.Boolean IsRss
+        {
+            get { return this._IsRss; }
+            set { this._IsRss = value; }
         }
 
         #region Memory
