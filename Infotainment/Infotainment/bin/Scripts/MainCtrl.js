@@ -5,7 +5,7 @@
 
     function mainCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, Helper, ServiceProvider) {
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
-        $scope.shortDescLimit = 250;
+        $scope.shortDescLimit = 230;
 
         $scope.Moreheading = "और भी पढें";
 

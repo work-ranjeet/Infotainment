@@ -32,13 +32,17 @@
         ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
             if(result != null)
             {
-                $scope.imageNewsList = result;
+                $scope.imageNewsList = $filter('topRows')(result, 8);
+                $scope.simpleNewsList = $filter('restRows')(result, 8);
             }
         });
 
         ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsHeding, null).then(function (result) {
             if (result != null) {
-                $scope.simpleNewsList = result;
+                //$scope.simpleNewsList = result;
+                angular.forEach(result, function (news) {
+                    $scope.simpleNewsList.push(news);
+                });
             }
         });
         

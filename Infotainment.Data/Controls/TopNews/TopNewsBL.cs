@@ -225,8 +225,9 @@ namespace Infotainment.Data.Controls
 
         public IEnumerable<ITopNews> SelectFirst10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews().ToList();
-            if(top20.Count < 10 )
+            int newsCount = 10;
+            var top20 = TopNewsDB.Instance.Select20TopNews().OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList();
+            if (top20.Count < newsCount)
             {
                 var remainNews = 10 - top20.Count;
                 if (remainNews > 0)
@@ -247,13 +248,14 @@ namespace Infotainment.Data.Controls
                 }
             }
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(10);
+            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(newsCount);
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
         {
-            var top20 = TopNewsDB.Instance.Select20TopNews().ToList();
-            if (top20.Count < 102)
+            int newsCount = 10;
+            var top20 = TopNewsDB.Instance.Select20TopNews().OrderByDescending(v => v.DttmCreated).Skip(10).Take(newsCount).ToList();
+            if (top20.Count < newsCount)
             {
                 var remainNews = 10 - top20.Count;
                 if (remainNews > 0)
@@ -274,7 +276,7 @@ namespace Infotainment.Data.Controls
                 }
             }
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(10).Take(12);
+            return top20.OrderByDescending(v => v.DttmCreated).Take(newsCount);
         }
 
         public IEnumerable<ITopNews> SelectTodayTopNews()
