@@ -1,0 +1,86 @@
+﻿<div id="menuleft" ng-class="{hide:!showmenu,slide:showmenu}">
+    <ul class="mobile-menu">
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
+                <span>होम&nbsp;&nbsp;</span>
+            </a>
+
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>देश&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>विदेश&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>राज्य&nbsp;</span>
+                <hr class="style-seven" />
+            </a>
+            <ul>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">छत्तीसगढ़</a></li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">बिहार</a></li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">उत्तर प्रदेश</a> </li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">मध्य प्रदेश</a></li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">राजस्थान</a></li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">हिमाचल प्रदेश&nbsp;&nbsp;</a></li>
+                <li><a href="#" class="messages" ng-click="toggleMenu()">पंजाब</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
+                <span>राजनीति&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
+                <span>व्यापार&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>खेल&nbsp;</span>
+                <hr class="style-seven" />
+            </a>
+            <ul>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">क्रिकेट</a></li>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">फ़ुटबॉल</a></li>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">हॉकी</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>गेलरी&nbsp;</span>
+                <hr class="style-seven" />
+            </a>
+            <ul>
+                <li><a href="#" ng-click="toggleMenu()">तस्वीर</a></li>
+                <li><a href="#" ng-click="toggleMenu()">वीडियोज</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" ng-click="toggleMenu()">
+                <span>मनोरंजन&nbsp;</span>
+                <hr class="style-seven" />
+            </a>
+            <ul>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">सिनेमा</a></li>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">मजाक</a></li>
+                <li><a href="#" class="documents" ng-click="toggleMenu()">कहानियां</a></li>
+            </ul>
+        </li>
+        <li><a href="#">ज्योतिष</a></li>
+
+    </ul>
+</div>
+
+
+@*<ul>
+    <li><a ng-click="toggleMenu()">Link 1</a></li>
+    <li><a ng-click="toggleMenu()">Link 2</a></li>
+    <li><a ng-click="toggleMenu()">Link 3</a></li>
+</ul>*@

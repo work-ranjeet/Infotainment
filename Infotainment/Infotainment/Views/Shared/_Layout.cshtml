@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Media/css")
@@ -62,7 +63,7 @@
                     <div class="col-lg-3 pull-left">
                         <div class="logo">
                             @*<span>Anand</span>
-                            <span>Infotainment</span>*@
+                                <span>Infotainment</span>*@
                         </div>
                     </div>
                     <div class="col-lg-9"></div>
@@ -73,13 +74,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        @Html.Partial("_PartialMainMenu")
+                        <div id="mobMenuList" class="menu-mobile">
+                            <span class="icon" ng-click="toggleMenu()"></span>
+                        </div>
+                        @*@Html.Partial("_PartialMainMenu")*@
                     </div>
                 </div>
             </div>
+            <div id="leftmenu" style="position:absolute; height:100%; width:55%;">
+                @Html.Partial("_PartialSideMenu")
+            </div>
         </section>
     </header>
-    <section id="body" class="bodySection" style="padding-top:5px; min-height:530px;">
+    <section class="bodySection" style="padding-top:5px; min-height:530px;" ng-swipe-left="showmenu=false">
         @RenderBody()
     </section>
     <footer style="width:100%;">

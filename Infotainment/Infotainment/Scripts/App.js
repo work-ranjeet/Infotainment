@@ -2,7 +2,8 @@
         'ui.bootstrap',
         'ui.router',
         'ngCookies',
-        'infinite-scroll'        
+        'infinite-scroll',
+        'ngTouch'
 ]);
 
 

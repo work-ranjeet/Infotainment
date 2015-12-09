@@ -20,7 +20,8 @@ namespace Infotainment
                          "~/Scripts/Vendor/Angular/ui-bootstrap-tpls.js",
                          "~/Scripts/Vendor/Angular/angular-animate.js",
                          "~/Scripts/Vendor/Angular/ngCookies.js",
-                         "~/Scripts/Vendor/Angular/ng-infinite-scroll.js"));
+                         "~/Scripts/Vendor/Angular/ng-infinite-scroll.js",
+                         "~/Scripts/Vendor/Angular/angular-touch.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Vendor/Bootstrap/bootstrap.js",
@@ -61,7 +62,6 @@ namespace Infotainment
                         "~/Content/JQueryCss/*.css",
                       "~/Content/BootStrapCss/bootstrap-theme.css",
                       "~/Content/BootStrapCss/bootstrap.css",
-                       "~/Content/BootStrapCss/Modified.css",
                       "~/Content/css/*.css"));
 
             bundles.Add(new StyleBundle("~/Media/css").Include("~/Content/css/Media/Media.css"));

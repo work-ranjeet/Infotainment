@@ -14,7 +14,12 @@
         $scope.twiterUrl = SocilMediaLink.Twiter;
         $scope.gPlusUrl = SocilMediaLink.GPlus;
 
-        $scope.IsSliderMenuVisble = false;
+        $scope.showmenu = false;
+        $scope.toggleMenu = function () {
+            $scope.showmenu = ($scope.showmenu) ? false : true;
+        }
+
+        $scope.IsSliderMenuVisble = true;
         $scope.sliderMenuToggle = function () {
             $("#sliderMenuSection").animate({
                 width: 'toggle'

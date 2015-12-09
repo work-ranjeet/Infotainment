@@ -173,7 +173,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\BootStrapCss\Modified.css" />
     <Content Include="Content\css\Media\IPad.css" />
     <Content Include="Content\css\Media\IPhone.css" />
     <Content Include="Content\css\Media\Media.css" />
@@ -329,10 +328,7 @@
     <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Scripts\Vendor\JQuery\jquery-1.11.3.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Vendor\JQuery\jquery-ui.js">
+    <Content Include="Scripts\Vendor\JQuery\jquery_1.11.3.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Vendor\JQuery\jquery.validate.js">
@@ -347,6 +343,8 @@
     <Content Include="Scripts\Vendor\JQuery\jquery.validate.unobtrusive.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Vendor\JQuery\jquery-2.1.0.js" />
+    <Content Include="Scripts\Vendor\JQuery\jquery-ui.js" />
     <Content Include="Scripts\Vendor\JQuery\modernizr-2.6.2.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -779,6 +777,7 @@
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Mailing\SendMail.cshtml" />
     <Content Include="Views\Shared\_PartialSendMail.cshtml" />
+    <Content Include="Views\Shared\_PartialSideMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
