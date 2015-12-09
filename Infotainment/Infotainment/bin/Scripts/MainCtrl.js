@@ -14,6 +14,24 @@
         $scope.twiterUrl = SocilMediaLink.Twiter;
         $scope.gPlusUrl = SocilMediaLink.GPlus;
 
+        $scope.IsSliderMenuVisble = false;
+        $scope.sliderMenuToggle = function () {
+            $("#sliderMenuSection").animate({
+                width: 'toggle'
+            });
+
+            $scope.IsSliderMenuVisble = !$scope.IsSliderMenuVisble;
+        };
+        $scope.closeMenu = function () {
+            if ($scope.IsSliderMenuVisble) {
+                $("#sliderMenuSection").animate({
+                    width: 'toggle'
+                });
+
+                $scope.IsSliderMenuVisble = false;
+            }
+        };
+
         $scope.OpenWindow = function (url) {
             var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=10, left=400, width=1100, height=950");
             win.focus();

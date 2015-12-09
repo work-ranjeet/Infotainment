@@ -173,6 +173,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BootStrapCss\Modified.css" />
+    <Content Include="Content\css\Media\IPad.css" />
+    <Content Include="Content\css\Media\IPhone.css" />
+    <Content Include="Content\css\Media\Media.css" />
+    <Content Include="Content\images\india.png" />
     <Content Include="favicon.ico" />
     <Content Include="Areas\Admin\Scripts\Controller\searchCtrl.js" />
     <Content Include="Areas\Admin\Scripts\Controller\loginCtrl.js" />

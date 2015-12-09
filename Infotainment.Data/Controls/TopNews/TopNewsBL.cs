@@ -236,7 +236,7 @@ namespace Infotainment.Data.Controls
                     if (topRssNews != null && topRssNews.Count() > 0)
                     {
                         int newsCounter = 0;
-                        foreach (var val in topRssNews)
+                        foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
                         {
                             if (newsCounter++ >= remainNews)
                                 break;
@@ -248,7 +248,7 @@ namespace Infotainment.Data.Controls
                 }
             }
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(newsCount);
+            return top20.Take(newsCount);
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
@@ -276,7 +276,7 @@ namespace Infotainment.Data.Controls
                 }
             }
 
-            return top20.OrderByDescending(v => v.DttmCreated).Take(newsCount);
+            return top20.Take(newsCount);
         }
 
         public IEnumerable<ITopNews> SelectTodayTopNews()

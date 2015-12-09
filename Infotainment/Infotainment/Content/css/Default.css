@@ -70,6 +70,28 @@
     }
 
 /*  Menu Css */
+.menu-mobile {
+    display: none;
+    width: 30px;
+}
+
+    .menu-mobile .icon {
+        background: transparent url(../images/menu-icon-white.png) no-repeat;
+        height: 45px;
+        width: 50px;
+        cursor: pointer;
+        display: block;
+        zoom: 60%;
+        margin-top: 2px;
+    }
+
+.menu-system {
+    display: block;
+    width: 100%;
+}
+
+
+
 .menu,
 .menu-footer,
 .menu ul,
@@ -382,7 +404,7 @@
 
     .social-media > li {
         float: right;
-        padding: 2px 5px 2px 5px;
+        padding: 2px;
         list-style-type: none;
     }
 
@@ -594,6 +616,20 @@
         .contactus .address p > span {
             display: block;
         }
+
+
+/* For media */
+.header-top-banner-left {
+    width: 25%;
+}
+
+.header-top-banner-middle {
+    width: 50%;
+}
+
+.header-top-banner-right {
+    width: 25%;
+}
 
 
 

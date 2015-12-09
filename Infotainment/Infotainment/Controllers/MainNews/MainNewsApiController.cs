@@ -49,7 +49,7 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList.OrderByDescending(v => v.DttmCreated);
+            return newsList;
         }
 
         [HttpGet]
@@ -85,7 +85,7 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList.OrderByDescending(v => v.DttmCreated);
+            return newsList;
         }
 
        

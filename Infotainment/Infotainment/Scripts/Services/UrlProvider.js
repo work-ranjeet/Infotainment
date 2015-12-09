@@ -3,7 +3,7 @@
     var url = {
         TopNewsList: "request/MainNewsApi/NewsList?NextPage=",
         TopTenNews: "request/MainNewsApi/TopNews",
-        TopTenNewsHeding: "request/MainNewsApi/TopNewsHeader",
+        TopTenNewsHeading: "request/MainNewsApi/TopNewsHeader",
         TopTenNewsDetail: "request/MainNewsApi/NewsDetail",
         TopTenNewsAdvertise: "request/AdvertismentApi/TopNewsAdvertisment",
         InternationalNews: "request/InternationalNewsApi/FirstNews",

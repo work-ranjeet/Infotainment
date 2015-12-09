@@ -25,11 +25,11 @@ namespace Infotainment
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Vendor/Bootstrap/bootstrap.js",
                       "~/Scripts/Vendor/Bootstrap/respond.js"));
-           
+
 
             // Adding angular js module code
             bundles.Add(new ScriptBundle("~/bundles/AngularModule").Include(
-                "~/Scripts/App.js", 
+                "~/Scripts/App.js",
                 "~/Scripts/MainCtrl.js"));
 
             // Common
@@ -47,7 +47,7 @@ namespace Infotainment
             bundles.Add(new ScriptBundle("~/bundles/ClientControllers").Include(
                  "~/Scripts/Components/HomePage/TopNews/*.js",
                 "~/Scripts/Components/HomePage/International/*.js",
-                "~/Scripts/Components/NewsDetail/*.js",                
+                "~/Scripts/Components/NewsDetail/*.js",
                 "~/Scripts/Components/Advertisment/*.js",
                 "~/Scripts/Components/ContactUs/*.js",
                 "~/Scripts/Components/AboutUs/*.js"));
@@ -59,8 +59,12 @@ namespace Infotainment
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/JQueryCss/*.css",
-                      "~/Content/BootStrapCss/*.css",
+                      "~/Content/BootStrapCss/bootstrap-theme.css",
+                      "~/Content/BootStrapCss/bootstrap.css",
+                       "~/Content/BootStrapCss/Modified.css",
                       "~/Content/css/*.css"));
+
+            bundles.Add(new StyleBundle("~/Media/css").Include("~/Content/css/Media/Media.css"));
         }
     }
 }

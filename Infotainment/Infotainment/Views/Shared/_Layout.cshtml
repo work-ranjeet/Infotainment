@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Media/css")
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
@@ -27,13 +28,13 @@
         <section id="stickyHeader" class="social-media-banner">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-3 header-top-banner-left padding-left-rigt">
                         <span style="padding: 2px; padding-top: 5px;">{{todayDate}}</span>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-6 header-top-banner-middle">
                         <span style="padding: 2px; padding-top: 5px;"></span>
                     </div>
-                    <div class="col-xs-3 text-right">
+                    <div class="col-xs-3 header-top-banner-right text-right padding-left-rigt">
                         <ul class="social-media">
                             <li>
                                 <a href="{{fbUrl}}" title="Facebook" target="_blank">
@@ -58,13 +59,13 @@
         <section id="headerBanner" class="header-banner">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3 pull-left">
                         <div class="logo">
                             @*<span>Anand</span>
                             <span>Infotainment</span>*@
                         </div>
                     </div>
-                    <div class="col-lg-8"></div>
+                    <div class="col-lg-9"></div>
                 </div>
             </div>
         </section>

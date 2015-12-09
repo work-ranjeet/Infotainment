@@ -24,31 +24,39 @@
         //                $scope.simpleNewsList.push(news);
         //            }
         //        });
-                
+
         //         if (!$scope.$$phase) { $scope.$apply(); }
         //    }
         //});
 
         ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
-            if(result != null)
-            {
+            if (result != null) {
                 $scope.imageNewsList = $filter('topRows')(result, 8);
-                $scope.simpleNewsList = $filter('restRows')(result, 8);
+                angular.forEach($filter('restRows')(result, 8), function (news) {
+                    $scope.simpleNewsList.push(news);
+                });
+
+                if (!$scope.$$phase) {
+                    $scope.$apply();
+                }
             }
         });
 
-        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsHeding, null).then(function (result) {
+        ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNewsHeading, null).then(function (result) {
             if (result != null) {
-                //$scope.simpleNewsList = result;
                 angular.forEach(result, function (news) {
                     $scope.simpleNewsList.push(news);
                 });
+
+                if (!$scope.$$phase) {
+                    $scope.$apply();
+                }
             }
         });
-        
+
     };
 })();
-    
+
 
 
 

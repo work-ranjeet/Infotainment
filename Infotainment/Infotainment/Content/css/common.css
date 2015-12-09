@@ -189,23 +189,25 @@ hr.style-seven {
     margin-top: 0px;
     background-image: linear-gradient(to right, #FFFFFF, #DFEDF3, #FFFFFF);
 }
+
 hr.style-eight {
     padding: 0;
     border: none;
     border-top: medium double #ccc;
     color: #aaa;
     text-align: center;
-    margin-top:10px;
+    margin-top: 10px;
 }
-hr.style-eight:after {
-    content: "§";
-    display: inline-block;
-    position: relative;
-    top: -0.7em;
-    font-size: 1.5em;
-    padding: 0 0.25em;
-    background: white;
-}
+
+    hr.style-eight:after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.7em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background: white;
+    }
 
 .red-border {
     border: 1px solid #b94a48 !Important;
@@ -292,7 +294,7 @@ body {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid #0fe685;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 .arrow-right {
@@ -430,7 +432,9 @@ body {
     float: left;
 }
 
-
+.margin-right-five {
+    margin-right: 5px;
+}
 
 .padding-left-one {
     padding-left: 2px !important;

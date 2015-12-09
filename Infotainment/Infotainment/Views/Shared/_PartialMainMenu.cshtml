@@ -1,82 +1,89 @@
 ﻿
 
-<ul class="menu">
-    <li>
-        <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
-            <span>होम&nbsp;&nbsp;</span>
-        </a>
 
-    </li>
-    <li>
-        <a href="#">
-            <span>देश&nbsp;</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <span>विदेश&nbsp;</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <span>राज्य&nbsp;</span>
-            <span class="pull-right down-arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#" class="documents">छत्तीसगढ़</a></li>
-            <li><a href="#" class="messages">बिहार</a></li>
-            <li><a href="#" class="messages">उत्तर प्रदेश</a> </li>
-            <li><a href="#" class="messages">मध्य प्रदेश</a></li>
-            <li><a href="#" class="messages">राजस्थान</a></li>
-            <li><a href="#" class="messages">हिमाचल प्रदेश&nbsp;&nbsp;</a></li>
-            <li><a href="#" class="messages">पंजाब</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
-            <span>राजनीति&nbsp;</span>
-        </a>
-    </li>
-    <li>
-        <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
-            <span>व्यापार&nbsp;</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <span>खेल&nbsp;</span>
-            <span class="pull-right down-arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#" class="documents">क्रिकेट</a></li>
-            <li><a href="#" class="documents">फ़ुटबॉल</a></li>
-            <li><a href="#" class="documents">हॉकी</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#">
-            <span>गेलरी&nbsp;</span>
-            <span class="pull-right down-arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#">तस्वीर</a></li>
-            <li><a href="#">वीडियोज</a></li>
-        </ul>
-    </li>   
-    <li>
-        <a href="#">
-            <span>मनोरंजन&nbsp;</span>
-            <span class="pull-right down-arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#" class="documents">सिनेमा</a></li>
-            <li><a href="#" class="documents">मजाक</a></li>
-            <li><a href="#" class="documents">कहानियां</a></li>
-        </ul>
-    </li>
-    <li><a href="#">ज्योतिष</a></li>
+<div id="mobMenuList" class="menu-mobile">
+    @*<div class="icon" ng-click="sliderMenuToggle(event)" />*@   
+    <span class="icon" ng-click="sliderMenuToggle(event)"></span>
+</div>
+<div class="menu-system">
+    <ul class="menu">
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+                <span>होम&nbsp;&nbsp;</span>
+            </a>
 
-</ul>
+        </li>
+        <li>
+            <a href="#">
+                <span>देश&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>विदेश&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>राज्य&nbsp;</span>
+                <span class="pull-right down-arrow"></span>
+            </a>
+            <ul>
+                <li><a href="#" class="documents">छत्तीसगढ़</a></li>
+                <li><a href="#" class="messages">बिहार</a></li>
+                <li><a href="#" class="messages">उत्तर प्रदेश</a> </li>
+                <li><a href="#" class="messages">मध्य प्रदेश</a></li>
+                <li><a href="#" class="messages">राजस्थान</a></li>
+                <li><a href="#" class="messages">हिमाचल प्रदेश&nbsp;&nbsp;</a></li>
+                <li><a href="#" class="messages">पंजाब</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+                <span>राजनीति&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+                <span>व्यापार&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>खेल&nbsp;</span>
+                <span class="pull-right down-arrow"></span>
+            </a>
+            <ul>
+                <li><a href="#" class="documents">क्रिकेट</a></li>
+                <li><a href="#" class="documents">फ़ुटबॉल</a></li>
+                <li><a href="#" class="documents">हॉकी</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span>गेलरी&nbsp;</span>
+                <span class="pull-right down-arrow"></span>
+            </a>
+            <ul>
+                <li><a href="#">तस्वीर</a></li>
+                <li><a href="#">वीडियोज</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span>मनोरंजन&nbsp;</span>
+                <span class="pull-right down-arrow"></span>
+            </a>
+            <ul>
+                <li><a href="#" class="documents">सिनेमा</a></li>
+                <li><a href="#" class="documents">मजाक</a></li>
+                <li><a href="#" class="documents">कहानियां</a></li>
+            </ul>
+        </li>
+        <li><a href="#">ज्योतिष</a></li>
+
+    </ul>
+</div>
 @*<style>
 
         .menu a.documents {
@@ -92,4 +99,120 @@
             }
     </style>*@
 
+@*<style>
+        #leftMenuPannel {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
 
+            #leftMenuPannel ul {
+                height: 30px;
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+            }
+
+                #leftMenuPannel ul > li {
+                    height: 42px;
+                    width: 245px;
+                    lighting-color: white;
+                    background-color: transparent;
+                    border-bottom: 1px solid #626D75;
+                }
+
+                    #leftMenuPannel ul > li:hover {
+                        -webkit-box-shadow: inset -10px 22px 12px -2px #626D75;
+                        -moz-box-shadow: inset -10px 22px 12px -2px #626D75;
+                        box-shadow: inset -10px 22px 12px -2px #626D75;
+                    }
+
+                    #leftMenuPannel ul > li > a {
+                        text-decoration: none;
+                        text-decoration-line: none;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    #leftMenuPannel ul > li .navMenuSpanIcon {
+                        float: left;
+                        display: inline-block;
+                        height: 26px;
+                        width: 30px;
+                        padding: 2px;
+                        zoom: 65%;
+                        margin-top: 9px;
+                    }
+
+                    #leftMenuPannel ul > li .navMenuText {
+                        text-align: left;
+                        width: 210px;
+                        float: right;
+                        color: white;
+                        vertical-align: middle;
+                        padding-top: 8px;
+                    }
+
+                    #leftMenuPannel ul > li:hover .navMenuText {
+                        text-align: left;
+                        width: 210px;
+                        float: right;
+                        color: wheat;
+                        vertical-align: middle;
+                        padding-top: 8px;
+                    }
+
+        .helpIcon {
+            background: transparent url(../../../Style/downloaded_trans_white.png) no-repeat -203px -172px;
+        }
+
+        .aboutIcon {
+            background: transparent url(../../../Style/downloaded_trans_white.png) no-repeat -236px -172px;
+        }
+
+        .registerIcon {
+            background: transparent url(../../../Style/downloaded_trans_white.png) no-repeat -233px -240px;
+        }
+    </style>*@
+
+@*<div id="leftMenuPannel" class="menu-mobile">
+        <ul>
+            <li>
+                <a href="#Register" ng-click="closeMenu(event)">
+
+                    <span class="navMenuSpanIcon registerIcon"></span>
+                    <span class="navMenuText">Register</span>
+                    <span style="clear: both;"></span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#" ng-click="closeMenu(event)">
+
+                    <span class="navMenuSpanIcon helpIcon"></span>
+                    <span class="navMenuText">Help</span>
+                    <span style="clear: both;"></span>
+
+                </a>
+
+            </li>
+            <li>
+                <a href="#" ng-click="closeMenu(event)">
+
+                    <span class="navMenuSpanIcon aboutIcon"></span>
+                    <span class="navMenuText">About</span>
+                    <span style="clear: both;"></span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#ChangePassword" ng-click="closeMenu(event)">
+
+                    <span class="navMenuSpanIcon aboutIcon"></span>
+                    <span class="navMenuText">Change Password</span>
+                    <span style="clear: both;"></span>
+
+                </a>
+            </li>
+        </ul>
+    </div>*@

@@ -18,10 +18,10 @@
                     </div>*@
                 <div id="topNewsItem" class="col-xs-6 col-lg-6">
                     <div class="row" ng-repeat="news in imageNewsList">
-                        <div ng-show="!news.IsRss" class="col-xs-12">
-                            <div class="pull-left padding-right-five">
-                                <img class=" news-image" ng-src="../{{news.ImageUrl}}" alt=" ">
-                            </div>
+                        <div ng-hide="news.IsRss" class="col-xs-12">
+                            @*<div class="pull-left padding-right-five">*@
+                                <img class="pull-left news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt=" ">
+                            @*</div>*@
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                                 <span class="news-heading"> {{news.Heading}}</span>
                             </a>
@@ -33,9 +33,9 @@
                             <hr class="style-seven" />
                         </div>
                         <div ng-show="news.IsRss" class="col-xs-12">
-                            <div class="pull-left padding-right-five">
-                                <img class=" news-image" ng-src="{{news.ImageUrl}}" alt=" ">
-                            </div>
+                            @*<div class="pull-left padding-right-five">*@
+                                <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt=" ">
+                            @*</div>*@
 
                             <span class="news-heading"> {{news.Heading}}</span>
                             <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
@@ -48,7 +48,7 @@
                 </div>
                 <div id="topNewsItemDesc" class="col-xs-6 col-lg-6">
                     <div class="row" ng-repeat="news in simpleNewsList | limitTo:12">
-                        <div ng-show="!news.IsRss" class="col-xs-12">
+                        <div ng-hide="news.IsRss" class="col-xs-12">
                             <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                                 <span class="news-heading"> {{news.Heading}}</span>
                             </a>
