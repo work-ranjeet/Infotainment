@@ -30,6 +30,9 @@ namespace Infotainment.Areas.Admin.Models
         public bool IsApprovedNews { get; set; }
 
         [Required]
+        public bool IsTopTenNews { get; set; }
+
+        [Required]
         public  string ShortDesc { get; set; }
 
         [AllowHtml]

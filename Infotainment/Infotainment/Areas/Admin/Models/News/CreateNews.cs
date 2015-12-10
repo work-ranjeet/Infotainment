@@ -35,6 +35,9 @@ namespace Infotainment.Areas.Admin.Models
         //[Required]
         //public int LanguageID { get; set; }
 
+        [Required]
+        public bool IsTopTenNews { get; set; }
+
         #region Memory
         private bool disposed = false;
         ~CreateNews()

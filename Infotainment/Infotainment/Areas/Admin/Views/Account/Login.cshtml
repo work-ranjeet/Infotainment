@@ -5,48 +5,36 @@
 }
 @using (Html.BeginForm())
 {
-    
+
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <section id="loginSection" ng-controller="loginCtrl" class="login-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div style="margin: auto; width: 30%; margin-top: 20%; border: solid 1px #2a7425; padding: 30px; background-color:white; border-radius:5%;">
+                    <div class="form-horizontal">
+                        <div class="small-text error-text-indicator" style="text-align: center; padding: 5px; padding-top: 15px;">
+                            {{User.Message}}
+                            <bdi class="field-validation-error">@(ViewData.ModelState.ContainsKey("LoginError") ? (ViewData.ModelState["LoginError"].Errors).FirstOrDefault().ErrorMessage : "")</bdi>
+                        </div>
 
-        <form role="form" ng-submit="login()" style="height:100%; width:100%;  background-color: #36454F;">
-            <div id="loginBodySection" class="login-body border-shadow-inside">
-                <div class="small-text error-text-indicator login-message">
-                    {{User.Message}}
-                    <bdi class="field-validation-error">@(ViewData.ModelState.ContainsKey("LoginError") ? (ViewData.ModelState["LoginError"].Errors).FirstOrDefault().ErrorMessage : "")</bdi>
-                </div>
-                <div class="login-controls">
-                    <div class="control-group-gap control-group">
-                        <div class="controls">
-                            <input name="UserID" maxlength="200" data-val="true" required data-val-required="Enter UserName" id="UserID" type="text" placeholder="Enter Email / Mobile" class="{{User.IsEnteredUserID ?'':'red-border'}}" ng-model="User.UserID" ng-blur="checkUserIDEntry()">
+                        <div class="form-group">
+                            <input name="UserID" maxlength="200" data-val="true" required data-val-required="Enter UserName" id="UserID" type="text" placeholder="Enter Email / Mobile"
+                                   class="{{User.IsEnteredUserID ?'':'red-border'}} form-control" ng-model="User.UserID" ng-blur="checkUserIDEntry()">
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <input name="Password" maxlength="200" data-val="true" required data-val-required="Enter Password" id="Password" type="password" placeholder="Enter Password" class="{{User.IsEnteredPassword?'':'red-border'}}" ng-blur="checkPasswordEntry()" ng-model="User.Password">
-                        </div>
-                    </div>
-                    <div class="control-group-gap login-form-actions">
-                        <div>
-                            <button type="submit" id="btnSubmitLogin" ng-click="login()" class="button">
-                                Login
-                            </button>
-                        </div>
-                    </div>
 
-                </div>
-                <div style="padding: 30px;  width: 450px;">
-                    <div class="pull-left">
-                        <input id="RememberMe" name="RememberMe" type="checkbox" value="true" class="pull-center" style="height:15px; width:20px">
-                        <span class="small-text" style="color: #909090; font-size:15px; line-height:30px;">Remember me</span>
-                    </div>
-                    <div class="pull-right">
-                        <a href="#" ng-click="ForgotPassword()"><span style="font-size:15px; line-height:30px;">Forgot Your Password?</span></a>
+                        <div class="form-group">
+                            <input name="Password" maxlength="200" data-val="true" required data-val-required="Enter Password" id="Password" type="password" placeholder="Enter Password"
+                                   class="{{User.IsEnteredPassword?'':'red-border'}} form-control" ng-blur="checkPasswordEntry()" ng-model="User.Password">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" id="btnSubmitLogin" ng-click="login()" class="btn btn-success col-xs-6" style="margin-left:25%;" value="Login" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </section>
+        </div>
+    </div>
+
 }

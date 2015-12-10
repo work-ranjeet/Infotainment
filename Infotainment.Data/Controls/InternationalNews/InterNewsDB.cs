@@ -46,10 +46,11 @@ namespace Infotainment.Data.Controls
                 dbInstance.AddInParameter("@NewsDescription", objinterNews.NewsDescription, DbType.String);
                 dbInstance.AddInParameter("@LanguageID", objinterNews.LanguageID, DbType.Int32);
                 dbInstance.AddInParameter("@CountryCode", " ", DbType.String);
+                dbInstance.AddInParameter("@IsTopNews", objinterNews.IsTopNews, DbType.Int32);
                 dbInstance.AddInParameter("@ImageUrl", objImageDetail.ImageUrl, DbType.String);
                 dbInstance.AddInParameter("@Caption", objImageDetail.Caption, DbType.String);
                 dbInstance.AddInParameter("@ImageType", objImageDetail.ImageType, DbType.Int32);
-                dbInstance.AddInParameter("@IsFirst", objImageDetail.IsFirst, DbType.Int32);                
+                dbInstance.AddInParameter("@IsFirst", objImageDetail.IsFirst, DbType.Int32);
                 dbInstance.AddInParameter("@UserID", user.UserID, DbType.Int64);
 
                 dbInstance.ExecuteNonQuery(ProcedureName.InsertInterNews, CommandType.StoredProcedure);
@@ -108,6 +109,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.AddInParameter("@LanguageID", news.LanguageID, DbType.Int32);
                 dbHelper.AddInParameter("@IsActive", news.IsActive, DbType.Int32);
                 dbHelper.AddInParameter("@IsApproved", news.IsApproved, DbType.Int32);
+                dbHelper.AddInParameter("@IsTopNews", news.IsTopNews, DbType.Int32);
                 dbHelper.AddInParameter("@ImageUrl", image.ImageUrl, DbType.String);
                 dbHelper.AddInParameter("@Caption", image.Caption, DbType.String);
                 dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
@@ -188,16 +190,19 @@ namespace Infotainment.Data.Controls
                             objNews.IsActive = objDataReader.GetInt32(8);
 
                         if (!objDataReader.IsDBNull(9))
-                            objNews.DttmCreated = objDataReader.GetDateTime(9);
+                            objNews.IsTopNews = objDataReader.GetInt32(9);
 
                         if (!objDataReader.IsDBNull(10))
-                            objNews.DttmModified = objDataReader.GetDateTime(10);
+                            objNews.DttmCreated = objDataReader.GetDateTime(10);
 
                         if (!objDataReader.IsDBNull(11))
-                            objNews.ImageUrl = objDataReader.GetString(11);
+                            objNews.DttmModified = objDataReader.GetDateTime(11);
 
                         if (!objDataReader.IsDBNull(12))
-                            objNews.ImageCaption = objDataReader.GetString(12);
+                            objNews.ImageUrl = objDataReader.GetString(12);
+
+                        if (!objDataReader.IsDBNull(13))
+                            objNews.ImageCaption = objDataReader.GetString(13);
 
                     }
                 }
@@ -267,16 +272,19 @@ namespace Infotainment.Data.Controls
                                 objNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.DttmCreated = objDataReader.GetDateTime(9);
+                                objNews.IsTopNews = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.DttmModified = objDataReader.GetDateTime(10);
+                                objNews.DttmCreated = objDataReader.GetDateTime(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.ImageUrl = objDataReader.GetString(11);
+                                objNews.DttmModified = objDataReader.GetDateTime(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.ImageCaption = objDataReader.GetString(12);
+                                objNews.ImageUrl = objDataReader.GetString(12);
+
+                            if (!objDataReader.IsDBNull(13))
+                                objNews.ImageCaption = objDataReader.GetString(13);
 
                             objNewsList.Add(objNews);
                         }
@@ -350,16 +358,19 @@ namespace Infotainment.Data.Controls
                                 objNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.DttmCreated = objDataReader.GetDateTime(9);
+                                objNews.IsTopNews = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.DttmModified = objDataReader.GetDateTime(10);
+                                objNews.DttmCreated = objDataReader.GetDateTime(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.ImageUrl = objDataReader.GetString(11);
+                                objNews.DttmModified = objDataReader.GetDateTime(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.ImageCaption = objDataReader.GetString(12);
+                                objNews.ImageUrl = objDataReader.GetString(12);
+
+                            if (!objDataReader.IsDBNull(13))
+                                objNews.ImageCaption = objDataReader.GetString(13);
 
                             objNewsList.Add(objNews);
                         }
@@ -433,16 +444,19 @@ namespace Infotainment.Data.Controls
                                 objNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.DttmCreated = objDataReader.GetDateTime(9);
+                                objNews.IsTopNews = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.DttmModified = objDataReader.GetDateTime(10);
+                                objNews.DttmCreated = objDataReader.GetDateTime(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.ImageUrl = objDataReader.GetString(11);
+                                objNews.DttmModified = objDataReader.GetDateTime(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.ImageCaption = objDataReader.GetString(12);
+                                objNews.ImageUrl = objDataReader.GetString(12);
+
+                            if (!objDataReader.IsDBNull(13))
+                                objNews.ImageCaption = objDataReader.GetString(13);
 
                             objNewsList.Add(objNews);
                         }
@@ -516,16 +530,19 @@ namespace Infotainment.Data.Controls
                                 objNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.DttmCreated = objDataReader.GetDateTime(9);
+                                objNews.IsTopNews = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.DttmModified = objDataReader.GetDateTime(10);
+                                objNews.DttmCreated = objDataReader.GetDateTime(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.ImageUrl = objDataReader.GetString(11);
+                                objNews.DttmModified = objDataReader.GetDateTime(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.ImageCaption = objDataReader.GetString(12);
+                                objNews.ImageUrl = objDataReader.GetString(12);
+
+                            if (!objDataReader.IsDBNull(13))
+                                objNews.ImageCaption = objDataReader.GetString(13);
 
                             objNewsList.Add(objNews);
                         }
@@ -602,10 +619,13 @@ namespace Infotainment.Data.Controls
                                 objNews.IsActive = objDataReader.GetInt32(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.DttmCreated = objDataReader.GetDateTime(9);
+                                objNews.IsTopNews = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.DttmModified = objDataReader.GetDateTime(10);
+                                objNews.DttmCreated = objDataReader.GetDateTime(10);
+
+                            if (!objDataReader.IsDBNull(11))
+                                objNews.DttmModified = objDataReader.GetDateTime(11);
 
                             objNewsList.Add(objNews);
                         }

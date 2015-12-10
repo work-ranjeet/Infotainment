@@ -38,6 +38,7 @@ BEGIN
 			LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
 			LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
 			WHERE TN.NewsType = @NewsType
+			ORDER BY TN.DttmCreated DESC
 		END
 
 		IF (@NextPageValue IS NOT NULL)

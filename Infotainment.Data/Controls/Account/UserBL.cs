@@ -20,7 +20,10 @@ namespace Infotainment.Data.Controls
         public async Task<IUsers> SelectUser(string Email)
         {
             var user = await UserDataAccess.Value.Select(Email);
-            user.Password = RSACrypto.Instance.Decrypt(user.Password);
+
+            if (user != null)
+                user.Password = RSACrypto.Instance.Decrypt(user.Password);
+
             return user;
         }
 

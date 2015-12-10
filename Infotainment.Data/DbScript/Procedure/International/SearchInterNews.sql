@@ -32,6 +32,7 @@ BEGIN
 			LanguageID,
 			IsApproved,
 			IsActive,
+			IsTopNews,
 			DttmCreated,
 			DttmModified
 		FROM InternationalNews

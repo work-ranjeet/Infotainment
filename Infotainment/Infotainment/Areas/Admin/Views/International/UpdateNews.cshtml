@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <div class="pull-left" style="width:154px; margin-left:15px;">
                         <figure style="border:solid 2px #808080;">
-                            <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:150px; height:170px;" />
+                            <img src="../../@Url.Content(Model.ImageUrl)" alt="Image" style="width:150px; height:170px;" />
                             <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImageUrl" />
                             <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
                         </figure>
@@ -49,14 +49,20 @@
                             <div class="pull-right" style="width:50%; border:solid thin #ccc; height:140px;  padding:5px;">
                                 <div class="checkbox pull-left" style="width:40%; display:inline;">
                                     <span>Is Active News</span>
-                                    @Html.EditorFor(model => model.IsActiveNews)
+                                    @Html.EditorFor(model => model.IsActiveNews, new { @style = "height:15px; width:15px;" })
                                     @Html.ValidationMessageFor(model => model.IsActiveNews, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="checkbox pull-right" style="width:55%; text-align:left">
                                     <span>Is News Approved</span>
-                                    @Html.EditorFor(model => model.IsApprovedNews)
+                                    @Html.EditorFor(model => model.IsApprovedNews, new { @style = "height:15px; width:15px;" })
                                     @Html.ValidationMessageFor(model => model.IsApprovedNews, "", new { @class = "text-danger" })
                                 </div>
+                                <br />
+                                <div class="checkbox" style="margin-top:4px;">
+                                    @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:15px; width:15px;" })
+                                    <span style="vertical-align:baseline;">&nbsp;Is Part Of Top News</span>
+                                </div>
+
 
                             </div>
                         </div>

@@ -12,10 +12,15 @@
             @(Model.IsActive == 1 ? "Active" : "Not Active")
         </span>
     </td>
+    <td class="text-center">
+        <span style="font-size:100%; padding:4px; display:inline; float:left;" class="@(Model.IsTopNews == 1 ? "label label-danger" : "label label-success")">
+            @(Model.IsTopNews == 1 ? "Yes" : "NA")
+        </span>
+    </td>
     <td>@Model.DttmCreated</td>
     <td>
         @{
-            var url = HttpUtility.UrlDecode(Url.Action("UpdateNews", "TopNews", new { NewsID = Model.TopNewsID }));
+            var url = HttpUtility.UrlDecode(Url.Action("UpdateNews", "International", new { NewsID = Model.TopNewsID }));
         }
         <a href="#" style="font-size:100%;" class="label label-warning" ng-click="OpenWindow('@url');"><i class="et-edit"></i>Update</a>
     </td>

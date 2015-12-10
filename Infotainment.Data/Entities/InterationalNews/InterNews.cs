@@ -32,6 +32,7 @@ namespace Infotainment.Data.Controls
         private System.Int32 _LanguageID;
         private System.Int32 _IsApproved;
         private System.Int32 _IsActive;
+        private System.Int32 _IsTopNews;
         private System.DateTime _DttmCreated;
         private System.DateTime _DttmModified;
 
@@ -47,6 +48,7 @@ namespace Infotainment.Data.Controls
             this._LanguageID = System.Int32.MinValue;
             this._IsApproved = System.Int32.MinValue;
             this._IsActive = System.Int32.MinValue;
+            this._IsTopNews = System.Int32.MinValue;
             this._DttmCreated = System.DateTime.MinValue;
             this._DttmModified = System.DateTime.MinValue;
         }
@@ -268,6 +270,26 @@ namespace Infotainment.Data.Controls
             get
             {
                 return (this._IsActive == System.Int32.MinValue);
+            }
+        }
+
+        public System.Int32 IsTopNews
+        {
+            get
+            {
+                return this._IsTopNews;
+            }
+            set
+            {
+                this._IsTopNews = value;
+            }
+        }
+
+        public bool IsTopNewsIsNull
+        {
+            get
+            {
+                return (this._IsTopNews == System.Int32.MinValue);
             }
         }
 

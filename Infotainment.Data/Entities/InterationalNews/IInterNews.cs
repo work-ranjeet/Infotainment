@@ -68,6 +68,12 @@
             set;
         }
 
+        System.Int32 IsTopNews
+        {
+            get;
+            set;
+        }
+
         System.DateTime DttmCreated
         {
             get;

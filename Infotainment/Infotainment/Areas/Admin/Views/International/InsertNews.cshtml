@@ -34,8 +34,19 @@
             <div class="form-group">
                 <label class="control-label col-md-2" for="Image">Image</label>
                 <div class="col-md-10">
-                    @Html.ValidationMessageFor(model => model.Image)
-                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            @Html.ValidationMessageFor(model => model.Image)
+                            <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="checkbox" style="margin-top:4px;">
+                                @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:15px; width:15px;" })
+                                <span style="vertical-align:baseline;">&nbsp;Is Part Of Top News</span>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
             <div class="form-group">

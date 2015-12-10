@@ -29,6 +29,7 @@ BEGIN
 			--TN.CountryCode,
 			TN.IsApproved,
 			TN.IsActive,
+			TN.IsTopNews,
 			TN.DttmCreated,
 			TN.DttmModified,
 			ImgD.ImageUrl,

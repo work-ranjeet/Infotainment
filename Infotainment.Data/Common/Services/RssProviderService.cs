@@ -2,6 +2,7 @@
 using Infotainment.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Infotainment.Data.Common.Services
             try
             {
                 var topNewsList = new List<ITopNews>();
-                var xDocFirst =  XDocument.Load(RssUrl.DanikJagaranTopNews);
+                var xDocFirst = XDocument.Load(RssUrl.DanikJagaranTopNews);
                 topNewsList.AddRange(TopNewsObject(xDocFirst, false));
                 return topNewsList;
             }
@@ -39,7 +40,7 @@ namespace Infotainment.Data.Common.Services
             try
             {
                 var topNewsList = new List<ITopNews>();
-                var xDocFirst =  XDocument.Load(RssUrl.NawBharatTimesTopNews);
+                var xDocFirst = XDocument.Load(RssUrl.NawBharatTimesTopNews);
                 topNewsList.AddRange(TopNewsObject(xDocFirst, false));
                 return topNewsList;
             }
@@ -79,55 +80,64 @@ namespace Infotainment.Data.Common.Services
 
         private IEnumerable<ITopNews> TopNewsObject(XDocument xDoc, bool IsImgBreak)
         {
-            List<ITopNews> newsList = new List<ITopNews>();
-            var items = (from x in xDoc.Descendants("item")
-                         select new
-                         {
-                             Heading = x.Element("title").Value,
-                             Link = x.Element("link").Value,
-                             ShortDesc = x.Element("description").Value,
-                             PubDate = x.Element("pubDate").Value,
-                             guid = x.Element("guid").Value
-                         });
-
-            if (items != null)
+            try
             {
-                items.AsParallel().AsOrdered().ForAll(item =>
-                //items.ToList().ForEach(item =>
-               {
-                   string ShortDesc = item.ShortDesc;
-                   string imgUrl = string.Empty;
-                   string desc = ShortDesc;
-                   if (desc.Contains('>'))
-                   {
-                       var arr = desc.Split('>');
-                       if (arr.Length > 1)
-                       {
-                           ShortDesc = arr[1];
-                           imgUrl = arr[0].Split('=')[1];
-                       }
-                       if (IsImgBreak && !string.IsNullOrEmpty(imgUrl))
-                       {
-                           imgUrl = imgUrl.Replace('"', ' ').Replace('"', ' ').Remove(imgUrl.LastIndexOf('/'), 1);
-                       }
-                   }
-                   newsList.Add(
-                       new TopNews
-                       {
-                           TopNewsID = item.guid,
-                           DisplayOrder = 0,
-                           Heading = item.Heading,
-                           ImageUrl = imgUrl,
-                           ShortDescription = ShortDesc,
-                            //NewsDesc= val.NewsDescription,
-                            DttmCreated = Convert.ToDateTime(item.PubDate)
 
-                       });
 
-               });
+                ConcurrentBag<ITopNews> newsList = new ConcurrentBag<ITopNews>();
+                var items = (from x in xDoc.Descendants("item")
+                             select new
+                             {
+                                 Heading = x.Element("title").Value,
+                                 Link = x.Element("link").Value,
+                                 ShortDesc = x.Element("description").Value,
+                                 PubDate = x.Element("pubDate").Value,
+                                 guid = x.Element("guid").Value
+                             });
+
+                if (items != null)
+                {
+                    items.AsParallel().AsOrdered().ForAll(item =>
+                    //items.ToList().ForEach(item =>
+                    {
+                        string ShortDesc = item.ShortDesc;
+                        string imgUrl = string.Empty;
+                        string desc = ShortDesc;
+                        if (desc.Contains('>'))
+                        {
+                            var arr = desc.Split('>');
+                            if (arr.Length > 1)
+                            {
+                                ShortDesc = arr[1];
+                                imgUrl = arr[0].Split('=')[1];
+                            }
+                            if (IsImgBreak && !string.IsNullOrEmpty(imgUrl))
+                            {
+                                imgUrl = imgUrl.Replace('"', ' ').Replace('"', ' ').Remove(imgUrl.LastIndexOf('/'), 1);
+                            }
+                        }
+                        newsList.Add(
+                            new TopNews
+                            {
+                                TopNewsID = item.guid,
+                                DisplayOrder = 0,
+                                Heading = item.Heading,
+                                ImageUrl = imgUrl,
+                                ShortDescription = ShortDesc,
+                           //NewsDesc= val.NewsDescription,
+                           DttmCreated = Convert.ToDateTime(item.PubDate)
+
+                            });
+
+                    });
+                }
+
+                return newsList.OrderByDescending(v => v.DttmCreated.Date);
             }
-
-            return newsList.OrderByDescending( v => v.DttmCreated.Date);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

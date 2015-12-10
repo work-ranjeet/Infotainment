@@ -2,7 +2,7 @@
     'use strict';
     angular.module('infotainment').controller('loginCtrl', loginCtrl);
 
-    function loginCtrl($scope, $state,  $cookieStore, Helper) {     
+    function loginCtrl($scope, $state, $cookieStore, Helper) {
 
         $scope.User = [];
         $scope.User.UserID = null;
@@ -38,12 +38,12 @@
             if ($scope.User.IsEnteredPassword && $scope.User.IsEnteredUserID) {
                 return true;
             }
-            else {
-                $scope.User.Message = Message.EnterCrendential;
-            }
 
+            $scope.User.Message = Message.EnterCrendential;
+            
             return false;
         };
+
 
         $scope.ForgotPassword = function () {
             alert("NASDAQ");

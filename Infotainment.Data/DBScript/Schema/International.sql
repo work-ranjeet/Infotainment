@@ -1,6 +1,14 @@
 USE anandinfotainment
 GO
 
+DROP TABLE InternationalNewsTacking
+GO
+
+DROP TABLE InterNewsImage
+GO
+
+DROP TABLE InternationalNews
+GO
 
 ----------------- InternationalNews -------------
 CREATE TABLE InternationalNews (
@@ -15,6 +23,7 @@ CREATE TABLE InternationalNews (
 	CountryCode NVARCHAR(100),
 	IsApproved INT DEFAULT 0,
 	IsActive INT DEFAULT 0,
+	IsTopNews INT DEFAULT 0,
 	DttmCreated DATETIME DEFAULT(getdate()),
 	DttmModified DATETIME DEFAULT(getdate())
 	);

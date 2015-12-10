@@ -168,7 +168,7 @@ namespace Infotainment.Data.Controls
             {
                 throw objExp;
             }
-            return list.OrderByDescending( v => v.DttmCreated);
+            return list.OrderByDescending(v => v.DttmCreated);
         }
 
         public IEnumerable<ITopNews> SelectAll(DateTime dateFrom, DateTime dateTo, string Heading)
@@ -225,39 +225,62 @@ namespace Infotainment.Data.Controls
 
         public IEnumerable<ITopNews> SelectFirst10TopNews()
         {
-            int newsCount = 10;
-            var top20 = TopNewsDB.Instance.Select20TopNews().OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList();
-            if (top20.Count < newsCount)
+           // TopNewsDB newsDb;
+            try
             {
-                var remainNews = 10 - top20.Count;
-                if (remainNews > 0)
+                int newsCount = 10;
+                int remainNews = newsCount;
+                List<ITopNews> newsList = new List<ITopNews>();
+                var top20 = new TopNewsDB().Select20TopNews();
+                if (top20 != null)
                 {
-                    var topRssNews = RssProviderService.Instance.GetFirstTopNews();
-                    if (topRssNews != null && topRssNews.Count() > 0)
+                    newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList());
+                }
+                
+                if (newsList.Count < newsCount)
+                {
+                    remainNews = remainNews - newsList.Count;
+                    if (remainNews > 0)
                     {
-                        int newsCounter = 0;
-                        foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
+                        var topRssNews = new RssProviderService().GetFirstTopNews();
+                        if (topRssNews != null && topRssNews.Count() > 0)
                         {
-                            if (newsCounter++ >= remainNews)
-                                break;
+                            int newsCounter = 0;
+                            foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
+                            {
+                                if (newsCounter++ >= remainNews)
+                                    break;
 
-                            val.IsRss = true;
-                            top20.Add(val);
+                                val.IsRss = true;
+                                newsList.Add(val);
+                            }
                         }
                     }
                 }
-            }
 
-            return top20.Take(newsCount);
+                return newsList.Take(newsCount);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IEnumerable<ITopNews> SelectRest10TopNews()
         {
             int newsCount = 10;
-            var top20 = TopNewsDB.Instance.Select20TopNews().OrderByDescending(v => v.DttmCreated).Skip(10).Take(newsCount).ToList();
-            if (top20.Count < newsCount)
+            int remainNews = newsCount;
+            List<ITopNews> newsList = new List<ITopNews>();
+
+            var top20 = TopNewsDB.Instance.Select20TopNews();
+            if (top20 != null)
             {
-                var remainNews = 10 - top20.Count;
+                newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Skip(10).Take(newsCount).ToList());
+            }
+
+            if (newsList.Count < newsCount)
+            {
+                remainNews = remainNews - newsList.Count;
                 if (remainNews > 0)
                 {
                     var topRssNews = RssProviderService.Instance.GetSecondTopNews();
@@ -270,13 +293,13 @@ namespace Infotainment.Data.Controls
                                 break;
 
                             val.IsRss = true;
-                            top20.Add(val);
+                            newsList.Add(val);
                         }
                     }
                 }
             }
 
-            return top20.Take(newsCount);
+            return newsList.Take(newsCount);
         }
 
         public IEnumerable<ITopNews> SelectTodayTopNews()
@@ -285,7 +308,7 @@ namespace Infotainment.Data.Controls
 
             return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl) && v.DttmCreated.Date == DateTime.Now.Date)).Take(20);
         }
-       
+
         #endregion
 
         #region Memory

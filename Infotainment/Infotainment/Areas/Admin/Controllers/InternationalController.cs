@@ -39,6 +39,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             TopNewsID = v.NewsID,
                             ImageUrl = v.ImageUrl,
                             IsApproved = v.IsApproved,
+                            IsTopNews = v.IsTopNews,
                             Heading = v.Heading,
                             DttmCreated = v.DttmCreated
                         });
@@ -78,6 +79,7 @@ namespace Infotainment.Areas.Admin.Controllers
                                 Selected = false,
                                 TopNewsID = v.NewsID,
                                 IsApproved = v.IsApproved,
+                                IsTopNews = v.IsTopNews,
                                 Heading = v.Heading,
                                 DttmCreated = v.DttmCreated
                             });
@@ -117,6 +119,7 @@ namespace Infotainment.Areas.Admin.Controllers
                             TopNewsID = v.NewsID,
                             ImageUrl = v.ImageUrl,
                             IsActive = v.IsActive,
+                            IsTopNews = v.IsTopNews,
                             Heading = v.Heading,
                             DttmCreated = v.DttmCreated
                         });
@@ -156,6 +159,7 @@ namespace Infotainment.Areas.Admin.Controllers
                                 Selected = false,
                                 TopNewsID = v.NewsID,
                                 IsActive = v.IsActive,
+                                IsTopNews = v.IsTopNews,
                                 Heading = v.Heading,
                                 DttmCreated = v.DttmCreated
                             });
@@ -210,6 +214,7 @@ namespace Infotainment.Areas.Admin.Controllers
                     objNews.ShortDescription = news.ShortDesc.Trim();
                     objNews.NewsDescription = string.IsNullOrEmpty(news.Description) ? string.Empty : news.Description.Trim();
                     objNews.DisplayOrder = 1;
+                    objNews.IsTopNews = news.IsTopTenNews ? 1 : 0;
 
                     string dirPath = ImagePath.InternationalNewsImage;
 
@@ -297,7 +302,8 @@ namespace Infotainment.Areas.Admin.Controllers
                         ImageUrl = image.ImageUrl,
                         Caption = news.ImageCaption,
                         IsActiveNews = news.IsActive == 1 ? true : false,
-                        IsApprovedNews = news.IsApproved == 1 ? true : false                       
+                        IsApprovedNews = news.IsApproved == 1 ? true : false,
+                        IsTopTenNews = news.IsTopNews == 1 ? true : false
 
                     };
                 }
@@ -327,7 +333,8 @@ namespace Infotainment.Areas.Admin.Controllers
                             ShortDescription = newForUpdate.ShortDesc.Trim(),
                             NewsDescription = string.IsNullOrEmpty(newForUpdate.Description) ? string.Empty : newForUpdate.Description.Trim(),
                             IsActive = newForUpdate.IsActiveNews ? 1 : 0,
-                            IsApproved = newForUpdate.IsApprovedNews ? 1 : 0
+                            IsApproved = newForUpdate.IsApprovedNews ? 1 : 0,
+                            IsTopNews = newForUpdate.IsTopTenNews ? 1 : 0
                         };
 
                         var image = new ImageDetail

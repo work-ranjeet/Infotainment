@@ -60,7 +60,7 @@ input[type="checkbox"].input-validation-error {
 
 .admin-header {
     background-color: #212121;
-    z-index:2;
+    z-index: 2;
 }
 
 .admin-header-user {
@@ -201,3 +201,6 @@ input[type="checkbox"].input-validation-error {
     .boxHeader > tr > th {
         padding: 9px !important;
     }
+
+
+
