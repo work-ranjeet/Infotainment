@@ -11,27 +11,38 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <div style="margin: auto; width: 30%; margin-top: 20%; border: solid 1px #2a7425; padding: 30px; background-color:white; border-radius:5%;">
-                    <div class="form-horizontal">
-                        <div class="small-text error-text-indicator" style="text-align: center; padding: 5px; padding-top: 15px;">
-                            {{User.Message}}
-                            <bdi class="field-validation-error">@(ViewData.ModelState.ContainsKey("LoginError") ? (ViewData.ModelState["LoginError"].Errors).FirstOrDefault().ErrorMessage : "")</bdi>
-                        </div>
+            <div class="col-xs-12" style="padding-right:0px!important; padding-left:0px!important;">
 
-                        <div class="form-group">
-                            <input name="UserID" maxlength="200" data-val="true" required data-val-required="Enter UserName" id="UserID" type="text" placeholder="Enter Email / Mobile"
-                                   class="{{User.IsEnteredUserID ?'':'red-border'}} form-control" ng-model="User.UserID" ng-blur="checkUserIDEntry()">
-                        </div>
+                <div style="margin: auto; width: 300px;  margin-top:25%; border: solid 1px #2a7425; padding: 30px; background-color:white; border-radius:5%; z-index:0; ">
+                    <div style="height:100px; width:100px; border-radius:50%; margin: auto;  margin-top: -35%; margin-left:0px; background-color:white;
+                                background:url(../../favicon.ico); background-size: cover;">
+                       
+                    </div>
+                    <div style="margin-left:20px; font-size:25px; color:#25879d; padding-left:40%; margin-top:-15%;">
+                    <span style="padding-left:20px;" >Login</span><hr class="style-seven" style="margin-top:5px;"/></div>
+                   
+                    <div>
+                        <div class="form-horizontal">
+                            <div class="small-text error-text-indicator" style="text-align: center; padding: 5px; padding-top: 15px; height:50px;">
+                                {{User.Message}}
+                                <bdi class="field-validation-error">@(ViewData.ModelState.ContainsKey("LoginError") ? (ViewData.ModelState["LoginError"].Errors).FirstOrDefault().ErrorMessage : "")</bdi>
+                            </div>
 
-                        <div class="form-group">
-                            <input name="Password" maxlength="200" data-val="true" required data-val-required="Enter Password" id="Password" type="password" placeholder="Enter Password"
-                                   class="{{User.IsEnteredPassword?'':'red-border'}} form-control" ng-blur="checkPasswordEntry()" ng-model="User.Password">
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="submit" id="btnSubmitLogin" ng-click="login()" class="btn btn-success col-xs-6" style="margin-left:25%;" value="Login" />
+                            <div class="form-group">
+                                <input name="UserID" maxlength="200" data-val="true" required data-val-required="Enter UserName" id="UserID" type="text" placeholder="Enter Email / Mobile"
+                                       class="{{User.IsEnteredUserID ?'':'red-border'}} form-control" ng-model="User.UserID" ng-blur="checkUserIDEntry()">
+                            </div>
+
+                            <div class="form-group">
+                                <input name="Password" maxlength="200" data-val="true" required data-val-required="Enter Password" id="Password" type="password" placeholder="Enter Password"
+                                       class="{{User.IsEnteredPassword?'':'red-border'}} form-control" ng-blur="checkPasswordEntry()" ng-model="User.Password">
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" id="btnSubmitLogin" ng-click="login()" class="btn btn-success col-xs-6" style="margin-left:25%;" value="Login" />
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
