@@ -1,0 +1,9 @@
+﻿@media (min-width: 1000px) {
+    /* login section*/
+    .login-container {
+        margin: auto;
+        margin-top: 25%;
+        width: 450px;
+    }
+    /* end loginsectin*/
+}

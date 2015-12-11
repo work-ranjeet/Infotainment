@@ -64,7 +64,14 @@ namespace Infotainment
                       "~/Content/BootStrapCss/bootstrap.css",
                       "~/Content/css/*.css"));
 
-            bundles.Add(new StyleBundle("~/Media/css").Include("~/Content/css/Media/Media.css"));
+            bundles.Add(new StyleBundle("~/Media/css").Include(
+                "~/Content/css/Media/320.css",
+                "~/Content/css/Media/400.css",
+                "~/Content/css/Media/600.css",
+                "~/Content/css/Media/800.css",
+                "~/Content/css/Media/1000.css",
+                "~/Content/css/Media/IPhone.css",
+                "~/Content/css/Media/Media.css"));
         }
     }
 }

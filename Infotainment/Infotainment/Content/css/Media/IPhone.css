@@ -1,5 +1,23 @@
 ﻿/* iPhone 4 - 5s ----------- */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+    /* login section*/
+    .login-container {
+        margin: auto;
+        margin-top: 25%;
+        width: 300px;
+    }
+
+    .login-image {
+        margin: auto;
+        margin-top: -45%;
+        margin-left: 0px;
+    }
+
+    .login-heading {
+        padding-left: 32%;
+        width: 70%;
+    }
+    /* end loginsectin*/
 }
 
 /* iPhone 6 ----------- */

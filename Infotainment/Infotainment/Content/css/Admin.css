@@ -113,64 +113,6 @@ input[type="checkbox"].input-validation-error {
     padding-top: 15px;
 }
 
-.login-controls {
-    width: 300px;
-    margin: auto;
-    margin-left: -webkit-calc(100% - 76%);
-    margin-left: calc(100% - 76%);
-}
-
-.login-body input[type=text] {
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-}
-
-.login-body input[type=password] {
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-}
-
-.login-body .button {
-    width: 260px;
-    height: 35px;
-    cursor: pointer;
-    border-radius: 2px;
-    color: #a18d6c;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 6px;
-    margin-top: 5px;
-}
-
-.login-body button:hover {
-    opacity: 0.8;
-}
-
-.login-body button:active {
-    opacity: 0.6;
-}
-
-
-.login-body button:focus {
-    outline: none;
-}
 
 ::-webkit-input-placeholder {
     color: #909090;
@@ -180,7 +122,7 @@ input[type="checkbox"].input-validation-error {
     color: #909090;
 }
 
-.admin-section {
+/*.admin-section {
     width: 99%;
     overflow-x: hidden;
 }
@@ -200,7 +142,50 @@ input[type="checkbox"].input-validation-error {
 
     .boxHeader > tr > th {
         padding: 9px !important;
-    }
+    }*/
 
+/* Login section */
+.login-container {
+    margin: auto;
+    width: 450px;
+    margin-top: 25%;
+    border: solid 4px #2a7425;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5%;
+    z-index: 0;
+}
 
+.login-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: -30%;
+    margin-left: 0px;
+    background-color: white;
+    background: url(../../favicon.ico);
+    background-size: cover;
+    border: solid 4px #2a7425;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
 
+.login-heading {
+    margin-left: 81px;
+    font-size: 25px;
+    color: #25879d;
+    padding-left: 32%;
+    background-color: white;
+    width: 81%;
+    border-radius: 45%;
+}
+
+.login-error {
+    text-align: center;
+    padding: 5px;
+    padding-top: 15px;
+    height: 30px;
+}
+/* End Login Section */
