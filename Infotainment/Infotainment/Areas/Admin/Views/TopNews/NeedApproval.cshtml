@@ -26,16 +26,11 @@
 
     <section id="NewsDetails" class="container">
         <div class="row">
-            <div class="col-xs12">
-
-                <div id="container">
-                    <div class="alert alert-info pull-left" style="padding: 6px 12px; margin:0px; width:86%;">
-                        <strong> @Model.Message </strong>
-                    </div>
-                    <div class="pull-right">
-                        <input id="approvalButton" class="btn btn-success" type="submit" value="Approve Selected">
-                    </div>
-                </div>
+            <div class="alert alert-info col-xs-10 message-header-container-2">
+                <strong style="width:100%; font-size:99%;"> @Model.Message </strong>
+            </div>
+            <div class="col-xs-2">
+                <input id="approvalButton" class="btn btn-success" type="submit" value="Approve"  style="width:100%; min-width:50px; font-size:99%;">
             </div>
         </div>
         <div class="row">

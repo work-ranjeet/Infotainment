@@ -18,69 +18,72 @@
         </script>
     }
 
-    <section id="insertNews" class="admin-section">
-        <div id="content" class="content form-horizontal">
-            <div class="alert alert-info " style="width:83%; margin-top:0px; margin-left:17%;">
-                <strong> @ViewBag.Message </strong>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Title">News Heading</label>
-                <div class="col-md-10">
-                    @Html.ValidationMessageFor(model => model.Heading)
-                    <input class="form-control text-box" data-val="true" placeholder="Enter news heading..." data-val-required="The Heading field is required." id="Heading" name="Heading" type="text" value="@Model.Heading">
+    <section id="insertNews" class="container">
+        <div class="row">
+            <div class="col-xs12">
+                <div id="content" class="content form-horizontal">
+                    <div class="alert alert-info message-header-container">
+                        <strong> @ViewBag.Message </strong>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Title">News Heading</label>
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.Heading)
+                            <input class="form-control text-box" data-val="true" placeholder="Enter news heading..." data-val-required="The Heading field is required." id="Heading" name="Heading" type="text" value="@Model.Heading">
 
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Image">Image</label>
-                <div class="col-md-10">
-                    <div class="col-xs-12">
-                        <div class="col-xs-6">
-                            @Html.ValidationMessageFor(model => model.Image)
-                            <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="checkbox" style="margin-top:4px;">
-                                @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:15px; width:15px;" })
-                                <span style="vertical-align:baseline;">&nbsp;Is Part Of Top News</span>
-                            </div>
                         </div>
                     </div>
-                   
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Image">Image Caption</label>
-                <div class="col-md-10">
-                    @Html.ValidationMessageFor(model => model.ImageCaption)
-                    <input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required." id="ImageCaption" name="ImageCaption" type="text" value="@Model.ImageCaption">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Image">Image</label>
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    @Html.ValidationMessageFor(model => model.Image)
+                                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="checkbox" style="margin-top:4px;">
+                                        @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:15px; width:15px;" })
+                                        <span style="vertical-align:baseline;">&nbsp;Is Part Of Top News</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                </div>
-            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Image">Image Caption</label>
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.ImageCaption)
+                            <input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required." id="ImageCaption" name="ImageCaption" type="text" value="@Model.ImageCaption">
 
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Description">Short Description</label>
-                <div class="col-md-10">
-                    @Html.ValidationMessageFor(model => model.ShortDesc)
-                    <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."
-                              data-val-required="The ShortDesc field is required." rows="5">
-                        @Model.ShortDesc
-                    </textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Contents">Description</label>
-                <div class="col-md-10">
-                    <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10 text-center">
-                    <input type="submit" id="btnSubmit" value="Click to Insert News" style="width:50%; height:30px; padding:5px;" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Description">Short Description</label>
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.ShortDesc)
+                            <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."
+                                      data-val-required="The ShortDesc field is required." rows="5">
+                                @Model.ShortDesc
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Contents">Description</label>
+                        <div class="col-md-10">
+                            <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 text-center">
+                            <input type="submit" id="btnSubmit" value="Click to Insert News" style="width:50%; height:30px; padding:5px;" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
 }

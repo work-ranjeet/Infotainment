@@ -20,8 +20,8 @@ namespace Infotainment.Controllers
             var newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectFirst10TopNews();
-                result.AsParallel().ForAll(val =>
+                var result = newsInstance.SelectTopNews();
+                result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     newsList.Add(new News
                     {
@@ -30,6 +30,7 @@ namespace Infotainment.Controllers
                         Heading = val.Heading,
                         ImageUrl = val.ImageUrl,
                         ShortDesc = val.ShortDescription,
+                        IsRss = val.IsRss,
                         //NewsDesc= val.NewsDescription,
                         DttmCreated = val.DttmCreated
                     });
@@ -49,40 +50,40 @@ namespace Infotainment.Controllers
             return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
-        [HttpGet]
-        public IEnumerable<INews> TopNewsHeader()
-        {
-            var newsInstance = TopNewsBL.Instance;
-            ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
-            try
-            {
-                var result = newsInstance.SelectRest10TopNews();
-                result.AsParallel().ForAll(val =>
-                {
-                    newsList.Add(new News
-                    {
-                        NewsID = val.TopNewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
-                        ShortDesc = val.ShortDescription,
-                        //NewsDesc = val.NewsDescription,
-                        DttmCreated = val.DttmCreated
-                    });
-                });
+        //[HttpGet]
+        //public IEnumerable<INews> NewsHeader()
+        //{
+        //    var newsInstance = InterNewsBL.Instance;
+        //    ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
+        //    try
+        //    {
+        //        var result = newsInstance.SelectRest10TopNews();
+        //        result.AsParallel().AsOrdered().ForAll(val =>
+        //        {
+        //            newsList.Add(new News
+        //            {
+        //                NewsID = val.NewsID,
+        //                DisplayOrder = val.DisplayOrder,
+        //                Heading = val.Heading,
+        //                ImageUrl = val.ImageUrl,
+        //                ShortDesc = val.ShortDescription,
+        //                //NewsDesc = val.NewsDescription,
+        //                DttmCreated = val.DttmCreated
+        //            });
+        //        });
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                newsInstance.Dispose();
-            }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        newsInstance.Dispose();
+        //    }
 
-            return newsList.OrderByDescending(v => v.DttmCreated); 
-        }
+        //    return newsList.OrderByDescending(v => v.DttmCreated); 
+        //}
 
         [HttpGet]
         public INews NewsDetail(string NewsId)
@@ -104,7 +105,8 @@ namespace Infotainment.Controllers
                         ImageCaption = result.ImageCaption,
                         ShortDesc = result.ShortDescription,
                         NewsDesc = result.NewsDescription,
-                        DttmCreated = result.DttmCreated
+                        DttmCreated = result.DttmCreated,
+                        IsRss = result.IsRss
                     };
                 }
             }
@@ -142,7 +144,8 @@ namespace Infotainment.Controllers
                             EditorName = "",
                             ShortDesc = val.ShortDescription,
                             NewsDesc = val.NewsDescription,
-                            DttmCreated = val.DttmCreated
+                            DttmCreated = val.DttmCreated,
+                            IsRss = val.IsRss
                         });
                     }
                 });

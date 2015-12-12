@@ -33,6 +33,7 @@ namespace Infotainment.Data.Controls
         private System.Int32 _IsApproved;
         private System.Int32 _IsActive;
         private System.Int32 _IsTopNews;
+        private System.Boolean _IsRss;
         private System.DateTime _DttmCreated;
         private System.DateTime _DttmModified;
 
@@ -49,6 +50,7 @@ namespace Infotainment.Data.Controls
             this._IsApproved = System.Int32.MinValue;
             this._IsActive = System.Int32.MinValue;
             this._IsTopNews = System.Int32.MinValue;
+            this._IsRss = false;
             this._DttmCreated = System.DateTime.MinValue;
             this._DttmModified = System.DateTime.MinValue;
         }
@@ -290,6 +292,18 @@ namespace Infotainment.Data.Controls
             get
             {
                 return (this._IsTopNews == System.Int32.MinValue);
+            }
+        }
+
+        public System.Boolean IsRss
+        {
+            get
+            {
+                return this._IsRss;
+            }
+            set
+            {
+                this._IsRss = value;
             }
         }
 

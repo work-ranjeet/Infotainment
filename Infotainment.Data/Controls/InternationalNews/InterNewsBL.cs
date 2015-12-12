@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using PCL.DBHelper;
 using System.Web;
 using Infotainment.Data.Entities;
+using Infotainment.Data.Common.Services;
 
 namespace Infotainment.Data.Controls
 {
@@ -212,19 +213,128 @@ namespace Infotainment.Data.Controls
             return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<IInterNews> SelectFirst10TopNews()
+        public IEnumerable<IInterNews> SelectTopNews()
         {
-            var top20 = InterNewsDB.Instance.Select20TopNews();
+            try
+            {
+                int newsCount = 10;
+                int remainNews = newsCount;
+                List<IInterNews> newsList = new List<IInterNews>();
+                var top20 = new InterNewsDB().Select20TopNews();
+                if (top20 != null)
+                {
+                    newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList());
+                }
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(10);
+                if (newsList.Count < newsCount)
+                {
+                    remainNews = remainNews - newsList.Count;
+                    if (remainNews > 0)
+                    {
+                        var topRssNews = new RssProviderService().GetInternationalNews();
+                        if (topRssNews != null && topRssNews.Count() > 0)
+                        {
+                            int newsCounter = 0;
+                            foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
+                            {
+                                if (newsCounter++ >= remainNews)
+                                    break;
+
+                                val.IsRss = true;
+                                newsList.Add(val);
+                            }
+                        }
+                    }
+                }
+
+                return newsList.Take(newsCount);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public IEnumerable<IInterNews> SelectRest10TopNews()
-        {
-            var top20 = InterNewsDB.Instance.Select20TopNews();
+        //public IEnumerable<IInterNews> SelectFirst10News()
+        //{
+        //    try
+        //    {
+        //        int newsCount = 5;
+        //        int remainNews = newsCount;
+        //        List<IInterNews> newsList = new List<IInterNews>();
+        //        var top20 = new InterNewsDB().Select20TopNews();
+        //        if (top20 != null)
+        //        {
+        //            newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList());
+        //        }
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(10);
-        }
+        //        if (newsList.Count < newsCount)
+        //        {
+        //            remainNews = remainNews - newsList.Count;
+        //            if (remainNews > 0)
+        //            {
+        //                //var topRssNews = new RssProviderService().GetFirstTopNews();
+        //                //if (topRssNews != null && topRssNews.Count() > 0)
+        //                //{
+        //                //    int newsCounter = 0;
+        //                //    foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
+        //                //    {
+        //                //        if (newsCounter++ >= remainNews)
+        //                //            break;
+
+        //                //        val.IsRss = true;
+        //                //        newsList.Add(val);
+        //                //    }
+        //                //}
+        //            }
+        //        }
+
+        //        return newsList.Take(newsCount);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+        //public IEnumerable<IInterNews> SelectRest10TopNews()
+        //{
+        //    //var top20 = InterNewsDB.Instance.Select20TopNews();
+        //    //return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Skip(7).Take(10);
+
+        //    int newsCount = 10;
+        //    int remainNews = newsCount;
+        //    List<IInterNews> newsList = new List<IInterNews>();
+
+        //    var top20 = InterNewsDB.Instance.Select20TopNews();
+        //    if (top20 != null)
+        //    {
+        //        newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Skip(10).Take(newsCount).ToList());
+        //    }
+
+        //    if (newsList.Count < newsCount)
+        //    {
+        //        remainNews = remainNews - newsList.Count;
+        //        if (remainNews > 0)
+        //        {
+        //            //var topRssNews = RssProviderService.Instance.GetSecondTopNews();
+        //            //if (topRssNews != null && topRssNews.Count() > 0)
+        //            //{
+        //            //    int newsCounter = 0;
+        //            //    foreach (var val in topRssNews)
+        //            //    {
+        //            //        if (newsCounter++ >= remainNews)
+        //            //            break;
+
+        //            //        val.IsRss = true;
+        //            //        newsList.Add(val);
+        //            //    }
+        //            //}
+        //        }
+        //    }
+
+        //    return newsList.Take(newsCount);
+        //}
         #endregion
 
         #region Memory

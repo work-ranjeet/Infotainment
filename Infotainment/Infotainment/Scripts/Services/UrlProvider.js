@@ -6,12 +6,15 @@
         TopTenNewsHeading: "request/MainNewsApi/TopNewsHeader",
         TopTenNewsDetail: "request/MainNewsApi/NewsDetail",
         TopTenNewsAdvertise: "request/AdvertismentApi/TopNewsAdvertisment",
+
+        // International News
         InternationalNews: "request/InternationalNewsApi/FirstNews",
+        //InternationalFirstNews: "request/InternationalNewsApi/NewsHeader",
 
 
 
 
-        RssTopTenNews: "request/MainNewsApi/RssTopNews"
+        //RssTopTenNews: "request/MainNewsApi/RssTopNews"
         
     };
 

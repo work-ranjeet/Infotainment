@@ -299,13 +299,19 @@ namespace Infotainment.Areas.Admin.Controllers
                         ShortDesc = news.ShortDescription,
                         Description = news.NewsDescription,
                         Image = null,
-                        ImageUrl = image.ImageUrl,
-                        Caption = news.ImageCaption,
+                        ImageUrl = string.Empty,
+                        Caption = string.Empty,
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false,
                         IsTopTenNews = news.IsTopNews == 1 ? true : false
 
                     };
+
+                    if (image != null)
+                    {
+                        newForUpdate.ImageUrl = string.IsNullOrEmpty(image.ImageUrl) ? " " : image.ImageUrl;
+                        newForUpdate.Caption = news.ImageCaption;
+                    }
                 }
                 return View(newForUpdate);
             });

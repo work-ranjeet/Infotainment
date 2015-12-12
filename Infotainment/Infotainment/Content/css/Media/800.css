@@ -12,4 +12,10 @@
         margin-left: 0px;
     }
     /* end loginsectin*/
+
+    
+    .message-header-container {
+        margin-left: 0%;
+        width:100%; 
+    }
 }

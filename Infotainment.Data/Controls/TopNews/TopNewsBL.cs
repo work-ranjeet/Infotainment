@@ -216,16 +216,15 @@ namespace Infotainment.Data.Controls
             return list.ToList().FindAll(v => v.IsActive == 0 && v.IsApproved == 1).OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<ITopNews> Select20TopNews(int topNumber)
-        {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+        //public IEnumerable<ITopNews> Select20TopNews(int topNumber)
+        //{
+        //    var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(topNumber);
-        }
+        //    return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl))).Take(topNumber);
+        //}
 
         public IEnumerable<ITopNews> SelectFirst10TopNews()
-        {
-           // TopNewsDB newsDb;
+        {           
             try
             {
                 int newsCount = 10;
@@ -302,12 +301,12 @@ namespace Infotainment.Data.Controls
             return newsList.Take(newsCount);
         }
 
-        public IEnumerable<ITopNews> SelectTodayTopNews()
-        {
-            var top20 = TopNewsDB.Instance.Select20TopNews();
+        //public IEnumerable<ITopNews> SelectTodayTopNews()
+        //{
+        //    var top20 = TopNewsDB.Instance.Select20TopNews();
 
-            return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl) && v.DttmCreated.Date == DateTime.Now.Date)).Take(20);
-        }
+        //    return (top20.ToList().FindAll(v => !string.IsNullOrEmpty(v.ImageUrl) && v.DttmCreated.Date == DateTime.Now.Date)).Take(20);
+        //}
 
         #endregion
 

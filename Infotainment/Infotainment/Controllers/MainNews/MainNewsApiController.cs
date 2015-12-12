@@ -23,7 +23,7 @@ namespace Infotainment.Controllers
             try
             {
                 var result = newsInstance.SelectFirst10TopNews();
-                result.AsParallel().ForAll(val =>
+                result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     newsList.Add(new News
                     {
@@ -60,7 +60,7 @@ namespace Infotainment.Controllers
             try
             {
                 var result = newsInstance.SelectRest10TopNews();
-                result.AsParallel().ForAll(val =>
+                result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     newsList.Add(new News
                     {

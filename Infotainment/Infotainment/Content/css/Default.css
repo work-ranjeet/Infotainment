@@ -1,11 +1,15 @@
 ﻿.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12,
-    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,
-    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
-    .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
-        position: inherit !important;
-    }
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
+.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    position: inherit !important;
+}
 
-.green {
+.color-common {
+    color: #F88017;
+}
+
+.color-green {
     color: #8fde62;
 }
 
@@ -85,7 +89,7 @@
     border-right: 1px solid #8fde62;
     background-color: #4c4e5a;
     display: block;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
     #menuleft.slide {
@@ -118,10 +122,12 @@
 .menu-mobile {
     display: block;
     width: 30px;
-    height:100%;
-    background-color: #4c4e5a;
-    position:relative;
+    height: 100%;
+    background-color: transparent;
+    position: relative;
 }
+
+    
 
     .menu-mobile .icon {
         background: transparent url(../images/menu-icon-white.png) no-repeat;
@@ -133,10 +139,14 @@
         margin-top: 2px;
     }
 
+    .menu-mobile .icon:hover {
+        color: #F88017;
+    }
+
     .menu-mobile .mobile-menu {
         height: 30px;
         width: 100%;
-        background: #4c4e5a;
+        /*background: #4c4e5a;*/
         background-color: transparent;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -145,11 +155,12 @@
 
 
 .mobile-menu li {
-    text-align:left;
+    text-align: left;
     list-style: none;
     display: block;
     white-space: nowrap;
 }
+
     .mobile-menu li > a {
         width: 100%;
         display: block;
@@ -173,19 +184,19 @@
     .mobile-menu li:first-child a {
         border-left: none;
     }
-    
+
     .mobile-menu li:last-child a {
         border-right: none;
-        border-bottom:none;
+        border-bottom: none;
     }
 
     .mobile-menu li:hover > a {
-        color: #8fde62;
+        color: #F88017;
     }
-    
+
 .mobile-menu ul {
     /*position: absolute;*/
-    margin-left:-10px;
+    margin-left: -10px;
     opacity: 0;
     background: transparent;
     -webkit-border-radius: 0 0 5px 5px;
@@ -196,36 +207,34 @@
     -o-transition: opacity .25s ease .1s;
     -ms-transition: opacity .25s ease .1s;
     transition: opacity .25s ease .1s;
-
     opacity: 1;
     z-index: 2;
     display: block;
 }
 
-/*.mobile-menu li:hover > ul {
+    /*.mobile-menu li:hover > ul {
     opacity: 1;
     z-index: 2;
     display: block;
 }*/
 
-.mobile-menu ul li {
-    height: 0;
-    overflow: hidden;
-    padding: 0;
-    -webkit-transition: height .25s ease .1s;
-    -moz-transition: height .25s ease .1s;
-    -o-transition: height .25s ease .1s;
-    -ms-transition: height .25s ease .1s;
-    transition: height .25s ease .1s;
+    .mobile-menu ul li {
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        -webkit-transition: height .25s ease .1s;
+        -moz-transition: height .25s ease .1s;
+        -o-transition: height .25s ease .1s;
+        -ms-transition: height .25s ease .1s;
+        transition: height .25s ease .1s;
+        text-align: left;
+        width: 100%;
+        height: 36px;
+        overflow: visible;
+        padding: 0;
+    }
 
-    text-align: left;
-    width: 100%;
-    height: 36px;
-    overflow: visible;
-    padding: 0;
-}
-
-/*.mobile-menu li:hover > ul li {
+        /*.mobile-menu li:hover > ul li {
     text-align: left;
     width: 100%;
     height: 36px;
@@ -233,16 +242,16 @@
     padding: 0;
 }*/
 
-.mobile-menu ul li a {
-    padding: 4px 0 4px 40px;
-    margin: 0;
-    border: none;
-    border-bottom: 1px solid #525252;
-}
+        .mobile-menu ul li a {
+            padding: 4px 0 4px 40px;
+            margin: 0;
+            border: none;
+            border-bottom: 1px solid #525252;
+        }
 
-.mobile-menu ul li:last-child a {
-    border: none;
-}
+        .mobile-menu ul li:last-child a {
+            border: none;
+        }
 
 .menu-system {
     display: block;
@@ -320,7 +329,7 @@
 
         .menu-footer li:hover > a,
         .menu li:hover > a {
-            color: #8fde62;
+            color: #F88017;
         }
 
 
@@ -381,13 +390,12 @@
     text-align: center;
     height: 35px;
     width: 100%;
-    /*margin-top: 1px;*/
-    border-top: solid 2px #72B100;
+    border-top: solid 2px #F88017;
     z-index: 1;
-    background-color: #4a4a52;
+    background-color: #F88017;
     background: #003 url(../images/header-top-bg.jpg) repeat-x;
 }
-
+/*
     .main-menu .menu-container {
         width: auto;
         margin: auto;
@@ -505,7 +513,7 @@
 }
 
 .jyotishi-menu {
-}
+}*/
 /* End Old Menu*/
 
 .bodySection {
@@ -535,7 +543,7 @@
 }
 
 .menu-container-footer {
-    border-bottom: solid thin #6fac60;
+    border-bottom: solid thin #F88017;
     width: 100%;
 }
 
@@ -663,7 +671,7 @@
     }
 
         .news-title .more:hover {
-            color: rgba(0,0,0,.6);
+            color: #F88017; /*rgba(0,0,0,.6); */
         }
 
     .news-title > span,
@@ -677,7 +685,7 @@
     }
 
         .news-title > a > span:hover {
-            color: #72B163;
+            color: #F88017; /*#72B163;*/
         }
 
 /*  About us */
@@ -685,7 +693,7 @@
     height: 350px;
     margin-top: -7px;
     z-index: 0;
-    background-image: url(../images/Pranav-Mund-Photography-1-aboutus-header.jpg);
+    background-image: url(../images/aboutus-top-section.png);
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -741,7 +749,7 @@
     width: 38px;
     margin: 10px auto 20px;
     display: block;
-    background: #6fac60;
+    background: #F88017;
 }
 
 .social {

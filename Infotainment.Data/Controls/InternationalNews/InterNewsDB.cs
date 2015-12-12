@@ -565,7 +565,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.Dispose();
             }
 
-            return objNewsList;
+            return objNewsList.FindAll(v => v.DttmCreated.Date == DateTime.Now.Date || v.DttmCreated.Date.AddDays(-1) == DateTime.Now.Date.AddDays(-1)); ;
         }      
 
         public List<IInterNews> Search(DateTime dateFrom, DateTime dateTo, string Heading)

@@ -7,7 +7,8 @@
         $scope.AboutUS = AboutUs;
         $scope.TeamList = [
                          {
-                             PicUrl: "Images/User/Default.jpg",
+                             Gender : 1,
+                             PicUrl: "Content/images/femail.png",
                              Name: "Puja Gupta",
                              Desigantion: "Company Secretry",
                              Qulification:"ACS, LLB, MBA",
@@ -15,7 +16,7 @@
                              Detail: ""
                          },
                          {
-                             PicUrl: "Images/User/Default.jpg",
+                             PicUrl: "Content/images/mail.png",
                              Name: "Ravi Anand",
                              Desigantion: "",
                              Qulification: "",
@@ -23,7 +24,7 @@
                              Detail: ""
                          },
                          {
-                             PicUrl: "Images/User/Default.jpg",
+                             PicUrl: "Content/images/mail.png",
                              Name: "Munna Kumar Gupta",
                              Desigantion: "",
                              Qulification: "MCA",

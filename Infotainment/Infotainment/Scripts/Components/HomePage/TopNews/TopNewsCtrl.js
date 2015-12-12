@@ -32,8 +32,8 @@
         $scope.LoadTopNews = function () {
             ServiceProvider.Services.getData(ServiceProvider.Url.TopTenNews, null).then(function (result) {
                 if (result != null) {
-                    $scope.imageNewsList = $filter('topRows')(result, 8);
-                    angular.forEach($filter('restRows')(result, 8), function (news) {
+                    $scope.imageNewsList = $filter('topRows')(result, 9);
+                    angular.forEach($filter('restRows')(result, 9), function (news) {
                         $scope.simpleNewsList.push(news);
                     });
 

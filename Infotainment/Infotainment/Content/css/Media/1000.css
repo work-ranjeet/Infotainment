@@ -6,4 +6,10 @@
         width: 450px;
     }
     /* end loginsectin*/
+
+
+    .message-header-container {
+        margin-left: 17%;
+        width: 83%;
+    }
 }

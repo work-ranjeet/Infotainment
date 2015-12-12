@@ -384,7 +384,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.Dispose();
             }
 
-            return objTopNewsList.FindAll(v => v.DttmCreated.Date == DateTime.Now.Date);
+            return objTopNewsList.FindAll(v => v.DttmCreated.Date == DateTime.Now.Date || v.DttmCreated.Date.AddDays(-1) == DateTime.Now.Date.AddDays(-1));
         }
 
         public List<ITopNews> SelectTopNewsForActivate()

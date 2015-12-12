@@ -149,7 +149,7 @@ input[type="checkbox"].input-validation-error {
     margin: auto;
     width: 450px;
     margin-top: 25%;
-    border: solid 4px #2a7425;
+    border: solid 2px #F88017;
     padding: 30px;
     background-color: white;
     border-radius: 5%;
@@ -166,7 +166,7 @@ input[type="checkbox"].input-validation-error {
     background-color: white;
     background: url(../../favicon.ico);
     background-size: cover;
-    border: solid 4px #2a7425;
+    border: solid 2px #F88017;
     border-bottom: none;
     border-left: none;
     border-right: none;
@@ -175,7 +175,7 @@ input[type="checkbox"].input-validation-error {
 .login-heading {
     margin-left: 81px;
     font-size: 25px;
-    color: #25879d;
+    color: #F88017;
     padding-left: 32%;
     background-color: white;
     width: 81%;
@@ -189,3 +189,15 @@ input[type="checkbox"].input-validation-error {
     height: 30px;
 }
 /* End Login Section */
+.message-header-container{
+     margin-left:17%;
+     width:83%; 
+     margin-top:0px;
+}
+
+.message-header-container-2{
+     margin-left:0px;
+     width:83%; 
+     margin-top:0px;
+     padding:6px 20px;
+}

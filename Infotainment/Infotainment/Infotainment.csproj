@@ -149,15 +149,14 @@
     <Compile Include="Controllers\Advertisment\AdvertismentApiController.cs" />
     <Compile Include="Controllers\ContactUs\ContactUsController.cs" />
     <Compile Include="Controllers\GameNewsController.cs" />
-    <Compile Include="Controllers\HomeMainNewsApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeController.cs" />
     <Compile Include="Controllers\InternationalNews\InternationalNewsApiController.cs" />
+    <Compile Include="Controllers\InternationalNews\InternationalNewsController.cs" />
     <Compile Include="Controllers\Mailing\MailingController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsApiController.cs" />
     <Compile Include="Controllers\MainNews\MainNewsController.cs" />
     <Compile Include="Controllers\MarketNewsController.cs" />
-    <Compile Include="Controllers\NationalNewsController.cs" />
     <Compile Include="Controllers\PoliticalNewsController.cs" />
     <Compile Include="Controllers\StateNewsController.cs" />
     <Compile Include="ExtendedControls\ExtendedControls.cs" />
@@ -181,7 +180,10 @@
     <Content Include="Content\css\Media\IPad.css" />
     <Content Include="Content\css\Media\IPhone.css" />
     <Content Include="Content\css\Media\Media.css" />
+    <Content Include="Content\images\aboutus-top-section.png" />
+    <Content Include="Content\images\femail.png" />
     <Content Include="Content\images\india.png" />
+    <Content Include="Content\images\mail.png" />
     <Content Include="favicon.ico" />
     <Content Include="Areas\Admin\Scripts\Controller\searchCtrl.js" />
     <Content Include="Areas\Admin\Scripts\Controller\loginCtrl.js" />

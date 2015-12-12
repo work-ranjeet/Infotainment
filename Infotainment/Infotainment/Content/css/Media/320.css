@@ -17,4 +17,9 @@
         width: 70%;
     }
     /* end loginsectin*/
+
+    .message-header-container {
+        margin-left: 0%;
+        width:100%; 
+    }
 }

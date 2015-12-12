@@ -74,6 +74,12 @@
             set;
         }
 
+        System.Boolean IsRss
+        {
+            get;
+            set;
+        }
+
         System.DateTime DttmCreated
         {
             get;
