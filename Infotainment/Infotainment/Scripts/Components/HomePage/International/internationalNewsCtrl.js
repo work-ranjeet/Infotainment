@@ -19,7 +19,7 @@
             if (result != null) {
                 
                 $scope.InternationalNewsList = $filter('topRows')(result, 5);
-                $scope.InternationalNewsHeaderList = $filter('restRows')(result, 5);
+                $scope.InternationalNewsHeaderList =$filter('limitTo')( $filter('restRows')(result, 5), 7);
                 $scope.HasInterNews = $scope.InternationalNewsList.length > 0;
             }
         });

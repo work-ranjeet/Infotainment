@@ -603,7 +603,7 @@ body {
     font-size: 20px;
     color: #f05a00;
     border-bottom: 3px solid #f07c00;
-    position: relative;
+    /*position: relative;*/
     margin-bottom: 2px;
     height: 16px;
     line-height: 18px;
@@ -616,7 +616,7 @@ body {
         text-transform: uppercase;
         background: #fff;
         padding-right: 4px;
-        position: relative;
+        /*position: relative;*/
         height: 19px;
         display: inline-block;
     }
