@@ -4,26 +4,29 @@
 		.controller('stateNewsHomeCtrl', stateNewsHomeCtrl);
 
     function stateNewsHomeCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile) {
-        $scope.Title = "खबर राज्यों से";
+        $scope.StateTitle = "खबर राज्यों से";
         $scope.StateTabList = [
-            { TabIdName: "bihar", IsActive: true, StateName: "बिहार", TabContainerName: "bihar-container" },
-            { TabIdName: "up", IsActive: false, StateName: "उत्तर प्रदेश", TabContainerName: "up-container" },
-            { TabIdName: "chhattisgarh", IsActive: false, StateName: "छत्तीसगढ़", TabContainerName: "chhattisgarh-container" },
-            { TabIdName: "mp", IsActive: false, StateName: "मध्य प्रदेश", TabContainerName: "mp-container" },
-            { TabIdName: "rajasthan", IsActive: false, StateName: "राजस्थान", TabContainerName: "rajasthan-container" },
-            { TabIdName: "himachal", IsActive: false, StateName: "हिमाचल प्रदेश", TabContainerName: "himachal-container" },
-            { TabIdName: "panjab", IsActive: false, StateName: "पंजाब", TabContainerName: "panjab-container" }];
+            { TabId: "0", IsActive: true, StateName: "बिहार", StateCode: "BH" },
+            { TabId: "1", IsActive: false, StateName: "उत्तर प्रदेश", StateCode: "UP" },
+            { TabId: "2", IsActive: false, StateName: "छत्तीसगढ़", StateCode: "CH" },
+            { TabId: "3", IsActive: false, StateName: "मध्य प्रदेश", StateCode: "MP" },
+            { TabId: "4", IsActive: false, StateName: "राजस्थान", StateCode: "RJ" },
+            { TabId: "5", IsActive: false, StateName: "हिमाचल प्रदेश", StateCode: "HM" },
+            { TabId: "6", IsActive: false, StateName: "पंजाब", StateCode: "PN" }];
 
-        //$scope.StateNames = {
-        //    bihar: "बिहार",
-        //    up: "उत्तर प्रदेश",
-        //    chhattisgarh: "छत्तीसगढ़",
-        //    mp: "मध्य प्रदेश",
-        //    rajasthan: "राजस्थान",
-        //    himachal: "हिमाचल प्रदेश",
-        //    panjab: "पंजाब"
-        //};
+        $scope.activeTab = {
+            tabId: "0", StateName: "", StateCode: "", NewsList: []
+        };
 
+        $scope.selectedTab = 0;
+
+        $scope.changetab = function (tabId) {
+            var v = "";
+        };
+
+        $watch('selectedTab', function (value) {
+            var v = value;
+        });
 
         $scope.changeStateNewsTab = function (tabNmae) {
             angular.forEach($scope.StateTabList, function (name) {
@@ -35,7 +38,7 @@
             $('#' + tabNmae.state.TabIdName).removeClass("de-active-state-news-header");
             $('#' + tabNmae.state.TabIdName).addClass("active-state-news-header");
 
-           // $scope.ActiveStateNewsTab(tabNmae);
+            // $scope.ActiveStateNewsTab(tabNmae);
             $('#' + tabNmae.state.TabContainerName).css("display", "block");
         };
 
@@ -46,7 +49,7 @@
             {
                 PageUrl: "#",
                 TabContainerId: "bihar-container",
-                IsActiveContainer:true,
+                IsActiveContainer: true,
                 NewsId: "#",
                 ImageUrl: "Images/GameSection/cricket/mainmng.jpg",
                 ImageCaption: "आईसीसी ट्वेंटी-20 विश्वकप",

@@ -189,109 +189,8 @@
             return Math.round(parseFloat(input));
         };
     })
-    .filter('currencyFilter', function ($filter) {
-        return function (input, currencycode, precision) {
-
-            if (input == undefined) return '';
-
-            if (currencycode == null) currencycode = '';
-            if (precision == null) precision = 0;
-
-            if (angular.isNumber(input))
-                var value = input;
-            else {
-                if (input.indexOf(',') > -1)
-                    var value = parseFloat(input.replace(',', ''));
-                else
-                    var value = parseFloat(input);
-            }
-            if (currencycode.length > 1)
-                currencycode += ' ';
-            if (value < 0) { //negative value
-                var output = $filter('currency')(value, '', precision);
-                return currencycode + output.replace("(", "-").replace(")", "");
-            }
-            else {
-                return $filter('currency')(value, currencycode, precision);
-            }
-        }
-    })
-    .filter('stringFormat', function () {
-        function toFormattedString(useLocale, format, values) {
-            var result = '';
-
-            for (var i = 0; ;) {
-                // Find the next opening or closing brace
-                var open = format.indexOf('{', i);
-                var close = format.indexOf('}', i);
-                if ((open < 0) && (close < 0)) {
-                    // Not found: copy the end of the string and break
-                    result += format.slice(i);
-                    break;
-                }
-                if ((close > 0) && ((close < open) || (open < 0))) {
-
-                    if (format.charAt(close + 1) !== '}') {
-                        throw new Error('format stringFormatBraceMismatch');
-                    }
-
-                    result += format.slice(i, close + 1);
-                    i = close + 2;
-                    continue;
-                }
-
-                // Copy the string before the brace
-                result += format.slice(i, open);
-                i = open + 1;
-
-                // Check for double braces (which display as one and are not arguments)
-                if (format.charAt(i) === '{') {
-                    result += '{';
-                    i++;
-                    continue;
-                }
-
-                if (close < 0) throw new Error('format stringFormatBraceMismatch');
-
-                // Find the closing brace
-
-                // Get the string between the braces, and split it around the ':' (if any)
-                var brace = format.substring(i, close);
-                var colonIndex = brace.indexOf(':');
-                var argNumber = parseInt((colonIndex < 0) ? brace : brace.substring(0, colonIndex), 10);
-
-                if (isNaN(argNumber)) throw new Error('format stringFormatInvalid');
-
-                var argFormat = (colonIndex < 0) ? '' : brace.substring(colonIndex + 1);
-
-                var arg = values[argNumber];
-                if (typeof (arg) === "undefined" || arg === null) {
-                    arg = '';
-                }
-
-                // If it has a toFormattedString method, call it.  Otherwise, call toString()
-                if (arg.toFormattedString) {
-                    result += arg.toFormattedString(argFormat);
-                } else if (useLocale && arg.localeFormat) {
-                    result += arg.localeFormat(argFormat);
-                } else if (arg.format) {
-                    result += arg.format(argFormat);
-                } else
-                    result += arg.toString();
-
-                i = close + 1;
-            }
-
-            return result;
-        };
-
-        return function (/*string*/template, /*array*/values) {
-            if (!values || !values.length || !template) {
-                return template;
-            }
-            return toFormattedString(false, template, values);
-        };
-    })
+    
+   
     .filter('SingleToDoubleRow', function () {
         return function (rows) {
             var firstCol = [];
@@ -344,30 +243,6 @@
             }
 
             return result;
-        };
-    })
-    .filter('daterange', function () {
-        return function (data, start_date, end_date) {
-            var result = [];
-
-            // date filters
-            var start_date = start_date ? Date.parse(start_date) : 0;
-            var end_date = end_date ? Date.parse(end_date) : new Date().getTime();
-
-            //start_date = formatDate(start_date);
-            //end_date = formatDate(end_date);
-
-            // if the conversations are loaded
-            if (data && data.length > 0) {
-                angular.forEach(data, function (row) {
-                    var itemDate = Date.parse(row.LastInvestmentDate);
-                    if (itemDate >= start_date && itemDate <= end_date) {
-                        result.push(row);
-                    }
-                });
-
-                return result;
-            }
         };
     })
     .filter('compute', function () {

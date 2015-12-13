@@ -46,8 +46,9 @@ namespace Infotainment
 
             // Client
             bundles.Add(new ScriptBundle("~/bundles/ClientControllers").Include(
-                 "~/Scripts/Components/HomePage/TopNews/*.js",
-                "~/Scripts/Components/HomePage/International/*.js",
+                 "~/Scripts/Components/HomePage/TopNewsCtrl.js",
+                "~/Scripts/Components/HomePage/InternationalNewsCtrl.js",
+                "~/Scripts/Components/HomePage/StateNewsCtrl.js",
                 "~/Scripts/Components/NewsDetail/*.js",
                 "~/Scripts/Components/Advertisment/*.js",
                 "~/Scripts/Components/ContactUs/*.js",

@@ -240,7 +240,7 @@
     <Content Include="Scripts\Components\ContactUs\ContactUsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\TopNews\TopNewsCtrl.js" />
+    <Content Include="Scripts\Components\HomePage\TopNewsCtrl.js" />
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -314,13 +314,13 @@
     <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\International\internationalNewsCtrl.js">
+    <Content Include="Scripts\Components\HomePage\InternationalNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\StateNewsHomeCtrl.js">
+    <Content Include="Scripts\Components\HomePage\StateNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js">
@@ -785,9 +785,12 @@
     <Content Include="Views\Mailing\SendMail.cshtml" />
     <Content Include="Views\Shared\_PartialSendMail.cshtml" />
     <Content Include="Views\Shared\_PartialSideMenu.cshtml" />
+    <Content Include="Views\Shared\_PartialTopNewsPage.cshtml" />
+    <Content Include="Views\Shared\_PartialInternationNewsPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\News\State\" />
     <Folder Include="Scripts\i18n\" />
   </ItemGroup>
   <ItemGroup>

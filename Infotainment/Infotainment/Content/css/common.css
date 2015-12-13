@@ -297,6 +297,7 @@ body {
     margin-top: 5px;
 }
 
+
 .arrow-right {
     width: 0;
     height: 0;
@@ -355,6 +356,16 @@ body {
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 7px solid #fff;
+    /*margin-left: 8px;*/
+    margin-top: 7px;
+}
+
+.down-arrow-2 {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #F88017;
     /*margin-left: 8px;*/
     margin-top: 7px;
 }
@@ -607,7 +618,7 @@ body {
     margin-bottom: 2px;
     height: 16px;
     line-height: 18px;
-    padding-bottom:2px;
+    padding-bottom: 2px;
 }
 
     .title-box > span,
@@ -620,3 +631,4 @@ body {
         height: 19px;
         display: inline-block;
     }
+

@@ -73,7 +73,7 @@
             color: #5e72d1;
         }*/
 
- /*news-body {
+/*news-body {
     margin-top: 5px;
 }
 
@@ -112,21 +112,21 @@
     padding: 5px 0 0 17px;
 }
 
-.exclusie-video .heading {
-    font-size: 16px;
-    text-align: justify;
-    color: #4e4e4e;
-}
-
-    .exclusie-video .heading:hover {
-        color: #5e72d1;
+    .exclusie-video .heading {
+        font-size: 16px;
+        text-align: justify;
+        color: #4e4e4e;
     }
 
-.exclusie-video .video {
-    height: 200px;
-    width: 100%;
-    border: none;
-}
+        .exclusie-video .heading:hover {
+            color: #5e72d1;
+        }
+
+    .exclusie-video .video {
+        height: 200px;
+        width: 100%;
+        border: none;
+    }
 
 /*.general-news {
     margin-top: 8px;
@@ -152,6 +152,49 @@
 
 
 /* State tab control css*/
+.tab-container {
+    width: 100%;
+    /*border: solid 1px brown;*/
+    text-transform: capitalize;
+    background: #fff;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.tab-button-container {
+    height: 26px;
+    width: 100%;
+}
+
+    .tab-button-container .tab-button {
+        margin-top:-2px;
+        height: 25px;
+        background-color: transparent;
+        display: inline;
+        float: right;
+        cursor:pointer;
+        padding:5px;
+        border-collapse:collapse;
+    }
+
+        .tab-button-container .tab-button:hover {
+            color: #f05a00;
+        }
+
+            .tab-button-container .tab-button > span,
+            .tab-button-container .tab-button:hover > span {
+                position: relative;
+                white-space: nowrap;
+                padding: 0px 2px;
+                display: block;
+            }
+
+.tab-content-container {
+    height: 350px;
+    border: solid 1px brown;
+}
+
+
 .dispaly {
     display: block;
 }
@@ -566,7 +609,7 @@
     }
 
 
-/*Jyoti-shi COntainer Section*/
+/*Jyoti-shi Container Section*/
 .jyotishi-container {
     width: 325px;
     border: solid 1px #ccc;
