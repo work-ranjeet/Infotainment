@@ -27,11 +27,18 @@
             set;
         }
 
+        System.String CaptionLink
+        {
+            get;
+            set;
+        }
+
         System.Int32 IsFirst
         {
             get;
             set;
         }
+
 
         System.Int32 IsActive
         {

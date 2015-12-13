@@ -42,6 +42,17 @@ namespace Infotainment.Data.Common
         public static readonly string MakeActiveInterNews = "MakeActiveInterNews";
         public static readonly string SelectInterNewsImageDetail = "SelectInterNewsImageDetail";
 
+        public static readonly string InsertStateNews = "InsertStateNews";
+        public static readonly string MakeApprovedStateNews = "MakeApprovedStateNews";
+        public static readonly string MakeActiveStateNews ="MakeActiveStateNews";
+        public static readonly string UpdateStateNews ="UpdateStateNews";
+        public static readonly string SelectStateNews = "SelectStateNews";
+        public static readonly string SelectStateNewsToApprove = "SelectStateNewsToApprove";
+        public static readonly string SelectStateNewsToActive = "SelectStateNewsToActive";       
+        public static readonly string SearchStateNews = "SearchStateNews";
+        public static readonly string SelectStateNewsForApi = "SelectStateNewsForApi";
+        public static readonly string SelectPartialNewsListApi = "SelectPartialNewsListApi";
+
 
     }
 }

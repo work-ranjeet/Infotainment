@@ -20,7 +20,7 @@ BEGIN
 		FROM NewsTYpe
 		WHERE EnumWord LIKE 'InternationalNews'
 
-		SELECT TOP 20 TN.NewsID,
+		SELECT TOP 15 TN.NewsID,
 			TN.EditorID,
 			TN.DisplayOrder,
 			TN.Heading,

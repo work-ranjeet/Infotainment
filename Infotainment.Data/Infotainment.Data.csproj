@@ -70,6 +70,8 @@
     <Compile Include="Controls\Advertisment\AdvertismentDB.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailBL.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailDb.cs" />
+    <Compile Include="Controls\StateNews\StateNewsBL.cs" />
+    <Compile Include="Controls\StateNews\StateNewsDB.cs" />
     <Compile Include="Controls\TopNews\TopNewsBL.cs" />
     <Compile Include="Controls\TopNews\TopNewsDB.cs" />
     <Compile Include="Entities\Advertisment\Advertisment.cs" />

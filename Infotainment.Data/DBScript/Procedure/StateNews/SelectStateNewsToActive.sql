@@ -34,7 +34,8 @@ BEGIN
 			TN.DttmCreated,
 			TN.DttmModified,
 			ImgD.ImageUrl,
-			ImgD.Caption
+			ImgD.Caption,
+			ImgD.CaptionLink
 		FROM StateNews TN
 		LEFT JOIN StateNewsImage TPI ON TPI.NewsID = TN.NewsID
 		LEFT JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID

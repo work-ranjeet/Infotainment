@@ -11,8 +11,7 @@ IF EXISTS (
 GO
 
 CREATE PROCEDURE SelectStateNews (
-	@NewsID NVARCHAR(50),
-	@StateCode NVARCHAR(20)
+	@NewsID NVARCHAR(50)
 	)
 AS
 BEGIN
@@ -37,14 +36,14 @@ BEGIN
 			SN.DttmCreated,
 			SN.DttmModified,
 			ImgD.ImageUrl,
-			ImgD.Caption
+			ImgD.Caption,
+			ImgD.CaptionLink
 		FROM StateNews SN
 		LEFT OUTER JOIN StateNewsImage TPI ON TPI.NewsID = SN.NewsID
 		LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID
 			AND ImgD.IsActive = 1
 			AND ImgD.IsFirst = 1
 		WHERE SN.NewsID = @NewsID
-			AND SN.NewsType = @NewsType
 	END TRY
 
 	BEGIN CATCH
