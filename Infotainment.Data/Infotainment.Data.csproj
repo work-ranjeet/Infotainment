@@ -78,6 +78,8 @@
     <Compile Include="Entities\ImageDeails\ImageDetail.cs" />
     <Compile Include="Entities\InterationalNews\IInterNews.cs" />
     <Compile Include="Entities\InterationalNews\InterNews.cs" />
+    <Compile Include="Entities\State\IStateNews.cs" />
+    <Compile Include="Entities\State\StateNews.cs" />
     <Compile Include="Entities\TopNews\ITopNews.cs" />
     <Compile Include="DBHelper\DBHelper.cs" />
     <Compile Include="DBHelper\DbHelperAbstract.cs" />
