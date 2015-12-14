@@ -175,7 +175,7 @@ namespace Infotainment.Data.Controls
                 switch (newsType)
                 {
                     case NewsType.TopNews:
-                        list = StateNewsDB.Instance.SelectForPartialNewsList("","");
+                        list = StateNewsDB.Instance.SelectForPartialNewsList("",0);
                         break;
 
                     default:

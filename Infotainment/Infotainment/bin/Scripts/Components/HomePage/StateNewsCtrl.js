@@ -3,50 +3,58 @@
 		.module('infotainment')
 		.controller('stateNewsHomeCtrl', stateNewsHomeCtrl);
 
-    function stateNewsHomeCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile) {
+    function stateNewsHomeCtrl($scope, $state, $filter, $http, $location, $window, $q, $sce, $modal, $compile, Helper) {
         $scope.StateTitle = "खबर राज्यों से";
         $scope.StateTabList = [
-            { TabId: "0", IsActive: true, StateName: "बिहार", StateCode: "BH" },
-            { TabId: "1", IsActive: false, StateName: "उत्तर प्रदेश", StateCode: "UP" },
-            { TabId: "2", IsActive: false, StateName: "छत्तीसगढ़", StateCode: "CH" },
-            { TabId: "3", IsActive: false, StateName: "मध्य प्रदेश", StateCode: "MP" },
-            { TabId: "4", IsActive: false, StateName: "राजस्थान", StateCode: "RJ" },
-            { TabId: "5", IsActive: false, StateName: "हिमाचल प्रदेश", StateCode: "HM" },
-            { TabId: "6", IsActive: false, StateName: "पंजाब", StateCode: "PN" }];
+            { TabId: "99", IsActive: true,  StateName: "बिहार", StateCode: "BH" },
+            { TabId: "95", IsActive: false, StateName: "उत्तर प्रदेश", StateCode: "UP" },
+            { TabId: "90", IsActive: false, StateName: "छत्तीसगढ़", StateCode: "CH" },
+            { TabId: "85", IsActive: false, StateName: "मध्य प्रदेश", StateCode: "MP" },
+            { TabId: "80", IsActive: false, StateName: "राजस्थान", StateCode: "RJ" },
+            { TabId: "75", IsActive: false, StateName: "हिमाचल प्रदेश", StateCode: "HM" },
+            { TabId: "70", IsActive: false, StateName: "पंजाब", StateCode: "PN" }
+        ];
+
+        $scope.stateNewsData = {
+            "99": { StateCode: "BH", NewsData: [], StateName: "बिहार" } ,
+            "95": { StateCode: "UP", NewsData: [], StateName: "उत्तर प्रदेश" } ,
+            "90": { StateCode: "CH", NewsData: [], StateName: "छत्तीसगढ़" } ,
+            "85": { StateCode: "MP", NewsData: [], StateName: "मध्य प्रदेश" } ,
+            "80": { StateCode: "RJ", NewsData: [], StateName: "राजस्थान" } ,
+            "75": { StateCode: "MH", NewsData: [], StateName: "हिमाचल प्रदेश" } ,
+            "70": { StateCode: "PN", NewsData: [], StateName: "पंजाब" } 
+
+        };
 
         $scope.activeTab = {
-            tabId: "0", StateName: "", StateCode: "", NewsList: []
+            tabId: "99", StateName: "बिहार", StateCode: "BH", NewsList: []
         };
 
-        $scope.selectedTab = 0;
+
 
         $scope.changetab = function (tabId) {
-            var v = "";
+            var currentState = $scope.stateNewsData[tabId];
+            if (!Helper.IsNullOrEmptyOrUndefined(currentState.StateCode)) {
+                $scope.activeTab.tabId = tabId;
+                $scope.activeTab.StateCode = currentState.StateCode;
+                $scope.activeTab.StateName = currentState.StateName;
+                $scope.activeTab.NewsList = currentState.NewsData;
+            };
+
         };
 
-        $watch('selectedTab', function (value) {
-            var v = value;
+        $scope.$watch('activeTab.tabId', function (tabId) {
+            if (tabId == null)
+                return;
+
+            $scope.changetab(tabId);
         });
 
-        $scope.changeStateNewsTab = function (tabNmae) {
-            angular.forEach($scope.StateTabList, function (name) {
-                $('#' + name.TabIdName).removeClass("active-state-news-header");
-                $('#' + name.TabIdName).addClass("de-active-state-news-header");
-                $('#' + name.TabContainerName).css("display", "none");
-            });
+       
 
-            $('#' + tabNmae.state.TabIdName).removeClass("de-active-state-news-header");
-            $('#' + tabNmae.state.TabIdName).addClass("active-state-news-header");
-
-            // $scope.ActiveStateNewsTab(tabNmae);
-            $('#' + tabNmae.state.TabContainerName).css("display", "block");
-        };
-
-
-
-
-        $scope.StateNewsContainerList = [
+        $scope.stateNewsData[99].NewsData = [
             {
+                StateCode: "BH",
                 PageUrl: "#",
                 TabContainerId: "bihar-container",
                 IsActiveContainer: true,
@@ -65,6 +73,7 @@
                 ]
             },
             {
+                StateCode: "UP",
                 PageUrl: "#",
                 TabContainerId: "up-container",
                 IsActiveContainer: false,
@@ -83,6 +92,7 @@
                 ]
             },
             {
+                StateCode: "CH",
                 PageUrl: "#",
                 TabContainerId: "chhattisgarh-container",
                 IsActiveContainer: false,
@@ -101,6 +111,7 @@
                 ]
             },
             {
+                StateCode: "MP",
                 PageUrl: "#",
                 TabContainerId: "mp-container",
                 IsActiveContainer: false,
@@ -119,6 +130,7 @@
                 ]
             },
             {
+                StateCode: "RJ",
                 PageUrl: "#",
                 TabContainerId: "rajasthan-container",
                 IsActiveContainer: false,
@@ -137,6 +149,7 @@
                 ]
             },
             {
+                StateCode: "MH",
                 PageUrl: "#",
                 TabContainerId: "himachal-container",
                 IsActiveContainer: false,
@@ -155,6 +168,7 @@
                 ]
             },
             {
+                StateCode: "PN",
                 PageUrl: "#",
                 TabContainerId: "panjab-container",
                 IsActiveContainer: false,
