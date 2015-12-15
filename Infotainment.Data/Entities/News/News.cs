@@ -16,6 +16,8 @@ namespace Infotainment.Models.Entities
 
         public string ImageCaption { get; set; }
 
+        public string ImageCaptionLink { get; set; }
+
         public string ShortDesc { get; set; }
 
         public string NewsDesc { get; set; }

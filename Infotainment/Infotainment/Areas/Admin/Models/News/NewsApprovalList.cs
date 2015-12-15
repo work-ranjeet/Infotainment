@@ -10,6 +10,8 @@ namespace Infotainment.Areas.Admin.Models
     {
         public string Message { get; set; }
 
+        public string StateCode { get; set; }
+
         public IList<NewsApproval> ApprovalList { get; set; }
 
         #region Memory
@@ -53,7 +55,7 @@ namespace Infotainment.Areas.Admin.Models
 
         public int IsTopNews { get; set; }
 
-        public string Heading { get; set; }
+        public string Heading { get; set; }       
 
         public DateTime DttmCreated { get; set; }
 

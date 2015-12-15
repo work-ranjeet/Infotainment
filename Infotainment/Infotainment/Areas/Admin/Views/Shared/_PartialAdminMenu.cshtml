@@ -5,15 +5,15 @@
         </a>
 
     </li>
-    <li>
+    @*<li>
         <a href="#">
             <span>Main News&nbsp;</span>
             <span class="pull-right down-arrow"></span>
         </a>
         <ul>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "TopNews"))">Insert News</a></li>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"))">Approve News</a></li>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"))">Make Active</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "TopNews"))">Insert</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"))">Approval</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"))">Activate</a></li>
         </ul>
     </li>
     <li>
@@ -22,9 +22,42 @@
             <span class="pull-right down-arrow"></span>
         </a>
         <ul>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "International"))">Insert News</a></li>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "International"))">Approve News</a></li>
-            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "International"))">Make Active</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "International"))">Insert</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "International"))">Approval</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "International"))">Activate</a></li>
+        </ul>
+    </li>*@
+    <li>
+        <a href="#">
+            <span>Insert&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "TopNews"))">Top News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "StateNews"))">State News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("InsertNews", "International"))">Inter News</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>Approve&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "TopNews"))">Top News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "StateNews"))">State News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("NeedApproval", "International"))">Inter News</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <span>Activate&nbsp;</span>
+            <span class="pull-right down-arrow"></span>
+        </a>
+        <ul>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "TopNews"))">Top News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "StateNews"))">State News</a></li>
+            <li><a href="@HttpUtility.UrlDecode(Url.Action("MakeActive", "International"))">Inter News</a></li>
         </ul>
     </li>
     <li>
@@ -34,8 +67,8 @@
         </a>
         <ul>
             <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("MainNewsSearch", "Search"))">Main News</a></li>
-            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("InterNewsSearch", "Search"))">International News</a></li>
-            <li><a class="documents" href="#">State News</a></li>
+            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("InterNewsSearch", "Search"))">Inter News</a></li>
+            <li><a class="documents" href="@HttpUtility.UrlDecode(Url.Action("StateNewsSearch", "Search"))">State News</a></li>
         </ul>
     </li>
     <li>

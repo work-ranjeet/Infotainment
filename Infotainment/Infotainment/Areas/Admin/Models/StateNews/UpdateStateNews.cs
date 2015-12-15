@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class UpdateNews : IDisposable
+    public class UpdateStateNews : IDisposable
     {
         public string NewsID { get; set; }
 
@@ -34,8 +34,6 @@ namespace Infotainment.Areas.Admin.Models
         [Required]
         public bool IsTopTenNews { get; set; }
 
-        public string StateCode { get; set; }
-
         [Required]
         public  string ShortDesc { get; set; }
 
@@ -45,7 +43,7 @@ namespace Infotainment.Areas.Admin.Models
 
         #region /// Memory Management
         private bool disposed = false;
-        ~UpdateNews()
+        ~UpdateStateNews()
         {
             Dispose(false);
         }

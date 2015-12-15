@@ -134,10 +134,13 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdvertismentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StateNewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\InternationalController.cs" />
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
     <Compile Include="Areas\Admin\Models\Advertisment\AdvertismentModal.cs" />
+    <Compile Include="Areas\Admin\Models\StateNews\CreateStateNews.cs" />
+    <Compile Include="Areas\Admin\Models\StateNews\UpdateStateNews.cs" />
     <Compile Include="Areas\Admin\Models\News\CreateNews.cs" />
     <Compile Include="Areas\Admin\Models\Search\InterNewsListFilter.cs" />
     <Compile Include="Areas\Admin\Models\Search\TopNewsListFilter.cs" />
@@ -151,6 +154,8 @@
     <Compile Include="Controllers\GameNewsController.cs" />
     <Compile Include="Controllers\HomePage\HomeApiController.cs" />
     <Compile Include="Controllers\HomePage\HomeController.cs" />
+    <Compile Include="Controllers\StateNews\StateNewsApiController.cs" />
+    <Compile Include="Controllers\StateNews\StateNewsController.cs" />
     <Compile Include="Controllers\InternationalNews\InternationalNewsApiController.cs" />
     <Compile Include="Controllers\InternationalNews\InternationalNewsController.cs" />
     <Compile Include="Controllers\Mailing\MailingController.cs" />
@@ -158,7 +163,6 @@
     <Compile Include="Controllers\MainNews\MainNewsController.cs" />
     <Compile Include="Controllers\MarketNewsController.cs" />
     <Compile Include="Controllers\PoliticalNewsController.cs" />
-    <Compile Include="Controllers\StateNewsController.cs" />
     <Compile Include="ExtendedControls\ExtendedControls.cs" />
     <Compile Include="Filter\Authentication.cs" />
     <Compile Include="Filter\Autherisation.cs" />
@@ -215,16 +219,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Advertisment\ToptenAdd\city.jpg" />
-    <Content Include="Images\Gallery\img00.jpg" />
-    <Content Include="Images\Gallery\img01.jpg" />
-    <Content Include="Images\Gallery\img02.jpg" />
-    <Content Include="Images\Gallery\img03.jpg" />
-    <Content Include="Images\Gallery\img04.jpg" />
-    <Content Include="Images\GameSection\Cricket\mainmng.jpg" />
-    <Content Include="Images\GameSection\Football\messi.jpg" />
-    <Content Include="Images\GameSection\Hockey\download.jpg" />
-    <Content Include="Images\GameSection\Story\sachin1-18-08-2015-1439880811_mainmng.jpg" />
-    <Content Include="Images\HealthTips\1_1439210609.jpg" />
     <Content Include="Images\News\International\desert.jpg" />
     <Content Include="Images\News\Top-ten\sunset.jpg" />
     <Content Include="Images\User\Default.jpg" />
@@ -286,6 +280,7 @@
     <Content Include="Areas\Admin\Views\International\NeedApproval.cshtml" />
     <Content Include="Areas\Admin\Views\International\UpdateNews.cshtml" />
     <Content Include="Areas\Admin\Views\Search\InterNewsSearch.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\InsertNews.cshtml" />
     <None Include="Properties\PublishProfiles\Infotainment.pubxml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

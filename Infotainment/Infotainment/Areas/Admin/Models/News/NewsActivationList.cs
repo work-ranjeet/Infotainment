@@ -10,6 +10,8 @@ namespace Infotainment.Areas.Admin.Models
     {
         public string Message { get; set; }
 
+        public string StateCode { get; set; }
+
         public List<NewsActivation> ActivationlList { get; set; }
 
         #region Memory

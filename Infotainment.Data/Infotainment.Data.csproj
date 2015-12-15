@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ReadOnly\Constants.cs" />
+    <Compile Include="Common\ReadOnly\Message.cs" />
     <Compile Include="Common\ReadOnly\ProcedureName.cs" />
     <Compile Include="Common\RSACrypto.cs" />
     <Compile Include="Common\Services\RssProviderService.cs" />

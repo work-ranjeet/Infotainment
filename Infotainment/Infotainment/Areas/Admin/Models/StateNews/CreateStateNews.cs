@@ -1,5 +1,4 @@
-﻿using Infotainment.Data.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,44 +7,35 @@ using System.Web.Mvc;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class UpdateNews : IDisposable
+
+    public class CreateStateNews :IDisposable
     {
-        public string NewsID { get; set; }
-
-        public string EditorID { get; set; }
-
         [Required]
         public string Heading { get; set; }
 
-        public string ImageUrl { get; set; }
-
-        public string Caption { get; set; }
-
-        public string CaptionLink { get; set; }
-
+        [Required]
         public HttpPostedFileBase Image { get; set; }
 
         [Required]
-        public bool IsActiveNews { get; set; }
+        public string ShortDesc { get; set; }
 
         [Required]
-        public bool IsApprovedNews { get; set; }
+        public string  Caption { get; set; }
+
+        public string CaptionLink { get; set; }
+
+        [AllowHtml]
+        public string Description { get; set; }
+
+        [Required]
+        public string StateCode { get; set; }
 
         [Required]
         public bool IsTopTenNews { get; set; }
 
-        public string StateCode { get; set; }
-
-        [Required]
-        public  string ShortDesc { get; set; }
-
-        [AllowHtml]
-        public  string Description { get; set; }
-
-
-        #region /// Memory Management
+        #region Memory
         private bool disposed = false;
-        ~UpdateNews()
+        ~CreateStateNews()
         {
             Dispose(false);
         }
@@ -70,5 +60,6 @@ namespace Infotainment.Areas.Admin.Models
             }
         }
         #endregion
+
     }
 }
