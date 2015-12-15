@@ -15,13 +15,17 @@
                     <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{InterNewsType}}" }))" target="_self">
                         <span>&nbsp;&nbsp;{{StateTitle}}</span>
                     </a>
+                    <select>
+                        <option ng-repeat="state in StateTabList">{{state.StateName}}</option>
+                    </select>
                 </div>
                 <div class="col-xs-12">
                     <div class="tab-container">
                         <div class="tab-button-container ">
-                            <div class="tab-button" ng-repeat="state in StateTabList" id="{{state.StateCode}}" ng-click="changetab(state.TabId)">
+                            <div class="tab-button" ng-repeat="state in StateTabList" id="{{state.StateCode}}" btn-radio="{{state.TabId}}" ng-model="activeTab.tabId">
                                 <span ng-class="(activeTab.tabId == state.TabId) ? 'active' : ''">{{state.StateName}}</span>
                             </div>
+
                         </div>
                         <div class="tab-content-container">
                             <div style="height:300px;">{{activeTab.StateName}}</div>

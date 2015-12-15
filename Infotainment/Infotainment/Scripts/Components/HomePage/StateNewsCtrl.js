@@ -43,26 +43,14 @@
 
         };
 
-        //$scope.$watch('selectedTab', function (value) {
-        //    var v = value;
-        //});
+        $scope.$watch('activeTab.tabId', function (tabId) {
+            if (tabId == null)
+                return;
 
-        $scope.changeStateNewsTab = function (tabNmae) {
-            angular.forEach($scope.StateTabList, function (name) {
-                $('#' + name.TabIdName).removeClass("active-state-news-header");
-                $('#' + name.TabIdName).addClass("de-active-state-news-header");
-                $('#' + name.TabContainerName).css("display", "none");
-            });
+            $scope.changetab(tabId);
+        });
 
-            $('#' + tabNmae.state.TabIdName).removeClass("de-active-state-news-header");
-            $('#' + tabNmae.state.TabIdName).addClass("active-state-news-header");
-
-            // $scope.ActiveStateNewsTab(tabNmae);
-            $('#' + tabNmae.state.TabContainerName).css("display", "block");
-        };
-
-
-
+       
 
         $scope.stateNewsData[99].NewsData = [
             {
