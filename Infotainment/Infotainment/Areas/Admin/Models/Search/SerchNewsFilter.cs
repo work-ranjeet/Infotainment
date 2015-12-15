@@ -8,7 +8,7 @@ using Infotainment.Data.Controls;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class SerchNewsFilter : IDisposable
+    public class InterNewsListFilter : IDisposable
     {
         [Required]
         public DateTime DateFrom { get; set; }

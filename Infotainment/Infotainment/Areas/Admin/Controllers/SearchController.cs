@@ -103,5 +103,50 @@ namespace Infotainment.Areas.Admin.Controllers
                 return View(criteria);
             });
         }
+
+        public async Task<ActionResult> StateNewsSearch()
+        {
+            return await Task.Run(() =>
+            {
+                var result = InterNewsBL.Instance.Search(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
+                var viewModel = new InterNewsListFilter
+                {
+                    DateFrom = DateTime.Now.AddDays(-1),
+                    DateTo = DateTime.Now,
+                    IsActive = false,
+                    IsApproved = false,
+                    Header = string.Empty
+                };
+
+                viewModel.NewsList = new ConcurrentBag<IInterNews>();
+                result.ToList().AsParallel().ForAll(news => viewModel.NewsList.Add(news));
+
+                return View(viewModel);
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> StateNewsSearch(InterNewsListFilter criteria)
+        {
+            return await Task.Run(() =>
+            {
+                var result = InterNewsBL.Instance.Search(criteria.DateFrom, criteria.DateTo, criteria.Header);
+
+                if (criteria.IsActive)
+                {
+                    result = result.ToList().FindAll(news => news.IsActive == 1);
+                }
+
+                if (criteria.IsApproved)
+                {
+                    result = result.ToList().FindAll(news => news.IsApproved == 1);
+                }
+
+                criteria.NewsList = new ConcurrentBag<IInterNews>();
+                result.ToList().AsParallel().ForAll(news => criteria.NewsList.Add(news));
+
+                return View(criteria);
+            });
+        }
     }
 }

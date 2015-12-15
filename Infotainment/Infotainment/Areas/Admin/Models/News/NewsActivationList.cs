@@ -55,7 +55,11 @@ namespace Infotainment.Areas.Admin.Models
 
         public int IsTopNews { get; set; }
 
-        public string Heading { get; set; }       
+        public string Heading { get; set; }
+
+        public string StateCode { get; set; }
+
+        public string StateName { get; set; }
 
         public DateTime DttmCreated { get; set; }
 

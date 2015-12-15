@@ -10,7 +10,7 @@ IF EXISTS (
 	DROP PROCEDURE SelectStateNewsToActive
 GO
 
-CREATE PROCEDURE SelectStateNewsToActive (@StateCode NVARCHAR(20))
+CREATE PROCEDURE SelectStateNewsToActive
 AS
 BEGIN
 	BEGIN TRY
@@ -28,6 +28,7 @@ BEGIN
 			TN.NewsDescription,
 			TN.LanguageID,
 			TN.StateCode,
+			SC.StateName,
 			TN.IsApproved,
 			TN.IsActive,
 			TN.IsTopNews,
@@ -41,10 +42,10 @@ BEGIN
 		LEFT JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID
 			AND ImgD.IsActive = 1
 			AND ImgD.IsFirst = 1
+		LEFT OUTER JOIN StateCode SC ON sc.StateCode = TN.StateCode
 		WHERE TN.IsActive = 0
 			AND TN.IsApproved = 1
 			AND TN.NewsType = @NewsType
-			AND TN.StateCode = @StateCode
 	END TRY
 
 	BEGIN CATCH

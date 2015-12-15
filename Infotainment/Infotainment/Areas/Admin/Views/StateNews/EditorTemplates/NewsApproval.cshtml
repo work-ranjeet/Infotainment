@@ -1,0 +1,31 @@
+﻿@model Infotainment.Areas.Admin.Models.NewsApproval
+
+<tr>
+    <td style="display:none;">@Html.HiddenFor(m => m.TopNewsID)</td>
+    <td>@Html.CheckBoxFor(m => m.Selected, new { @class = "chkSelect", @style = "height:15px; width:15px;" })</td>
+    <td>
+        @Html.Hidden(Model.StateCode)
+        @Html.Label(Model.StateName)
+    </td>
+    <td>
+        @Model.Heading
+    </td>
+    <td class="text-center">
+        <span style="font-size:100%;" class="@(Model.IsApproved == 1 ? "label label-success" : "label label-warning")">
+            @(Model.IsApproved == 1 ? "Approved" : "Approval Pending")
+        </span>
+    </td>
+    <td class="text-center">
+        <span style="font-size:100%; padding:4px; display:inline; float:left;" class="@(Model.IsTopNews == 1 ? "label label-danger" : "label label-success")">
+            @(Model.IsTopNews == 1 ? "Yes" : "No")
+        </span>
+    </td>
+    <td>@Model.DttmCreated</td>
+    <td>
+        @{
+            var url = HttpUtility.UrlDecode(Url.Action("UpdateNews", "StateNews", new { NewsID = Model.TopNewsID }));
+        }
+        <a href="#" style="font-size:100%;" class="label label-warning" ng-click="OpenWindow('@url');"><i class="et-edit"></i>Update</a>
+    </td>
+</tr>
+

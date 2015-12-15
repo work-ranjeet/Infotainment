@@ -204,12 +204,12 @@ namespace Infotainment.Data.Controls
             return list;
         }
 
-        public IEnumerable<IStateNews> SelectToApprove(string StateCode)
+        public IEnumerable<IStateNews> SelectToApprove()
         {
             IEnumerable<IStateNews> list = null;
             try
             {
-                list = StateNewsDB.Instance.SelectToApprove(StateCode);
+                list = StateNewsDB.Instance.SelectToApprove();
             }
             catch (Exception objExp)
             {
@@ -218,12 +218,12 @@ namespace Infotainment.Data.Controls
             return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<IStateNews> SelectToActive(string StateCode)
+        public IEnumerable<IStateNews> SelectToActive()
         {
             IEnumerable<IStateNews> list = null;
             try
             {
-                list = StateNewsDB.Instance.SelectToActive(StateCode);
+                list = StateNewsDB.Instance.SelectToActive();
             }
             catch (Exception objExp)
             {

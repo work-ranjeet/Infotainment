@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\SearchController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopNewsController.cs" />
     <Compile Include="Areas\Admin\Models\Advertisment\AdvertismentModal.cs" />
+    <Compile Include="Areas\Admin\Models\Search\SerchNewsFilter.cs" />
     <Compile Include="Areas\Admin\Models\StateNews\CreateStateNews.cs" />
     <Compile Include="Areas\Admin\Models\StateNews\UpdateStateNews.cs" />
     <Compile Include="Areas\Admin\Models\News\CreateNews.cs" />
@@ -281,6 +282,12 @@
     <Content Include="Areas\Admin\Views\International\UpdateNews.cshtml" />
     <Content Include="Areas\Admin\Views\Search\InterNewsSearch.cshtml" />
     <Content Include="Areas\Admin\Views\StateNews\InsertNews.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\NeedApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\EditorTemplates\NewsActivation.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\EditorTemplates\NewsApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\MakeActive.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\UpdateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\StateNewsSearch.cshtml" />
     <None Include="Properties\PublishProfiles\Infotainment.pubxml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

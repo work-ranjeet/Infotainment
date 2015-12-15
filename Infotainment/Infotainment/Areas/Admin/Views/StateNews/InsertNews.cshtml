@@ -1,0 +1,110 @@
+﻿@model Infotainment.Areas.Admin.Models.CreateStateNews
+@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "InsertNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("InsertNews", "StateNews", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @section Scripts{
+        <script type="text/javascript">
+            function fileCheck(obj) {
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+                if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+                }
+            }
+        </script>
+    }
+    var StateCodeList = new List<ListItem>
+    {
+          new ListItem { Text = "Bihar", Value="BR" },
+          new ListItem { Text = "Uttar Pradesh", Value="UP" },
+          new ListItem { Text = "NA", Value="N" }
+    };
+    <div class="contaier">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10">
+                    <h4>Insert State News</h4>
+                    <div class="alert alert-info">
+                        <strong> @ViewBag.Message </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10">
+                    <ul class="list list-inline col-xs-12">                       
+                        <li style="padding:8px;">
+                            <span>Select State</span>
+                            <br />
+                            @Html.DropDownListFor(model => model.StateCode, new SelectList(StateCodeList, "Value", "Text"))
+
+                        </li>                      
+                        <li style="padding:8px;">
+                            <span>Select Image</span>
+                            <br />
+                            @Html.ValidationMessageFor(model => model.Image)
+                            <input type="file" name="Image" id="Image" onchange="fileCheck(this);">
+                        </li>  
+                        <li style="padding:5px;">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:20px; width:20px;" })
+                                <span style="font-size:15px; vertical-align: super;">&nbsp;Is top news</span>
+                            </div>
+                        </li>                     
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <span class="control-label col-md-2">News Heading</span>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="The heading field is required."
+                                   id="Heading" name="Heading" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-md-2">Image Caption</span>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="The Caption field is required."
+                                   id="Caption" name="Caption" type="text" value="" placeholder="It will appear below image to show, from it took.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-md-2">Caption Link</span>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="The Caption field is required."
+                                   id="CaptionLink" name="CaptionLink" type="text" value="" placeholder="Optional! Web url link to open web on image caption. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-md-2">Short Desc</span>
+                        <div class="col-md-10">
+                            <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..." data-val-required="The ShortDesc field is required." rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Contents">Description</label>
+                        <div class="col-md-10">
+                            <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-center">
+                    <input type="submit" id="btnSubmit" value="Click to Insert News" style="width:50%; height:30px; padding:5px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
