@@ -108,17 +108,18 @@ namespace Infotainment.Areas.Admin.Controllers
         {
             return await Task.Run(() =>
             {
-                var result = InterNewsBL.Instance.Search(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty);
-                var viewModel = new InterNewsListFilter
+                var result = StateNewsBL.Instance.Search(DateTime.Now.AddDays(-1), DateTime.Now, string.Empty, null);
+                var viewModel = new SearchNewsFilter
                 {
                     DateFrom = DateTime.Now.AddDays(-1),
                     DateTo = DateTime.Now,
                     IsActive = false,
                     IsApproved = false,
-                    Header = string.Empty
+                    Header = string.Empty,
+                    StateCode = string.Empty
                 };
 
-                viewModel.NewsList = new ConcurrentBag<IInterNews>();
+                viewModel.NewsList = new ConcurrentBag<IStateNews>();
                 result.ToList().AsParallel().ForAll(news => viewModel.NewsList.Add(news));
 
                 return View(viewModel);
@@ -126,11 +127,11 @@ namespace Infotainment.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> StateNewsSearch(InterNewsListFilter criteria)
+        public async Task<ActionResult> StateNewsSearch(SearchNewsFilter criteria)
         {
             return await Task.Run(() =>
             {
-                var result = InterNewsBL.Instance.Search(criteria.DateFrom, criteria.DateTo, criteria.Header);
+                var result = StateNewsBL.Instance.Search(criteria.DateFrom, criteria.DateTo, criteria.Header, criteria.StateCode);
 
                 if (criteria.IsActive)
                 {
@@ -142,7 +143,7 @@ namespace Infotainment.Areas.Admin.Controllers
                     result = result.ToList().FindAll(news => news.IsApproved == 1);
                 }
 
-                criteria.NewsList = new ConcurrentBag<IInterNews>();
+                criteria.NewsList = new ConcurrentBag<IStateNews>();
                 result.ToList().AsParallel().ForAll(news => criteria.NewsList.Add(news));
 
                 return View(criteria);

@@ -661,19 +661,22 @@ namespace Infotainment.Data.Controls
                                 objNews.StateCode = objDataReader.GetString(7);
 
                             if (!objDataReader.IsDBNull(8))
-                                objNews.IsApproved = objDataReader.GetInt32(8);
+                                objNews.StateName = objDataReader.GetString(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.IsActive = objDataReader.GetInt32(9);
+                                objNews.IsApproved = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.IsTopNews = objDataReader.GetInt32(10);
+                                objNews.IsActive = objDataReader.GetInt32(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.DttmCreated = objDataReader.GetDateTime(11);
+                                objNews.IsTopNews = objDataReader.GetInt32(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.DttmModified = objDataReader.GetDateTime(12);
+                                objNews.DttmCreated = objDataReader.GetDateTime(12);
+
+                            if (!objDataReader.IsDBNull(13))
+                                objNews.DttmModified = objDataReader.GetDateTime(13);
 
                             objNewsList.Add(objNews); 
                         }

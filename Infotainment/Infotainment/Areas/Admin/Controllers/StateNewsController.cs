@@ -2,7 +2,9 @@
 using Infotainment.Data;
 using Infotainment.Data.Common;
 using Infotainment.Data.Controls;
+using Infotainment.Data.Controls.Common;
 using Infotainment.Data.Entities;
+using Infotainment.Data.Entities.Common;
 using Infotainment.Filter;
 using PCL.DBHelper;
 using System;
@@ -25,7 +27,11 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Insert new news.";
-                return View(new CreateStateNews());
+                var stateNews = new CreateStateNews();
+                stateNews.States = new List<IStateCode>();
+                stateNews.States.AddRange(StateCodeBL.Instance.SelectStates());
+
+                return View(stateNews);
             });
         }
 
@@ -93,6 +99,9 @@ namespace Infotainment.Areas.Admin.Controllers
                     newsBL.Insert(objNews, objImageDetail, user);
 
                     news = new CreateStateNews();
+                    news.States = new List<IStateCode>();
+                    news.States.AddRange(StateCodeBL.Instance.SelectStates());
+
                     ViewBag.Message = "File saved successfully.";
                     ModelState.Clear();
                 }

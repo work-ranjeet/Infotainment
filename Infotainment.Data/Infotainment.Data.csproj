@@ -69,6 +69,7 @@
     <Compile Include="Controls\Account\UsersDB.cs" />
     <Compile Include="Controls\Advertisment\AdvertismentBL.cs" />
     <Compile Include="Controls\Advertisment\AdvertismentDB.cs" />
+    <Compile Include="Controls\Common\StateCodeBD.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailBL.cs" />
     <Compile Include="Controls\ImageDetail\ImageDetailDb.cs" />
     <Compile Include="Controls\StateNews\StateNewsBL.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Controls\TopNews\TopNewsDB.cs" />
     <Compile Include="Entities\Advertisment\Advertisment.cs" />
     <Compile Include="Entities\Advertisment\IAdvertisment.cs" />
+    <Compile Include="Entities\Common\StateCode.cs" />
     <Compile Include="Entities\ImageDeails\IImageDetail.cs" />
     <Compile Include="Entities\ImageDeails\ImageDetail.cs" />
     <Compile Include="Entities\InterationalNews\IInterNews.cs" />

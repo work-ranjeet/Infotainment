@@ -8,7 +8,7 @@ using Infotainment.Data.Controls;
 
 namespace Infotainment.Areas.Admin.Models
 {
-    public class InterNewsListFilter : IDisposable
+    public class SearchNewsFilter : IDisposable
     {
         [Required]
         public DateTime DateFrom { get; set; }
@@ -23,11 +23,15 @@ namespace Infotainment.Areas.Admin.Models
         [Required]
         public string Header { get; set; }
 
-        public ConcurrentBag<IInterNews> NewsList { get; set; }
+        [Required]
+        public string StateCode { get; set; }
+
+
+        public ConcurrentBag<IStateNews> NewsList { get; set; }
 
         #region Memory
         private bool disposed = false;
-        ~InterNewsListFilter()
+        ~SearchNewsFilter()
         {
             Dispose(false);
         }

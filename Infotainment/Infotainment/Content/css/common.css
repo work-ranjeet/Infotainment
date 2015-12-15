@@ -131,6 +131,10 @@ input[type="checkbox" i] {
     background-color: transparent;
     border: none;
 }
+hr.style{
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
 
 hr.style-one {
     border: 0;
@@ -487,6 +491,11 @@ body {
     margin-bottom: 5px;
 }
 
+
+.margin-bottom-20{
+   margin-bottom:20px;
+}
+
 .padding-left-one {
     padding-left: 2px !important;
 }
@@ -631,4 +640,10 @@ body {
         height: 19px;
         display: inline-block;
     }
+.panel-body{
+    padding:10px !important;
+}
 
+.panel-body-0{
+    padding:0px !important;
+}

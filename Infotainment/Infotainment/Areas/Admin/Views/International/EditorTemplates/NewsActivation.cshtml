@@ -22,6 +22,8 @@
         @{
             var url = HttpUtility.UrlDecode(Url.Action("UpdateNews", "International", new { NewsID = Model.TopNewsID }));
         }
-        <a href="#" style="font-size:100%;" class="label label-warning" ng-click="OpenWindow('@url');"><i class="et-edit"></i>Update</a>
+        <a href="#" class="btn btn-default btn-xs" style="font-size:100%;" ng-click="OpenWindow('@url');">
+            <i class="fa fa-edit white"></i> Update
+        </a>
     </td>
 </tr>

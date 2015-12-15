@@ -14,7 +14,7 @@ CREATE PROCEDURE SearchStateNews (
 	@DateFrom DATETIME,
 	@DateTo DATETIME,
 	@Heading NVARCHAR(300),
-	@StateCode NVARCHAR(300)
+	@StateCode NVARCHAR(300) = NULL
 	)
 AS
 BEGIN
@@ -25,24 +25,54 @@ BEGIN
 		FROM NewsTYpe
 		WHERE EnumWord LIKE 'StateNews'
 
-		SELECT NewsID,
-			EditorID,
-			DisplayOrder,
-			Heading,
-			ShortDescription,
-			NewsDescription,
-			LanguageID,
-			IsApproved,
-			IsActive,
-			IsTopNews,
-			DttmCreated,
-			DttmModified
-		FROM StateNews
-		WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom
-			AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo
-			AND Heading LIKE @Heading
-			AND NewsType = @NewsType
-			AND StateCode = @StateCode
+		IF (@StateCode IS NULL)
+		BEGIN
+			SELECT SN.NewsID,
+				SN.EditorID,
+				SN.DisplayOrder,
+				SN.Heading,
+				SN.ShortDescription,
+				SN.NewsDescription,
+				SN.LanguageID,
+				SN.StateCode,
+				SC.StateName,
+				SN.IsApproved,
+				SN.IsActive,
+				SN.IsTopNews,
+				SN.DttmCreated,
+				SN.DttmModified
+			FROM StateNews SN
+			LEFT OUTER JOIN StateCode SC ON SC.StateCode = SN.StateCode
+			WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom
+				AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo
+				AND SN.Heading LIKE @Heading
+				AND SN.NewsType = @NewsType
+				--AND SN.StateCode = @StateCode
+		END
+		ELSE
+		BEGIN
+			SELECT SN.NewsID,
+				SN.EditorID,
+				SN.DisplayOrder,
+				SN.Heading,
+				SN.ShortDescription,
+				SN.NewsDescription,
+				SN.LanguageID,
+				SN.StateCode,
+				SC.StateName,
+				SN.IsApproved,
+				SN.IsActive,
+				SN.IsTopNews,
+				SN.DttmCreated,
+				SN.DttmModified
+			FROM StateNews SN
+			LEFT OUTER JOIN StateCode SC ON SC.StateCode = SN.StateCode
+			WHERE CONVERT(VARCHAR(10), DttmCreated, 10) >= @DateFrom
+				AND CONVERT(VARCHAR(10), DttmCreated, 10) <= @DateTo
+				AND SN.Heading LIKE @Heading
+				AND SN.NewsType = @NewsType
+				AND SN.StateCode = @StateCode
+		END
 	END TRY
 
 	BEGIN CATCH

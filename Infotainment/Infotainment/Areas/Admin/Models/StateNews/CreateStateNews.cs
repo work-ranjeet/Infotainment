@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infotainment.Data.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,6 +33,11 @@ namespace Infotainment.Areas.Admin.Models
 
         [Required]
         public bool IsTopTenNews { get; set; }
+
+        public List<IStateCode> States
+        {
+            get; set;
+        }
 
         #region Memory
         private bool disposed = false;

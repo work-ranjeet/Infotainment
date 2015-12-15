@@ -24,47 +24,45 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <section id="NewsDetails" class="container">
-        <div class="row">
-            <div class="alert alert-info col-xs-10 message-header-container-2">
-                <strong style="width:100%; font-size:99%;"> @Model.Message </strong>
-            </div>
-            <div class="col-xs-2">
-                <input id="approvalButton" class="btn btn-success" type="submit" value="Approve"  style="width:100%; min-width:50px; font-size:99%;">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs12">
-                <div id="grid" class="grid-control table-responsive">
-                    <table class="table table-hover table-bordered table-striped">
-                        <thead class="boxHeader">
-                            <tr>
-                                <th style="display:none;">TopNewsID</th>
-                                <th width="5%">
-                                    <input type="checkbox" class="checkbox" id="chkSelectAll" style="height:17px; width:17px;" />
-                                    <input id="IsApprovedHidden" type="hidden" value="" name="IsApproved" />
-                                </th>
-                                @*<th class="text-center" width="20px">&nbsp;</th>*@
-                                <th class="text-left" width="60%">Heading</th>
-                                <th class="text-left" width="15%">Status</th>
-                                <th class="text-left" width="20%">Created Date Time</th>
-                                <th class="text-center" width="50px"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null)
-                            {
-                                @Html.EditorFor(m => m.ApprovalList)
-                            }
-                        </tbody>
-                    </table>
+    <div class="contaier">
+        <div class="col-md-12 col-md-offset-0">
+            <div class="panel panel-default" style="padding:0px;">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Main News Approval</h4>
+                    <input id="approvalButton" class="btn btn-success" type="submit" value="Approve" style="margin-right:2px; min-width:50px; float:right; position: relative; top:-26px">
+                    @*<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>*@
                 </div>
 
             </div>
+            <div class="alert alert-danger" style="margin-top:-20px;">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                @Model.Message
+            </div>
+
+            <div class="table-responsive" style="margin-top:-20px;">
+                <table class="table table-hover table-condensed table-bordered">
+                    <thead class="boxHeader">
+                        <tr class="boxHeader label-info border-shadow-inside round-corner-top" style="height:35px;">
+                            <th style="display:none;">TopNewsID</th>
+                            <th width="5%">
+                                <input type="checkbox" class="checkbox" id="chkSelectAll" style="height:17px; width:17px;" />
+                                <input id="IsApprovedHidden" type="hidden" value="" name="IsApproved" />
+                            </th>
+                            <th class="text-left" width="60%">Heading</th>
+                            <th class="text-left" width="15%">Status</th>
+                            <th class="text-left" width="20%">Created Date Time</th>
+                            <th class="text-center" width="50px">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                                {
+                                @Html.EditorFor(m => m.ApprovalList)
+                                }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </section>
+    </div>
 }
-
-
-
 

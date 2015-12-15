@@ -20,20 +20,22 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <div id="content" class="container">
-        <h3>State News Approval</h3>
-        <div class="row">
-            <div class="alert alert-info col-xs-10 message-header-container-2" style="margin-bottom:0px;">
-                <strong style="width:100%; font-size:99%;"> @Model.Message </strong>
+    <div class="contaier">
+        <div class="col-md-12 col-md-offset-0">
+            <div class="panel panel-default" style="padding:0px;">
+                <div class="panel-heading">
+                    <h4 class="panel-title">State News - Activation</h4>
+                    <input id="approvalButton" class="btn btn-success" type="submit" value="Activate" style="margin-right:2px; min-width:50px; float:right; position: relative; top:-26px">
+                </div>
             </div>
-            <div class="col-xs-2">
-                <input id="approvalButton" class="btn btn-success" type="submit" value="Approve" style="width:100%; min-width:50px; font-size:99%;">
+            <div class="alert alert-danger" style="margin-top:-20px;">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                @Model.Message
             </div>
-        </div>
-            <div id="grid" class="row grid-control table-responsive">
-                <table class="table table-hover table-bordered table-striped">
-                    <thead class="boxHeader">
-                        <tr>
+            <div class="table-responsive" style="margin-top:-20px;">
+                <table class="table table-hover table-condensed table-bordered">
+                    <thead>
+                        <tr class="label-info border-shadow-inside round-corner-top" style="height:35px;">
                             <th style="display:none;">NewsID</th>
                             <th width="20px">
                                 <input type="checkbox" class="checkbox" id="chkSelectAll" style="height:17px; width:17px;" />
@@ -50,10 +52,11 @@
                     <tbody>
                         @if (Model != null)
                         {
-                        @Html.EditorFor(m => m.ActivationlList)
+                            @Html.EditorFor(m => m.ActivationlList)
                         }
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
 }
