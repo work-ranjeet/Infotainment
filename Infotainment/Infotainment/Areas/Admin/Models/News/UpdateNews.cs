@@ -1,4 +1,5 @@
 ﻿using Infotainment.Data.Controls;
+using Infotainment.Data.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -41,6 +42,7 @@ namespace Infotainment.Areas.Admin.Models
 
         [AllowHtml]
         public  string Description { get; set; }
+
 
 
         #region /// Memory Management

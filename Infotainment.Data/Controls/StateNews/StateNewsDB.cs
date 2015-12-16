@@ -116,7 +116,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.AddInParameter("@IsTopNews", news.IsTopNews, DbType.Int32);
                 dbHelper.AddInParameter("@ImageUrl", image.ImageUrl, DbType.String);
                 dbHelper.AddInParameter("@Caption", image.Caption, DbType.String);
-                dbHelper.AddInParameter("@CaptionLink", image.Caption, DbType.String);
+                dbHelper.AddInParameter("@CaptionLink", image.CaptionLink, DbType.String);
                 dbHelper.AddInParameter("@ImageType", image.ImageType, DbType.Int32);
                 dbHelper.AddInParameter("@IsFirst", image.IsFirst, DbType.Int32);
                 dbHelper.AddInParameter("@IsActieImage", image.IsActive, DbType.Int32);

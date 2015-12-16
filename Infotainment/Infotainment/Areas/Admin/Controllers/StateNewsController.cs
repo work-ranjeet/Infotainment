@@ -297,12 +297,13 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Update new news.";
-                ViewBag.IsPopup = true;
+
+                ViewBag.StateCodes = States.ToList();
                 UpdateNews newForUpdate = null;
                 var news = StateNewsBL.Instance.Select(NewsID);
                 if (news != null)
                 {
-                    var imgList = ImageDetailBL.Instance.SelectInterNewsImageList(NewsID);
+                    var imgList = ImageDetailBL.Instance.StateNewsImageList(NewsID);
                     IImageDetail image = null;
                     if (imgList != null && imgList.Count() > 0)
                     {
@@ -317,8 +318,8 @@ namespace Infotainment.Areas.Admin.Controllers
                         ShortDesc = news.ShortDescription,
                         Description = news.NewsDescription,
                         Image = null,
-                        ImageUrl = string.Empty,
-                        Caption = string.Empty,
+                        ImageUrl = " ",
+                        Caption = " ",
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false,
                         IsTopTenNews = news.IsTopNews == 1 ? true : false
@@ -360,7 +361,8 @@ namespace Infotainment.Areas.Admin.Controllers
                             NewsDescription = string.IsNullOrEmpty(newForUpdate.Description) ? string.Empty : newForUpdate.Description.Trim(),
                             IsActive = newForUpdate.IsActiveNews ? 1 : 0,
                             IsApproved = newForUpdate.IsApprovedNews ? 1 : 0,
-                            IsTopNews = newForUpdate.IsTopTenNews ? 1 : 0
+                            IsTopNews = newForUpdate.IsTopTenNews ? 1 : 0,
+                            DisplayOrder = 0
                         };
 
                         var image = new ImageDetail
@@ -377,7 +379,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         if (newForUpdate.Image != null && newForUpdate.Image.ContentLength > 0)
                         {
                             fileName = new Random().Next(1000000000).ToString() + Path.GetFileName(newForUpdate.Image.FileName);
-                            image.ImageUrl = ImagePath.InternationalNewsImage + "/" + fileName;
+                            image.ImageUrl = ImagePath.StateNewsImage + "/" + fileName;
                             image.IsActive = 1;
                             image.IsFirst = 1;
                         }
@@ -505,6 +507,15 @@ namespace Infotainment.Areas.Admin.Controllers
             }
 
             return flag;
+        }
+
+      
+        public IEnumerable<IStateCode> States
+        {
+            get
+            {                
+                return StateCodeBL.Instance.SelectStates();
+            }
         }
     }
 }

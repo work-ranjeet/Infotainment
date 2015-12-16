@@ -299,8 +299,8 @@ namespace Infotainment.Areas.Admin.Controllers
                         ShortDesc = news.ShortDescription,
                         Description = news.NewsDescription,
                         Image = null,
-                        ImageUrl = string.Empty,
-                        Caption = string.Empty,
+                        ImageUrl = " ",
+                        Caption = " ",
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false,
                         IsTopTenNews = news.IsTopNews == 1 ? true : false

@@ -286,8 +286,8 @@
     <Content Include="Areas\Admin\Views\StateNews\EditorTemplates\NewsActivation.cshtml" />
     <Content Include="Areas\Admin\Views\StateNews\EditorTemplates\NewsApproval.cshtml" />
     <Content Include="Areas\Admin\Views\StateNews\MakeActive.cshtml" />
-    <Content Include="Areas\Admin\Views\StateNews\UpdateNews.cshtml" />
     <Content Include="Areas\Admin\Views\Search\StateNewsSearch.cshtml" />
+    <Content Include="Areas\Admin\Views\StateNews\UpdateNews.cshtml" />
     <None Include="Properties\PublishProfiles\Infotainment.pubxml" />
     <None Include="Scripts\Vendor\JQuery\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
