@@ -297,8 +297,6 @@ namespace Infotainment.Areas.Admin.Controllers
             return await Task.Run(() =>
             {
                 ViewBag.Message = "Update new news.";
-
-                ViewBag.StateCodes = States.ToList();
                 UpdateNews newForUpdate = null;
                 var news = StateNewsBL.Instance.Select(NewsID);
                 if (news != null)
@@ -317,9 +315,10 @@ namespace Infotainment.Areas.Admin.Controllers
                         StateCode = news.StateCode,
                         ShortDesc = news.ShortDescription,
                         Description = news.NewsDescription,
-                        Image = null,
+                        Image = null
                         ImageUrl = " ",
                         Caption = " ",
+                        CaptionLink = string.Empty,
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false,
                         IsTopTenNews = news.IsTopNews == 1 ? true : false

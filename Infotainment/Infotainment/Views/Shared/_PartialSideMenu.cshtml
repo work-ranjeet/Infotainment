@@ -1,24 +1,23 @@
 ﻿<div id="menuleft" ng-class="{hide:!showmenu,slide:showmenu}">
     <ul class="mobile-menu">
         <li>
-            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
-                <span>होम&nbsp;&nbsp;</span>
-            </a>
-
-        </li>
-        <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>देश&nbsp;</span>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" >
+                <span ng-click="toggleMenu()">होम&nbsp;&nbsp;</span>
             </a>
         </li>
         <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>विदेश&nbsp;</span>
+            <a href="#">
+                <span ng-click="toggleMenu()">देश&nbsp;</span>
             </a>
         </li>
         <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>राज्य&nbsp;</span>
+            <a href="#">
+                <span ng-click="toggleMenu()">विदेश&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span ng-click="toggleMenu()">राज्य&nbsp;</span>
                 <hr class="style-seven" />
             </a>
             <ul>
@@ -32,18 +31,18 @@
             </ul>
         </li>
         <li>
-            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
-                <span>राजनीति&nbsp;</span>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+                <span ng-click="toggleMenu()">राजनीति&nbsp;</span>
             </a>
         </li>
         <li>
-            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))" ng-click="toggleMenu()">
-                <span>व्यापार&nbsp;</span>
+            <a href="@HttpUtility.UrlDecode(Url.Action("Home", "Home"))">
+                <span ng-click="toggleMenu()">व्यापार&nbsp;</span>
             </a>
         </li>
         <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>खेल&nbsp;</span>
+            <a href="#">
+                <span ng-click="toggleMenu()">खेल&nbsp;</span>
                 <hr class="style-seven" />
             </a>
             <ul>
@@ -53,8 +52,8 @@
             </ul>
         </li>
         <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>गेलरी&nbsp;</span>
+            <a href="#">
+                <span ng-click="toggleMenu()">गेलरी&nbsp;</span>
                 <hr class="style-seven" />
             </a>
             <ul>
@@ -63,8 +62,8 @@
             </ul>
         </li>
         <li>
-            <a href="#" ng-click="toggleMenu()">
-                <span>मनोरंजन&nbsp;</span>
+            <a href="#">
+                <span ng-click="toggleMenu()">मनोरंजन&nbsp;</span>
                 <hr class="style-seven" />
             </a>
             <ul>
