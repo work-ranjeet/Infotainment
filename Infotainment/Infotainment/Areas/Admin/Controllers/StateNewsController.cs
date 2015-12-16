@@ -319,6 +319,7 @@ namespace Infotainment.Areas.Admin.Controllers
                         Image = null,
                         ImageUrl = string.Empty,
                         Caption = string.Empty,
+                        CaptionLink = string.Empty,
                         IsActiveNews = news.IsActive == 1 ? true : false,
                         IsApprovedNews = news.IsApproved == 1 ? true : false,
                         IsTopTenNews = news.IsTopNews == 1 ? true : false

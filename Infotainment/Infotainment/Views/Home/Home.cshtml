@@ -15,9 +15,12 @@
                     <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{InterNewsType}}" }))" target="_self">
                         <span>&nbsp;&nbsp;{{StateTitle}}</span>
                     </a>
-                    <select>
-                        <option ng-repeat="state in StateTabList">{{state.StateName}}</option>
+                    <select ng-model="stateSelected" ng-options="item.name for item in state |  track by item.StateCode ">
+                        <option value="{{item.StateCode}}">{{item.StateName}}</option>
                     </select>
+                    <!--<select>
+                        <option ng-repeat="state in StateTabList">{{state.StateName}}</option>
+                    </select>-->
                 </div>
                 <div class="col-xs-12">
                     <div class="tab-container">

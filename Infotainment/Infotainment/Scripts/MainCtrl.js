@@ -17,25 +17,26 @@
         $scope.showmenu = false;
         $scope.toggleMenu = function () {
             $scope.showmenu = ($scope.showmenu) ? false : true;
+            //window.location.assign("http://www.w3schools.com")
         }
 
-        $scope.IsSliderMenuVisble = true;
-        $scope.sliderMenuToggle = function () {
-            $("#sliderMenuSection").animate({
-                width: 'toggle'
-            });
-
-            $scope.IsSliderMenuVisble = !$scope.IsSliderMenuVisble;
-        };
-        $scope.closeMenu = function () {
-            if ($scope.IsSliderMenuVisble) {
-                $("#sliderMenuSection").animate({
-                    width: 'toggle'
-                });
-
-                $scope.IsSliderMenuVisble = false;
-            }
-        };
+//         $scope.IsSliderMenuVisble = true;
+//         $scope.sliderMenuToggle = function () {
+//             $("#sliderMenuSection").animate({
+//                 width: 'toggle'
+//             });
+// 
+//             $scope.IsSliderMenuVisble = !$scope.IsSliderMenuVisble;
+//         };
+//         $scope.closeMenu = function () {
+//             if ($scope.IsSliderMenuVisble) {
+//                 $("#sliderMenuSection").animate({
+//                     width: 'toggle'
+//                 });
+// 
+//                 $scope.IsSliderMenuVisble = false;
+//             }
+//         };
 
         $scope.OpenWindow = function (url) {
             var win = window.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=10, left=400, width=1100, height=950");
