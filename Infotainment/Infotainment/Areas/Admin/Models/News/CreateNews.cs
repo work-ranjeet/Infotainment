@@ -25,8 +25,9 @@ namespace Infotainment.Areas.Admin.Models
         [Required]
         public string ShortDesc { get; set; }
 
-        [Required]
         public string  ImageCaption { get; set; }
+
+        public string CaptionLink { get; set; }
 
         [AllowHtml]
         //[Required]

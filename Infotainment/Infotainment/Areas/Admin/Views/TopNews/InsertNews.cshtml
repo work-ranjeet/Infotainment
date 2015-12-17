@@ -49,6 +49,13 @@
                     </div>
 
                     <div class="form-group margin-bottom-20">
+                        <label class="control-label">Caption Link</label>
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="The Caption field is required."
+                               id="CaptionLink" name="CaptionLink" type="text" value="" placeholder="Optional! Web url link to open web on image caption. ">
+
+                    </div>
+
+                    <div class="form-group margin-bottom-20">
                         <label class="control-label" for="Description">Short Description</label>
                         @Html.ValidationMessageFor(model => model.ShortDesc)
                         <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."

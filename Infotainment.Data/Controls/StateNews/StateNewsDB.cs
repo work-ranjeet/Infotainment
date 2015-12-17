@@ -34,7 +34,7 @@ namespace Infotainment.Data.Controls
 
         #region Auto Generated Code - Insert
 
-        internal void Insert(ref DBHelper dbInstance, IStateNews objNews, IImageDetail objImageDetail, IUsers user)
+        public void Insert(ref DBHelper dbInstance, IStateNews objNews, IImageDetail objImageDetail, IUsers user)
         {
             try
             {

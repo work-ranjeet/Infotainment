@@ -37,12 +37,11 @@ namespace Infotainment.Data.Controls
         }
 
         #region Auto Generated Code - Insert
-        public void Insert(IInterNews objNews, IImageDetail objImageDetail, IUsers user)
+        public void Insert(ref DBHelper objdbhelper, IInterNews objNews, IImageDetail objImageDetail, IUsers user)
         {
             try
             {
-                var objdbhelper = new DBHelper();
-                var objNewsDB = new InterNewsDB();
+               
                 objNews.EditorID = "1";
                 objNews.DisplayOrder = 1;
                 objNews.IsActive = 0;
@@ -53,7 +52,7 @@ namespace Infotainment.Data.Controls
                 objImageDetail.IsFirst = 1;
 
 
-                objNewsDB.Insert(ref objdbhelper, objNews, objImageDetail, user);
+                InterNewsDB.Instance.Insert(ref objdbhelper, objNews, objImageDetail, user);
             }
             catch (Exception objExp)
             {

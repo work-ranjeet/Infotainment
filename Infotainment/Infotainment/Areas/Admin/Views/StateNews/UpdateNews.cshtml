@@ -23,103 +23,98 @@
         </script>
     }
 
-    <div class="contaier">
-        @{
-            var StateCodeList = new List<ListItem>();
-            var states = StateCodeBL.Instance.SelectStates();
-            foreach (var v in states)
-            {
-                StateCodeList.Add(new ListItem { Text = v.Name, Value = v.Code });
-            };
-        }
-        <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Update State News</h4>
-                </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">@ViewBag.Message<a class="close" data-dismiss="alert" href="#">×</a></div>
-                    @Html.HiddenFor(model => model.NewsID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.HiddenFor(model => model.EditorID, new { htmlAttributes = new { @class = "form-control" } })
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div style="padding: 0 0 5px 0;">
-                                <figure style="border:solid 1px #ffd800; border-radius:5px;" >
-                                    <img src="../../@Url.Content(Model.ImageUrl)" alt="Image"   style="zoom:1%; width:100%"/>
-                                    <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImageUrl" />
-                                    <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div style="padding: 0 0 5px 0;">
-                                <span class="control-label">Select new image</span>
-                                <input type="file" name="Image" id="Image" onchange="fileCheck(this);" class="form-control">
-                            </div>
-                            <div style="padding:5px 0 5px 0;">
-                                <span class="control-label">Select State</span>
-                                @Html.DropDownListFor(model => model.StateCode, new SelectList(StateCodeList, "Value", "Text"), new { @class = "form-control" })
-                            </div>
-                            <div style="padding:5px 0 5px 0; margin-top:15px;">
-                                @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:16px; width:16px;" })
-                                <span class="control-label">&nbsp;Is top news</span>
-                            </div>
-                            <div style="padding:5px 0 5px 0;">
-                                @Html.EditorFor(model => model.IsActiveNews, new { @style = "height:16px; width:16px;" })
-                                <span class="control-label">&nbsp;Is Active News</span>
-                            </div>
-                            <div style="padding:5px 0 5px 0;">
-                                @Html.EditorFor(model => model.IsApprovedNews, new { @style = "height:16px; width:16px;" })
-                                <span class="control-label">&nbsp;Is News Approved</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div style="padding:5px 0 5px 0;">
-                                <span class="control-label">Image Caption</span>
-                                @Html.TextBoxFor(model => model.Caption, new { @class = "form-control" })
-                                @*<input class="form-control text-box" data-val="true" placeholder="Enter image caption..." data-val-required="The Heading field is required."
-                                       id="Caption" name="Caption" type="text" value="@Model.Caption">*@
-                            </div>
-                            <div style="padding:5px 0 5px 0;">
-                                <span class="control-label">Image Caption Link</span>
-                                @Html.TextBoxFor(model => model.CaptionLink, new { @class = "form-control" })
-                                @*<input class="form-control text-box" data-val="true" placeholder="Enter image caption link..." data-val-required="The Heading field is required."
-                                       id="CaptionLink" name="CaptionLink" type="text" value="@Model.CaptionLink">*@
-                            </div>
-                            <div style="padding:5px 0 5px 0;">
-                                <sapn class="control-label">News Heading</sapn>
-                                @*@Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control", @col="100" } })*@
-                                <textarea class="form-control" cols="100" data-val="true" id="Heading" name="Heading" placeholder="Enter heading..."
-                                          data-val-required="The Heading field is required." rows="5">
-                                    @Model.Heading
-                                </textarea>
-                            </div>
+
+
+    var StateCodeList = new List<ListItem>();
+    var states = StateCodeBL.Instance.SelectStates();
+    foreach (var v in states)
+    {
+        StateCodeList.Add(new ListItem { Text = v.Name, Value = v.Code });
+    };
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Update State News</h4>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-danger">@ViewBag.Message<a class="close" data-dismiss="alert" href="#">×</a></div>
+                @Html.HiddenFor(model => model.NewsID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.EditorID, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="padding: 0 0 5px 0;">
+                            <figure style="border:solid 1px #ffd800; border-radius:5px;">
+                                <img src="../../@Url.Content(Model.ImageUrl)" alt="Image" style="zoom:1%; width:100%" />
+                                <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Model.ImageUrl" />
+                                <figcaption style="text-align:center; background-color:#e4e0e0;">Current Iamge.</figcaption>
+                            </figure>
                         </div>
                     </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div style="padding:5px 0 5px 0;">
-                                <span class="control-label">Short Description</span>
-                                <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."
-                                          data-val-required="The ShortDesc field is required." rows="5">
-                                    @Model.ShortDesc
-                                </textarea>
-                            </div>
+                    <div class="col-sm-3">
+                        <div style="padding: 0 0 5px 0;">
+                            <span class="control-label">Select new image</span>
+                            <input type="file" name="Image" id="Image" onchange="fileCheck(this);" class="form-control">
                         </div>
-                        <div class="col-xs-12">
-                            <div style="padding:5px 0 5px 0;">
-                                <span class="control-label">Description</span>
-                                <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
-                            </div>
+                        <div style="padding:5px 0 5px 0;">
+                            <span class="control-label">Select State</span>
+                            @Html.DropDownListFor(model => model.StateCode, new SelectList(StateCodeList, "Value", "Text"), new { @class = "form-control" })
                         </div>
-                        <div class="col-md-12 text-center">
-                            <input type="submit" id="btnSubmit" value="Click to Update News" class="btn btn-success" />
+                        <div style="padding:5px 0 5px 0; margin-top:15px;">
+                            @Html.CheckBoxFor(model => model.IsTopTenNews, new { @style = "height:16px; width:16px;" })
+                            <span class="control-label">&nbsp;Is top news</span>
                         </div>
+                        <div style="padding:5px 0 5px 0;">
+                            @Html.EditorFor(model => model.IsActiveNews, new { @style = "height:16px; width:16px;" })
+                            <span class="control-label">&nbsp;Is Active News</span>
+                        </div>
+                        <div style="padding:5px 0 5px 0;">
+                            @Html.EditorFor(model => model.IsApprovedNews, new { @style = "height:16px; width:16px;" })
+                            <span class="control-label">&nbsp;Is News Approved</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="padding:5px 0 5px 0;">
+                            <span class="control-label">Image Caption</span>
+                            @Html.TextBoxFor(model => model.Caption, new { @class = "form-control" })
+                        </div>
+                        <div style="padding:5px 0 5px 0;">
+                            <span class="control-label">Image Caption Link</span>
+                            @Html.TextBoxFor(model => model.CaptionLink, new { @class = "form-control" })
+                        </div>
+                        <div style="padding:5px 0 5px 0;">
+                            <sapn class="control-label">News Heading</sapn>
+                            <textarea class="form-control" cols="100" data-val="true" id="Heading" name="Heading" placeholder="Enter heading..."
+                                      data-val-required="The Heading field is required." rows="5">
+                                @Model.Heading
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div style="padding:5px 0 5px 0;">
+                            <span class="control-label">Short Description</span>
+                            <textarea class="form-control" cols="100" data-val="true" id="ShortDesc" name="ShortDesc" placeholder="Enter short description..."
+                                      data-val-required="The ShortDesc field is required." rows="5">
+                                @Model.ShortDesc
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div style="padding:5px 0 5px 0;">
+                            <span class="control-label">Description</span>
+                            <textarea class="ckeditor" data-val="true" id="Description" name="Description" placeholder="Enter description...">@Model.Description</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="submit" id="btnSubmit" value="Click to Update News" class="btn btn-success" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-            }
+
+}

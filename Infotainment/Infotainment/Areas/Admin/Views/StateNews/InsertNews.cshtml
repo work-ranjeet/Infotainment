@@ -42,7 +42,7 @@
                             <li style="padding:8px;">
                                 <span>Select State</span>
                                 <br />
-                                @Html.DropDownListFor(model => model.StateCode, new SelectList(StateCodeList, "Value", "Text"))
+                                @Html.DropDownListFor(model => model.StateCode, new SelectList(StateCodeList, "Value", "Text"), new { @class= "form-control"})
                             </li>
                             <li style="padding:8px;">
                                 <span>Select Image</span>

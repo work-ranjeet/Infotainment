@@ -11,6 +11,11 @@ namespace Infotainment.Areas.Admin.Models
 
     public class CreateStateNews :IDisposable
     {
+        public CreateStateNews()
+        {
+            States = new List<IStateCode>();
+        }
+
         [Required]
         public string Heading { get; set; }
 

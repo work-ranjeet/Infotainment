@@ -37,9 +37,9 @@ namespace Infotainment.Data.Controls
         }
 
         #region Auto Generated Code - Insert
-        public void Insert(IStateNews objNews, IImageDetail objImageDetail, IUsers user)
+        public void Insert(ref DBHelper objdbhelper, IStateNews objNews, IImageDetail objImageDetail, IUsers user)
         {
-            var objdbhelper = DBHelper.Instance;
+            
             var objNewsDB = StateNewsDB.Instance;
             try
             {
@@ -54,7 +54,7 @@ namespace Infotainment.Data.Controls
                 objImageDetail.IsFirst = 1;
 
 
-                objNewsDB.Insert(ref objdbhelper, objNews, objImageDetail, user);
+                StateNewsDB.Instance.Insert(ref objdbhelper, objNews, objImageDetail, user);
             }
             catch (Exception objExp)
             {

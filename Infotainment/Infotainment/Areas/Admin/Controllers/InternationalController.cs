@@ -200,76 +200,76 @@ namespace Infotainment.Areas.Admin.Controllers
 
         [Insert]
         [HttpPost]
-        public async Task<ActionResult> InsertNews(CreateNews news)
+        public async Task<ActionResult> InsertNews(CreateNews newForInsert)
         {
+            var dbHelpre = DBHelper.Instance;
+            var BLInstance = InterNewsBL.Instance;
+            dbHelpre.BeginTransaction();
             return await Task.Run(() =>
             {
-                if (ModelState.IsValid)
+                try
                 {
-                    var objNews = new InterNews();
-                    var objImageDetail = new ImageDetail();
-                    var newsBL = new InterNewsBL();
-
-                    objNews.Heading = news.Heading.Trim();
-                    objNews.ShortDescription = news.ShortDesc.Trim();
-                    objNews.NewsDescription = string.IsNullOrEmpty(news.Description) ? string.Empty : news.Description.Trim();
-                    objNews.DisplayOrder = 1;
-                    objNews.IsTopNews = news.IsTopTenNews ? 1 : 0;
-
-                    string dirPath = ImagePath.InternationalNewsImage;
-
-                    if (news.Image == null)
+                    if (ModelState.IsValid)
                     {
-                        ModelState.AddModelError("File", "Please Upload Your file");
-                        ViewBag.Message = "Please Upload Your file";
-                    }
-                    else if (news.Image.ContentLength > 0)
-                    {
-                        int MaxContentLength = 1024 * 1024 * 10; //Size = 10 MB
-                        string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
-                        if (!AllowedFileExtensions.Contains(news.Image.FileName.Substring(news.Image.FileName.LastIndexOf('.')).ToLower()))
+                        var news = new InterNews
                         {
-                            ModelState.AddModelError("File", "Please file of type: " + string.Join(", ", AllowedFileExtensions));
-                            ViewBag.Message = "Please file of type: " + string.Join(", ", AllowedFileExtensions);
-                        }
-                        else if (news.Image.ContentLength > MaxContentLength)
-                        {
-                            ModelState.AddModelError("File", "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB");
-                            ViewBag.Message = "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB";
-                        }
-                        else
-                        {
-                            var fileName = new Random().Next(1000000000).ToString() + Path.GetFileName(news.Image.FileName);
+                            Heading = newForInsert.Heading.Trim(),
+                            ShortDescription = newForInsert.ShortDesc.Trim(),
+                            NewsDescription = string.IsNullOrEmpty(newForInsert.Description) ? string.Empty : newForInsert.Description.Trim(),
+                            IsTopNews = newForInsert.IsTopTenNews ? 1 : 0,
+                            IsActive = 0,
+                            IsApproved = 0
+                        };
 
-                            var pathArrey = Server.MapPath("Image").Replace("Admin", "@").Split('@');
-                            var serverPath = pathArrey[0] + dirPath;
+                        var image = new ImageDetail
+                        {
+                            ImageType = (int)ImageType.TopNewsImage,
+                            ImageUrl = " ",
+                            Caption = newForInsert.ImageCaption,
+                            CaptionLink = newForInsert.CaptionLink,
+                            IsActive = 0,
+                            IsFirst = 0
+                        };
 
-                            if (Path.IsPathRooted(serverPath))
-                            {
-                                objImageDetail.ImageUrl = dirPath + "/" + fileName;
-                                objImageDetail.Caption = news.ImageCaption;
-                                objImageDetail.ImageType = 2;
-                                var path = Path.Combine(serverPath, fileName);
-                                news.Image.SaveAs(path);
-                            }
+                        var fileName = string.Empty;
+                        if (newForInsert.Image != null && newForInsert.Image.ContentLength > 0)
+                        {
+                            fileName = new Random().Next(1000000000).ToString() + Path.GetFileName(newForInsert.Image.FileName);
+                            image.ImageUrl = ImagePath.InternationalNewsImage + "/" + fileName;
+                            image.IsActive = 1;
+                            image.IsFirst = 1;
+                        }
+
+                        string dirPath = ImagePath.InternationalNewsImage;
+                        var user = (IUsers)this.Session[Constants.UserSessionKey];
+                        BLInstance.Insert(ref dbHelpre, news, image, user);
+
+                        if (SaveImage(ImagePath.InternationalNewsImage, fileName, newForInsert.Image))
+                        {
+                            newForInsert = new CreateNews();
+                            ViewBag.Message = "Successfully Inserter.";
+                            ModelState.Clear();
                         }
                     }
+                    else
+                    {
+                        ModelState.AddModelError("INSERT", "Oops ! There is some error.");
+                        ViewBag.Message = "Oops ! There is some error.";
+                    }
 
-                    var user = (IUsers)this.Session[Constants.UserSessionKey];
-
-                    newsBL.Insert(objNews, objImageDetail, user);
-
-                    news = new CreateNews();
-                    ViewBag.Message = "File saved successfully.";
-                    ModelState.Clear();
+                    dbHelpre.CommitTransaction();
+                    return View(newForInsert);
                 }
-                else
+                catch (Exception ex)
                 {
-                    //ModelState.AddModelError("INSERT", "Oops ! There is some error.");
-                    ViewBag.Message = "Oops ! There is some error.";
+                    dbHelpre.RollbackTransaction();
+                    throw ex;
                 }
-
-                return View(news);
+                finally
+                {
+                    dbHelpre.Dispose();
+                    BLInstance.Dispose();
+                }
             });
         }
 
@@ -398,6 +398,11 @@ namespace Infotainment.Areas.Admin.Controllers
                         dbHelpre.RollbackTransaction();
                         ModelState.AddModelError("INSERT", "Oops ! There is some error.");
                         ViewBag.Message = "Oops ! There is some error.";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Updated successfully.";
+                        ModelState.Clear();
                     }
 
                     dbHelpre.CommitTransaction();
