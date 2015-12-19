@@ -18,7 +18,8 @@ CREATE TABLE StateCode (
 	StateID NVARCHAR(50) PRIMARY KEY DEFAULT NEWID(),
 	StateCode NVARCHAR(20),
 	StateName NVARCHAR(100),
-	StateNameHindi NVARCHAR(100)
+	StateNameHindi NVARCHAR(100),
+	DisplayOrder INT
 	)
 GO
 

@@ -26,6 +26,8 @@ using PCL.DBHelper;
 using System.Web;
 using Infotainment.Data.Entities;
 using Infotainment.Data.Common.Services;
+using Infotainment.Data.Entities.Common;
+using Infotainment.Data.Controls.Common;
 
 namespace Infotainment.Data.Controls
 {
@@ -39,7 +41,7 @@ namespace Infotainment.Data.Controls
         #region Auto Generated Code - Insert
         public void Insert(ref DBHelper objdbhelper, IStateNews objNews, IImageDetail objImageDetail, IUsers user)
         {
-            
+
             var objNewsDB = StateNewsDB.Instance;
             try
             {
@@ -175,7 +177,7 @@ namespace Infotainment.Data.Controls
                 switch (newsType)
                 {
                     case NewsType.TopNews:
-                        list = StateNewsDB.Instance.SelectForPartialNewsList("",0);
+                        list = StateNewsDB.Instance.SelectForPartialNewsList("", 0);
                         break;
 
                     default:
@@ -194,7 +196,7 @@ namespace Infotainment.Data.Controls
         {
             IEnumerable<IStateNews> list = null;
             try
-            {                
+            {
                 list = StateNewsDB.Instance.Search(dateFrom, dateTo, Heading, StateCode);
             }
             catch (Exception objExp)
@@ -232,47 +234,61 @@ namespace Infotainment.Data.Controls
             return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<IStateNews> SelectStateNewsForApi(string StateCode)
+        public IEnumerable<IStateNews> SelectStateNewsForApi()
         {
             try
             {
-                int newsCount = 16;
+                int newsCount = 15;
                 int remainNews = newsCount;
                 List<IStateNews> newsList = new List<IStateNews>();
-                var top20 = new StateNewsDB().SelectStateNewsForApi(StateCode);
-                if (top20 != null)
+
+                Task<IEnumerable<IStateNews>> newsTask = Task.Factory.StartNew(() => StateNewsDB.Instance.SelectStateNewsForApi());
+                Task<IEnumerable<IStateCode>> stateCodeTask = Task.Factory.StartNew(() => StateCodeBL.Instance.SelectStates());
+                Task.WaitAll(newsTask, stateCodeTask);
+
+                var statesNews = newsTask.Result; 
+                if (statesNews != null && statesNews.Count() > 0)
                 {
-                    newsList.AddRange(top20.OrderByDescending(v => v.DttmCreated).Take(newsCount).ToList());
+                    newsList.AddRange(statesNews);
                 }
 
-                if (newsList.Count < newsCount)
+                var stateCodes = stateCodeTask.Result;
+                if (stateCodes != null && stateCodes.Count() > 0)
                 {
-                    remainNews = remainNews - newsList.Count;
-                    if (remainNews > 0)
+                    stateCodes.AsParallel().ForAll(sc =>
                     {
-                        //var topRssNews = new RssProviderService().GetInternationalNews();
-                        //if (topRssNews != null && topRssNews.Count() > 0)
-                        //{
-                        //    int newsCounter = 0;
-                        //    foreach (var val in topRssNews.OrderByDescending(v => v.DttmCreated))
-                        //    {
-                        //        if (newsCounter++ >= remainNews)
-                        //            break;
+                        var stateNews = newsList.FindAll(n => !string.IsNullOrEmpty(n.StateCode) && n.StateCode.Trim() == sc.Code.Trim());
+                        remainNews = stateNews != null && stateNews.Count > 0 ? newsCount - stateNews.Count : newsCount;
+                        if (remainNews > 0)
+                        {
+                            var rssNews = RssProviderService.Instance.GetStateRssNews(sc.Code);
+                            if (rssNews != null && rssNews.Count() > 0)
+                            {
+                                int newsCounter = 0;
+                                foreach (var val in rssNews.OrderByDescending(v => v.DttmCreated))
+                                {
+                                    if (newsCounter++ >= remainNews)
+                                        break;
 
-                        //        val.IsRss = true;
-                        //        newsList.Add(val);
-                        //    }
-                        //}
-                    }
+                                    val.IsRss = true;
+                                    val.StateCode = sc.Code;
+                                    val.StateName = sc.NameHindi;
+                                    newsList.Add(val);
+                                }
+                            }
+                        }
+                    });
                 }
 
-                return newsList.Take(newsCount);
+                return newsList;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
 
         #endregion
 

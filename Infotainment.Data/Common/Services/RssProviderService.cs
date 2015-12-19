@@ -97,6 +97,32 @@ namespace Infotainment.Data.Common.Services
         }
         #endregion
 
+        #region /// State News
+        public IEnumerable<IStateNews> GetStateRssNews(string StateCode)
+        {
+            var newsList = new ConcurrentBag<IStateNews>();
+            var stateObj = RssUrl.Instance.GetState(StateCode);
+            if (stateObj != null)
+            {
+                var urlList = stateObj.DistRssUrl;
+
+                int taskCounter = 0;
+                Task<ConcurrentBag<IStateNews>>[] tasks = new Task<ConcurrentBag<IStateNews>>[urlList.Count()];
+                urlList.ToList().ForEach(url => tasks[taskCounter++] = Task.Factory.StartNew(() => StateNewsList(url, false)));
+                Task.WaitAll(tasks);
+
+                tasks.ToList().ForEach(result =>
+                {
+                    var resultList = result.Result;
+                    resultList.ToList().ForEach(news => newsList.Add(news));
+
+                });
+            }
+
+            return newsList;
+        }
+        #endregion
+
         private IEnumerable<ITopNews> NewsObject(XDocument xDoc, bool IsImgBreak)
         {
             try
@@ -210,6 +236,68 @@ namespace Infotainment.Data.Common.Services
                 }
 
                 return newsList.OrderByDescending(v => v.DttmCreated.Date);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private ConcurrentBag<IStateNews> StateNewsList(string Url, bool IsImgBreak)
+        {
+            try
+            {
+                ConcurrentBag<IStateNews> newsList = new ConcurrentBag<IStateNews>();
+                var xDoc = XDocument.Load(Url);
+                var items = (from x in xDoc.Descendants("item")
+                             select new
+                             {
+                                 Heading = x.Element("title").Value,
+                                 Link = x.Element("link").Value,
+                                 ShortDesc = x.Element("description").Value,
+                                 PubDate = x.Element("pubDate").Value,
+                                 guid = x.Element("guid").Value
+                             });
+
+                if (items != null)
+                {
+                    items.AsParallel().AsOrdered().ForAll(item =>
+                    //items.ToList().ForEach(item =>
+                    {
+                        string ShortDesc = item.ShortDesc;
+                        string imgUrl = string.Empty;
+                        string desc = ShortDesc;
+                        if (desc.Contains('>'))
+                        {
+                            var arr = desc.Split('>');
+                            if (arr.Length > 1)
+                            {
+                                ShortDesc = arr[1];
+                                imgUrl = arr[0].Split('=')[1];
+                            }
+                            if (IsImgBreak && !string.IsNullOrEmpty(imgUrl))
+                            {
+                                imgUrl = imgUrl.Replace('"', ' ').Replace('"', ' ').Remove(imgUrl.LastIndexOf('/'), 1);
+                            }
+                        }
+                        newsList.Add(
+                            new StateNews
+                            {
+                                NewsID = item.guid,
+                                DisplayOrder = 0,
+                                Heading = item.Heading,
+                                ImageUrl = imgUrl,
+                                ShortDescription = ShortDesc,
+                                //NewsDesc= val.NewsDescription,
+                                DttmCreated = Convert.ToDateTime(item.PubDate),
+                                IsRss = true
+
+                            });
+
+                    });
+                }
+
+                return newsList;
             }
             catch (Exception ex)
             {

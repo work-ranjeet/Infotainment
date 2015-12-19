@@ -14,21 +14,23 @@ namespace Infotainment.Controllers
     public class StateNewsApiController : ApiController
     {
         [HttpGet]
-        public IEnumerable<INews> FirstNews()
+        public IEnumerable<INews> TopStateNews()
         {
-            var newsInstance = InterNewsBL.Instance;
+            var newsInstance = StateNewsBL.Instance;
             var newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectTopNews();
+                var result = newsInstance.SelectStateNewsForApi();
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
                     newsList.Add(new News
                     {
                         NewsID = val.NewsID,
                         DisplayOrder = val.DisplayOrder,
+                        StateCode = val.StateCode,
+                        StateName = val.StateName,
                         Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,
+                        ImageUrl = val.ImageUrl,                        
                         ShortDesc = val.ShortDescription,
                         IsRss = val.IsRss,
                         //NewsDesc= val.NewsDescription,
@@ -38,9 +40,9 @@ namespace Infotainment.Controllers
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
@@ -50,40 +52,6 @@ namespace Infotainment.Controllers
             return newsList.OrderByDescending(v => v.DttmCreated);
         }
 
-        //[HttpGet]
-        //public IEnumerable<INews> NewsHeader()
-        //{
-        //    var newsInstance = InterNewsBL.Instance;
-        //    ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
-        //    try
-        //    {
-        //        var result = newsInstance.SelectRest10TopNews();
-        //        result.AsParallel().AsOrdered().ForAll(val =>
-        //        {
-        //            newsList.Add(new News
-        //            {
-        //                NewsID = val.NewsID,
-        //                DisplayOrder = val.DisplayOrder,
-        //                Heading = val.Heading,
-        //                ImageUrl = val.ImageUrl,
-        //                ShortDesc = val.ShortDescription,
-        //                //NewsDesc = val.NewsDescription,
-        //                DttmCreated = val.DttmCreated
-        //            });
-        //        });
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        newsInstance.Dispose();
-        //    }
-
-        //    return newsList.OrderByDescending(v => v.DttmCreated); 
-        //}
 
         [HttpGet]
         public INews NewsDetail(string NewsId)

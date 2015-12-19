@@ -30,6 +30,10 @@ namespace Infotainment.Models.Entities
 
         public bool IsRss { get; set; }
 
+        public string StateCode { get; set; }
+
+        public string StateName { get; set; }
+
         #region Memory
         private bool disposed = false;
         ~News()

@@ -45,7 +45,7 @@ namespace Infotainment.Data.Controls.Common
             var dbHelper = DBHelper.Instance;
             try
             {
-                objDataReader = dbHelper.ExecuteDataReader("SELECT StateCode, StateName FROM StateCode ORDER BY StateName", CommandType.Text);
+                objDataReader = dbHelper.ExecuteDataReader("SELECT StateCode, StateName, StateNameHindi, DisplayOrder FROM StateCode ORDER BY StateName", CommandType.Text);
 
                 if (objDataReader != null)
                 {
@@ -61,6 +61,12 @@ namespace Infotainment.Data.Controls.Common
 
                             if (!objDataReader.IsDBNull(1))
                                 obj.Name = objDataReader.GetString(1);
+
+                            if (!objDataReader.IsDBNull(2))
+                                obj.NameHindi = objDataReader.GetString(2);
+
+                            if (!objDataReader.IsDBNull(3))
+                                obj.DisplayOrder = objDataReader.GetInt32(3);
 
 
                             objImageDetailList.Add(obj);

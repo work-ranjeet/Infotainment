@@ -519,7 +519,7 @@ namespace Infotainment.Data.Controls
             return objNewsList;
         }
 
-        internal IEnumerable<IStateNews> SelectStateNewsForApi(string StateCode)
+        internal IEnumerable<IStateNews> SelectStateNewsForApi()
         {
             IDataReader objDataReader = null;
             List<IStateNews> objNewsList = null;
@@ -528,7 +528,7 @@ namespace Infotainment.Data.Controls
             var dbHelper = DBHelper.Instance;
             try
             {
-                dbHelper.AddInParameter("@StateCode", StateCode, DbType.String);
+                //dbHelper.AddInParameter("@StateCode", StateCode, DbType.String);
                 objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectStateNewsForApi, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
@@ -565,28 +565,31 @@ namespace Infotainment.Data.Controls
                                 objNews.StateCode = objDataReader.GetString(7);
 
                             if (!objDataReader.IsDBNull(8))
-                                objNews.IsApproved = objDataReader.GetInt32(8);
+                                objNews.StateName = objDataReader.GetString(8);
 
                             if (!objDataReader.IsDBNull(9))
-                                objNews.IsActive = objDataReader.GetInt32(9);
+                                objNews.IsApproved = objDataReader.GetInt32(9);
 
                             if (!objDataReader.IsDBNull(10))
-                                objNews.IsTopNews = objDataReader.GetInt32(10);
+                                objNews.IsActive = objDataReader.GetInt32(10);
 
                             if (!objDataReader.IsDBNull(11))
-                                objNews.DttmCreated = objDataReader.GetDateTime(11);
+                                objNews.IsTopNews = objDataReader.GetInt32(11);
 
                             if (!objDataReader.IsDBNull(12))
-                                objNews.DttmModified = objDataReader.GetDateTime(12);
+                                objNews.DttmCreated = objDataReader.GetDateTime(12);
 
                             if (!objDataReader.IsDBNull(13))
-                                objNews.ImageUrl = objDataReader.GetString(13);
+                                objNews.DttmModified = objDataReader.GetDateTime(13);
 
                             if (!objDataReader.IsDBNull(14))
-                                objNews.ImageCaption = objDataReader.GetString(14);
+                                objNews.ImageUrl = objDataReader.GetString(14);
 
                             if (!objDataReader.IsDBNull(15))
-                                objNews.ImageCaptionLink = objDataReader.GetString(15);
+                                objNews.ImageCaption = objDataReader.GetString(15);
+
+                            if (!objDataReader.IsDBNull(16))
+                                objNews.ImageCaptionLink = objDataReader.GetString(16);
 
                             objNewsList.Add(objNews);
                         }
@@ -609,7 +612,7 @@ namespace Infotainment.Data.Controls
                 dbHelper.Dispose();
             }
 
-            return objNewsList.FindAll(v => v.DttmCreated.Date == DateTime.Now.Date || v.DttmCreated.Date.AddDays(-1) == DateTime.Now.Date.AddDays(-1)); ;
+            return objNewsList;//.FindAll(v => v.DttmCreated.Date == DateTime.Now.Date || v.DttmCreated.Date.AddDays(-1) == DateTime.Now.Date.AddDays(-1)); ;
         }
 
         internal List<IStateNews> Search(DateTime dateFrom, DateTime dateTo, string Heading, string StateCode)
@@ -701,6 +704,7 @@ namespace Infotainment.Data.Controls
 
             return objNewsList;
         }
+      
         #endregion      
 
         #region Memory

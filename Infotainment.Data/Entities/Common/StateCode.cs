@@ -11,6 +11,10 @@ namespace Infotainment.Data.Entities.Common
         string Code { get; set; }
 
         string Name { get; set; }
+
+        string NameHindi { get; set; }
+
+        int DisplayOrder { get; set; }
     }
 
     public class StateCode : IStateCode
@@ -18,5 +22,9 @@ namespace Infotainment.Data.Entities.Common
         public string Code { get; set; }
 
         public string Name { get; set; }
+
+        public string NameHindi { get; set; }
+
+        public int DisplayOrder { get; set; }
     }
 }

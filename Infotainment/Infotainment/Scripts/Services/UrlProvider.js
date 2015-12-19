@@ -11,6 +11,10 @@
         InternationalNews: "request/InternationalNewsApi/FirstNews",
         //InternationalFirstNews: "request/InternationalNewsApi/NewsHeader",
 
+        // StateNews
+        InternationalNews: "request/StateNewsApi/TopStateNews"
+        
+
 
 
 
