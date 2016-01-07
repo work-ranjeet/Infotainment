@@ -22,7 +22,7 @@
                         <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
                         <p style="padding:0px; margin:0px; text-align:right" class="news-date">
                             {{news.DttmCreated | hindiDate}}
-                            <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                            <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "StateNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                         </p>
                         <hr class="style-seven" />
                     </div>

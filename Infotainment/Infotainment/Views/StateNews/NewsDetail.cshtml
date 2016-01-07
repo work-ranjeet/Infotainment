@@ -13,12 +13,12 @@
                     <div ng-if="!news.IsRss" class="col-xs-12">
                         <img class="pull-left news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt=" ">
 
-                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "StateNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                             <span class="news-heading"> {{news.Heading}}</span>
                         </a>
                         <p class="news-text" style="padding:0px; margin:0px;">
                             {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; 
-                            <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                            <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "StateNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                         </p>
                         @*<p style="padding:0px; margin:0px; text-align:right" class="news-date">
                             {{news.DttmCreated | hindiDate}}                           
