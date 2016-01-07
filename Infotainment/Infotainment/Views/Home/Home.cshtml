@@ -6,37 +6,9 @@
 <div id="topNews" class="container">
     <div class="row">
         <div class="col-xs-8">
-            @*@Html.Partial("_PartialTopNewsPage")
-            @Html.Partial("_PartialInternationNewsPage")*@
-
-            @* State News *@
-            <div id="stateNews" ng-controller="stateNewsHomeCtrl" class="row">
-                <div class="title-box margin-top-30">
-                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "MainNews", new { NewsType = "{{InterNewsType}}" }))" target="_self">
-                        <span>&nbsp;&nbsp;{{StateTitle}}</span>
-                    </a>
-                    <select ng-model="stateSelected" ng-options="item.name for item in state |  track by item.StateCode ">
-                        <option value="{{item.StateCode}}">{{item.StateName}}</option>
-                    </select>
-                    <!--<select>
-                        <option ng-repeat="state in StateTabList">{{state.StateName}}</option>
-                    </select>-->
-                </div>
-                <div class="col-xs-12">
-                    <div class="tab-container">
-                        <div class="tab-button-container ">
-                            <div class="tab-button" ng-repeat="state in StateTabList" id="{{state.StateCode}}" btn-radio="{{state.TabId}}" ng-model="activeTab.tabId">
-                                <span ng-class="(activeTab.tabId == state.TabId) ? 'active' : ''">{{state.StateName}}</span>
-                            </div>
-
-                        </div>
-                        <div class="tab-content-container">
-                            <div style="height:300px;">{{activeTab.StateName}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @* End of state news *@
+            @Html.Partial("_PartialTopNewsPage")
+            @Html.Partial("_PartialInternationNewsPage")
+            @Html.Partial("_PartialHStateNews")
         </div>
         @* Advertisment *@
         <div class="col-xs-4" ng-controller="advertismentCtrl">

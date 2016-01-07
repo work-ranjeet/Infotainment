@@ -226,6 +226,9 @@
     <Content Include="Scripts\App.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Common\Session.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Components\AboutUs\AboutUsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -236,7 +239,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Components\HomePage\TopNewsCtrl.js" />
+    <Content Include="Scripts\Components\NewsDetail\StateNewsDetail.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\NewsDetail\InterNewsDetail.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Components\NewsDetail\NewsDetailCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\NewsList\NewsListCtrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Components\NewsList\AllStateNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Content\Content.js" />
@@ -310,28 +325,10 @@
     <Content Include="Scripts\Common\MessageFactory.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\GameNewsCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Components\HomePage\ImageGalarySliderCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\Components\HomePage\InternationalNewsCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\Components\HomePage\MostViewedImageSliderCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\Components\HomePage\StateNewsCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Components\StateNews\AllStateNewsCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Components\StateNews\StateNewsCtrl.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\Components\StateNews\StateNewsListCtrl.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\Vendor\JQuery\jquery.validate-vsdoc.js">
@@ -770,9 +767,6 @@
     <Content Include="Views\MainNews\NewsList.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\StateNews\AllStateNews.cshtml" />
-    <Content Include="Views\StateNews\StateNews.cshtml" />
-    <Content Include="Views\StateNews\StateNewsList.cshtml" />
     <Content Include="Views\Home\Home.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -789,6 +783,13 @@
     <Content Include="Views\Shared\_PartialSideMenu.cshtml" />
     <Content Include="Views\Shared\_PartialTopNewsPage.cshtml" />
     <Content Include="Views\Shared\_PartialInternationNewsPage.cshtml" />
+    <Content Include="Views\Shared\_PartialHStateNews.cshtml" />
+    <Content Include="Views\InternationalNews\NewsList.cshtml" />
+    <Content Include="Views\Shared\_PartialNewsList.cshtml" />
+    <Content Include="Views\InternationalNews\NewsDetail.cshtml" />
+    <Content Include="Views\StateNews\NewsList.cshtml" />
+    <Content Include="Views\StateNews\NewsDetail.cshtml" />
+    <Content Include="Views\StateNews\AllStates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,9 +1,12 @@
-﻿@{
-    ViewBag.Title = "Infotainment";
+﻿
+@{
+    ViewBag.Title = "NewsList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 <div id="topNews" class="container" ng-controller="newsListCtrl">
-    <div class="row">        
+    <div class="row">
         <div class="col-xs-9">
             @Html.Partial("_PartialNewsList")
         </div>
@@ -23,3 +26,4 @@
         </div>
     </div>
 </div>
+

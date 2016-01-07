@@ -1,36 +1,37 @@
 ﻿@using Infotainment.Extension
 @model Infotainment.Models.Entities.News
-
-
 @{
-    ViewBag.Title = "Infotainment";
+    ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container" ng-controller="newsDetailCtrl">
+
+<div class="container" ng-controller="stateNewsDetailCtrl">
     <div class="row">
         <div class="col-xs-3">
             <div class="row">
                 <div class="col-xs-12" ng-repeat="news in imageNewsList">
-                    <div ng-hide="news.IsRss" class="col-xs-12">
+                    <div ng-if="!news.IsRss" class="col-xs-12">
                         <img class="pull-left news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt=" ">
 
                         <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
                             <span class="news-heading"> {{news.Heading}}</span>
                         </a>
-                        <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
-                        <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                            @*{{news.DttmCreated | hindiDate}}*@
+                        <p class="news-text" style="padding:0px; margin:0px;">
+                            {{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; 
                             <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
                         </p>
+                        @*<p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                            {{news.DttmCreated | hindiDate}}                           
+                        </p>*@
                         <hr class="style-seven" />
                     </div>
                     <div ng-if="news.IsRss &&  news.ImageUrl!= null && news.ImageUrl != ''" class="col-xs-12">
                         <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt=" ">
                         <span class="news-heading"> {{news.Heading}}</span>
                         <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
-                        <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                            @*{{news.DttmCreated | hindiDate}}*@
-                        </p>
+                        @*<p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                            {{news.DttmCreated | hindiDate}}
+                        </p>*@
                         <hr class="style-seven" />
                     </div>
                 </div>
@@ -49,18 +50,14 @@
                     @Model.DttmCreated
                 </span>
             </a>
-            <p>
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <p>
                     <img class="news-detail-Image" src="~/@Url.Content(Model.ImageUrl)" />
                     <span>@Model.ImageCaption</span>
-                }
-                @*else
-                {
-                    <img class="news-detail-Image" src="../Content/images/india.png" />
-                    <span>India Image</span>
-                }*@
-            </p>
+                </p>
+            }
+
             <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
             <div class="news-detail-content">
                 <div class="news-detail-desc">

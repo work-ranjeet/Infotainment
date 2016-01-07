@@ -236,7 +236,7 @@ namespace Infotainment.Data.Controls
         }
 
         // need to write
-        internal List<IStateNews> SelectForPartialNewsList(string StateCode, int PageNumber)
+        internal IEnumerable<IStateNews> SelectForPartialNewsList(string StateCode, Int64 NextPageValue)
         {
             IDataReader objDataReader = null;
             List<IStateNews> objNewsList = null;
@@ -245,7 +245,9 @@ namespace Infotainment.Data.Controls
             DBHelper dbHelper = new DBHelper();
             try
             {
-                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllInterForList, CommandType.StoredProcedure);
+                dbHelper.AddInParameter("@StateCode", StateCode, DbType.String);
+                dbHelper.AddInParameter("@NextPageValue", NextPageValue, DbType.Int64);
+                objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectPartialStateNewsListApi, CommandType.StoredProcedure);
 
                 if (objDataReader != null)
                 {

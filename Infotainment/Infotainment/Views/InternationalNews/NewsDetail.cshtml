@@ -3,10 +3,10 @@
 
 
 @{
-    ViewBag.Title = "Infotainment";
+    ViewBag.Title = "International News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container" ng-controller="newsDetailCtrl">
+<div class="container" ng-controller="interNewsDetailCtrl">
     <div class="row">
         <div class="col-xs-3">
             <div class="row">
@@ -49,18 +49,14 @@
                     @Model.DttmCreated
                 </span>
             </a>
-            <p>
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <p>
                     <img class="news-detail-Image" src="~/@Url.Content(Model.ImageUrl)" />
                     <span>@Model.ImageCaption</span>
-                }
-                @*else
-                {
-                    <img class="news-detail-Image" src="../Content/images/india.png" />
-                    <span>India Image</span>
-                }*@
-            </p>
+                </p>
+            }
+
             <p class="news-detail-content"><span class="news-detail-desc">@Model.ShortDesc</span></p>
             <div class="news-detail-content">
                 <div class="news-detail-desc">

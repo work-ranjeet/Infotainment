@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "India State News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" ng-controller="allStateNewsCtrl">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="list-inline col-sm-6" ng-repeat="newsItem in stateNewsData">
+                <div class="title-box margin-top-30">
+                    <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "StateNews", new { NewsType = "{{StateNewsType}}", StateCode = "{{newsItem.StateCode}}" }))" target="_self">
+                        <span>&nbsp;&nbsp;{{newsItem.StateName}}</span>
+                    </a>
+                </div>
+                <div ng-repeat="news in newsItem.NewsList" class="row" style="min-height:175px;">
+                    <div ng-hide="news.IsRss" class="col-xs-12">
+                        <img class="pull-left  news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt="">
+                        <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                            <span class="news-heading"> {{news.Heading}}</span>
+                        </a>
+                        <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                        <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                            {{news.DttmCreated | hindiDate}}
+                            <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                        </p>
+                        <hr class="style-seven" />
+                    </div>
+                    <div ng-show="news.IsRss" class="col-xs-12">
+                        <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt="">
+                        <span class="news-heading"> {{news.Heading}}</span>
+                        <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
+                        @*<p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                    {{news.DttmCreated | hindiDate}}
+                </p>*@
+                        <hr class="style-seven" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>

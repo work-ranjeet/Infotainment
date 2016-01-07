@@ -224,7 +224,7 @@ namespace Infotainment.Data.Controls
             return objNews;
         }
 
-        public List<IInterNews> SelectAllForList()
+        public List<IInterNews> SelectAllForList(Int64? NextPageValue)
         {
             IDataReader objDataReader = null;
             List<IInterNews> objNewsList = null;
@@ -233,6 +233,7 @@ namespace Infotainment.Data.Controls
             DBHelper dbHelper = new DBHelper();
             try
             {
+                dbHelper.AddInParameter("@NextPageValue", NextPageValue, DbType.Int64);
                 objDataReader = dbHelper.ExecuteDataReader(ProcedureName.SelectAllInterForList, CommandType.StoredProcedure);
 
                 if (objDataReader != null)

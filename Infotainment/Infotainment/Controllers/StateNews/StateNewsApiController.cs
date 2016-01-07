@@ -8,37 +8,67 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Infotainment.Data.Entities.Common;
+using Infotainment.Data.Controls.Common;
 
 namespace Infotainment.Controllers
 {
     public class StateNewsApiController : ApiController
     {
+
         [HttpGet]
-        public IEnumerable<INews> TopStateNews()
+        public IEnumerable<IStateCode> States()
+        {
+            var newsInstance = StateCodeBL.Instance;
+            List<IStateCode> stateCodeForTab = new List<IStateCode>();
+            try
+            {
+                var result = newsInstance.SelectStates();
+                if (result != null)
+                {
+                    stateCodeForTab.AddRange(result.ToList().FindAll(v => v.IsTabSate == 1).OrderBy(v => v.DisplayOrder).ToList());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return stateCodeForTab; //.OrderByDescending(v => v.DttmCreated);
+        }
+
+        [HttpGet]
+        public Dictionary<string, List<INews>> TopStateNews()
         {
             var newsInstance = StateNewsBL.Instance;
-            var newsList = new ConcurrentBag<INews>();
+            var newsDicList = new Dictionary<string, List<INews>>();  // ConcurrentBag<INews>();
             try
             {
                 var result = newsInstance.SelectStateNewsForApi();
-                result.AsParallel().AsOrdered().ForAll(val =>
+                if (result != null)
                 {
-                    newsList.Add(new News
+                    foreach (var key in result.Keys)
                     {
-                        NewsID = val.NewsID,
-                        DisplayOrder = val.DisplayOrder,
-                        StateCode = val.StateCode,
-                        StateName = val.StateName,
-                        Heading = val.Heading,
-                        ImageUrl = val.ImageUrl,                        
-                        ShortDesc = val.ShortDescription,
-                        IsRss = val.IsRss,
-                        //NewsDesc= val.NewsDescription,
-                        DttmCreated = val.DttmCreated
-                    });
-
-                });
-
+                        newsDicList.Add(key, new List<INews>());
+                        var newsList = result[key].OrderByDescending(v => v.DttmCreated).ToList();
+                        newsList.ForEach(val =>
+                        {
+                            newsDicList[key].Add(new News
+                            {
+                                NewsID = val.NewsID,
+                                DisplayOrder = val.DisplayOrder,
+                                StateCode = val.StateCode,
+                                StateName = val.StateName,
+                                Heading = val.Heading,
+                                ImageUrl = val.ImageUrl,
+                                ShortDesc = val.ShortDescription,
+                                IsRss = val.IsRss,
+                                //NewsDesc= val.NewsDescription,
+                                DttmCreated = val.DttmCreated
+                            });
+                        });
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -49,7 +79,7 @@ namespace Infotainment.Controllers
                 newsInstance.Dispose();
             }
 
-            return newsList.OrderByDescending(v => v.DttmCreated);
+            return newsDicList; //.OrderByDescending(v => v.DttmCreated);
         }
 
 
@@ -90,32 +120,31 @@ namespace Infotainment.Controllers
             return news;
         }
 
+
         [HttpGet]
-        public IEnumerable<INews> NewsList()
+        public IEnumerable<INews> NewsList(string StateCode, Int64 NextPage)
         {
-            var newsInstance = TopNewsBL.Instance;
+            var newsInstance = StateNewsBL.Instance;
             ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectAll(NewsType.TopNews, null);
+                var result = newsInstance.SelectForPartialNewsList(StateCode, NextPage);
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
-                    if (val.IsActive == 1 && val.IsApproved == 1)
+                    newsList.Add(new News
                     {
-                        newsList.Add(new News
-                        {
-                            NewsID = val.TopNewsID,
-                            DisplayOrder = val.DisplayOrder,
-                            Heading = val.Heading,
-                            ImageUrl = val.ImageUrl,
-                            EditorID = string.Empty,
-                            EditorName = "",
-                            ShortDesc = val.ShortDescription,
-                            NewsDesc = val.NewsDescription,
-                            DttmCreated = val.DttmCreated,
-                            IsRss = val.IsRss
-                        });
-                    }
+                        NewsID = val.NewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        EditorID = string.Empty,
+                        EditorName = "",
+                        ShortDesc = val.ShortDescription,
+                        NewsDesc = val.NewsDescription,
+                        DttmCreated = val.DttmCreated,
+                        IsRss = val.IsRss
+                    });
+
                 });
 
             }

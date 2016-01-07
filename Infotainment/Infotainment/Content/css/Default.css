@@ -17,6 +17,11 @@
     color:#f05a00;
     fill:#f05a00;
 }
+.active-1 {
+    color: #f05a00;
+    fill: #f05a00;
+    font-size: 16px;
+}
 
 .page-container {
     background: transparent;

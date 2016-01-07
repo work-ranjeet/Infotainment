@@ -20,11 +20,19 @@ namespace Infotainment.Controllers
             });
         }
 
+        public async Task<ActionResult> AllStates()
+        {
+            return await Task.Run(() =>
+            {
+                return View();
+            });
+        }
+
         public async Task<ActionResult> NewsDetail(string NewsId)
         {
             return await Task.Run(() =>
             {
-                var newsInstance = InterNewsBL.Instance;
+                var newsInstance = StateNewsBL.Instance;
                 INews news = null;
                 try
                 {
@@ -38,8 +46,8 @@ namespace Infotainment.Controllers
                         ImageCaption = result.ImageCaption,
                         ShortDesc = result.ShortDescription,
                         NewsDesc = result.NewsDescription,
-                        EditorID = string.Empty,
-                        EditorName = "",
+                        EditorID = " ",
+                        EditorName = " ",
                         DttmCreated = result.DttmCreated
                     }; ;
                 }

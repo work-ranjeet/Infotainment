@@ -19,7 +19,8 @@ CREATE TABLE StateCode (
 	StateCode NVARCHAR(20),
 	StateName NVARCHAR(100),
 	StateNameHindi NVARCHAR(100),
-	DisplayOrder INT
+	DisplayOrder INT,
+	IsTabSate INT
 	)
 GO
 

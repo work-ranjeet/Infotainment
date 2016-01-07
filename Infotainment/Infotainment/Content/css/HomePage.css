@@ -159,22 +159,27 @@
     background: #fff;
     display: inline-block;
     font-size: 13px;
+     z-index:0;
 }
 
 .tab-button-container {
+    width:96.5%;
     height: 26px;
-    width: 100%;
+    /*background-color:#616161;*/
+    /*color:white;*/
+     margin-top:-2px;
+     margin-left:12px;
+     border-radius:2%;
 }
 
     .tab-button-container .tab-button {
-        margin-top:-2px;
-        height: 25px;
         background-color: transparent;
         display: inline;
         float: right;
         cursor:pointer;
         padding:5px;
         border-collapse:collapse;
+         border-bottom:solid 1px #f07c00;
     }
 
         .tab-button-container .tab-button:hover {
@@ -183,15 +188,16 @@
 
             .tab-button-container .tab-button > span,
             .tab-button-container .tab-button:hover > span {
-                position: relative;
                 white-space: nowrap;
                 padding: 0px 2px;
                 display: block;
             }
 
 .tab-content-container {
-    height: 350px;
-    border: solid 1px brown;
+    margin-top:5px;
+    /*height: 350px;
+    border: solid 1px brown;*/
+    z-index:0;
 }
 
 

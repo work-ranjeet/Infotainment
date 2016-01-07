@@ -52,7 +52,7 @@ namespace Infotainment.Data.Common
         public static readonly string SearchStateNews = "SearchStateNews";
         public static readonly string StateNewsImageDetail = "StateNewsImageDetail";
         public static readonly string SelectStateNewsForApi = "SelectStateNewsForApi";
-        public static readonly string SelectPartialNewsListApi = "SelectPartialNewsListApi";
+        public static readonly string SelectPartialStateNewsListApi = "SelectPartialStateNewsListApi";
 
 
     }

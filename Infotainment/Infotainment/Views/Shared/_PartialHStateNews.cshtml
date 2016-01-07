@@ -1,0 +1,81 @@
+﻿@* State News *@
+<div id="stateNews" ng-controller="stateNewsHomeCtrl" class="row">
+    <div class="title-box margin-top-30">
+        <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "StateNews"))" target="_self">
+            <span>&nbsp;&nbsp;{{StateTitle}}</span>
+        </a>
+    </div>
+    <div class="tab-container">
+        <div class="tab-button-container ">
+            <a href="@HttpUtility.UrlDecode(Url.Action("AllStates", "StateNews", new { NewsType = "{{StateNewsType}}" }))" target="_self">
+                <div class="tab-button ng-scope ng-pristine ng-valid active" style="background-color: #ccc;">
+                    <span>अन्य राज्य</span>
+                </div>
+            </a>
+            <div class="tab-button" ng-repeat="state in StateTabList" id="{{state.StateCode}}" btn-radio="{{state.TabId}}" ng-model="activeTab.TabId">
+                <span ng-class="(activeTab.TabId == state.TabId) ? 'active-1' : ''">{{state.StateName}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="tab-container">
+            @*<div class="tab-button-container ">
+                    <div class="tab-button" ng-repeat="state in StateTabList" id="{{state.StateCode}}" btn-radio="{{state.TabId}}" ng-model="activeTab.TabId">
+                        <span ng-class="(activeTab.TabId == state.TabId) ? 'active-1' : ''">{{state.StateName}}</span>
+                    </div>
+                </div>*@
+            <div class="tab-content-container">
+                <div class="col-sm-6 list-inline">
+                    <div ng-repeat="news in activeTab.NewsList.FirstNews" class="row">
+                        <div ng-hide="news.IsRss" class="col-xs-12">
+                            <img class="pull-left  news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt="">
+                            <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                                <span class="news-heading"> {{news.Heading}}</span>
+                            </a>
+                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                            <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                                {{news.DttmCreated | hindiDate}}
+                                <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                            </p>
+                            <hr class="style-seven" />
+                        </div>
+                        <div ng-show="news.IsRss" class="col-xs-12">
+                            <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt="">
+                            <span class="news-heading"> {{news.Heading}}</span>
+                            <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
+                            @*<p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                                    {{news.DttmCreated | hindiDate}}
+                                </p>*@
+                            <hr class="style-seven" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 list-inline">
+                    <div class="row" ng-repeat="news in activeTab.NewsList.OthersNews">
+                        <div ng-hide="news.IsRss" class="col-xs-12">
+                            <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                                <span class="news-heading" style="font-weight:normal !important;"> {{news.Heading}}</span>
+                            </a>
+                            <hr class="style-seven" />
+                        </div>
+                        <div ng-show="news.IsRss" class="col-xs-12">
+                            <span class="news-heading" style="font-weight:normal !important;"> {{news.Heading}}</span>
+                            @*<bdi style="padding:0px; margin:0px; text-align:right" class="news-date">
+                                    {{news.DttmCreated | hindiDate}}
+                                </bdi>*@
+                            <hr class="style-seven" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="footer-box">
+            <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "StateNews", new { NewsType = "{{StateNewsType}}", StateCode = "{{activeTab.StateCode}}" }))" target="_self">
+                <span>&nbsp;&nbsp;{{Moreheading}}&nbsp;{{stateName}}</span>
+            </a>
+        </div>
+    </div>
+</div>
+@* End of state news *@

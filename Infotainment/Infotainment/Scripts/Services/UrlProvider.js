@@ -9,10 +9,13 @@
 
         // International News
         InternationalNews: "request/InternationalNewsApi/FirstNews",
-        //InternationalFirstNews: "request/InternationalNewsApi/NewsHeader",
+        InternationalNewsList: "request/InternationalNewsApi/NewsList?NextPage=",
+        //InternationalNewsDetail: "request/InternationalNewsApi/NewsHeader",
 
         // StateNews
-        InternationalNews: "request/StateNewsApi/TopStateNews"
+        StateNews: "request/StateNewsApi/TopStateNews",
+        StateCode: "request/StateNewsApi/States",
+        StateNewsList: "request/StateNewsApi/NewsList",
         
 
 

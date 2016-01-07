@@ -7,7 +7,7 @@
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
         $scope.shortDescLimit = 230;
 
-        $scope.Moreheading = "और भी पढें";
+        $scope.Moreheading = "और भी पढें..";
 
         $scope.todayDate = $filter('hindiDate')(new Date());
         $scope.fbUrl = SocilMediaLink.FaceBook;

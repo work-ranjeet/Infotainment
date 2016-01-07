@@ -129,16 +129,19 @@ INSERT INTO NewsType (NewsType, EnumWord, NewsDesc)
 VALUES (3, 'InternationalNews', 'International News')
 
 ------------------- State Code ----------------------
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('BR','Bihar', N'बिहार', 1)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('UP','Uttar Pradesh', N'उत्तर प्रदेश', 2)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('CT','Chhattisgarh', N'छत्तीसगढ़', 3)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('MP','Madhya Pradesh', N'मध्य प्रदेश', 4)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('RJ','Rajasthan', N'राजस्थान', 5)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('HP','Himachal Pradesh', N'हिमाचल प्रदेश', 6)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('JH','Jharkhand', N'झारखण्ड', 7)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('DL','Delhi', N'देल्ही', 8)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('PB','Punjab', N'पंजाब', 9)
-INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder)VALUES('HR','Haryana', N'हरयाना', 10)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('BR','Bihar', N'बिहार', 1, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('UP','Uttar Pradesh', N'उत्तर प्रदेश', 2, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('DL','Delhi', N'देल्ही', 3, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('PB','Punjab', N'पंजाब', 4, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('HR','Haryana', N'हरयाना', 5, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('JH','Jharkhand', N'झारखण्ड', 6, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('HP','Himachal Pradesh', N'हिमाचल प्रदेश', 7, 1)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('CT','Chhattisgarh', N'छत्तीसगढ़', 8, 0)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('MP','Madhya Pradesh', N'मध्य प्रदेश', 9, 0)
+INSERT INTO StateCode(StateCode, StateName, StateNameHindi, DisplayOrder, IsTabSate)VALUES('RJ','Rajasthan', N'राजस्थान', 10, 0)
+
+
+
 
 --INSERT INTO StateCode(StateCode, StateName, StateNameHindi)VALUES('AN','Andaman and Nicobar Islands','')
 --INSERT INTO StateCode(StateCode, StateName, StateNameHindi)VALUES('AP','Andhra Pradesh', N'आंध्रा प्रदेश')

@@ -4,52 +4,61 @@
             <span>&nbsp;&nbsp;{{InterTitle}}</span>
         </a>
     </div>
-    <div id="interImageNews" class="col-xs-6 col-lg-6 margin-top-5">
-        <div ng-repeat="news in InternationalNewsList" class="row">
-            <div ng-hide="news.IsRss" class="col-xs-12">
-                <img class="pull-left  news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt="">
-                <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+    <div class="row">
+        <div id="interImageNews" class="col-sm-6 margin-top-5">
+            <div ng-repeat="news in InternationalNewsList" class="row">
+                <div ng-hide="news.IsRss" class="col-xs-12">
+                    <img class="pull-left  news-image" ng-src="../{{(news.ImageUrl == null || news.ImageUrl == '' ? 'Content/images/india.png': news.ImageUrl)}}" alt="">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                        <span class="news-heading"> {{news.Heading}}</span>
+                    </a>
+                    <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                    <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                        {{news.DttmCreated | hindiDate}}
+                        <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                    </p>
+                    <hr class="style-seven" />
+                </div>
+                <div ng-show="news.IsRss" class="col-xs-12">
+                    <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt="">
                     <span class="news-heading"> {{news.Heading}}</span>
-                </a>
-                <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
-                <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                    {{news.DttmCreated | hindiDate}}
-                    <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
-                </p>
-                <hr class="style-seven" />
+                    <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
+                    <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                        {{news.DttmCreated | hindiDate}}
+                    </p>
+                    <hr class="style-seven" />
+                </div>
             </div>
-            <div ng-show="news.IsRss" class="col-xs-12">
-                <img class="pull-left news-image margin-right-five" ng-src="{{news.ImageUrl}}" alt="">
-                <span class="news-heading"> {{news.Heading}}</span>
-                <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
-                <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                    {{news.DttmCreated | hindiDate}}
-                </p>
-                <hr class="style-seven" />
+        </div>
+        <div id="interNews" class="col-sm-6 margin-top-5">
+            <div class="row" ng-repeat="news in InternationalNewsHeaderList">
+                <div ng-hide="news.IsRss" class="col-xs-12">
+                    <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
+                        <span class="news-heading"> {{news.Heading}}</span>
+                    </a>
+                    <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
+                    <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                        {{news.DttmCreated | hindiDate}}
+                        <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
+                    </p>
+                    <hr class="style-seven" />
+                </div>
+                <div ng-show="news.IsRss" class="col-xs-12">
+                    <span class="news-heading"> {{news.Heading}}</span>
+                    <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
+                    <p style="padding:0px; margin:0px; text-align:right" class="news-date">
+                        {{news.DttmCreated | hindiDate}}
+                    </p>
+                    <hr class="style-seven" />
+                </div>
             </div>
         </div>
     </div>
-    <div id="interNews" class="col-xs-6 col-lg-6 margin-top-5">
-        <div class="row" ng-repeat="news in InternationalNewsHeaderList">
-            <div ng-hide="news.IsRss" class="col-xs-12">
-                <a data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "InternationalNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">
-                    <span class="news-heading"> {{news.Heading}}</span>
-                </a>
-                <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}...&nbsp; </p>
-                <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                    {{news.DttmCreated | hindiDate}}
-                    <a class="more" data-ng-href="@HttpUtility.UrlDecode(Url.Action("NewsDetail", "MainNews", new { NewsId = "{{news.NewsID}}" }))" target="_self">और पढ़ें..</a>
-                </p>
-                <hr class="style-seven" />
-            </div>
-            <div ng-show="news.IsRss" class="col-xs-12">
-                <span class="news-heading"> {{news.Heading}}</span>
-                <p class="news-text" style="padding:0px; margin:0px;">{{news.ShortDesc | limitTo:shortDescLimit}}&nbsp; </p>
-                <p style="padding:0px; margin:0px; text-align:right" class="news-date">
-                    {{news.DttmCreated | hindiDate}}
-                </p>
-                <hr class="style-seven" />
-            </div>
+    <div class="row">
+        <div class="footer-box">
+            <a href="@HttpUtility.UrlDecode(Url.Action("NewsList", "InternationalNews", new { NewsType = "{{InterNewsType}}" }))" target="_self">
+                <span>&nbsp;&nbsp;{{Moreheading}}</span>
+            </a>
         </div>
     </div>
 </div>

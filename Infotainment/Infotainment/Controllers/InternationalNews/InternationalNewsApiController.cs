@@ -123,31 +123,28 @@ namespace Infotainment.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<INews> NewsList()
+        public IEnumerable<INews> NewsList(Int64 NextPage)
         {
-            var newsInstance = TopNewsBL.Instance;
+            var newsInstance = InterNewsBL.Instance;
             ConcurrentBag<INews> newsList = new ConcurrentBag<INews>();
             try
             {
-                var result = newsInstance.SelectAll(NewsType.TopNews, null);
+                var result = newsInstance.SelectAllForList(NextPage);
                 result.AsParallel().AsOrdered().ForAll(val =>
                 {
-                    if (val.IsActive == 1 && val.IsApproved == 1)
+                    newsList.Add(new News
                     {
-                        newsList.Add(new News
-                        {
-                            NewsID = val.TopNewsID,
-                            DisplayOrder = val.DisplayOrder,
-                            Heading = val.Heading,
-                            ImageUrl = val.ImageUrl,
-                            EditorID = string.Empty,
-                            EditorName = "",
-                            ShortDesc = val.ShortDescription,
-                            NewsDesc = val.NewsDescription,
-                            DttmCreated = val.DttmCreated,
-                            IsRss = val.IsRss
-                        });
-                    }
+                        NewsID = val.NewsID,
+                        DisplayOrder = val.DisplayOrder,
+                        Heading = val.Heading,
+                        ImageUrl = val.ImageUrl,
+                        EditorID = string.Empty,
+                        EditorName = "",
+                        ShortDesc = val.ShortDescription,
+                        NewsDesc = val.NewsDescription,
+                        DttmCreated = val.DttmCreated,
+                        IsRss = val.IsRss
+                    });
                 });
 
             }

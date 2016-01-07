@@ -273,7 +273,9 @@ namespace Infotainment.Data.Common.Services
                             if (arr.Length > 1)
                             {
                                 ShortDesc = arr[1];
-                                imgUrl = arr[0].Split('=')[1];
+                                var imgurl = arr[0].Split('=');
+
+                                imgUrl = imgurl.Length > 1 ? imgurl[1] : " ";
                             }
                             if (IsImgBreak && !string.IsNullOrEmpty(imgUrl))
                             {

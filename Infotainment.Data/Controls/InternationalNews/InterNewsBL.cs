@@ -41,7 +41,7 @@ namespace Infotainment.Data.Controls
         {
             try
             {
-               
+
                 objNews.EditorID = "1";
                 objNews.DisplayOrder = 1;
                 objNews.IsActive = 0;
@@ -144,21 +144,12 @@ namespace Infotainment.Data.Controls
             return InterNewsDB.Instance.Select(NewsID);
         }
 
-        public IEnumerable<IInterNews> SelectAllForList(NewsType newsType)
+        public IEnumerable<IInterNews> SelectAllForList(Int64 nextPage)
         {
             List<IInterNews> list = null;
             try
             {
-                switch (newsType)
-                {
-                    case NewsType.TopNews:
-                        list = InterNewsDB.Instance.SelectAllForList();
-                        break;
-
-                    default:
-                        throw new NotImplementedException();
-
-                }
+                list = InterNewsDB.Instance.SelectAllForList(nextPage);
             }
             catch (Exception objExp)
             {

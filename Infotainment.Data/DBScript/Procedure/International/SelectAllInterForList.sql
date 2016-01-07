@@ -1,15 +1,15 @@
 ﻿IF EXISTS (
 		SELECT *
 		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'SelectAllTopNews') AND type IN (
+		WHERE object_id = OBJECT_ID(N'SelectAllInterForList') AND type IN (
 				N'P',
 				N'PC'
 				)
 		)
-	DROP PROCEDURE SelectAllTopNews
+	DROP PROCEDURE SelectAllInterForList
 GO
 
-CREATE PROCEDURE SelectAllTopNews (@NextPageValue BIGINT = NULL)
+CREATE PROCEDURE SelectAllInterForList (@NextPageValue BIGINT = NULL)
 AS
 BEGIN
 	BEGIN TRY
@@ -17,11 +17,11 @@ BEGIN
 
 		SELECT @NewsType = NewsType
 		FROM NewsTYpe
-		WHERE EnumWord LIKE 'TopNews'
+		WHERE EnumWord LIKE 'InternationalNews'
 
 		IF (@NextPageValue IS NULL)
 		BEGIN
-			SELECT TN.TopNewsID,
+			SELECT TN.NewsID,
 				TN.EditorID,
 				TN.DisplayOrder,
 				TN.Heading,
@@ -30,14 +30,15 @@ BEGIN
 				TN.LanguageID,
 				TN.IsApproved,
 				TN.IsActive,
+				TN.IsTopNews,
 				TN.DttmCreated,
 				TN.DttmModified,
 				ImgD.ImageUrl,
 				ImgD.Caption
-			FROM TopNews TN
-			LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
+			FROM InternationalNews TN
+			LEFT OUTER JOIN InterNewsImage TPI ON TPI.NewsID = TN.NewsID
 			LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
-			WHERE TN.NewsType = @NewsType AND TN.IsApproved = 1 AND TN.IsActive = 1
+			WHERE TN.NewsType = @NewsType  AND TN.IsApproved = 1 AND TN.IsActive = 1
 			ORDER BY TN.DttmCreated DESC
 		END
 
@@ -45,7 +46,7 @@ BEGIN
 		BEGIN
 			SELECT *
 			FROM (
-				SELECT TN.TopNewsID,
+				SELECT TN.NewsID,
 					TN.EditorID,
 					TN.DisplayOrder,
 					TN.Heading,
@@ -54,6 +55,7 @@ BEGIN
 					TN.LanguageID,
 					TN.IsApproved,
 					TN.IsActive,
+					TN.IsTopNews,
 					TN.DttmCreated,
 					TN.DttmModified,
 					ImgD.ImageUrl,
@@ -61,8 +63,8 @@ BEGIN
 					ROW_NUMBER() OVER (
 						ORDER BY TN.DttmCreated DESC
 						) AS Row
-				FROM TopNews TN
-				LEFT OUTER JOIN TopNewsImage TPI ON TPI.TopNewsID = TN.TopNewsID
+				FROM InternationalNews TN
+				LEFT OUTER JOIN InterNewsImage TPI ON TPI.NewsID = TN.NewsID
 				LEFT OUTER JOIN ImageDetail ImgD ON ImgD.ImageID = TPI.ImageID AND ImgD.IsActive = 1 AND ImgD.IsFirst = 1
 				WHERE TN.NewsType = @NewsType  AND TN.IsApproved = 1 AND TN.IsActive = 1
 				) AS news
@@ -80,11 +82,11 @@ BEGIN
 			)
 		VALUES (
 			1,
-			'SelectAllTopNews',
-			'Error from SelectAllTopNews Store Procedure',
+			'InternationalNews',
+			'Error from InternationalNews Store Procedure',
 			ERROR_NUMBER(),
 			ERROR_MESSAGE()
 			)
 	END CATCH
 END
-	--EXEC SelectAllTopNews 0
+	--EXEC SelectAllInterForList 0

@@ -7,7 +7,8 @@
 
 NewsType = {
     TopNews: 1,
-    InternationalNews :2
+    InternationalNews :2,
+    StateNews:3
 };
 
 DateFormat: "dd-MMM-yyyy";
@@ -37,3 +38,8 @@ var Month = {
     nov: "नवेम्बर",
     dec: "दिसम्बर"
 };
+
+var CookieKey =
+    {
+        StateCodeKey : "Infotainment-StateCode"
+    };

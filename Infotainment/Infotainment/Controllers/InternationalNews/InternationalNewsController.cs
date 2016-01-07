@@ -38,10 +38,10 @@ namespace Infotainment.Controllers
                         ImageCaption = result.ImageCaption,
                         ShortDesc = result.ShortDescription,
                         NewsDesc = result.NewsDescription,
-                        EditorID = string.Empty,
-                        EditorName = "",
+                        EditorID = " ",
+                        EditorName = " ",
                         DttmCreated = result.DttmCreated
-                    }; ;
+                    }; 
                 }
                 catch (Exception)
                 {

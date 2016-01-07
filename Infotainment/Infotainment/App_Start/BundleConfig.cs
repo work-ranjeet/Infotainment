@@ -50,6 +50,7 @@ namespace Infotainment
                 "~/Scripts/Components/HomePage/InternationalNewsCtrl.js",
                 "~/Scripts/Components/HomePage/StateNewsCtrl.js",
                 "~/Scripts/Components/NewsDetail/*.js",
+                 "~/Scripts/Components/NewsList/*.js",                
                 "~/Scripts/Components/Advertisment/*.js",
                 "~/Scripts/Components/ContactUs/*.js",
                 "~/Scripts/Components/AboutUs/*.js"));

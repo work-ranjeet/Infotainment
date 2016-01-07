@@ -28,6 +28,7 @@ using Infotainment.Data.Entities;
 using Infotainment.Data.Common.Services;
 using Infotainment.Data.Entities.Common;
 using Infotainment.Data.Controls.Common;
+using System.Collections.Concurrent;
 
 namespace Infotainment.Data.Controls
 {
@@ -169,20 +170,44 @@ namespace Infotainment.Data.Controls
             return StateNewsDB.Instance.Select(NewsID);
         }
 
-        public IEnumerable<IStateNews> SelectForPartialNewsList(NewsType newsType)
+        public IEnumerable<IStateNews> SelectForPartialNewsList(string StateCode, Int64 PageNo)
         {
             List<IStateNews> list = null;
             try
             {
-                switch (newsType)
+                list = new List<IStateNews>();
+
+                if (PageNo == 0)
                 {
-                    case NewsType.TopNews:
-                        list = StateNewsDB.Instance.SelectForPartialNewsList("", 0);
-                        break;
+                    Task<IEnumerable<IStateNews>> newsTask = Task.Factory.StartNew(() => StateNewsDB.Instance.SelectForPartialNewsList(StateCode, PageNo));
+                    Task<IEnumerable<IStateCode>> statesTask = Task.Factory.StartNew(() => StateCodeBL.Instance.SelectStates());
+                    Task<IEnumerable<IStateNews>> rssTask = Task.Factory.StartNew(() => RssProviderService.Instance.GetStateRssNews(StateCode));
+                    Task.WaitAll(newsTask, statesTask, rssTask);
 
-                    default:
-                        throw new NotImplementedException();
+                    var news = newsTask.Result;
+                    var state = statesTask.Result;
+                    var rssNews = rssTask.Result;
+                    if (news != null)
+                    {
+                        list.AddRange(news.ToList());
+                    }
 
+                    if (rssNews != null && rssNews.Count() > 0)
+                    {
+                        foreach (var val in rssNews.ToList().OrderByDescending(v => v.DttmCreated))
+                        {
+                            val.IsRss = true;
+                            val.StateCode = StateCode;
+                            val.StateName = rssNews != null ? state.ToList().Find(v => v.Code == StateCode).NameHindi : " ";
+                            list.Add(val);
+                        }
+                    }
+
+                   
+                }
+                else
+                {
+                    list.AddRange(StateNewsDB.Instance.SelectForPartialNewsList(StateCode, PageNo).ToList());
                 }
             }
             catch (Exception objExp)
@@ -234,19 +259,21 @@ namespace Infotainment.Data.Controls
             return list.ToList().OrderByDescending(v => v.DttmModified);
         }
 
-        public IEnumerable<IStateNews> SelectStateNewsForApi()
+        public Dictionary<string, List<IStateNews>> SelectStateNewsForApi()
         {
             try
             {
-                int newsCount = 15;
+                int newsCount = 12;
                 int remainNews = newsCount;
-                List<IStateNews> newsList = new List<IStateNews>();
+                Dictionary<string, List<IStateNews>> stateDic = new Dictionary<string, List<IStateNews>>();
+                //List<IStateNews> newsList = new List<IStateNews>();
 
                 Task<IEnumerable<IStateNews>> newsTask = Task.Factory.StartNew(() => StateNewsDB.Instance.SelectStateNewsForApi());
                 Task<IEnumerable<IStateCode>> stateCodeTask = Task.Factory.StartNew(() => StateCodeBL.Instance.SelectStates());
                 Task.WaitAll(newsTask, stateCodeTask);
 
-                var statesNews = newsTask.Result; 
+                var statesNews = newsTask.Result;
+                var newsList = new List<IStateNews>();
                 if (statesNews != null && statesNews.Count() > 0)
                 {
                     newsList.AddRange(statesNews);
@@ -255,8 +282,9 @@ namespace Infotainment.Data.Controls
                 var stateCodes = stateCodeTask.Result;
                 if (stateCodes != null && stateCodes.Count() > 0)
                 {
-                    stateCodes.AsParallel().ForAll(sc =>
+                    stateCodes.OrderBy(v => v.DisplayOrder).Take(7).ToList().ForEach(sc =>
                     {
+                        stateDic.Add(sc.Code, new List<IStateNews>());
                         var stateNews = newsList.FindAll(n => !string.IsNullOrEmpty(n.StateCode) && n.StateCode.Trim() == sc.Code.Trim());
                         remainNews = stateNews != null && stateNews.Count > 0 ? newsCount - stateNews.Count : newsCount;
                         if (remainNews > 0)
@@ -273,14 +301,15 @@ namespace Infotainment.Data.Controls
                                     val.IsRss = true;
                                     val.StateCode = sc.Code;
                                     val.StateName = sc.NameHindi;
-                                    newsList.Add(val);
+                                    stateNews.Add(val);
                                 }
                             }
                         }
+                        stateDic[sc.Code].AddRange(stateNews);
                     });
                 }
 
-                return newsList;
+                return stateDic;
             }
             catch (Exception ex)
             {

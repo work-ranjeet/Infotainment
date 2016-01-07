@@ -131,9 +131,10 @@ input[type="checkbox" i] {
     background-color: transparent;
     border: none;
 }
-hr.style{
-    padding-bottom:0px;
-    margin-bottom:0px;
+
+hr.style {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 hr.style-one {
@@ -492,8 +493,8 @@ body {
 }
 
 
-.margin-bottom-20{
-   margin-bottom:20px;
+.margin-bottom-20 {
+    margin-bottom: 20px;
 }
 
 .padding-left-one {
@@ -620,9 +621,9 @@ body {
 
 .title-box {
     width: 98%;
-    font-size: 20px;
+    font-size: 18px;
     color: #f05a00;
-    border-bottom: 3px solid #f07c00;
+    border-bottom: 2px solid #f07c00;
     /*position: relative;*/
     margin-bottom: 2px;
     height: 16px;
@@ -640,10 +641,34 @@ body {
         height: 19px;
         display: inline-block;
     }
-.panel-body{
-    padding:10px !important;
+
+.footer-box {
+    width: 98%;
+    border-bottom: 1px solid #fbd7b0;
+    margin-bottom: 2px;
+    text-align:right;
+    height:15px;
+    margin-top:-34px;
 }
 
-.panel-body-0{
-    padding:0px !important;
+.footer-box > span,
+.footer-box > a > span {
+    color: #F88017;
+    text-transform: capitalize;
+    background: #fff;
+    height: 19px;
+    display: inline-block;
+}
+
+    .footer-box > span:hover,
+    .footer-box > a > span:hover {
+        color:#305db9;
+    }
+
+.panel-body {
+    padding: 10px !important;
+}
+
+.panel-body-0 {
+    padding: 0px !important;
 }
