@@ -5,8 +5,7 @@
         ServiceProvider.Services.Host($location.$$protocol + "://" + $location.$$host + ":" + $location.$$port);
 
         $scope.ContactUS =
-            {
-                Name: "Ravi Anand",
+            {              
                 HouseName: "Surya niketan",
                 HouseNo: "Plot no. 13",
                 Address1: "Opposite anand vihar Gurudwara",
@@ -14,9 +13,8 @@
                 City: "New Delhi",
                 State: "New Delhi",
                 Country: "India",
-                PinNo:"-",
-                Email: "ravianand_pat@yahoo.com"
+                Email: "support@anandinfotainment.com",
+                Email1: "hr@anandinfotainment.com",
             };
-
     };
 })();

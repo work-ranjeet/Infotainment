@@ -2,15 +2,39 @@
     ViewBag.Title = "Contact US";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    var myCenter = new google.maps.LatLng(28.604991, 77.297047);
+
+    function initialize() {
+        var mapProp = {
+            center: myCenter,
+            zoom: 12,
+            scrollwheel: false,
+            draggable: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+        });
+
+        marker.setMap(map);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 <section class="contactus" ng-controller="contactusCtrl">
-    <div class="container">
-        <h3>Contact Us</h3>
-        <hr class="style-six" />
-        <div class="row">
-            <div class="col-xs-8">
-                @model Infotainment.Models.Mailing.Mail
-                @using (Html.BeginForm("ContactUs", "ContactUs", FormMethod.Post))
-                {
+    @*<div class="container">
+            <h3>Contact Us</h3>
+            <hr class="style-six" />
+            <div class="row">
+                <div class="col-xs-8">
+                    @model Infotainment.Models.Mailing.Mail
+                    @using (Html.BeginForm("ContactUs", "ContactUs", FormMethod.Post))
+                    {
                     @Html.AntiForgeryToken()
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -60,24 +84,64 @@
                             </div>
                         </div>
                     </div>
-                }
-            </div>
-            <div class="col-xs-4">
-                @*<div id="googleMap"></div>*@
-                <div id="contacts" class="address">
-                    <h4>Contact \ Mailing Information</h4>
-                    <hr class="style-seven" />
-                    <p>
-                        <strong>{{ContactUS.Name}}</strong>
-                        <span>{{ContactUS.HouseName}}, {{ContactUS.HouseNo}}</span>
-                        <span>{{ContactUS.Address1}}</span>
-                        <span>{{ContactUS.Address2}}</span>
-                        <span>{{ContactUS.City}}, {{ContactUS.State}}, {{ContactUS.Country}}</span>
-                        <span>Pin : {{ContactUS.PinNo}}</span>
-                        <span>Mailto : {{ContactUS.Email}}</span>
-                    </p>
+                    }
+                </div>
+                <div class="col-xs-4">
+
+                    <div id="contacts" class="address">
+                        <h4>Contact \ Mailing Information</h4>
+                        <hr class="style-seven" />
+                        <p>
+                            <strong>{{ContactUS.Name}}</strong>
+                            <span>{{ContactUS.HouseName}}, {{ContactUS.HouseNo}}</span>
+                            <span>{{ContactUS.Address1}}</span>
+                            <span>{{ContactUS.Address2}}</span>
+                            <span>{{ContactUS.City}}, {{ContactUS.State}}, {{ContactUS.Country}}</span>
+                            <span>Pin : {{ContactUS.PinNo}}</span>
+                            <span>Mailto : {{ContactUS.Email}}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
+        </div>*@
+    <div id="contact" class="container-fluid bg-grey ">
+        <h3>Contact</h3><p>Contact us and we'll get back to you within 24 hours.</p>
+        <hr class="style-six" />
+        <div class="row">
+            <div class="col-sm-5">
+                <p>
+                    {{ContactUS.HouseName}}, {{ContactUS.HouseNo}}<br />
+                    {{ContactUS.Address1}}<br />
+                    {{ContactUS.Address2}}<br />
+                    {{ContactUS.City}}, {{ContactUS.State}}, {{ContactUS.Country}}
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-envelope"></span> {{ContactUS.Email}}<br />
+                    <span class="glyphicon glyphicon-envelope"></span> {{ContactUS.Email1}}
+                </p>
+            </div>
+            <div class="col-sm-7 slideanim slide">
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required="">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required="">
+                    </div>
+                </div>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <button class="btn btn-default pull-right" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="googleMap" style="height:400px;width:100%;"></div>
         </div>
     </div>
 </section>
